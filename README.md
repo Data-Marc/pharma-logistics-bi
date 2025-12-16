@@ -150,7 +150,7 @@ The dashboard tracks **61 key performance indicators (KPIs)** organized across 4
 
 | Metric | Value |
 |--------|-------|
-| Dashboard Pages | 4 |
+| Dashboard Pages | 4 (9-10 visual pages) |
 | Visuals Count | 20+ |
 | Data Tables | 13 |
 | Measure Tables | 5 |
