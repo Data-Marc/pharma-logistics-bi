@@ -40,15 +40,15 @@ Este enfoque ascendente garantiza integridad de datos en más de 822,000+ regist
 ### Diagrama de Arquitectura
 
 ```
-┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────────────────┐        ┌──────────┐
-│  Datos Crudos   │         │   SQL Server 2019+       │         │   Power BI                │        │  Usua-   │
-│                 │────────▶│   (ETL & Validación)     │────────▶│  Dataset e Informes       │────────▶│  rios  │
-│ • Sistemas ERP  │         │                          │         │                           │        │ Analistas│
-│ • APIs/Base de  │         │ • Verificaciones Calidad │         │ • Esquema de Estrella (13 Tablas)  │ Gerentes │
-│   Datos         │         │ • Procedimientos Almac.  │         │ • 20 Relaciones Activas   │        │          │
-│ • Archivos      │         │ • Carga Staging/DW       │         │ • Lógica DAX (302 Medidas)         │          │
-│   Planos        │         │                          │         │                           │        │          │
-└─────────────────┘         └──────────────────────────┘         └───────────────────────────┘        └──────────┘
+┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────────────────┐        ┌──────────────┐
+│  Datos Crudos   │         │   SQL Server 2019+       │         │   Power BI                │        │  Usuarios    │
+│                 │────────▶│   (ETL & Validación)     │────────▶│  Dataset e Informes       │────────▶│             │
+│ • Sistemas ERP  │         │                          │         │                           │        │ Analistas    │
+│ • APIs/Base de  │         │ • Verificaciones Calidad │         │ • Esquema de Estrella (13 Tablas)  │ Gerentes     │
+│   Datos         │         │ • Procedimientos Almac.  │         │ • 20 Relaciones Activas   │        │              │
+│ • Archivos      │         │ • Carga Staging/DW       │         │ • Lógica DAX (302 Medidas)│        │              │
+│   Planos        │         │                          │         │                           │        │              │
+└─────────────────┘         └──────────────────────────┘         └───────────────────────────┘        └──────────────┘
 ```
 
 ---
