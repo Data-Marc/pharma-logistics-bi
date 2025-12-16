@@ -1,23 +1,23 @@
-# Technical Architecture - Pharma Logistics BI
+﻿# Technical Architecture - Pharma Logistics BI
 
 ---
 
 ## System Overview
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    Power BI Desktop                     │
-│  (Data Model, Measures, Visualizations, Interactions)  │
-└──────────────────┬──────────────────────────────────────┘
-                   │
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                    Power BI Desktop                     â”‚
+â”‚  (Data Model, Measures, Visualizations, Interactions)  â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                   â”‚
          Analysis Services
          (Tabular Model)
-                   │
-┌──────────────────┴──────────────────────────────────────┐
-│                   SQL Server                            │
-│            (PharmaLogistics Database)                   │
-│         (Fact & Dimension Tables)                       │
-└─────────────────────────────────────────────────────────┘
+                   â”‚
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                   SQL Server                            â”‚
+â”‚            (PharmaLogistics Database)                   â”‚
+â”‚         (Fact & Dimension Tables)                       â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
@@ -96,15 +96,15 @@
 
 ```
 SQL Server Database
-        ↓
+        â†“
   [Daily Refresh]
-        ↓
+        â†“
 Analysis Services
 (Tabular Model)
-        ↓
+        â†“
 Power BI Desktop
 (Memory Cache)
-        ↓
+        â†“
 Dashboard Visualization
 ```
 
@@ -123,3 +123,4 @@ Dashboard Visualization
 ---
 
 **For detailed technical questions, see CONTRIBUTING.md**
+

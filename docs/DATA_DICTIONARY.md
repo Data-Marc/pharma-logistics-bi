@@ -1,4 +1,4 @@
-# Data Dictionary - Pharma Logistics BI
+﻿# Data Dictionary - Pharma Logistics BI
 
 Complete reference for all tables, columns, and measures.
 
@@ -15,7 +15,7 @@ Primary transaction table for all pharmaceutical orders.
 | CustomerID | String | Foreign key to Customers |
 | ProductID | String | Foreign key to Products |
 | Quantity | Integer | Order quantity (units) |
-| TotalCost | Double | Total order value (£) |
+| TotalCost | Double | Total order value (Â£) |
 | WarehouseID | String | Warehouse that fulfilled order |
 | Region | String | Geographic region |
 | Status | String | Order status |
@@ -36,7 +36,7 @@ Logistics and carrier details for each order.
 |--------|-----------|-------------|
 | OrderID | String | Foreign key to Orders |
 | Carrier | String | Carrier name |
-| TransportCost | Double | Cost of transportation (£) |
+| TransportCost | Double | Cost of transportation (Â£) |
 | DistanceKm | Double | Distance traveled (km) |
 | LeadTime | Integer | Delivery lead time (days) |
 | ShipDate | DateTime | Shipment date |
@@ -61,8 +61,8 @@ Warehouse inventory levels and metrics.
 | SafetyStock | Integer | Safety buffer quantity |
 | ReorderPoint | Integer | Reorder trigger level |
 | MaxStock | Integer | Maximum capacity |
-| StockValue | Double | Current inventory value (£) |
-| InventoryHoldingCost | Double | Annual holding cost (£) |
+| StockValue | Double | Current inventory value (Â£) |
+| InventoryHoldingCost | Double | Annual holding cost (Â£) |
 
 **Metrics**: ~5,000 records | Updated daily
 
@@ -94,8 +94,8 @@ Product master data.
 | ProductID | String | Unique product code |
 | ProductName | String | Product name |
 | Category | String | Product category |
-| UnitCost | Double | Cost per unit (£) |
-| UnitPrice | Double | Selling price (£) |
+| UnitCost | Double | Cost per unit (Â£) |
+| UnitPrice | Double | Selling price (Â£) |
 | SupplierID | String | Primary supplier |
 
 **Records**: ~500 products
@@ -117,7 +117,7 @@ Warehouse locations and capacities.
 | MaxVolume_Warehouse | Integer | Max volume |
 | ReorderPoint_Warehouse | Integer | Reorder threshold |
 
-**Records**: ~15 warehouses
+**Records**: 44 warehouses
 
 ---
 
@@ -154,7 +154,7 @@ Time dimension table.
 ## Key Measures
 
 ### Revenue KPIs
-- `Revenue` : Total revenue from orders (£)
+- `Revenue` : Total revenue from orders (Â£)
 - `Revenue MTP` : Month-to-date revenue
 - `Revenue YTD` : Year-to-date revenue
 
@@ -185,14 +185,15 @@ Time dimension table.
 
 | Slicer | Values | Default |
 |--------|--------|---------|
-| Year | 2021-2025 | Current Year |
+| Year | 2023-2025 | Current Year |
 | Month | Jan-Dec | Current Month |
 | Region | Africa, Americas, Asia, Europe | All |
 | Country | 50+ countries | All |
 | Carrier | 7 carriers | All |
 | Transport Mode | Air, Sea, Land | All |
-| Warehouse | 15 warehouses | All |
+| Warehouse | 44 warehouses | All |
 
 ---
 
 **For technical questions, see ARCHITECTURE.md**
+

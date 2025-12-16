@@ -16,9 +16,9 @@ Designed for supply chain managers, logistics coordinators, and financial analys
 
 ### KEY HIGHLIGHTS
 
-- 6 interactive dashboards with drill-down capabilities
+- 4 interactive dashboards with drill-down capabilities
 - 180+ DAX measures for advanced analytics
-- Regional analysis: Africa, Americas, Asia, Europe (50+ countries)
+- Regional analysis: Africa, Americas, Asia, Europe (44 countries)
 - Carrier benchmarking: 7 major logistics providers (CMA, DB, DHL, FedEx, KN, Maersk, UPS)
 - Financial tracking: Revenue, COGS, margins, profitability analysis
 - Cold chain monitoring: Temperature compliance and excursion tracking
@@ -51,7 +51,7 @@ Main landing page with real-time KPIs and operational snapshot.
 **Dynamic Filters:**
 - Year-Month slider (2021-2025)
 - Region multi-select (4 regions)
-- Country multi-select (50+ countries)
+- Country multi-select (44 countries)
 - Transport Mode filter (Air/Sea/Land)
 - Carrier dropdown (7 providers)
 - Supplier Country selector
@@ -144,7 +144,7 @@ Comprehensive warehouse management with stock health monitoring and risk assessm
 **Health Stock Status:**
 - Visual gauge showing % of optimal stock (0-100%)
 - Risk indicators: GREEN (Healthy), YELLOW (Balanced), RED (Low)
-- 15 warehouse locations tracked globally
+- 44 warehouse locations tracked globally
 - Real-time stock position
 
 **Days on Hand Analysis (90-day window):**
@@ -269,7 +269,7 @@ Demand forecasting and accuracy analysis for inventory optimization.
 ## KEY FEATURES
 
 - Time Intelligence: MTD, YTD, Previous Month/Year comparisons
-- Regional Drill-Down: 4 regions, 50+ countries
+- Regional Drill-Down: 4 regions, 44 countries
 - Carrier Benchmarking: 7 logistics providers
 - Financial Analysis: Revenue, COGS, margins, profitability
 - Environmental Metrics: CO2 tracking and sustainability
@@ -306,7 +306,7 @@ Demand forecasting and accuracy analysis for inventory optimization.
 | **PERFORMANCE & FILE METRICS** | |
 | Report File Size | ~150MB |
 | Refresh Time | 9-12 seconds |
-| Data Retention | 5 years (2021-2025) |
+| Data Retention | 3 years (2023-2025) |
 | Regions Covered | 4 |
 | Countries Included | 50+ |
 | Carriers Tracked | 7 |
@@ -344,5 +344,6 @@ For installation help or licensing inquiries:
 ---
 
 For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
 
 

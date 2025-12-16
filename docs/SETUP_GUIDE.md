@@ -1,4 +1,4 @@
-# Setup Guide - Pharma Logistics BI Dashboard
+﻿# Setup Guide - Pharma Logistics BI Dashboard
 
 Complete installation and configuration instructions.
 
@@ -73,7 +73,7 @@ Contact maintainers for SQL scripts to create tables and seed data.
 
 **If prompted for credentials:**
 
-1. Click **Edit queries** → **Data source settings**
+1. Click **Edit queries** â†’ **Data source settings**
 2. Select SQL Server connection
 3. Enter credentials:
    - **Server** : `localhost\SQLEXPRESS` (or your server name)
@@ -92,11 +92,11 @@ Database: PharmaLogistics
 ### 6. Refresh Data
 
 ```
-Home → Refresh (or Ctrl + Shift + R)
+Home â†’ Refresh (or Ctrl + Shift + R)
 ```
 
 **Expected Load Time:**
-- First refresh: 30-60 seconds
+- First refresh: 9-12 seconds
 - Subsequent refreshes: 10-20 seconds
 
 **If errors occur:**
@@ -107,11 +107,11 @@ Home → Refresh (or Ctrl + Shift + R)
 
 ### 7. Verify Installation
 
-✅ **All dashboard pages load without errors**
-✅ **KPI cards display current data**
-✅ **Matrices show regional breakdown**
-✅ **Filters respond to selections**
-✅ **Drill-down features work**
+âœ… **All dashboard pages load without errors**
+âœ… **KPI cards display current data**
+âœ… **Matrices show regional breakdown**
+âœ… **Filters respond to selections**
+âœ… **Drill-down features work**
 
 ---
 
@@ -120,7 +120,7 @@ Home → Refresh (or Ctrl + Shift + R)
 ### Change Data Source
 
 ```
-File → Options → Data Source Settings → Edit Source
+File â†’ Options â†’ Data Source Settings â†’ Edit Source
 ```
 
 ### Adjust Refresh Schedule (Service Only)
@@ -195,7 +195,7 @@ Edit Date table filters in slicers or modify DAX measures for custom periods.
 ## Publishing to Power BI Service
 
 ```
-Home → Publish → Select Workspace → Publish
+Home â†’ Publish â†’ Select Workspace â†’ Publish
 
 # Configure gateway for scheduled refresh
 # (if using on-premises SQL Server)
@@ -214,12 +214,13 @@ Home → Publish → Select Workspace → Publish
 
 ## Next Steps
 
-1. ✅ Review **Overview** page for global KPIs
-2. ✅ Explore **Performance** metrics by region
-3. ✅ Analyze **Financial** data and margins
-4. ✅ Monitor **Warehouse** inventory health
-5. ✅ Check **Quality** compliance metrics
+1. âœ… Review **Overview** page for global KPIs
+2. âœ… Explore **Performance** metrics by region
+3. âœ… Analyze **Financial** data and margins
+4. âœ… Monitor **Warehouse** inventory health
+5. âœ… Check **Quality** compliance metrics
 
 ---
 
-**Happy analyzing!** 📊
+**Happy analyzing!** ðŸ“Š
+
