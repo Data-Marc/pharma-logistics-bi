@@ -1,12 +1,5 @@
 #    PHARMA LOGISTICS - Panel de Control Power BI
 
----
-
-##  Elige Tu Idioma | Choose Your Language | Choisissez Votre Langue
-
-|  English |  Français |  Español |
-|:---:|:---:|:---:|
-| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
 
 ---
 
