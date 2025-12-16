@@ -266,20 +266,6 @@ Demand forecasting and accuracy analysis for inventory optimization.
 
 ---
 
-## KEY FEATURES
-
-- Time Intelligence: MTD, YTD, Previous Month/Year comparisons
-- Regional Drill-Down: 4 regions, 44 countries
-- Carrier Benchmarking: 7 logistics providers
-- Financial Analysis: Revenue, COGS, margins, profitability
-- Environmental Metrics: CO2 tracking and sustainability
-- Quality & Compliance: Cold chain, delivery accuracy, returns
-- Warehouse Optimization: Stock health, DOH, inventory turns
-- Visual Indicators: Stars and triangles for status
-- Interactive Controls: 10+ dynamic slicers and filters
-
----
-
 ## PROJECT METRICS
 
 | Metric | Value |
