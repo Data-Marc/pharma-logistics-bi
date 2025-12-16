@@ -327,11 +327,9 @@ See LICENSE file for complete legal terms.
 
 ## SUPPORT
 
-For installation help or licensing inquiries:
-- Contact: https://www.linkedin.com/in/samson18/
-- Check SETUP_GUIDE.md for troubleshooting
-- See ARCHITECTURE.md for technical details
-- Review DATA_DICTIONARY.md for measure definitions
+For licensing inquiries:
+
+Contact: https://www.linkedin.com/in/samson18/
 
 ---
 
