@@ -23,16 +23,15 @@ Designed for supply chain managers, logistics coordinators, and financial analys
 This project demonstrates enterprise-grade data engineering practices applied to pharmaceutical supply chain analytics:
 
 **Dataset Engineering:**
-- **Source**: Entire dataset designed and architected from scratch following industry best practices
-- **Data Layer**: Imported into SQL Server 2019+ for rigorous transformation and validation
-- **Upstream Processing**: All data cleansing, enrichment, and quality checks performed at the SQL layer from Power BI
-- *"Data quality must be built at the source, not corrected at the reporting layer", ensuring clean, validated data flows directly into analytics (Roche's Maxim)*
 
-**Data Quality Framework:**
+- Source: Entire dataset designed and architected from scratch following industry best practices
+- Data Layer: Imported into SQL Server 2019+ for rigorous transformation and validation
+- Upstream Processing: All data cleansing, enrichment, and quality validations are performed at the SQL layer before reaching Power BI. Following the principle: "Perform data transformations as far upstream (close to the source) as possible, and only downstream (in the report) when necessary" (Roche's Maxim). This ensures data integrity, maintains a single source of truth, and optimizes report performance.
+
 - Standardized validation rules applied during ETL
 - 13 data tables with 20 active relationships (star schema architecture)
 - 302 calculated measures for consistent KPI definitions
-- Refresh cycle: 9–12 seconds with optimized query performance
+- Refresh cycle: 912 seconds with optimized query performance
 
 This upstream-first approach guarantees data integrity across 75,000+ records spanning 4 regions, 44 countries, and 44 warehouses globally.
 ---
@@ -308,6 +307,8 @@ Contact: https://www.linkedin.com/in/samson18/
 ---
 
 For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
+
 
 
 
