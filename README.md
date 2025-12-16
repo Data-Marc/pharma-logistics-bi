@@ -60,13 +60,13 @@ This upstream-first approach guarantees data integrity across 75,000+ records sp
 
 📈 **PERFORMANCE** - Supply Chain Analytics
 
-<img src="docs/images/performance.png" width="700" alt="PERFORMANCE Dashboard Preview">
+<img src="docs/images/warehouses.png" width="700" alt="WAREHOUSES Dashboard Preview">
 
 ---
 
 🏭 **WAREHOUSES** - Inventory Optimization
 
-<img src="docs/images/warehouses.png" width="700" alt="WAREHOUSES Dashboard Preview">
+<img src="docs/images/performance.png" width="700" alt="PERFORMANCE Dashboard Preview">
 
 ---
 
