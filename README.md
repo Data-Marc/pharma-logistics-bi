@@ -155,7 +155,6 @@ The dashboard tracks **61 key performance indicators (KPIs)** organized across 4
 | Data Tables | 13 |
 | Measure Tables | 5 |
 | Total Measures | 302 |
-| Total Values | 822 |
 | Relationships | 20 |
 | Report File Size | ~150MB |
 | Regions Covered | 4 |
