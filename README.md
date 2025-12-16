@@ -1,12 +1,5 @@
 #    PHARMA LOGISTICS - Power BI Dashboard
 
----
-
-##  Choose Your Language | Choisissez Votre Langue | Elige Tu Idioma
-
-|  English |  Français |  Español |
-|:---:|:---:|:---:|
-| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
 
 ---
 
