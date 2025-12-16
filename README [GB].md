@@ -4,9 +4,9 @@
 
 ##  Choose Your Language | Choisissez Votre Langue | Elige Tu Idioma
 
-|  English |  Français |  Español |
+|  English |  FranÃ§ais |  EspaÃ±ol |
 |:---:|:---:|:---:|
-| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
+| [Read in English](README.md) | [Lire en FranÃ§ais](README.fr.md) | [Leer en EspaÃ±ol](README.es.md) |
 
 ---
 
