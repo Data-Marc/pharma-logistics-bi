@@ -1,4 +1,4 @@
-﻿# PHARMA LOGISTICS - Power BI Dashboard
+# PHARMA LOGISTICS - Power BI Dashboard
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
@@ -292,7 +292,7 @@ Demand forecasting and accuracy analysis for inventory optimization.
 | Relationships | 20 |
 | Report File Size | ~150MB |
 | Data Volume | 75,000+ records |
-| Refresh Time | 15-20 seconds |
+| Refresh Time | 9-12 seconds |
 | Data Retention | 5 years (2021-2025) |
 | Regions Covered | 4 |
 | Countries Included | 50+ |
