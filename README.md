@@ -5,6 +5,9 @@
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-2019+-CC2927?logo=microsoft-sql-server)](https://www.microsoft.com/sql-server)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
+[![VS Code](https://img.shields.io/badge/VS%20Code-1.107.0-007ACC?logo=visualstudiocode)](https://code.visualstudio.com)
+[![Excel](https://img.shields.io/badge/Excel-2511-217346?logo=microsoft-excel)](https://www.microsoft.com/excel)
+[![Power Query](https://img.shields.io/badge/Power%20Query-2.149.1429.0-00A4EF?logo=power-bi)](https://powerquery.microsoft.com)
 
 ---
 
@@ -27,8 +30,6 @@ This project demonstrates enterprise-grade data engineering practices applied to
 - Standardized validation rules applied during ETL
 - 13 data tables with 20 active relationships (star schema architecture)
 - 302 calculated measures for consistent KPI definitions
-- Refresh cycle: 912 seconds with optimized query performance
-
 This upstream-first approach guarantees data integrity across 75,000+ records spanning 4 regions, 44 countries, and 44 warehouses globally.
 ---
 
@@ -303,6 +304,8 @@ Contact: https://www.linkedin.com/in/samson18/
 ---
 
 For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
+
 
 
 
