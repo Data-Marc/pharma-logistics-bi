@@ -283,19 +283,11 @@ This project is licensed under a **Proprietary and Confidential License**.
 
 This software is NOT open-source and is offered for commercial licensing only.
 
-For licensing inquiries: https://www.linkedin.com/in/samson18/
 
 See LICENSE file for complete legal terms.
 
 ---
 
-## SUPPORT
-
-For licensing inquiries:
-
-Contact: https://www.linkedin.com/in/samson18/
-
----
 
 **Version:** 1.0.0
 **Last Updated:** December 2025
@@ -305,7 +297,6 @@ Contact: https://www.linkedin.com/in/samson18/
 
 ---
 
-For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
 
 
 

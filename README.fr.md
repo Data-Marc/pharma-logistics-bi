@@ -114,13 +114,6 @@ Suivi d�taill� des 44 entrep�ts r�partis dans 4 r�gions, 44 pays.
 
 ---
 
-## SUPPORT
-
-Pour les demandes de licence:
-
-Veuillez contacter: https://www.linkedin.com/in/samson18/
-
----
 
 **Version:** 1.0.0
 **Derni�re mise � jour:** D�cembre 2025
