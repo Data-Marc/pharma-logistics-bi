@@ -37,188 +37,100 @@ This upstream-first approach guarantees data integrity across 75,000+ records sp
 
 ## DASHBOARD PAGES
 
-### OVERVIEW - Global Performance Dashboard
-
-Main landing page with real-time KPIs and operational snapshot.
-
-**Featured KPIs (6 Cards):**
-- Total Orders (with YoY trend)
-- OTIF % (On-Time In-Full Delivery)
-- Lead Time (Days)
-- In-Full % (Delivery completion rate)
-- On-Time Delivery % (Punctuality)
-- Back Orders (Volume)
-
-**Key Visualizations:**
-- Performance by Carrier: Pie chart showing order distribution across 7 carriers
-- Cost Breakdown by Category: Stacked column chart (Freight, Cold Chain, Medical, Vaccine, Other)
-- Delivery Performance Status: Stacked bar (Delivered/Pending/Returned/Cancelled)
-- Regional Revenue: Horizontal bar chart by region with amounts (Africa, Americas, Asia, Europe)
-- Financial Summary: Combo chart showing costs vs revenue trend across months
-
-**Dynamic Filters:**
-- Year-Month slider (2021-2025)
-- Region multi-select (4 regions)
-- Country multi-select (44 countries)
-- Transport Mode filter (Air/Sea/Land)
-- Carrier dropdown (7 providers)
-- Supplier Country selector
+**OVERVIEW** - Global Performance Dashboard
+**PERFORMANCE** - Supply Chain Analytics
+**WAREHOUSES** - Inventory Optimization
+**FINANCIAL** - Profitability & Economics
 
 ---
 
-### PERFORMANCE - Supply Chain Analytics
+## KPI BY CATEGORY
 
-Detailed operational metrics with regional and carrier drill-down capabilities.
+### 📦 TRANSPORT KPIs
+*Key performance indicators related to order fulfillment and carrier operations*
 
-**Performance Matrices:**
+| KPI | Description | Page |
+|-----|-------------|------|
+| **OTIF %** | On-Time In-Full Delivery Rate | OVERVIEW, PERFORMANCE |
+| **On-Time Delivery %** | Percentage of orders delivered on schedule | OVERVIEW, PERFORMANCE |
+| **In-Full %** | Complete order fulfillment rate without shortages | OVERVIEW, PERFORMANCE |
+| **Lead Time (Days)** | Average days from order placement to delivery | OVERVIEW, PERFORMANCE |
+| **Perfect Order %** | Orders on-time, in-full, accurately delivered | PERFORMANCE |
+| **Performance by Carrier** | Lead Time, Cost per KM, Efficiency Stars, Total Logistics Cost | PERFORMANCE |
+| **Cost per KM** | Transport efficiency metric per kilometer | PERFORMANCE, FINANCIAL |
+| **CO2 Emissions** | Environmental footprint per KM, per 100km, avg per order, total | PERFORMANCE |
+| **Delivery Accuracy %** | Zero receiving discrepancies rate | PERFORMANCE, FINANCIAL |
+| **Total Orders** | Volume of orders processed YoY | OVERVIEW |
+| **Back Orders** | Volume of unfulfilled orders | OVERVIEW |
+| **Performance by Region** | OTIF %, In-Full %, On-Time Delivery %, Perfect Order % by Region | PERFORMANCE |
 
-**Matrix 1: Performance by Region**
-- Rows: Region (Africa, Americas, Asia, Europe) - expandable to countries
-- Columns: OTIF %, In-Full %, On-Time Delivery %, Perfect Order %
-- Data validation by OTIF calculations
-- Highlighting for performance thresholds
+### 🏭 WAREHOUSE KPIs
+*Inventory management, stock levels, and warehouse operations*
 
-**Matrix 2: Performance by Carrier**
-- Rows: Carrier with Regional drill-down capability
-- Columns: Lead Time MTD/YTD, Cost per KM, Total Logistics Cost, Efficiency Stars
-- Benchmarking across carriers
-- Cost-efficiency analysis
+| KPI | Description | Page |
+|-----|-------------|------|
+| **Warehouse Utilization %** | Capacity usage across 44 warehouse locations | WAREHOUSES |
+| **Days on Hand (DOH)** | Stock duration analysis with risk assessment (RED/YELLOW/GREEN) | WAREHOUSES |
+| **Current Stock Levels** | Real-time units by warehouse | WAREHOUSES |
+| **Total Inventory Value** | GBP valuation of stock | WAREHOUSES, FINANCIAL |
+| **Min Stock Level** | Average reorder point across warehouses | WAREHOUSES |
+| **Max Volume Capacity** | Storage limit by warehouse | WAREHOUSES |
+| **Inventory Turns** | COGS / Average Inventory Value | WAREHOUSES, FINANCIAL |
+| **Inventory Accuracy %** | Physical count validation rate | WAREHOUSES |
+| **Orders per Warehouse** | Throughput metric by location | WAREHOUSES |
+| **Total Outbound** | Shipment volume from warehouses | WAREHOUSES |
+| **Dead Stock %** | Non-moving inventory percentage | WAREHOUSES |
+| **Expiry Risk (Units)** | Products expiring soon (quantity) | WAREHOUSES |
+| **Expiry Risk (GBP)** | Financial impact of expiry risk | WAREHOUSES, FINANCIAL |
+| **Stock-out Financial Impact** | GBP loss from stockouts | WAREHOUSES, FINANCIAL |
+| **Overstock Carrying Cost** | GBP cost of excess inventory | WAREHOUSES, FINANCIAL |
+| **Inventory Holding Cost** | Annual GBP cost of inventory storage | WAREHOUSES, FINANCIAL |
+| **Inventory-to-Revenue Ratio** | Balance between stock investment and sales | WAREHOUSES, FINANCIAL |
+| **Health Stock Status** | Visual gauge (0-100%) with risk indicators | WAREHOUSES |
 
-**Trend Analysis:**
-- Revenue vs COGS Line Chart: Dual-axis visualization showing monthly trends (Jan-Dec)
-- COGS MTP vs YTD Combo Chart: Month-to-date vs year-to-date comparison by Region
+### ⚙️ PERFORMANCE KPIs
+*Supply chain efficiency, quality, and operational metrics*
 
-**Key Performance Indicators (22 Measures):**
-- Perfect Order %: Orders on-time, in-full, and accurately delivered
-- Supply Chain Efficiency Score: Composite metric (0-100%)
-- Delivery Accuracy %: Zero receiving discrepancies
-- Cold Chain Compliance %: Temperature-controlled shipments
-- Order Fill Rate %: Orders fulfilled without backorders
-- Average Lead Time: Days from order to delivery
-- OTIF %: On-time and in-full delivery rate
-- In-Full %: Complete order fulfillment rate
-- On-Time Delivery %: Punctual arrivals
-- CO2 Emissions: Per KM, per 100km, avg per order, total
+| KPI | Description | Page |
+|-----|-------------|------|
+| **Supply Chain Efficiency Score** | Composite metric (0-100%) measuring overall efficiency | PERFORMANCE |
+| **Cold Chain Compliance %** | Temperature-controlled shipments percentage | PERFORMANCE |
+| **Traceability %** | Serial number tracked orders | PERFORMANCE |
+| **Regulatory Compliance Score** | Compliance audit score (0-100%) | PERFORMANCE |
+| **Return Rate (%)** | Products returned / total orders | PERFORMANCE |
+| **Return Financial Impact** | GBP cost of returns | PERFORMANCE, FINANCIAL |
+| **Return Reason Analysis** | Breakdown by Damage/Defect/Expired/Other | PERFORMANCE |
+| **Return Processing Time** | Average days to process returns | PERFORMANCE |
+| **Forecast Accuracy (%)** | Demand prediction accuracy | PERFORMANCE |
+| **MAPE** | Mean Absolute Percentage Error (forecast metric) | PERFORMANCE |
+| **Forecast Bias** | Over/Under estimation tendency | PERFORMANCE |
+| **Daily Demand (90-day)** | Average with trend analysis | PERFORMANCE |
+| **Cost-Efficiency Analysis** | Carrier benchmarking by region | PERFORMANCE |
+| **Forecast vs Actual Variance** | Weekly comparison with deviation analysis | PERFORMANCE |
+| **Temperature Excursions** | Count and severity tracking | PERFORMANCE |
+| **Excursion Resolution Time** | Average hours to resolve thermal incidents | PERFORMANCE |
 
----
+### 💰 FINANCIAL KPIs
+*Revenue, profitability, costs, and economic performance*
 
-### FINANCIAL - Profitability & Economics
-
-Supply chain financial analysis with regional breakdown and carrier benchmarking.
-
-**Economic KPIs (46 Measures):**
-
-Financial Metrics:
-- Revenue (Total, MTP, YTD, Previous Month, Previous Year)
-- COGS (Total, MTP, YTD, Previous Month, Previous Year)
-- Gross Margin % (Profitability ratio)
-- Total Logistics Cost (Transport + Inventory holding)
-- Net Contribution (Bottom line profit)
-- Cost per KM (Transport efficiency)
-- Efficiency Score (%) 
-- Logistics Cost % (Overhead ratio)
-- Inventory Holding Cost MTP (Monthly accrual)
-- Inventory Holding Cost YTD (Year-to-date accrual)
-
----
-
-### WAREHOUSES - Inventory Optimization
-
-Comprehensive warehouse management with stock health monitoring and risk assessment.
-
-**Health Stock Status:**
-- Visual gauge showing % of optimal stock (0-100%)
-- Risk indicators: GREEN (Healthy), YELLOW (Balanced), RED (Low)
-- 44 warehouse locations tracked globally
-- Real-time stock position
-
-**Days on Hand Analysis (90-day window):**
-- DOH by warehouse with color-coded thresholds
-- Risk Assessment Levels:
-  - RED: Understock (< 30 days) - stockout risk
-  - YELLOW: Balanced (30-40 days) - optimal
-  - GREEN: Healthy (> 40 days) - buffer available
-- Demand-based projections
-- Trend analysis
-
-**Warehouse KPIs (32 Measures):**
-
-Inventory Position:
-- Min Stock Level (average across warehouses)
-- Safety Volume (buffer inventory quantity)
-- Max Volume Capacity (storage limit by warehouse)
-- Reorder Point (trigger level for ordering)
-- Current Stock Levels (real-time units by warehouse)
-- Total Inventory Value (GBP)
-
-Warehouse Operations:
-- Orders per Warehouse (throughput metric)
-- Warehouse Utilization % (capacity used)
-- Inventory Turns (COGS / Avg Inventory Value)
-- Inventory Accuracy % (Physical count validation)
-- Daily Demand (90-day average)
-- Total Outbound (shipment volume)
-
-Risk Metrics:
-- Expiry Risk (Units) (products expiring soon)
-- Expiry Risk (GBP) (financial impact)
-- Risk Category: Low/Balanced/Healthy/Overstock
-- Stock-out Financial Impact (GBP)
-- Overstock Carrying Cost (GBP)
-- Inventory Holding Cost (annual GBP)
-- Dead Stock % (non-moving inventory)
-- Inventory-to-Revenue Ratio
-
----
-
-### QUALITY - Compliance & Temperature Control
-
-Quality assurance and cold chain compliance monitoring for pharmaceutical products.
-
-**Quality KPIs (20 Measures):**
-
-Compliance Metrics:
-- Cold Chain Compliance % (Temperature-controlled shipments)
-- Delivery Accuracy % (Zero receiving discrepancies)
-- Traceability % (Serial number tracked orders)
-- Regulatory Compliance Score (0-100%)
-
-Returns & Quality:
-- Return Rate (%) (Products returned / total orders)
-- Return Financial Impact (GBP) (Cost of returns)
-- Return Reason Analysis (Damage/Defect/Expired/Other)
-- Return Processing Time (Days)
-
-Forecast & Demand:
-- Forecast Accuracy (%) (Demand prediction accuracy)
-- MAPE (Mean Absolute Percentage Error) (Forecast error metric)
-- Forecast Bias (Over/Under estimation)
-- Forecast vs Actual Variance
-
-Quality Events:
-- Temperature Excursions (Count)
-- Excursion Severity (Low/Medium/High)
-- Products Affected by Excursion
-- Root Cause by Excursion Type
-- Resolution Time (Hours)
-
----
-
-### FORECAST - Demand Planning
-
-Demand forecasting and accuracy analysis for inventory optimization.
-
-**Forecast Metrics:**
-- Forecast Accuracy (%): Predicted vs Actual demand alignment
-- MAPE (Mean Absolute Percentage Error): Industry-standard forecast error rate
-- Forecast Bias: Under/over forecasting tendency
-- Actual vs Forecast: Weekly comparison with variance analysis
-
-**Data Tracked:**
-- Weekly Forecast Data: ForecastQty, ActualQty, Error tracking
-- Daily Demand (90-day average): Trend analysis and seasonality
-- Lead Time Forecasts: Supplier and carrier lead time predictions
-- Demand Volatility Index: Coefficient of variation
+| KPI | Description | Page |
+|-----|-------------|------|
+| **Revenue** | Total, MTP, YTD, Previous Month, Previous Year | FINANCIAL |
+| **COGS** | Cost of Goods Sold (Total, MTP, YTD, Previous Month, Previous Year) | FINANCIAL |
+| **Gross Margin %** | Profitability ratio (Revenue - COGS / Revenue) | FINANCIAL |
+| **Total Logistics Cost** | Transport + Inventory holding combined | FINANCIAL |
+| **Net Contribution** | Bottom line profit after all costs | FINANCIAL |
+| **Logistics Cost %** | Overhead ratio relative to revenue | FINANCIAL |
+| **Efficiency Score (%)** | Logistics cost-to-revenue efficiency metric | FINANCIAL |
+| **Inventory Holding Cost MTP** | Monthly accrual cost | FINANCIAL, WAREHOUSES |
+| **Inventory Holding Cost YTD** | Year-to-date accrual cost | FINANCIAL, WAREHOUSES |
+| **Revenue vs COGS Trend** | Monthly dual-axis line chart analysis | FINANCIAL |
+| **COGS MTP vs YTD** | Month-to-date vs year-to-date comparison by Region | FINANCIAL |
+| **Cost Breakdown by Category** | Freight, Cold Chain, Medical, Vaccine, Other | FINANCIAL |
+| **Regional Revenue** | Breakdown by Africa, Americas, Asia, Europe | FINANCIAL |
+| **Delivery Performance Status** | Financial impact of Delivered/Pending/Returned/Cancelled | FINANCIAL |
+| **Safety Volume** | Buffer inventory quantity in GBP | FINANCIAL, WAREHOUSES |
+| **Reorder Point** | Trigger level for ordering (cost implications) | FINANCIAL, WAREHOUSES |
 
 ---
 
