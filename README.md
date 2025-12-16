@@ -193,7 +193,9 @@ This upstream-first approach guarantees data integrity across 75,000+ records sp
 
 This project is licensed under a **Proprietary and Confidential License**.
 This software is NOT open-source and is offered for commercial licensing only.
+
 For licensing inquiries: https://www.linkedin.com/in/samson18/
+
 See LICENSE file for complete legal terms.
 
 ---
