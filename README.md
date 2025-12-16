@@ -303,10 +303,6 @@ Demand forecasting and accuracy analysis for inventory optimization.
 | Data Volume | 75,000+ records |
 | Data Retention Period | 2023-2025 (3 years) |
 | Refresh Time | 9-12 seconds |
-| Data Retention | 3 years (2023-2025) |
-| Regions Covered | 4 |
-| Countries Included | 50+ |
-| Carriers Tracked | 7 |
 
 ---
 
