@@ -26,7 +26,7 @@ This project demonstrates enterprise-grade data engineering practices applied to
 **Dataset Engineering:**
 
 - Source: Entire dataset designed and architected from scratch following industry best practices
-- Data Layer: Imported into SQL Server 2019+ for rigorous transformation and validation
+- Data Layer: Imported into SQL Server 2019+ for rigorous transformation and validation using constraints and relationships
 - Upstream Processing: All data cleansing, enrichment, and quality validations are performed at the SQL layer before reaching Power BI. Following the principle: "Perform data transformations as far upstream (close to the source) as possible, and only downstream (in the report) when necessary" (Roche's Maxim). This ensures data integrity, maintains a single source of truth, and optimizes report performance.
 
 - Standardized validation rules applied during ETL
