@@ -241,12 +241,12 @@ Demand forecasting and accuracy analysis for inventory optimization.
 
 | Component | Technology | Version |
 |-----------|-----------|---------|
-| BI Platform | Power BI Desktop | 2.149.1429.0 (November 2025) |
-| Data Transformation | Power Query | Latest |
+| BI Platform | Power BI Desktop | 2.149.1429.0 |
+| Data Transformation | Power Query | 2.149.1429.0 |
 | Query Language | DAX | Latest |
 | Analysis & Optimization | DAX Studio | Latest |
 | IDE | Visual Studio Code | 1.107.0 |
-| Data Engine | Analysis Services | Tabular Model |
+| Data Engine | Analysis Services | Latest |
 | Database | SQL Server | 2019+ (SQLEXPRESS) |
 | Database Management | SQL Server Management Studio | 21.6.17 |
 
