@@ -1,34 +1,55 @@
 ﻿PROPRIETARY AND CONFIDENTIAL LICENSE
 
-Copyright  2025 Marc James Samson. All rights reserved.
+Copyright © 2025 Marc James Samson. All rights reserved.
 
-NOTICE: This software and associated documentation files (the "Software") are 
-proprietary and confidential materials of Marc James Samson.
+NOTICE: This repository contains proprietary and confidential materials of Marc James Samson, including:
+- Dashboard designs and visual layouts
+- Screenshot imagery and user interface designs
+- Documentation and technical specifications
 
-UNAUTHORIZED COPYING, DISTRIBUTION, MODIFICATION, OR USE OF THIS SOFTWARE 
+IMPORTANT CLARIFICATIONS:
+
+📊 POWER BI FILE (.PBIX):
+- The Power BI file (.pbix) is NOT publicly available
+- Only dashboard screenshots and documentation are shared in this repository
+- The complete project file is available only through commercial licensing
+
+🎨 PROTECTED ASSETS:
+The following elements are strictly protected intellectual property:
+- Dashboard page designs and layouts
+- Visual components and report structures
+- KPI calculations and business logic
+- Color schemes, typography, and visual hierarchy
+- Screenshot imagery and design assets
+
+UNAUTHORIZED COPYING, DISTRIBUTION, MODIFICATION, OR USE OF THESE MATERIALS
 IS STRICTLY PROHIBITED AND MAY RESULT IN CIVIL AND CRIMINAL PENALTIES.
 
-All rights are reserved. No part of this Software may be reproduced, distributed, 
-transmitted, displayed, published, or broadcast in any form without the express 
+All rights are reserved. No part of these materials may be reproduced, distributed,
+transmitted, displayed, published, or broadcast in any form without the express
 prior written permission of Marc James Samson.
 
 COMMERCIAL LICENSING INFORMATION:
-This Software is offered for commercial licensing and is currently under evaluation 
-for commercial sale. For licensing inquiries or purchase information, please contact:
-Email: leemepronto@gmail.com
+These designs and the complete Power BI solution are offered for commercial licensing
+and are currently under evaluation for commercial sale.
+
+For licensing inquiries or to discuss customization:
+https://www.linkedin.com/in/samson18/
 
 RESTRICTED USE:
-- This Software is NOT open-source and NOT available under any free license
-- Distribution, modification, or sharing without explicit written permission is prohibited
-- Any attempt to reverse-engineer, decompile, or extract components is forbidden
+- This design and all assets are NOT open-source
+- Screenshots and designs may NOT be redistributed or modified
+- The complete Power BI file requires explicit commercial license agreement
+- Attempted reverse-engineering or recreation of designs is prohibited
 - Unauthorized commercial use is prohibited and subject to legal action
+- Do not claim ownership of or reproduce any dashboard designs
 
 WARRANTY DISCLAIMER:
-THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+THIS WORK IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
 PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 LIABILITY LIMITATION:
-IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE MATERIALS OR THE USE OR OTHER DEALINGS IN THESE MATERIALS.
