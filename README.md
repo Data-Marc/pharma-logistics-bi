@@ -1,4 +1,4 @@
-﻿# PHARMA LOGISTICS - Power BI Dashboard
+# PHARMA LOGISTICS - Power BI Dashboard
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
@@ -26,13 +26,13 @@ This project demonstrates enterprise-grade data engineering practices applied to
 - **Source**: Entire dataset designed and architected from scratch following industry best practices
 - **Data Layer**: Imported into SQL Server 2019+ for rigorous transformation and validation
 - **Upstream Processing**: All data cleansing, enrichment, and quality checks performed at the SQL layer from Power BI
-- **Philosophy**: "Data quality must be built at the source, not corrected at the reporting layer"—ensuring clean, validated data flows directly into analytics
+- *"Data quality must be built at the source, not corrected at the reporting layer", ensuring clean, validated data flows directly into analytics (Roche's Maxim)*
 
 **Data Quality Framework:**
 - Standardized validation rules applied during ETL
 - 13 data tables with 20 active relationships (star schema architecture)
 - 302 calculated measures for consistent KPI definitions
-- Refresh cycle: 9–12 seconds with optimized query performance
+- Refresh cycle: 9�12 seconds with optimized query performance
 
 This upstream-first approach guarantees data integrity across 75,000+ records spanning 4 regions, 44 countries, and 44 warehouses globally.
 ---
