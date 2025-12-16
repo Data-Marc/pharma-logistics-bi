@@ -1,14 +1,5 @@
 ﻿# [ EN] [ FR] [ ES] PHARMA LOGISTICS - Tableau de Bord Power BI
 
----
-
-##  Choisissez Votre Langue | Choose Your Language | Elige Tu Idioma
-
-|  English |  Fran�ais |  Espa�ol |
-|:---:|:---:|:---:|
-| [Read in English](README.md) | [Lire en Fran�ais](README.fr.md) | [Leer en Espa�ol](README.es.md) |
-
----
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
