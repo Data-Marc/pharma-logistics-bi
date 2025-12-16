@@ -31,7 +31,7 @@ If you are interested in:
 - **Integrating** it with your systems
 - **Obtaining** a commercial license
 
-**Please contact:** leemepronto@gmail.com
+**Please contact:** https://www.linkedin.com/in/samson18/
 
 ---
 
@@ -48,7 +48,7 @@ This software is provided under a **Proprietary and Confidential License**.
 - Do not share, redistribute, or discuss this code publicly
 - Do not attempt to reverse-engineer or decompile the software
 - Do not use this software commercially without explicit permission
-- Report security issues to: leemepronto@gmail.com (privately)
+- Report security issues to: https://www.linkedin.com/in/samson18/ (privately)
 
 ---
 
