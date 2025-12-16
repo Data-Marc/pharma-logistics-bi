@@ -1,34 +1,34 @@
-# 📊 PHARMA LOGISTICS - Power BI Dashboard
+﻿# ðŸ“Š PHARMA LOGISTICS - Power BI Dashboard
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-2019+-CC2927?logo=microsoft-sql-server)](https://www.microsoft.com/sql-server)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
-![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
+![Status](https://img.shields.io/badge/Status-Proprietary%20-red)
 
 ---
 
-## 🎯 Overview
+## ðŸŽ¯ Overview
 
 **Pharma Logistics BI** is a comprehensive pharmaceutical supply chain management dashboard built with Power BI. It provides real-time visibility into orders, transportation, inventory, quality compliance, and financial performance across multiple regions and logistics providers.
 
 Designed for **supply chain managers, logistics coordinators, and financial analysts** to monitor KPIs, identify bottlenecks, and optimize pharmaceutical distribution operations.
 
-### 🌟 Key Highlights
-- 📊 **6 interactive dashboards** with drill-down capabilities
-- 📈 **180+ DAX measures** for advanced analytics
-- 🌍 **Regional analysis** : Africa, Americas, Asia, Europe (50+ countries)
-- 🚚 **Carrier benchmarking** : 7 major logistics providers (CMA, DB, DHL, FedEx, KN, Maersk, UPS)
-- 💰 **Financial tracking** : Revenue, COGS, margins, profitability analysis
-- ❄️ **Cold chain monitoring** : Temperature compliance & excursion tracking
-- 📦 **Warehouse optimization** : Inventory health, Days on Hand (DOH), stock level analysis
-- 🌱 **Sustainability metrics** : CO2 tracking per KM, per order, total carbon footprint
+### ðŸŒŸ Key Highlights
+- ðŸ“Š **6 interactive dashboards** with drill-down capabilities
+- ðŸ“ˆ **180+ DAX measures** for advanced analytics
+- ðŸŒ **Regional analysis** : Africa, Americas, Asia, Europe (50+ countries)
+- ðŸšš **Carrier benchmarking** : 7 major logistics providers (CMA, DB, DHL, FedEx, KN, Maersk, UPS)
+- ðŸ’° **Financial tracking** : Revenue, COGS, margins, profitability analysis
+- â„ï¸ **Cold chain monitoring** : Temperature compliance & excursion tracking
+- ðŸ“¦ **Warehouse optimization** : Inventory health, Days on Hand (DOH), stock level analysis
+- ðŸŒ± **Sustainability metrics** : CO2 tracking per KM, per order, total carbon footprint
 
 ---
 
-## 📑 Dashboard Pages
+## ðŸ“‘ Dashboard Pages
 
-### 🏠 **Overview** - Global Performance Dashboard
+### ðŸ  **Overview** - Global Performance Dashboard
 
 Main landing page with real-time KPIs and operational snapshot.
 
@@ -44,7 +44,7 @@ Main landing page with real-time KPIs and operational snapshot.
 - **Performance by Carrier** : Pie chart showing order distribution across 7 carriers
 - **Cost Breakdown by Category** : Stacked column chart (Freight, Cold Chain, Medical, Vaccine, Other)
 - **Delivery Performance Status** : Stacked bar (Delivered/Pending/Returned/Cancelled)
-- **Regional Revenue** : Horizontal bar chart by region with £ amounts (Africa, Americas, Asia, Europe)
+- **Regional Revenue** : Horizontal bar chart by region with Â£ amounts (Africa, Americas, Asia, Europe)
 - **Financial Summary** : Combo chart showing costs vs revenue trend across months
 
 **Dynamic Filters:**
@@ -57,7 +57,7 @@ Main landing page with real-time KPIs and operational snapshot.
 
 ---
 
-### 📈 **Performance** - Supply Chain Analytics
+### ðŸ“ˆ **Performance** - Supply Chain Analytics
 
 Detailed operational metrics with regional and carrier drill-down capabilities.
 
@@ -70,15 +70,15 @@ Detailed operational metrics with regional and carrier drill-down capabilities.
 - Highlighting for performance thresholds
 
 **Matrix 2: Performance by Carrier**
-- Rows: Carrier → Regional drill-down capability
-- Columns: Lead Time MTD/YTD, Cost per KM, Total Logistics Cost, Efficiency Stars (★★★/★★☆/★☆☆)
+- Rows: Carrier â†’ Regional drill-down capability
+- Columns: Lead Time MTD/YTD, Cost per KM, Total Logistics Cost, Efficiency Stars (â˜…â˜…â˜…/â˜…â˜…â˜†/â˜…â˜†â˜†)
 - Benchmarking across carriers
 - Cost-efficiency analysis
 
 **Trend Analysis:**
 - **Revenue vs COGS Line Chart** : Dual-axis visualization showing monthly trends (Jan-Dec)
-  - Primary Axis: Revenue (£25M-£35M)
-  - Secondary Axis: COGS (£12M-£18M)
+  - Primary Axis: Revenue (Â£25M-Â£35M)
+  - Secondary Axis: COGS (Â£12M-Â£18M)
   - Color coding: Blue (Revenue) vs Red (COGS)
   
 - **COGS MTP vs YTD Combo Chart** : Month-to-date vs year-to-date comparison
@@ -108,7 +108,7 @@ Detailed operational metrics with regional and carrier drill-down capabilities.
 
 ---
 
-### 💰 **Financial** - Profitability & Economics
+### ðŸ’° **Financial** - Profitability & Economics
 
 Supply chain financial analysis with regional breakdown and carrier benchmarking.
 
@@ -116,24 +116,24 @@ Supply chain financial analysis with regional breakdown and carrier benchmarking
 
 | Metric | Value Range | Format | Target |
 |--------|-------------|--------|--------|
-| Revenue | £85M - £96M | Currency (£) | Growing |
-| COGS | £43M - £48M | Currency (£) | Stable |
+| Revenue | Â£85M - Â£96M | Currency (Â£) | Growing |
+| COGS | Â£43M - Â£48M | Currency (Â£) | Stable |
 | Gross Margin % | 45-52% | Percentage | > 50% |
-| Total Logistics Cost | £3.3M - £9.9M | Currency (£) | < £5M |
+| Total Logistics Cost | Â£3.3M - Â£9.9M | Currency (Â£) | < Â£5M |
 | Logistics Cost % | 2.9-4.2% | Percentage | < 5% |
-| Net Contribution | £31M - £46M | Currency (£) | Maximize |
-| Efficiency Score | 45-97% | Percentage (★ rating) | > 85% |
+| Net Contribution | Â£31M - Â£46M | Currency (Â£) | Maximize |
+| Efficiency Score | 45-97% | Percentage (â˜… rating) | > 85% |
 
 **Logistics Efficiency Matrix by Carrier:**
 
 | Metric | Range | Unit | Description |
 |--------|-------|------|-------------|
 | Orders Volume | 2,000-3,000 | # shipments | Per carrier throughput |
-| Cost per KM | £0.20-£0.30 | £/km | Transport efficiency |
-| Cost per Order | £700-£2,000 | £ | Transaction cost |
-| Total Logistics Cost | Varies | £ | Transport + inventory |
-| Revenue Associated | £8M-£87M | £ | Orders value per carrier |
-| Efficiency Stars | ★★★/★★☆/★☆☆ | Rating | Performance rating |
+| Cost per KM | Â£0.20-Â£0.30 | Â£/km | Transport efficiency |
+| Cost per Order | Â£700-Â£2,000 | Â£ | Transaction cost |
+| Total Logistics Cost | Varies | Â£ | Transport + inventory |
+| Revenue Associated | Â£8M-Â£87M | Â£ | Orders value per carrier |
+| Efficiency Stars | â˜…â˜…â˜…/â˜…â˜…â˜†/â˜…â˜†â˜† | Rating | Performance rating |
 
 **Economic KPIs (46 Measures Across Financial Table):**
 
@@ -144,7 +144,7 @@ Financial Metrics:
 - Total Logistics Cost (Transport + Inventory holding)
 - Net Contribution (Bottom line profit)
 - Cost per KM (Transport efficiency)
-- Efficiency Score (%) (1 - Logistics/Revenue × 100)
+- Efficiency Score (%) (1 - Logistics/Revenue Ã— 100)
 - Logistics Cost % (Overhead ratio)
 - Inventory Holding Cost MTP (Monthly accrual)
 - Inventory Holding Cost YTD (Year-to-date accrual)
@@ -173,22 +173,22 @@ Regional Breakdown:
 
 ---
 
-### 📦 **Warehouses** - Inventory Optimization
+### ðŸ“¦ **Warehouses** - Inventory Optimization
 
 Comprehensive warehouse management with stock health monitoring and risk assessment.
 
 **Health Stock Status (Volumes & Units):**
 - Visual gauge showing % of optimal stock (0-100%)
-- Risk indicators: ▲ (Healthy/Green), ◆ (Balanced/Yellow), ▼ (Low/Red)
+- Risk indicators: â–² (Healthy/Green), â—† (Balanced/Yellow), â–¼ (Low/Red)
 - 15 warehouse locations tracked globally
 - Real-time stock position
 
 **Days on Hand Analysis (90-day window):**
 - DOH by warehouse with color-coded thresholds
 - Risk Assessment Levels:
-  - 🔴 Understock : < 30 days (stockout risk)
-  - 🟡 Balanced : 30-40 days (optimal)
-  - 🟢 Healthy : > 40 days (buffer available)
+  - ðŸ”´ Understock : < 30 days (stockout risk)
+  - ðŸŸ¡ Balanced : 30-40 days (optimal)
+  - ðŸŸ¢ Healthy : > 40 days (buffer available)
 - Demand-based projections
 - Trend analysis
 
@@ -200,7 +200,7 @@ Inventory Position:
 - Max Volume Capacity (storage limit by warehouse)
 - Reorder Point (trigger level for ordering)
 - Current Stock Levels (real-time units by warehouse)
-- Total Inventory Value (£)
+- Total Inventory Value (Â£)
 
 Warehouse Operations:
 - Orders per Warehouse (throughput metric)
@@ -212,11 +212,11 @@ Warehouse Operations:
 
 Risk Metrics:
 - Expiry Risk (Units) (products expiring soon - 30/60/90 days)
-- Expiry Risk (£) (financial impact of expiring stock)
+- Expiry Risk (Â£) (financial impact of expiring stock)
 - Risk Category : Low/Balanced/Healthy/Overstock
-- Stock-out Financial Impact (£)
-- Overstock Carrying Cost (£)
-- Inventory Holding Cost (annual £)
+- Stock-out Financial Impact (Â£)
+- Overstock Carrying Cost (Â£)
+- Inventory Holding Cost (annual Â£)
 - Dead Stock % (non-moving inventory)
 - Inventory-to-Revenue Ratio
 
@@ -230,7 +230,7 @@ Risk Metrics:
 
 ---
 
-### ✅ **Quality** - Compliance & Temperature Control
+### âœ… **Quality** - Compliance & Temperature Control
 
 Quality assurance and cold chain compliance monitoring for pharmaceutical products.
 
@@ -244,7 +244,7 @@ Compliance Metrics:
 
 Returns & Quality:
 - Return Rate (%) (Products returned / total orders)
-- Return Financial Impact (£) (Cost of returns)
+- Return Financial Impact (Â£) (Cost of returns)
 - Return Reason Analysis (Damage/Defect/Expired/Other)
 - Return Processing Time (Days)
 
@@ -277,7 +277,7 @@ Quality Events:
 
 ---
 
-### 🔮 **Forecast** - Demand Planning
+### ðŸ”® **Forecast** - Demand Planning
 
 Demand forecasting and accuracy analysis for inventory optimization.
 
@@ -302,7 +302,7 @@ Demand forecasting and accuracy analysis for inventory optimization.
 
 ---
 
-## 🏗️ Architecture & Data Model
+## ðŸ—ï¸ Architecture & Data Model
 
 ### Technology Stack
 
@@ -320,49 +320,49 @@ Demand forecasting and accuracy analysis for inventory optimization.
 
 ```
 CORE FACT TABLES:
-├── ORDERS (Fact) → 20+ relationships
-│   ├── → CUSTOMERS
-│   ├── → PRODUCTS
-│   ├── → WAREHOUSES
-│   ├── → DATE
-│   └── → SUPPLIERS (via Products)
-│
-├── TRANSPORTATION (Fact)
-│   ├── → ORDERS
-│   ├── → DIM_CARRIER
-│   └── → DATE
-│
-├── INVENTORY (Fact)
-│   ├── → WAREHOUSES
-│   ├── → PRODUCTS
-│   └── → DATE
-│
-├── RETURNS (Fact)
-│   ├── → ORDERS
-│   ├── → PRODUCTS
-│   └── → DATE
-│
-└── TEMPERATURE_EXCURSIONS (Fact)
-    ├── → TRANSPORTATION
-    ├── → PRODUCTS
-    └── → DATE
+â”œâ”€â”€ ORDERS (Fact) â†’ 20+ relationships
+â”‚   â”œâ”€â”€ â†’ CUSTOMERS
+â”‚   â”œâ”€â”€ â†’ PRODUCTS
+â”‚   â”œâ”€â”€ â†’ WAREHOUSES
+â”‚   â”œâ”€â”€ â†’ DATE
+â”‚   â””â”€â”€ â†’ SUPPLIERS (via Products)
+â”‚
+â”œâ”€â”€ TRANSPORTATION (Fact)
+â”‚   â”œâ”€â”€ â†’ ORDERS
+â”‚   â”œâ”€â”€ â†’ DIM_CARRIER
+â”‚   â””â”€â”€ â†’ DATE
+â”‚
+â”œâ”€â”€ INVENTORY (Fact)
+â”‚   â”œâ”€â”€ â†’ WAREHOUSES
+â”‚   â”œâ”€â”€ â†’ PRODUCTS
+â”‚   â””â”€â”€ â†’ DATE
+â”‚
+â”œâ”€â”€ RETURNS (Fact)
+â”‚   â”œâ”€â”€ â†’ ORDERS
+â”‚   â”œâ”€â”€ â†’ PRODUCTS
+â”‚   â””â”€â”€ â†’ DATE
+â”‚
+â””â”€â”€ TEMPERATURE_EXCURSIONS (Fact)
+    â”œâ”€â”€ â†’ TRANSPORTATION
+    â”œâ”€â”€ â†’ PRODUCTS
+    â””â”€â”€ â†’ DATE
 
 DIMENSION TABLES:
-├── DATE (365+ days)
-├── CUSTOMERS
-├── PRODUCTS
-├── WAREHOUSES
-├── SUPPLIERS
-├── DIM_CARRIER
-└── COUNTRIES
+â”œâ”€â”€ DATE (365+ days)
+â”œâ”€â”€ CUSTOMERS
+â”œâ”€â”€ PRODUCTS
+â”œâ”€â”€ WAREHOUSES
+â”œâ”€â”€ SUPPLIERS
+â”œâ”€â”€ DIM_CARRIER
+â””â”€â”€ COUNTRIES
 
 MEASURE TABLES (Non-Summarizable):
-├── Overview Measures (12 KPIs)
-├── Performance Measures (22 KPIs)
-├── Financial Measures (46 KPIs)
-├── Quality Measures (20 KPIs)
-├── Warehouses Measures (32 KPIs)
-└── CO2 Measures (15 KPIs)
+â”œâ”€â”€ Overview Measures (12 KPIs)
+â”œâ”€â”€ Performance Measures (22 KPIs)
+â”œâ”€â”€ Financial Measures (46 KPIs)
+â”œâ”€â”€ Quality Measures (20 KPIs)
+â”œâ”€â”€ Warehouses Measures (32 KPIs)
+â””â”€â”€ CO2 Measures (15 KPIs)
 ```
 
 ### Star Schema Details
@@ -391,68 +391,68 @@ MEASURE TABLES (Non-Summarizable):
 
 ---
 
-## ✨ Key Features
+## âœ¨ Key Features
 
-✅ **Time Intelligence**
+âœ… **Time Intelligence**
 - MTD (Month-To-Date), YTD (Year-To-Date)
 - Previous Month (PM), Previous Year (PY) comparisons
 - Custom date range filtering with slicer
 - Rolling 90-day calculations
 
-✅ **Regional Drill-Down**
+âœ… **Regional Drill-Down**
 - 4 regions : Africa, Americas, Asia, Europe
 - Country-level granularity (50+ countries)
 - Regional performance benchmarking
 - Comparative analysis across regions
 
-✅ **Carrier Benchmarking**
+âœ… **Carrier Benchmarking**
 - 7 carriers : CMA, DB, DHL, FedEx, KN, Maersk, UPS
 - Cost per KM, Lead time, Compliance tracking
 - Performance vs Target comparisons
 - Cost efficiency ranking
 
-✅ **Financial Analysis**
+âœ… **Financial Analysis**
 - Revenue, COGS, Gross Margin %
 - Net Contribution, Efficiency Score
 - Cost breakdown by category and region
 - Budget vs Actual variance analysis
 
-✅ **Environmental Metrics**
+âœ… **Environmental Metrics**
 - CO2 tracking per KM, per 100km, per order, total
 - Carbon footprint dashboard
 - Sustainability KPI monitoring
 - Green logistics benchmarking
 
-✅ **Quality & Compliance**
+âœ… **Quality & Compliance**
 - Cold chain compliance monitoring (%)
 - Delivery accuracy tracking (%)
 - Temperature excursion alerts
 - Returns & refunds analysis
 - Regulatory compliance score
 
-✅ **Warehouse Optimization**
+âœ… **Warehouse Optimization**
 - Stock health status (Health %, DOH)
 - Inventory turns & accuracy (%)
-- Risk indicators ▲ ◆ ▼
+- Risk indicators â–² â—† â–¼
 - Expiry risk warnings (30/60/90 days)
 - Capacity utilization tracking
 
-✅ **Visual Indicators**
-- Stars (⭐⭐⭐ / ⭐⭐☆ / ⭐☆☆) for ratings
-- Triangles (▲ Green / ◆ Yellow / ▼ Red) for status
+âœ… **Visual Indicators**
+- Stars (â­â­â­ / â­â­â˜† / â­â˜†â˜†) for ratings
+- Triangles (â–² Green / â—† Yellow / â–¼ Red) for status
 - Color-coded KPI cards with trend arrows
 - Conditional formatting for performance
 
-✅ **Interactive Controls**
+âœ… **Interactive Controls**
 - 10+ dynamic slicers and filters
-- Drill-down capabilities (Region → Country)
+- Drill-down capabilities (Region â†’ Country)
 - Cross-filtering between visuals
 - Bookmark navigation between pages
 - Year-Month slider for time selection
 
 ---
 
-## 🚀 Quick Start
+## ðŸš€ Quick Start
 
 ### Prerequisites
 - **Power BI Desktop** (Latest version, Premium preferred)
@@ -474,7 +474,7 @@ MEASURE TABLES (Non-Summarizable):
 
 3. **Open in Power BI Desktop**
    ```
-   File → Open → Select Pharma Logistics.pbix
+   File â†’ Open â†’ Select Pharma Logistics.pbix
    ```
 
 4. **Configure SQL Server Connection**
@@ -487,7 +487,7 @@ MEASURE TABLES (Non-Summarizable):
 
 5. **Refresh Data**
    ```
-   Home → Refresh (Ctrl + Shift + R)
+   Home â†’ Refresh (Ctrl + Shift + R)
    Wait for all 29 tables to refresh (15-20 seconds typical)
    ```
 
@@ -503,7 +503,7 @@ MEASURE TABLES (Non-Summarizable):
 
 ---
 
-## 📚 Documentation
+## ðŸ“š Documentation
 
 Complete documentation suite in English:
 
@@ -519,7 +519,7 @@ Complete documentation suite in English:
 
 ---
 
-## 🤝 Contributing
+## ðŸ¤ Contributing
 
 We welcome contributions! Whether bug fixes, feature requests, or documentation improvements.
 
@@ -534,20 +534,20 @@ We welcome contributions! Whether bug fixes, feature requests, or documentation 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 **Contribution Areas:**
-- 🐛 Bug fixes and error handling
-- 📊 New visualizations or KPIs
-- 📝 Documentation improvements
-- 🔍 Performance optimizations
-- 🌍 Localization to other languages
-- 🧪 Testing and validation scripts
+- ðŸ› Bug fixes and error handling
+- ðŸ“Š New visualizations or KPIs
+- ðŸ“ Documentation improvements
+- ðŸ” Performance optimizations
+- ðŸŒ Localization to other languages
+- ðŸ§ª Testing and validation scripts
 
 ---
 
-## 📊 Sample Use Cases
+## ðŸ“Š Sample Use Cases
 
 ### 1. **Supply Chain Manager**
 Monitor regional performance, carrier efficiency, identify bottlenecks
-- Dashboard: Overview → Performance → Financial
+- Dashboard: Overview â†’ Performance â†’ Financial
 - Action: Compare carriers, identify underperformers, negotiate contracts
 
 ### 2. **Finance Controller**
@@ -577,20 +577,20 @@ High-level business metrics, strategic trends, competitive position
 
 ---
 
-## 🐛 Known Issues & Roadmap
+## ðŸ› Known Issues & Roadmap
 
-### Current Version (1.0.0) ✅
-- ✅ Full dashboard suite (6 pages, 20+ visuals)
-- ✅ 180+ measures across 5 measure tables
-- ✅ Multi-region analysis (4 regions, 50+ countries)
-- ✅ Carrier benchmarking (7 providers)
-- ✅ Financial analytics and profitability tracking
-- ✅ Warehouse inventory optimization
-- ✅ Quality compliance monitoring
-- ✅ Demand forecasting
-- ✅ Comprehensive documentation
+### Current Version (1.0.0) âœ…
+- âœ… Full dashboard suite (6 pages, 20+ visuals)
+- âœ… 180+ measures across 5 measure tables
+- âœ… Multi-region analysis (4 regions, 50+ countries)
+- âœ… Carrier benchmarking (7 providers)
+- âœ… Financial analytics and profitability tracking
+- âœ… Warehouse inventory optimization
+- âœ… Quality compliance monitoring
+- âœ… Demand forecasting
+- âœ… Comprehensive documentation
 
-### Planned Features (v1.1) 🚀
+### Planned Features (v1.1) ðŸš€
 - [ ] Export to PDF automation with formatting
 - [ ] Real-time data refresh via cloud gateway
 - [ ] Mobile-optimized report layouts
@@ -601,7 +601,7 @@ High-level business metrics, strategic trends, competitive position
 - [ ] Anomaly detection for KPI outliers
 - [ ] Automated alerts for threshold violations
 
-### Long-term Vision (v2.0+) 🎯
+### Long-term Vision (v2.0+) ðŸŽ¯
 - [ ] Power BI Service cloud deployment
 - [ ] Governance framework and access controls
 - [ ] Data certification and quality metrics
@@ -613,23 +613,23 @@ High-level business metrics, strategic trends, competitive position
 
 ---
 
-## 📞 Support & Contact
+## ðŸ“ž Support & Contact
 
 **For Help:**
-- 📖 Check [SETUP_GUIDE.md](docs/SETUP_GUIDE.md) for common troubleshooting
-- 🐛 Open an GitHub issue for bugs or errors (with details/screenshots)
-- 💡 Suggest features in GitHub Discussions
-- 📧 Contact project owner for urgent issues
+- ðŸ“– Check [SETUP_GUIDE.md](docs/SETUP_GUIDE.md) for common troubleshooting
+- ðŸ› Open an GitHub issue for bugs or errors (with details/screenshots)
+- ðŸ’¡ Suggest features in GitHub Discussions
+- ðŸ“§ Contact project owner for urgent issues
 
 **Common Issues:**
-- Connection errors → See SETUP_GUIDE Connection section
-- Slow refresh → See ARCHITECTURE Performance tuning
-- Measure errors → See DATA_DICTIONARY Formula details
-- Visual issues → Check Power BI desktop version is latest
+- Connection errors â†’ See SETUP_GUIDE Connection section
+- Slow refresh â†’ See ARCHITECTURE Performance tuning
+- Measure errors â†’ See DATA_DICTIONARY Formula details
+- Visual issues â†’ Check Power BI desktop version is latest
 
 ---
 
-## 📈 Project Metrics
+## ðŸ“ˆ Project Metrics
 
 | Metric | Value |
 |--------|-------|
@@ -651,7 +651,7 @@ High-level business metrics, strategic trends, competitive position
 
 ---
 
-## 🎓 Learning Resources
+## ðŸŽ“ Learning Resources
 
 **Power BI:**
 - [Power BI Official Documentation](https://docs.microsoft.com/power-bi/)
@@ -670,7 +670,7 @@ High-level business metrics, strategic trends, competitive position
 
 ---
 
-## 🙏 Acknowledgments
+## ðŸ™ Acknowledgments
 
 Built with focus on:
 - Performance monitoring and continuous improvement
@@ -687,23 +687,23 @@ Built with focus on:
 
 ---
 
-## 📄 License
+## ðŸ“„ License
 
 This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for complete terms.
 
 **Permission granted to:**
-- ✅ Use commercially
-- ✅ Modify and distribute
-- ✅ Use privately
-- ✅ Include in larger projects
+- âœ… Use commercially
+- âœ… Modify and distribute
+- âœ… Use privately
+- âœ… Include in larger projects
 
 **Requirements:**
-- ⚠️ Include license and copyright notice
-- ⚠️ No liability for authors
+- âš ï¸ Include license and copyright notice
+- âš ï¸ No liability for authors
 
 ---
 
-## 🚀 Getting Started Next Steps
+## ðŸš€ Getting Started Next Steps
 
 1. **Download** the latest Power BI file from releases
 2. **Follow** SETUP_GUIDE.md for installation
@@ -718,20 +718,21 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 **Version** : 1.0.0  
 **Last Updated** : December 2025  
 **Author** : Marc James Samson (Data-Marc)  
-**Status** : ✅ Production Ready - Fully Functional  
-**License** : 📄 MIT  
+**Status** : âœ… Production Ready - Fully Functional  
+**License** : ðŸ“„ MIT  
 **Repository** : https://github.com/Data-Marc/pharma-logistics-bi
 
 ---
 
-## ⭐ Show Your Support
+## â­ Show Your Support
 
 If you find this project useful for your pharmaceutical supply chain analytics:
-- **⭐ Star** this repository
-- **🔔 Watch** for updates
-- **📤 Share** with your network
-- **💬 Comment** with feedback
-- **🐛 Report** issues you find
-- **🤝 Contribute** improvements
+- **â­ Star** this repository
+- **ðŸ”” Watch** for updates
+- **ðŸ“¤ Share** with your network
+- **ðŸ’¬ Comment** with feedback
+- **ðŸ› Report** issues you find
+- **ðŸ¤ Contribute** improvements
 
-**Thank you for using Pharma Logistics BI! Happy analyzing! 📊**
+**Thank you for using Pharma Logistics BI! Happy analyzing! ðŸ“Š**
+
