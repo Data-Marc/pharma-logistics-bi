@@ -1,4 +1,4 @@
-ï»¿# PHARMA LOGISTICS - Power BI Dashboard
+# PHARMA LOGISTICS - Power BI Dashboard
 
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
@@ -40,12 +40,12 @@ This upstream-first approach guarantees data integrity across 822,000+ records s
 
 ```
 +-----------------+         +--------------------------+         +---------------------------+        +----------+
-ï¿½   Raw Data      ï¿½         ï¿½   SQL Server 2019+       ï¿½         ï¿½   Power BI                ï¿½        ï¿½  Users   ï¿½
-ï¿½                 ï¿½--------?ï¿½   (ETL & Validation)     ï¿½--------?ï¿½  Dataset & Reports        ï¿½--------?ï¿½        ï¿½
-ï¿½ ï¿½ ERP Systems   ï¿½         ï¿½                          ï¿½         ï¿½                           ï¿½        ï¿½ Analysts ï¿½
-ï¿½ ï¿½ APIs/Databasesï¿½         ï¿½ ï¿½ Data Quality Checks    ï¿½         ï¿½ ï¿½ Star Schema (13 Tables) ï¿½        ï¿½ Managers ï¿½
-ï¿½ ï¿½ Flat Files    ï¿½         ï¿½ ï¿½ Stored Procedures      ï¿½         ï¿½ ï¿½ 20 Active Relationships ï¿½        ï¿½          ï¿½
-ï¿½                 ï¿½         ï¿½ ï¿½ Load to Staging/DW     ï¿½         ï¿½ ï¿½ DAX Logic (302 Measures)ï¿½        ï¿½          ï¿½
+¦   Raw Data      ¦         ¦   SQL Server 2019+       ¦         ¦   Power BI                ¦        ¦  Users   ¦
+¦                 ¦--------?¦   (ETL & Validation)     ¦--------?¦  Dataset & Reports        ¦--------?¦        ¦
+¦ • ERP Systems   ¦         ¦                          ¦         ¦                           ¦        ¦ Analysts ¦
+¦ • APIs/Databases¦         ¦ • Data Quality Checks    ¦         ¦ • Star Schema (13 Tables) ¦        ¦ Managers ¦
+¦ • Flat Files    ¦         ¦ • Stored Procedures      ¦         ¦ • 20 Active Relationships ¦        ¦          ¦
+¦                 ¦         ¦ • Load to Staging/DW     ¦         ¦ • DAX Logic (302 Measures)¦        ¦          ¦
 +-----------------+         +--------------------------+         +---------------------------+        +----------+
 ```
 
@@ -57,11 +57,11 @@ This upstream-first approach guarantees data integrity across 822,000+ records s
 
 | Document | Description |
 | :--- | :--- |
-| [Architecture Guide](docs/ARCHITECTURE.md) | System architecture, data flow, and technology decisions |
-| **[Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
-| [KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
-| [Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
-| [Setup Guide](docs/SETUP_GUIDE.md) | Implementation and deployment instructions |
+| [ Architecture Guide](docs/ARCHITECTURE.md) | System architecture, data flow, and technology decisions |
+| **[ Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
+| [ KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
+| [ Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
+| [ Setup Guide](docs/SETUP_GUIDE.md) | Implementation and deployment instructions |
 
 ###  Database Schema Diagram
 
@@ -70,25 +70,7 @@ This upstream-first approach guarantees data integrity across 822,000+ records s
 The above diagram illustrates the complete data model with all entity relationships, including Orders, Shipments, Inventory, Warehouses, Carriers, Products, and Transactions.
 
 ---
-## DOCUMENTATION
 
-### Project Documentation
-
-| Document | Description |
-| :--- | :--- |
-| [Architecture Guide](docs/ARCHITECTURE.md) | System architecture, data flow, and technology decisions |
-| **[Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
-| [KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
-| [Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
-| [Setup Guide](docs/SETUP_GUIDE.md) | Implementation and deployment instructions |
-
-### Database Schema Diagram
-
-![Relations Table](docs/images/Relations%20Table.png)
-
-The above diagram illustrates the complete data model with all entity relationships, including Orders, Shipments, Inventory, Warehouses, Carriers, Products, and Transactions.
-
----
 ## DASHBOARD PAGES
 
 ?? **OVERVIEW** - Global Performance Dashboard
@@ -238,7 +220,6 @@ Please contact: https://www.linkedin.com/in/samson18/
 **License:** Proprietary and Confidential
 
 ---
-
 
 
 
