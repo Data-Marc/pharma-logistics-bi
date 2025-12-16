@@ -245,6 +245,7 @@ Demand forecasting and accuracy analysis for inventory optimization.
 | Data Transformation | Power Query | 2.149.1429.0 |
 | Analysis & Optimization | DAX Studio | 3.2.1 |
 | IDE | Visual Studio Code | 1.107.0 |
+| Spreadsheet | Microsoft Excel | 2511 |
 | Database | SQL Server | 2019+ (SQLEXPRESS) |
 | Database Management | SQL Server Management Studio | 21.6.17 |
 
