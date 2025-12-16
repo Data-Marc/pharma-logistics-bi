@@ -41,7 +41,7 @@ This upstream-first approach guarantees data integrity across 822,000+ records s
 ```
 ┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────────────────┐        ┌──────────┐
 │   Raw Data      │         │   SQL Server 2019+       │         │   Power BI                │        │  Users   │
-│                 │────────▶│   (ETL & Validation)     │────────▶│  Dataset & Reports        │────────▶│          │
+│                 │────────▶│   (ETL & Validation)     │────────▶│  Dataset & Reports        │────────▶│        │
 │ • ERP Systems   │         │                          │         │                           │        │ Analysts │
 │ • APIs/Databases│         │ • Data Quality Checks    │         │ • Star Schema (13 Tables) │        │ Managers │
 │ • Flat Files    │         │ • Stored Procedures      │         │ • 20 Active Relationships │        │          │
