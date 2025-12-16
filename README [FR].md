@@ -117,8 +117,6 @@ Suivi détaillé des 44 entrepôts répartis dans 4 régions, 44 pays.
 
 ## SUPPORT
 
-Pour les demandes de licence:
-
 Veuillez contacter: https://www.linkedin.com/in/samson18/
 
 ---
