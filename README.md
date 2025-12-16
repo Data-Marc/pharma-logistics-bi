@@ -1,6 +1,13 @@
 # PHARMA LOGISTICS - Power BI Dashboard
 
-License: **PROPRIETARY** / Version: **1.0.0** / Power BI Desktop: **2.149.1429.0** / SQL Server: **2019+** / VS Code: **1.107.0** / Excel: **2511** / Power Query: **2.149.1429.0** / Status: **Production Ready**
+[![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
+[![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
+[![SQL Server](https://img.shields.io/badge/SQL%20Server-2019+-CC2927?logo=microsoft-sql-server)](https://www.microsoft.com/sql-server)
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
+[![VS Code](https://img.shields.io/badge/VS%20Code-1.107.0-007ACC?logo=visualstudiocode)](https://code.visualstudio.com)
+[![Excel](https://img.shields.io/badge/Excel-2511-217346?logo=microsoft-excel)](https://www.microsoft.com/excel)
+[![Power Query](https://img.shields.io/badge/Power%20Query-2.149.1429.0-00A4EF?logo=power-bi)](https://powerquery.microsoft.com)
 
 
 ---
@@ -298,6 +305,7 @@ Contact: https://www.linkedin.com/in/samson18/
 ---
 
 For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
 
 
 
