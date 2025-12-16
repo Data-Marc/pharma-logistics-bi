@@ -39,39 +39,77 @@ This upstream-first approach guarantees data integrity across 822,000+ records s
 ### Architecture Diagram
 
 ```
-┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────────────────┐        ┌──────────┐
-│   Raw Data      │         │   SQL Server 2019+       │         │   Power BI                │        │  Users   │
-│                 │────────▶│   (ETL & Validation)     │────────▶│  Dataset & Reports        │────────▶│        │
-│ • ERP Systems   │         │                          │         │                           │        │ Analysts │
-│ • APIs/Databases│         │ • Data Quality Checks    │         │ • Star Schema (13 Tables) │        │ Managers │
-│ • Flat Files    │         │ • Stored Procedures      │         │ • 20 Active Relationships │        │          │
-│                 │         │ • Load to Staging/DW     │         │ • DAX Logic (302 Measures)│        │          │
-└─────────────────┘         └──────────────────────────┘         └───────────────────────────┘        └──────────┘
++-----------------+         +--------------------------+         +---------------------------+        +----------+
+�   Raw Data      �         �   SQL Server 2019+       �         �   Power BI                �        �  Users   �
+�                 �--------?�   (ETL & Validation)     �--------?�  Dataset & Reports        �--------?�        �
+� � ERP Systems   �         �                          �         �                           �        � Analysts �
+� � APIs/Databases�         � � Data Quality Checks    �         � � Star Schema (13 Tables) �        � Managers �
+� � Flat Files    �         � � Stored Procedures      �         � � 20 Active Relationships �        �          �
+�                 �         � � Load to Staging/DW     �         � � DAX Logic (302 Measures)�        �          �
++-----------------+         +--------------------------+         +---------------------------+        +----------+
 ```
 
 ---
 
+## DOCUMENTATION
+
+###  Project Documentation
+
+| Document | Description |
+| :--- | :--- |
+| [Architecture Guide](docs/ARCHITECTURE.md) | System architecture, data flow, and technology decisions |
+| **[Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
+| [KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
+| [Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
+| [Setup Guide](docs/SETUP_GUIDE.md) | Implementation and deployment instructions |
+
+###  Database Schema Diagram
+
+![Relations Table](docs/images/Relations%20Table.png)
+
+The above diagram illustrates the complete data model with all entity relationships, including Orders, Shipments, Inventory, Warehouses, Carriers, Products, and Transactions.
+
+---
+## DOCUMENTATION
+
+### Project Documentation
+
+| Document | Description |
+| :--- | :--- |
+| [Architecture Guide](docs/ARCHITECTURE.md) | System architecture, data flow, and technology decisions |
+| **[Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
+| [KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
+| [Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
+| [Setup Guide](docs/SETUP_GUIDE.md) | Implementation and deployment instructions |
+
+### Database Schema Diagram
+
+![Relations Table](docs/images/Relations%20Table.png)
+
+The above diagram illustrates the complete data model with all entity relationships, including Orders, Shipments, Inventory, Warehouses, Carriers, Products, and Transactions.
+
+---
 ## DASHBOARD PAGES
 
-📊 **OVERVIEW** - Global Performance Dashboard
+?? **OVERVIEW** - Global Performance Dashboard
 
 <img src="docs/images/overview.png" width="700" alt="OVERVIEW Dashboard Preview">
 
 ---
 
-📈 **PERFORMANCE** - Supply Chain Analytics
+?? **PERFORMANCE** - Supply Chain Analytics
 
 <img src="docs/images/warehouses.png" width="700" alt="WAREHOUSES Dashboard Preview">
 
 ---
 
-🏭 **WAREHOUSES** - Inventory Optimization
+?? **WAREHOUSES** - Inventory Optimization
 
 <img src="docs/images/performance.png" width="700" alt="PERFORMANCE Dashboard Preview">
 
 ---
 
-💰 **FINANCIAL** - Profitability & Economics
+?? **FINANCIAL** - Profitability & Economics
 
 <img src="docs/images/financial.png" width="700" alt="FINANCIAL Dashboard Preview">
 
@@ -83,51 +121,51 @@ This upstream-first approach guarantees data integrity across 822,000+ records s
 
 The dashboard tracks **61 key performance indicators (KPIs)** organized across 4 business categories. See [docs/KPIs.md](docs/KPIs.md) for complete descriptions and calculations.
 
-### 📦 Key Transport KPIs
+### ?? Key Transport KPIs
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
-| **OTIF %** | On-Time In-Full Delivery Rate | 🌍 Global |
-| **Lead Time** | Average days from order to delivery | 🚚 Logistics |
-| **Cost per KM** | Transport efficiency metric | 💰 Financial |
-| **CO2 Emissions** | Environmental footprint per KM | 🌱 ESG |
+| **OTIF %** | On-Time In-Full Delivery Rate | ?? Global |
+| **Lead Time** | Average days from order to delivery | ?? Logistics |
+| **Cost per KM** | Transport efficiency metric | ?? Financial |
+| **CO2 Emissions** | Environmental footprint per KM | ?? ESG |
 
-### 🏭 Key Warehouse KPIs
+### ?? Key Warehouse KPIs
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
-| **Days on Hand (DOH)** | Stock duration analysis | 📉 Risk |
-| **Inventory Turns** | COGS / Average Inventory Value | 🔄 Efficiency |
-| **Expiry Risk (GBP)** | Financial impact of expiring stock | 💰 Financial |
-| **Dead Stock %** | Non-moving inventory percentage | 📉 Risk |
+| **Days on Hand (DOH)** | Stock duration analysis | ?? Risk |
+| **Inventory Turns** | COGS / Average Inventory Value | ?? Efficiency |
+| **Expiry Risk (GBP)** | Financial impact of expiring stock | ?? Financial |
+| **Dead Stock %** | Non-moving inventory percentage | ?? Risk |
 
-### ⚙️ Key Performance KPIs
+### ?? Key Performance KPIs
 *Metrics tracking operational efficiency, quality compliance, and forecast accuracy.*
 
 | KPI Name | Description | Focus Area |
 | :--- | :--- | :--- |
-| **Cold Chain Compliance %** | Temperature-controlled shipments percentage | ❄️ Quality Assurance |
-| **MAPE** | Mean Absolute Percentage Error (Forecast accuracy) | 📊 Demand Planning |
-| **Temperature Excursions** | Count and severity of thermal incidents | 🚨 Risk Mgmt |
-| **Supply Chain Efficiency** | Composite score (0-100%) of overall operations | ⚡ Operations |
-| **Regulatory Score** | Compliance audit score (0-100%) | ⚖️ Compliance |
-| **Return Rate %** | Products returned vs total orders | ↩️ Reverse Logistics |
-| **Forecast Bias** | Over/Under estimation tendency | 📈 Planning |
-| **Excursion Resolution Time** | Average hours to resolve thermal incidents | ⏱️ Agility |
+| **Cold Chain Compliance %** | Temperature-controlled shipments percentage | ?? Quality Assurance |
+| **MAPE** | Mean Absolute Percentage Error (Forecast accuracy) | ?? Demand Planning |
+| **Temperature Excursions** | Count and severity of thermal incidents | ?? Risk Mgmt |
+| **Supply Chain Efficiency** | Composite score (0-100%) of overall operations | ? Operations |
+| **Regulatory Score** | Compliance audit score (0-100%) | ?? Compliance |
+| **Return Rate %** | Products returned vs total orders | ?? Reverse Logistics |
+| **Forecast Bias** | Over/Under estimation tendency | ?? Planning |
+| **Excursion Resolution Time** | Average hours to resolve thermal incidents | ?? Agility |
 
-### 💰 Key Financial KPIs
+### ?? Key Financial KPIs
 *Economic indicators measuring profitability, cost-to-serve, and inventory value.*
 
 | KPI Name | Description | Business Impact |
 | :--- | :--- | :--- |
-| **Gross Margin %** | Profitability ratio `(Rev - COGS) / Rev` | 💰 Profitability |
-| **Total Logistics Cost** | Transport + Inventory holding combined | 📉 Cost Control |
-| **Net Contribution** | Bottom line profit after all costs | 💵 P&L Health |
-| **Logistics Cost %** | Logistics overhead relative to revenue | ⚡ Efficiency |
-| **Inventory Holding Cost** | Annual cost of storage & capital tied up | 🏦 Working Capital |
-| **Stock-out Impact** | Estimated revenue loss from stockouts | ⚠️ Opportunity Cost |
-| **Cost of Goods Sold** | Total COGS (MTP, YTD, YoY) | 🧾 Accounting |
-| **Expiry Risk (GBP)** | Financial value of at-risk inventory | 🗑️ Waste Mgmt |
+| **Gross Margin %** | Profitability ratio `(Rev - COGS) / Rev` | ?? Profitability |
+| **Total Logistics Cost** | Transport + Inventory holding combined | ?? Cost Control |
+| **Net Contribution** | Bottom line profit after all costs | ?? P&L Health |
+| **Logistics Cost %** | Logistics overhead relative to revenue | ? Efficiency |
+| **Inventory Holding Cost** | Annual cost of storage & capital tied up | ?? Working Capital |
+| **Stock-out Impact** | Estimated revenue loss from stockouts | ?? Opportunity Cost |
+| **Cost of Goods Sold** | Total COGS (MTP, YTD, YoY) | ?? Accounting |
+| **Expiry Risk (GBP)** | Financial value of at-risk inventory | ??? Waste Mgmt |
 
-**📊 Full KPI Documentation:** See [docs/KPIs.md](docs/KPIs.md) for detailed descriptions, calculation methods, and dashboard assignments.
+**?? Full KPI Documentation:** See [docs/KPIs.md](docs/KPIs.md) for detailed descriptions, calculation methods, and dashboard assignments.
 
 ---
 
@@ -200,6 +238,7 @@ Please contact: https://www.linkedin.com/in/samson18/
 **License:** Proprietary and Confidential
 
 ---
+
 
 
 
