@@ -170,7 +170,7 @@ The dashboard tracks **61 key performance indicators (KPIs)** organized across 4
 | Temperature Excursions | 2 |
 | Data Volume | 75,000+ records |
 | Data Retention Period | 2023-2025 (3 years) |
-| Refresh Time | 9-12 seconds |
+| Refresh Time | 16-20 seconds |
 
 ---
 
