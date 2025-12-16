@@ -150,20 +150,6 @@ This upstream-first approach guarantees data integrity across 75,000+ records sp
 
 
 
-## DOCUMENTATION
-
-| Document | Purpose |
-|----------|---------|
-| README.md | Project overview and features |
-| SETUP_GUIDE.md | Installation and configuration |
-| ARCHITECTURE.md | Technical design and data model |
-| DATA_DICTIONARY.md | Complete data reference |
-| CHANGELOG.md | Version history |
-| CONTRIBUTING.md | Contribution guidelines |
-| LICENSE | Proprietary license terms |
-
----
-
 ## PROJECT METRICS
 
 | Metric | Value |
