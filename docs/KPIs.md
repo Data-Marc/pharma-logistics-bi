@@ -5,100 +5,92 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 ---
 
 ## 📦 Key Transport KPIs
-
-*Metrics tracking order fulfillment, carrier performance, and logistics operations.*
-
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
 | **OTIF %** | On-Time In-Full Delivery Rate | 🌍 Global |
-| **On-Time Delivery %** | Percentage of orders delivered on schedule | 🚚 Logistics |
+| **Lead Time** | Average days from order to delivery | 🚚 Logistics |
+| **Cost per KM** | Transport efficiency metric | 💰 Financial |
+| **CO2 Emissions** | Environmental footprint per KM | 🌱 ESG |
+| **On-Time Delivery %** | Percentage of orders delivered on schedule | ✅ Quality |
 | **In-Full %** | Complete order fulfillment rate without shortages | 📦 Fulfillment |
-| **Lead Time (Days)** | Average days from order placement to delivery | 🚚 Logistics |
-| **Perfect Order %** | Orders on-time, in-full, accurately delivered | 🎯 Quality |
-| **Performance by Carrier** | Lead Time, Cost per KM, Efficiency Stars, Total Logistics Cost | 📊 Analysis |
-| **Cost per KM** | Transport efficiency metric per kilometer | 💰 Financial |
-| **CO2 Emissions** | Environmental footprint per KM, per 100km, avg per order, total | 🌱 ESG |
-| **Delivery Accuracy %** | Zero receiving discrepancies rate | ✅ Quality |
+| **Perfect Order %** | Orders on-time, in-full, accurately delivered | 🎯 Excellence |
+| **Performance by Carrier** | Lead Time, Cost per KM, Efficiency Stars | 📊 Analysis |
+| **Delivery Accuracy %** | Zero receiving discrepancies rate | 🔍 Precision |
 | **Total Orders** | Volume of orders processed YoY | 📈 Volume |
 | **Back Orders** | Volume of unfulfilled orders | 📉 Risk |
-| **Performance by Region** | OTIF %, In-Full %, On-Time Delivery %, Perfect Order % by Region | 🗺️ Regional |
+| **Performance by Region** | OTIF %, In-Full %, On-Time % by Region | 🗺️ Regional |
 
 ---
 
 ## 🏭 Key Warehouse KPIs
-
-*Metrics for inventory management, stock levels, warehouse operations, and storage efficiency.*
-
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
+| **Days on Hand (DOH)** | Stock duration analysis | 📉 Risk |
+| **Inventory Turns** | COGS / Average Inventory Value | 🔄 Efficiency |
+| **Expiry Risk (GBP)** | Financial impact of expiring stock | 💰 Financial |
+| **Dead Stock %** | Non-moving inventory percentage | 📉 Risk |
 | **Warehouse Utilization %** | Capacity usage across 44 warehouse locations | 📊 Efficiency |
-| **Days on Hand (DOH)** | Stock duration analysis with risk assessment (RED/YELLOW/GREEN) | 📉 Risk |
 | **Current Stock Levels** | Real-time units by warehouse | 📦 Inventory |
-| **Total Inventory Value** | GBP valuation of stock | 💰 Financial |
+| **Total Inventory Value** | GBP valuation of stock | 💵 Valuation |
 | **Min Stock Level** | Average reorder point across warehouses | 🔔 Planning |
 | **Max Volume Capacity** | Storage limit by warehouse | 📏 Capacity |
-| **Inventory Turns** | COGS / Average Inventory Value | 🔄 Efficiency |
 | **Inventory Accuracy %** | Physical count validation rate | ✅ Quality |
 | **Orders per Warehouse** | Throughput metric by location | 📊 Volume |
 | **Total Outbound** | Shipment volume from warehouses | 📤 Logistics |
-| **Dead Stock %** | Non-moving inventory percentage | 📉 Risk |
-| **Expiry Risk (Units)** | Products expiring soon (quantity) | ⏰ Risk Mgmt |
-| **Expiry Risk (GBP)** | Financial impact of expiry risk | 💸 Financial |
 | **Stock-out Financial Impact** | GBP loss from stockouts | ⚠️ Opportunity Cost |
-| **Overstock Carrying Cost** | GBP cost of excess inventory | 💰 Financial |
+| **Overstock Carrying Cost** | GBP cost of excess inventory | 💸 Financial |
 | **Inventory Holding Cost** | Annual GBP cost of inventory storage | 🏦 Working Capital |
 | **Inventory-to-Revenue Ratio** | Balance between stock investment and sales | 📊 Analysis |
 | **Health Stock Status** | Visual gauge (0-100%) with risk indicators | 📈 KPI |
+| **Traceability %** | Serial number tracked orders | 📍 Tracking |
 
 ---
 
 ## ⚙️ Key Performance KPIs
-
 *Metrics tracking operational efficiency, quality compliance, and forecast accuracy.*
 
 | KPI Name | Description | Focus Area |
 | :--- | :--- | :--- |
-| **Supply Chain Efficiency Score** | Composite metric (0-100%) measuring overall efficiency | ⚡ Operations |
 | **Cold Chain Compliance %** | Temperature-controlled shipments percentage | ❄️ Quality Assurance |
-| **Traceability %** | Serial number tracked orders | 📍 Tracking |
-| **Regulatory Compliance Score** | Compliance audit score (0-100%) | ⚖️ Compliance |
+| **MAPE** | Mean Absolute Percentage Error (Forecast accuracy) | 📊 Demand Planning |
+| **Temperature Excursions** | Count and severity of thermal incidents | 🚨 Risk Mgmt |
+| **Supply Chain Efficiency** | Composite score (0-100%) of overall operations | ⚡ Operations |
+| **Regulatory Score** | Compliance audit score (0-100%) | ⚖️ Compliance |
 | **Return Rate %** | Products returned vs total orders | ↩️ Reverse Logistics |
+| **Forecast Bias** | Over/Under estimation tendency | 📈 Planning |
+| **Excursion Resolution Time** | Average hours to resolve thermal incidents | ⏱️ Agility |
+| **Forecast Accuracy %** | Demand prediction accuracy | 📊 Planning |
 | **Return Financial Impact** | GBP cost of returns | 💵 P&L Impact |
-| **Return Reason Analysis** | Breakdown by Damage/Defect/Expired/Other | 📊 Root Cause |
-| **Return Processing Time** | Average days to process returns | ⏱️ Agility |
-| **Forecast Accuracy %** | Demand prediction accuracy | 📊 Demand Planning |
-| **MAPE** | Mean Absolute Percentage Error (Forecast accuracy) | 📈 Planning |
-| **Forecast Bias** | Over/Under estimation tendency | 📊 Planning |
+| **Return Reason Analysis** | Breakdown by Damage/Defect/Expired/Other | 📋 Root Cause |
+| **Return Processing Time** | Average days to process returns | ⏳ Cycle Time |
 | **Daily Demand (90-day)** | Average with trend analysis | 📉 Trending |
 | **Cost-Efficiency Analysis** | Carrier benchmarking by region | 💰 Optimization |
 | **Forecast vs Actual Variance** | Weekly comparison with deviation analysis | 📊 Variance |
-| **Temperature Excursions** | Count and severity of thermal incidents | 🚨 Risk Mgmt |
-| **Excursion Resolution Time** | Average hours to resolve thermal incidents | ⏱️ Agility |
+| **Traceability %** | Serial number tracked orders | 📍 Tracking |
 
 ---
 
 ## 💰 Key Financial KPIs
-
 *Economic indicators measuring profitability, cost-to-serve, and inventory value.*
 
 | KPI Name | Description | Business Impact |
 | :--- | :--- | :--- |
-| **Revenue** | Total, MTP, YTD, Previous Month, Previous Year | 💵 Top Line |
-| **COGS** | Cost of Goods Sold (Total, MTP, YTD, Previous Month, Previous Year) | 🧾 Accounting |
-| **Gross Margin %** | Profitability ratio `(Revenue - COGS) / Revenue` | 💰 Profitability |
+| **Gross Margin %** | Profitability ratio `(Rev - COGS) / Rev` | 💰 Profitability |
 | **Total Logistics Cost** | Transport + Inventory holding combined | 📉 Cost Control |
 | **Net Contribution** | Bottom line profit after all costs | 💵 P&L Health |
 | **Logistics Cost %** | Logistics overhead relative to revenue | ⚡ Efficiency |
+| **Inventory Holding Cost** | Annual cost of storage & capital tied up | 🏦 Working Capital |
+| **Stock-out Impact** | Estimated revenue loss from stockouts | ⚠️ Opportunity Cost |
+| **Cost of Goods Sold** | Total COGS (MTP, YTD, YoY) | 🧾 Accounting |
+| **Expiry Risk (GBP)** | Financial value of at-risk inventory | 🗑️ Waste Mgmt |
+| **Revenue** | Total, MTP, YTD, Previous Month, Previous Year | 💵 Top Line |
 | **Efficiency Score (%)** | Logistics cost-to-revenue efficiency metric | 📊 KPI |
 | **Inventory Holding Cost MTP** | Monthly accrual cost | 💸 Working Capital |
 | **Inventory Holding Cost YTD** | Year-to-date accrual cost | 🏦 Accrual |
 | **Revenue vs COGS Trend** | Monthly dual-axis line chart analysis | 📈 Trending |
-| **COGS MTP vs YTD** | Month-to-date vs year-to-date comparison by Region | 📊 Analysis |
 | **Cost Breakdown by Category** | Freight, Cold Chain, Medical, Vaccine, Other | 📋 Distribution |
 | **Regional Revenue** | Breakdown by Africa, Americas, Asia, Europe | 🗺️ Geographic |
 | **Delivery Performance Status** | Financial impact of Delivered/Pending/Returned/Cancelled | ✅ Status |
-| **Safety Volume** | Buffer inventory quantity in GBP | 🛡️ Risk Mgmt |
-| **Reorder Point** | Trigger level for ordering (cost implications) | 🔔 Planning |
 
 ---
 
