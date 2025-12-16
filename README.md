@@ -14,10 +14,6 @@
 
 Designed for supply chain managers, logistics coordinators, and financial analysts to monitor KPIs, identify bottlenecks, and optimize pharmaceutical distribution operations.
 
-### Data Governance & Architecture
-
-**Upstream Processing:** All data cleansing, enrichment, and quality validations are performed at the SQL layer before reaching Power BI. Following the principle: *"Perform data transformations as far upstream (close to the source) as possible, and only downstream (in the report) when necessary"* (Roche's Maxim). This ensures data integrity, maintains a single source of truth, and optimizes report performance.
-
 ### DATA FOUNDATION & GOVERNANCE
 
 This project demonstrates enterprise-grade data engineering practices applied to pharmaceutical supply chain analytics:
@@ -307,6 +303,9 @@ Contact: https://www.linkedin.com/in/samson18/
 ---
 
 For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
+
+
 
 
 
