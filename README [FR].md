@@ -2,14 +2,6 @@
 
 ---
 
-##  Choisissez Votre Langue | Choose Your Language | Elige Tu Idioma
-
-|  English |  Français |  Español |
-|:---:|:---:|:---:|
-| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
-
----
-
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
