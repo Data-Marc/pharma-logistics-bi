@@ -284,14 +284,13 @@ Demand forecasting and accuracy analysis for inventory optimization.
 
 | Metric | Value |
 |--------|-------|
-| **MODEL ARCHITECTURE** | |
 | Dashboard Pages | 4 |
 | Visuals Count | 20+ |
 | Data Tables | 13 |
 | Measure Tables | 5 |
 | Total Measures | 302 |
 | Relationships | 20 |
-| **GEOGRAPHIC & BUSINESS COVERAGE** | |
+| Report File Size | ~150MB |
 | Regions Covered | 4 |
 | Countries Included | 44 |
 | Warehouses Tracked | 44 |
@@ -299,12 +298,9 @@ Demand forecasting and accuracy analysis for inventory optimization.
 | Suppliers Tracked | 20 |
 | Products Tracked | 31 |
 | Transport Modes | 4 |
-| **DATA VOLUME & ENTITIES** | |
 | Orders Tracked | 9,980 |
 | Data Volume | 75,000+ records |
-| Data Retention Period | 2023-2025 |
-| **PERFORMANCE & FILE METRICS** | |
-| Report File Size | ~150MB |
+| Data Retention Period | 2023-2025 (3 years) |
 | Refresh Time | 9-12 seconds |
 | Data Retention | 3 years (2023-2025) |
 | Regions Covered | 4 |
