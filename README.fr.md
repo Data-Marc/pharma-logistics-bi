@@ -1,12 +1,12 @@
-#    PHARMA LOGISTICS - Tableau de Bord Power BI
+ï»¿# [ EN] [ FR] [ ES] PHARMA LOGISTICS - Tableau de Bord Power BI
 
 ---
 
 ##  Choisissez Votre Langue | Choose Your Language | Elige Tu Idioma
 
-|  English |  Français |  Español |
+|  English |  Franï¿½ais |  Espaï¿½ol |
 |:---:|:---:|:---:|
-| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
+| [Read in English](README.md) | [Lire en Franï¿½ais](README.fr.md) | [Leer en Espaï¿½ol](README.es.md) |
 
 ---
 
@@ -21,105 +21,105 @@
 
 ---
 
-## APERÇU
+## APERï¿½U
 
-**Pharma Logistics BI** est un tableau de bord complet de gestion de la chaîne d'approvisionnement pharmaceutique construit avec Power BI. Il fournit une visibilité en temps réel sur les commandes, le transport, l'inventaire, la conformité de la qualité et les performances financières dans plusieurs régions et fournisseurs de logistique.
+**Pharma Logistics BI** est un tableau de bord complet de gestion de la chaï¿½ne d'approvisionnement pharmaceutique construit avec Power BI. Il fournit une visibilitï¿½ en temps rï¿½el sur les commandes, le transport, l'inventaire, la conformitï¿½ de la qualitï¿½ et les performances financiï¿½res dans plusieurs rï¿½gions et fournisseurs de logistique.
 
-Conçu pour les responsables de la chaîne d'approvisionnement, les coordinateurs logistiques et les analystes financiers pour surveiller les KPI, identifier les goulots d'étranglement et optimiser les opérations de distribution pharmaceutique.
+Conï¿½u pour les responsables de la chaï¿½ne d'approvisionnement, les coordinateurs logistiques et les analystes financiers pour surveiller les KPI, identifier les goulots d'ï¿½tranglement et optimiser les opï¿½rations de distribution pharmaceutique.
 
-### FONDATION DE DONNÉES & GOUVERNANCE
+### FONDATION DE DONNï¿½ES & GOUVERNANCE
 
-Ce projet démontre les pratiques d'ingénierie de données de qualité professionnelle appliquées à l'analyse de la chaîne d'approvisionnement pharmaceutique:
+Ce projet dï¿½montre les pratiques d'ingï¿½nierie de donnï¿½es de qualitï¿½ professionnelle appliquï¿½es ï¿½ l'analyse de la chaï¿½ne d'approvisionnement pharmaceutique:
 
-**Ingénierie des Données:**
+**Ingï¿½nierie des Donnï¿½es:**
 
-- Source: L'ensemble de données est entièrement conçu et architecté à partir de zéro en suivant les meilleures pratiques du secteur
-- Couche de Données: Importé dans SQL Server 2019+ pour une transformation et validation rigoureuses
-- Traitement en Amont: Tous les nettoyage, enrichissement et validations de qualité des données sont effectués à la couche SQL avant d'atteindre Power BI. Suivant le principe: "Effectuer les transformations de données aussi en amont (près de la source) que possible, et uniquement en aval (dans le rapport) si nécessaire" (Maxime de Roche). Cela assure l'intégrité des données, maintient une source de vérité unique et optimise les performances du rapport.
+- Source: L'ensemble de donnï¿½es est entiï¿½rement conï¿½u et architectï¿½ ï¿½ partir de zï¿½ro en suivant les meilleures pratiques du secteur
+- Couche de Donnï¿½es: Importï¿½ dans SQL Server 2019+ pour une transformation et validation rigoureuses
+- Traitement en Amont: Tous les nettoyage, enrichissement et validations de qualitï¿½ des donnï¿½es sont effectuï¿½s ï¿½ la couche SQL avant d'atteindre Power BI. Suivant le principe: "Effectuer les transformations de donnï¿½es aussi en amont (prï¿½s de la source) que possible, et uniquement en aval (dans le rapport) si nï¿½cessaire" (Maxime de Roche). Cela assure l'intï¿½gritï¿½ des donnï¿½es, maintient une source de vï¿½ritï¿½ unique et optimise les performances du rapport.
 
-- Règles de validation standardisées appliquées lors de l'ETL
-- 13 tables de données avec 20 relations actives (architecture de schéma en étoile)
-- 302 mesures calculées pour des définitions de KPI cohérentes
+- Rï¿½gles de validation standardisï¿½es appliquï¿½es lors de l'ETL
+- 13 tables de donnï¿½es avec 20 relations actives (architecture de schï¿½ma en ï¿½toile)
+- 302 mesures calculï¿½es pour des dï¿½finitions de KPI cohï¿½rentes
 
-Cette approche centrée en amont garantit l'intégrité des données sur 75,000+ enregistrements couvrant 4 régions, 44 pays et 44 entrepôts mondialement.
+Cette approche centrï¿½e en amont garantit l'intï¿½gritï¿½ des donnï¿½es sur 75,000+ enregistrements couvrant 4 rï¿½gions, 44 pays et 44 entrepï¿½ts mondialement.
 
 ---
 
 ## PAGES DE TABLEAU DE BORD
 
-### APERÇU - Tableau de Bord de Performance Globale
+### APERï¿½U - Tableau de Bord de Performance Globale
 
-Page d'accueil principale avec KPI en temps réel et snapshot opérationnel.
+Page d'accueil principale avec KPI en temps rï¿½el et snapshot opï¿½rationnel.
 
 **KPI Principaux (6 Cartes):**
 - Total des Commandes (avec tendance YoY)
-- OTIF % (Livraison À Temps et Complet)
-- Délai d'Exécution (Jours)
-- % Livré (Taux de complétude de livraison)
-- % Livraison À Temps (Ponctualité)
+- OTIF % (Livraison ï¿½ Temps et Complet)
+- Dï¿½lai d'Exï¿½cution (Jours)
+- % Livrï¿½ (Taux de complï¿½tude de livraison)
+- % Livraison ï¿½ Temps (Ponctualitï¿½)
 - Commandes en Attente (Volume)
 
-**Visualisations Clés:**
+**Visualisations Clï¿½s:**
 - Performance par transporteur (7 fournisseurs)
-- Ventilation des Coûts (par catégorie de produit: Injectable, Comprimé, Vaccine, Autre)
-- Performance de Livraison (Livrée/Retournée/Annulée)
-- Revenus Régionaux (Amérique du Nord, Amérique Latine, Asie, Europe)
-- Résumé Financier (mensuel)
+- Ventilation des Coï¿½ts (par catï¿½gorie de produit: Injectable, Comprimï¿½, Vaccine, Autre)
+- Performance de Livraison (Livrï¿½e/Retournï¿½e/Annulï¿½e)
+- Revenus Rï¿½gionaux (Amï¿½rique du Nord, Amï¿½rique Latine, Asie, Europe)
+- Rï¿½sumï¿½ Financier (mensuel)
 
 **Filtres Dynamiques:**
-- Curseur Année-Mois (2023-2025)
-- Sélection multi-région (4 régions)
-- Sélection multi-pays (44 pays)
+- Curseur Annï¿½e-Mois (2023-2025)
+- Sï¿½lection multi-rï¿½gion (4 rï¿½gions)
+- Sï¿½lection multi-pays (44 pays)
 - Filtre Mode de Transport (Air/Mer/Terre)
-- Menu déroulant Transporteur (7 fournisseurs)
-- Sélecteur Pays du Fournisseur
+- Menu dï¿½roulant Transporteur (7 fournisseurs)
+- Sï¿½lecteur Pays du Fournisseur
 
 ---
 
-### PERFORMANCE - Analyse de la Chaîne d'Approvisionnement
+### PERFORMANCE - Analyse de la Chaï¿½ne d'Approvisionnement
 
-Analyse opérationnelle détaillée avec capacités de forage.
+Analyse opï¿½rationnelle dï¿½taillï¿½e avec capacitï¿½s de forage.
 
 **Matrices de Performance:**
 
-**Matrice 1: Performance par Région**
-- Lignes: Région avec possibilité de forage jusqu'aux pays
-- Colonnes: OTIF %, Délai Moyen, Complétude %, % À Temps, % de Commandes Parfaites
-- Validation des données par calculs OTIF
-- Mise en évidence des seuils de performance
-- Analyse de comparaison entre régions
+**Matrice 1: Performance par Rï¿½gion**
+- Lignes: Rï¿½gion avec possibilitï¿½ de forage jusqu'aux pays
+- Colonnes: OTIF %, Dï¿½lai Moyen, Complï¿½tude %, % ï¿½ Temps, % de Commandes Parfaites
+- Validation des donnï¿½es par calculs OTIF
+- Mise en ï¿½vidence des seuils de performance
+- Analyse de comparaison entre rï¿½gions
 
 **Matrice 2: Performance par Transporteur**
 - Lignes: Transporteur (7 fournisseurs)
-- Colonnes: Délai d'Exécution, Coût/KM, Étoiles d'Efficacité
+- Colonnes: Dï¿½lai d'Exï¿½cution, Coï¿½t/KM, ï¿½toiles d'Efficacitï¿½
 - Benchmarking entre transporteurs
-- Analyse de rentabilité des coûts
+- Analyse de rentabilitï¿½ des coï¿½ts
 
 **Analyse de Tendances:**
-- Revenus vs COGS Tendances (Jan-Déc)
-- COGS MTP vs YoY Comparaison par Région
+- Revenus vs COGS Tendances (Jan-Dï¿½c)
+- COGS MTP vs YoY Comparaison par Rï¿½gion
 
-**Mesures de Performance Clés (22 Mesures):**
-- Commande Parfaite: % de commandes livrées avec exactitude
-- Indicateur de Chaîne d'Approvisionnement: Métrique composite (0-100%)
-- Précision de Livraison: Identifie les écarts
-- Conformité Chaîne Froide: % d'expéditions contrôlées
+**Mesures de Performance Clï¿½s (22 Mesures):**
+- Commande Parfaite: % de commandes livrï¿½es avec exactitude
+- Indicateur de Chaï¿½ne d'Approvisionnement: Mï¿½trique composite (0-100%)
+- Prï¿½cision de Livraison: Identifie les ï¿½carts
+- Conformitï¿½ Chaï¿½ne Froide: % d'expï¿½ditions contrï¿½lï¿½es
 - Taux de Remplissage: Commandes sans commandes en attente
-- Délai d'Exécution Moyen: Du paiement à la livraison
-- OTIF %: Taux de livraison à temps et complet
+- Dï¿½lai d'Exï¿½cution Moyen: Du paiement ï¿½ la livraison
+- OTIF %: Taux de livraison ï¿½ temps et complet
 - Plus...
 
 ---
 
-### FINANCIER - Analyse des Revenus et Coûts
+### FINANCIER - Analyse des Revenus et Coï¿½ts
 
-Aperçu financier complet des opérations.
+Aperï¿½u financier complet des opï¿½rations.
 
 ---
 
-### ENTREPÔTS - Visibilité Logistique Mondiale
+### ENTREPï¿½TS - Visibilitï¿½ Logistique Mondiale
 
-Suivi détaillé des 44 entrepôts répartis dans 4 régions, 44 pays.
+Suivi dï¿½taillï¿½ des 44 entrepï¿½ts rï¿½partis dans 4 rï¿½gions, 44 pays.
 
 ---
 
@@ -132,10 +132,10 @@ Veuillez contacter: https://www.linkedin.com/in/samson18/
 ---
 
 **Version:** 1.0.0
-**Dernière mise à jour:** Décembre 2025
+**Derniï¿½re mise ï¿½ jour:** Dï¿½cembre 2025
 **Auteur:** Marc James Samson
 **Statut:** Production Ready
-**Licence:** Propriétaire et Confidentiel
+**Licence:** Propriï¿½taire et Confidentiel
 
 
 

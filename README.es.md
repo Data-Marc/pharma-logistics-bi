@@ -1,12 +1,12 @@
-#    PHARMA LOGISTICS - Panel de Control Power BI
+ï»¿# [ EN] [ FR] [ ES] PHARMA LOGISTICS - Panel de Control Power BI
 
 ---
 
 ##  Elige Tu Idioma | Choose Your Language | Choisissez Votre Langue
 
-|  English |  Français |  Español |
+|  English |  Franï¿½ais |  Espaï¿½ol |
 |:---:|:---:|:---:|
-| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
+| [Read in English](README.md) | [Lire en Franï¿½ais](README.fr.md) | [Leer en Espaï¿½ol](README.es.md) |
 
 ---
 
@@ -23,103 +23,103 @@
 
 ## RESUMEN
 
-**Pharma Logistics BI** es un panel de control integral de gestión de la cadena de suministro farmacéutica construido con Power BI. Proporciona visibilidad en tiempo real de pedidos, transporte, inventario, cumplimiento de calidad y desempeño financiero en múltiples regiones y proveedores de logística.
+**Pharma Logistics BI** es un panel de control integral de gestiï¿½n de la cadena de suministro farmacï¿½utica construido con Power BI. Proporciona visibilidad en tiempo real de pedidos, transporte, inventario, cumplimiento de calidad y desempeï¿½o financiero en mï¿½ltiples regiones y proveedores de logï¿½stica.
 
-Diseñado para gerentes de cadena de suministro, coordinadores de logística y analistas financieros para monitorear KPI, identificar cuellos de botella y optimizar operaciones de distribución farmacéutica.
+Diseï¿½ado para gerentes de cadena de suministro, coordinadores de logï¿½stica y analistas financieros para monitorear KPI, identificar cuellos de botella y optimizar operaciones de distribuciï¿½n farmacï¿½utica.
 
-### FUNDACIÓN DE DATOS Y GOBIERNO
+### FUNDACIï¿½N DE DATOS Y GOBIERNO
 
-Este proyecto demuestra prácticas de ingeniería de datos de calidad empresarial aplicadas al análisis de la cadena de suministro farmacéutica:
+Este proyecto demuestra prï¿½cticas de ingenierï¿½a de datos de calidad empresarial aplicadas al anï¿½lisis de la cadena de suministro farmacï¿½utica:
 
-**Ingeniería de Datos:**
+**Ingenierï¿½a de Datos:**
 
-- Fuente: El conjunto de datos completo está diseñado y arquitecturado desde cero siguiendo las mejores prácticas de la industria
-- Capa de Datos: Importado en SQL Server 2019+ para transformación y validación rigurosa
-- Procesamiento Ascendente: Todas las limpiezas de datos, enriquecimiento y validaciones de calidad se realizan en la capa SQL antes de llegar a Power BI. Siguiendo el principio: "Realizar transformaciones de datos tan ascendentemente (cerca de la fuente) como sea posible, y solo descendentemente (en el informe) cuando sea necesario" (Máxima de Roche). Esto asegura la integridad de los datos, mantiene una única fuente de verdad y optimiza el rendimiento del informe.
+- Fuente: El conjunto de datos completo estï¿½ diseï¿½ado y arquitecturado desde cero siguiendo las mejores prï¿½cticas de la industria
+- Capa de Datos: Importado en SQL Server 2019+ para transformaciï¿½n y validaciï¿½n rigurosa
+- Procesamiento Ascendente: Todas las limpiezas de datos, enriquecimiento y validaciones de calidad se realizan en la capa SQL antes de llegar a Power BI. Siguiendo el principio: "Realizar transformaciones de datos tan ascendentemente (cerca de la fuente) como sea posible, y solo descendentemente (en el informe) cuando sea necesario" (Mï¿½xima de Roche). Esto asegura la integridad de los datos, mantiene una ï¿½nica fuente de verdad y optimiza el rendimiento del informe.
 
-- Reglas de validación estandarizadas aplicadas durante ETL
+- Reglas de validaciï¿½n estandarizadas aplicadas durante ETL
 - 13 tablas de datos con 20 relaciones activas (arquitectura de esquema en estrella)
 - 302 medidas calculadas para definiciones coherentes de KPI
 
-Este enfoque ascendente garantiza la integridad de los datos en más de 75,000 registros que abarcan 4 regiones, 44 países y 44 almacenes a nivel mundial.
+Este enfoque ascendente garantiza la integridad de los datos en mï¿½s de 75,000 registros que abarcan 4 regiones, 44 paï¿½ses y 44 almacenes a nivel mundial.
 
 ---
 
-## PÁGINAS DEL PANEL
+## Pï¿½GINAS DEL PANEL
 
-### RESUMEN - Panel de Control de Desempeño Global
+### RESUMEN - Panel de Control de Desempeï¿½o Global
 
-Página de inicio principal con KPI en tiempo real e instantánea operativa.
+Pï¿½gina de inicio principal con KPI en tiempo real e instantï¿½nea operativa.
 
 **KPI Principales (6 Tarjetas):**
 - Total de Pedidos (con tendencia YoY)
 - OTIF % (Entrega A Tiempo y Completa)
-- Tiempo de Entrega (Días)
+- Tiempo de Entrega (Dï¿½as)
 - % Completitud (Tasa de completitud de entrega)
 - % Entrega A Tiempo (Puntualidad)
 - Pedidos Pendientes (Volumen)
 
 **Visualizaciones Clave:**
-- Desempeño por transportista (7 proveedores)
-- Desglose de Costos (por categoría de producto: Inyectable, Comprimido, Vacuna, Otro)
-- Desempeño de Entrega (Entregado/Devuelto/Cancelado)
-- Ingresos Regionales (América del Norte, América Latina, Asia, Europa)
+- Desempeï¿½o por transportista (7 proveedores)
+- Desglose de Costos (por categorï¿½a de producto: Inyectable, Comprimido, Vacuna, Otro)
+- Desempeï¿½o de Entrega (Entregado/Devuelto/Cancelado)
+- Ingresos Regionales (Amï¿½rica del Norte, Amï¿½rica Latina, Asia, Europa)
 - Resumen Financiero (mensual)
 
-**Filtros Dinámicos:**
-- Control deslizante Año-Mes (2023-2025)
-- Selección multi-región (4 regiones)
-- Selección multi-país (44 países)
+**Filtros Dinï¿½micos:**
+- Control deslizante Aï¿½o-Mes (2023-2025)
+- Selecciï¿½n multi-regiï¿½n (4 regiones)
+- Selecciï¿½n multi-paï¿½s (44 paï¿½ses)
 - Filtro Modo de Transporte (Aire/Mar/Tierra)
-- Menú desplegable Transportista (7 proveedores)
-- Selector País del Proveedor
+- Menï¿½ desplegable Transportista (7 proveedores)
+- Selector Paï¿½s del Proveedor
 
 ---
 
-### DESEMPEÑO - Análisis de la Cadena de Suministro
+### DESEMPEï¿½O - Anï¿½lisis de la Cadena de Suministro
 
-Análisis operacional detallado con capacidades de exploración.
+Anï¿½lisis operacional detallado con capacidades de exploraciï¿½n.
 
-**Matrices de Desempeño:**
+**Matrices de Desempeï¿½o:**
 
-**Matriz 1: Desempeño por Región**
-- Filas: Región con capacidad de exploración hasta países
+**Matriz 1: Desempeï¿½o por Regiï¿½n**
+- Filas: Regiï¿½n con capacidad de exploraciï¿½n hasta paï¿½ses
 - Columnas: OTIF %, Tiempo Promedio, % Completitud, % A Tiempo, % Pedidos Perfectos
-- Validación de datos mediante cálculos OTIF
-- Resalte de umbrales de desempeño
-- Análisis de comparación entre regiones
+- Validaciï¿½n de datos mediante cï¿½lculos OTIF
+- Resalte de umbrales de desempeï¿½o
+- Anï¿½lisis de comparaciï¿½n entre regiones
 
-**Matriz 2: Desempeño por Transportista**
+**Matriz 2: Desempeï¿½o por Transportista**
 - Filas: Transportista (7 proveedores)
 - Columnas: Tiempo de Entrega, Costo/KM, Estrellas de Eficiencia
-- Evaluación comparativa entre transportistas
-- Análisis de rentabilidad de costos
+- Evaluaciï¿½n comparativa entre transportistas
+- Anï¿½lisis de rentabilidad de costos
 
-**Análisis de Tendencias:**
+**Anï¿½lisis de Tendencias:**
 - Tendencias Ingresos vs COGS (Ene-Dic)
-- Comparación MTP COGS vs YoY por Región
+- Comparaciï¿½n MTP COGS vs YoY por Regiï¿½n
 
-**Medidas de Desempeño Clave (22 Medidas):**
-- Pedido Perfecto: % de pedidos entregados con precisión
-- Indicador de Cadena de Suministro: Métrica compuesta (0-100%)
-- Precisión de Entrega: Identifica discrepancias
-- Cumplimiento de Cadena Fría: % de envíos controlados
+**Medidas de Desempeï¿½o Clave (22 Medidas):**
+- Pedido Perfecto: % de pedidos entregados con precisiï¿½n
+- Indicador de Cadena de Suministro: Mï¿½trica compuesta (0-100%)
+- Precisiï¿½n de Entrega: Identifica discrepancias
+- Cumplimiento de Cadena Frï¿½a: % de envï¿½os controlados
 - Tasa de Relleno: Pedidos sin pedidos pendientes
 - Tiempo de Entrega Promedio: De pago a entrega
 - OTIF %: Tasa de entrega a tiempo y completa
-- Más...
+- Mï¿½s...
 
 ---
 
-### FINANCIERO - Análisis de Ingresos y Costos
+### FINANCIERO - Anï¿½lisis de Ingresos y Costos
 
-Descripción general financiera completa de operaciones.
+Descripciï¿½n general financiera completa de operaciones.
 
 ---
 
-### ALMACENES - Visibilidad Logística Global
+### ALMACENES - Visibilidad Logï¿½stica Global
 
-Seguimiento detallado de 44 almacenes distribuidos en 4 regiones, 44 países.
+Seguimiento detallado de 44 almacenes distribuidos en 4 regiones, 44 paï¿½ses.
 
 ---
 
@@ -127,12 +127,12 @@ Seguimiento detallado de 44 almacenes distribuidos en 4 regiones, 44 países.
 
 Para consultas de licencia:
 
-Por favor contáctenos en: https://www.linkedin.com/in/samson18/
+Por favor contï¿½ctenos en: https://www.linkedin.com/in/samson18/
 
 ---
 
-**Versión:** 1.0.0
-**Última actualización:** Diciembre 2025
+**Versiï¿½n:** 1.0.0
+**ï¿½ltima actualizaciï¿½n:** Diciembre 2025
 **Autor:** Marc James Samson
 **Estado:** Production Ready
 **Licencia:** Propietario y Confidencial
