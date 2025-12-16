@@ -33,7 +33,7 @@ Este proyecto demuestra las prácticas de ingeniería de datos de nivel empresar
 - Reglas de validación estandarizadas aplicadas durante ETL
 - 13 tablas de datos con 20 relaciones activas (arquitectura de esquema de estrella)
 - 302 medidas calculadas para definiciones de KPI consistentes
-Este enfoque ascendente garantiza integridad de datos en más de 822,000+ registros cubriendo 4 regiones, 44 países y 44 almacenes globalmente.
+Este enfoque ascendente garantiza integridad de datos en más de 822,000+ registros cubriendo 4 regiones, 44 países, 44 almacenes y 2,535 clientes globalmente.
 
 ---
 

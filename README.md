@@ -33,7 +33,7 @@ This project demonstrates enterprise-grade data engineering practices applied to
 - Standardized validation rules applied during ETL
 - 13 data tables with 20 active relationships (star schema architecture)
 - 302 calculated measures for consistent KPI definitions
-This upstream-first approach guarantees data integrity across 75,000+ records spanning 4 regions, 44 countries, and 44 warehouses globally.
+This upstream-first approach guarantees data integrity across 822,000+ records spanning 4 regions, 44 countries, 44 warehouses, and 2,535 customers globally.
 ---
 
 ### Architecture Diagram
