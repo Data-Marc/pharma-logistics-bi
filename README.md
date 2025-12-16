@@ -250,49 +250,7 @@ Demand forecasting and accuracy analysis for inventory optimization.
 
 ---
 
-## QUICK START
 
-### Prerequisites
-- Power BI Desktop (Latest version, Premium preferred)
-- SQL Server 2019+ with PharmaLogistics database
-- RAM: 2GB minimum, 4GB+ recommended
-- Disk Space: 1.5GB for Power BI file
-
-### Installation Steps
-
-1. **Clone this repository**
-   `ash
-   git clone https://github.com/Data-Marc/pharma-logistics-bi.git
-   cd pharma-logistics-bi
-   `
-
-2. **Download Power BI File**
-   - Get Pharma Logistics.pbix from GitHub releases
-   - Place in your local projects folder
-
-3. **Open in Power BI Desktop**
-   `
-   File -> Open -> Select Pharma Logistics.pbix
-   `
-
-4. **Configure SQL Server Connection**
-   - Server: localhost\SQLEXPRESS (or your server)
-   - Database: PharmaLogistics
-   - Authentication: Windows Integrated
-
-5. **Refresh Data**
-   `
-   Home -> Refresh (Ctrl + Shift + R)
-   `
-
-6. **Explore Dashboards**
-   - Start with Overview for global KPIs
-   - Dive into Performance for regional analysis
-   - Check Financial for profitability metrics
-
-For detailed setup, see SETUP_GUIDE.md
-
----
 
 ## DOCUMENTATION
 
@@ -326,11 +284,11 @@ For detailed setup, see SETUP_GUIDE.md
 
 | Metric | Value |
 |--------|-------|
-| Dashboard Pages | 6 |
+| Dashboard Pages | 4 |
 | Visuals Count | 20+ |
 | Measure Tables | 5 |
-| Total Measures | 180+ |
-| Data Tables | 29 |
+| Total Measures | 302 |
+| Data Tables | 13 |
 | Relationships | 20 |
 | Report File Size | ~150MB |
 | Data Volume | 75,000+ records |
@@ -348,7 +306,7 @@ This project is licensed under a **Proprietary and Confidential License**.
 
 This software is NOT open-source and is offered for commercial licensing only.
 
-For licensing inquiries: leemepronto@gmail.com
+For licensing inquiries: https://www.linkedin.com/in/samson18/
 
 See LICENSE file for complete legal terms.
 
@@ -357,7 +315,7 @@ See LICENSE file for complete legal terms.
 ## SUPPORT
 
 For installation help or licensing inquiries:
-- Email: leemepronto@gmail.com
+- Contact: https://www.linkedin.com/in/samson18/
 - Check SETUP_GUIDE.md for troubleshooting
 - See ARCHITECTURE.md for technical details
 - Review DATA_DICTIONARY.md for measure definitions
@@ -372,4 +330,5 @@ For installation help or licensing inquiries:
 
 ---
 
-For licensing inquiries and commercial use, please contact: leemepronto@gmail.com
+For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
