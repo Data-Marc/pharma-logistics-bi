@@ -1,4 +1,4 @@
-﻿# [ EN] [ FR] [ ES] PHARMA LOGISTICS - Power BI Dashboard
+﻿# PHARMA LOGISTICS - Power BI Dashboard
 
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
