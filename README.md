@@ -293,8 +293,6 @@ See LICENSE file for complete legal terms.
 
 ## SUPPORT
 
-For licensing inquiries:
-
 Contact: https://www.linkedin.com/in/samson18/
 
 ---
