@@ -200,6 +200,12 @@ See LICENSE file for complete legal terms.
 
 ---
 
+## SUPPORT
+
+Please contact: https://www.linkedin.com/in/samson18/
+
+---
+
 
 **Version:** 1.0.0
 **Last Updated:** December 2025
