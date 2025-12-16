@@ -98,29 +98,6 @@ Detailed operational metrics with regional and carrier drill-down capabilities.
 
 Supply chain financial analysis with regional breakdown and carrier benchmarking.
 
-**Supply Chain Economics Matrix by Region:**
-
-| Metric | Value Range | Format | Target |
-|--------|-------------|--------|--------|
-| Revenue | GBP 85M - 96M | Currency | Growing |
-| COGS | GBP 43M - 48M | Currency | Stable |
-| Gross Margin % | 45-52% | Percentage | > 50% |
-| Total Logistics Cost | GBP 3.3M - 9.9M | Currency | < GBP 5M |
-| Logistics Cost % | 2.9-4.2% | Percentage | < 5% |
-| Net Contribution | GBP 31M - 46M | Currency | Maximize |
-| Efficiency Score | 45-97% | Percentage | > 85% |
-
-**Logistics Efficiency Matrix by Carrier:**
-
-| Metric | Range | Unit | Description |
-|--------|-------|------|-------------|
-| Orders Volume | 2,000-3,000 | # shipments | Per carrier throughput |
-| Cost per KM | GBP 0.20-0.30 | GBP/km | Transport efficiency |
-| Cost per Order | GBP 700-2,000 | GBP | Transaction cost |
-| Total Logistics Cost | Varies | GBP | Transport + inventory |
-| Revenue Associated | GBP 8M-87M | GBP | Orders value per carrier |
-| Efficiency Stars | Rating | Stars | Performance rating |
-
 **Economic KPIs (46 Measures):**
 
 Financial Metrics:
