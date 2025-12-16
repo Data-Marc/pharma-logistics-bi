@@ -1,132 +1,202 @@
-#    PHARMA LOGISTICS - Panel de Control Power BI
+# PHARMA LOGISTICS - Panel de Control Power BI
 
-
----
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
-[![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/blob/main/README%20%5BES%5D.md)
+[![Power BI](https://img.shields.io/badge/Power%20BI-2.149.1429.0-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
 [![Power Query](https://img.shields.io/badge/Power%20Query-2.149.1429.0-00A4EF?logo=power-bi)](https://powerquery.microsoft.com)
+[![DAX Studio](https://img.shields.io/badge/DAX%20Studio-3.2.1-0078D4?logo=visualstudio)](https://daxstudio.org)
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-2019+-CC2927?logo=microsoft-sql-server)](https://www.microsoft.com/sql-server)
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.107.0-007ACC?logo=visualstudiocode)](https://code.visualstudio.com)
 [![Excel](https://img.shields.io/badge/Excel-2511-217346?logo=microsoft-excel)](https://www.microsoft.com/excel)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 
+
 ---
 
-## RESUMEN
+## DESCRIPCIÓN GENERAL
 
-**Pharma Logistics BI** es un panel de control integral de gestión de la cadena de suministro farmacéutica construido con Power BI. Proporciona visibilidad en tiempo real de pedidos, transporte, inventario, cumplimiento de calidad y desempeño financiero en múltiples regiones y proveedores de logística.
+**Pharma Logistics BI** es un panel de control integral de gestión de cadena de suministro farmacéutica construido con Power BI. Ofrece visibilidad en tiempo real de pedidos, transporte, inventario, cumplimiento de calidad y desempeño financiero en múltiples regiones y proveedores logísticos.
 
-Diseñado para gerentes de cadena de suministro, coordinadores de logística y analistas financieros para monitorear KPI, identificar cuellos de botella y optimizar operaciones de distribución farmacéutica.
+Diseñado para gerentes de cadena de suministro, coordinadores logísticos y analistas financieros para monitorear KPI, identificar cuellos de botella y optimizar las operaciones de distribución farmacéutica.
 
-### FUNDACIÓN DE DATOS Y GOBIERNO
+### FUNDACIÓN DE DATOS Y GOBERNANZA
 
-Este proyecto demuestra prácticas de ingeniería de datos de calidad empresarial aplicadas al análisis de la cadena de suministro farmacéutica:
+Este proyecto demuestra las prácticas de ingeniería de datos de nivel empresarial aplicadas a la analítica de cadena de suministro farmacéutica:
 
 **Ingeniería de Datos:**
 
-- Fuente: El conjunto de datos completo está diseñado y arquitecturado desde cero siguiendo las mejores prácticas de la industria
-- Capa de Datos: Importado en SQL Server 2019+ para transformación y validación rigurosa
-- Procesamiento Ascendente: Todas las limpiezas de datos, enriquecimiento y validaciones de calidad se realizan en la capa SQL antes de llegar a Power BI. Siguiendo el principio: "Realizar transformaciones de datos tan ascendentemente (cerca de la fuente) como sea posible, y solo descendentemente (en el informe) cuando sea necesario" (Máxima de Roche). Esto asegura la integridad de los datos, mantiene una única fuente de verdad y optimiza el rendimiento del informe.
+- Fuente: Conjunto de datos completamente diseñado y arquitecturado desde cero siguiendo las mejores prácticas de la industria
+- Capa de Datos: Importada en SQL Server 2019+ para transformación y validación rigurosa usando restricciones y relaciones
+- Procesamiento Ascendente: Todas las limpiezas de datos, enriquecimientos y validaciones de calidad se realizan a nivel SQL antes de llegar a Power BI. Siguiendo el principio: "Realiza transformaciones de datos lo más aguas arriba (cercano a la fuente) posible, y solo aguas abajo (en el informe) si es necesario" (Maxim de Roche). Esto asegura integridad de datos, mantiene una única fuente de verdad y optimiza el desempeño del informe.
 
 - Reglas de validación estandarizadas aplicadas durante ETL
-- 13 tablas de datos con 20 relaciones activas (arquitectura de esquema en estrella)
-- 302 medidas calculadas para definiciones coherentes de KPI
-
-Este enfoque ascendente garantiza la integridad de los datos en más de 75,000 registros que abarcan 4 regiones, 44 países y 44 almacenes a nivel mundial.
-
----
-
-## PÁGINAS DEL PANEL
-
-### RESUMEN - Panel de Control de Desempeño Global
-
-Página de inicio principal con KPI en tiempo real e instantánea operativa.
-
-**KPI Principales (6 Tarjetas):**
-- Total de Pedidos (con tendencia YoY)
-- OTIF % (Entrega A Tiempo y Completa)
-- Tiempo de Entrega (Días)
-- % Completitud (Tasa de completitud de entrega)
-- % Entrega A Tiempo (Puntualidad)
-- Pedidos Pendientes (Volumen)
-
-**Visualizaciones Clave:**
-- Desempeño por transportista (7 proveedores)
-- Desglose de Costos (por categoría de producto: Inyectable, Comprimido, Vacuna, Otro)
-- Desempeño de Entrega (Entregado/Devuelto/Cancelado)
-- Ingresos Regionales (América del Norte, América Latina, Asia, Europa)
-- Resumen Financiero (mensual)
-
-**Filtros Dinámicos:**
-- Control deslizante Año-Mes (2023-2025)
-- Selección multi-región (4 regiones)
-- Selección multi-país (44 países)
-- Filtro Modo de Transporte (Aire/Mar/Tierra)
-- Menú desplegable Transportista (7 proveedores)
-- Selector País del Proveedor
+- 13 tablas de datos con 20 relaciones activas (arquitectura de esquema de estrella)
+- 302 medidas calculadas para definiciones de KPI consistentes
+Este enfoque ascendente garantiza integridad de datos en más de 75,000 registros cubriendo 4 regiones, 44 países y 44 almacenes globalmente.
 
 ---
 
-### DESEMPEÑO - Análisis de la Cadena de Suministro
+### Diagrama de Arquitectura
 
-Análisis operacional detallado con capacidades de exploración.
-
-**Matrices de Desempeño:**
-
-**Matriz 1: Desempeño por Región**
-- Filas: Región con capacidad de exploración hasta países
-- Columnas: OTIF %, Tiempo Promedio, % Completitud, % A Tiempo, % Pedidos Perfectos
-- Validación de datos mediante cálculos OTIF
-- Resalte de umbrales de desempeño
-- Análisis de comparación entre regiones
-
-**Matriz 2: Desempeño por Transportista**
-- Filas: Transportista (7 proveedores)
-- Columnas: Tiempo de Entrega, Costo/KM, Estrellas de Eficiencia
-- Evaluación comparativa entre transportistas
-- Análisis de rentabilidad de costos
-
-**Análisis de Tendencias:**
-- Tendencias Ingresos vs COGS (Ene-Dic)
-- Comparación MTP COGS vs YoY por Región
-
-**Medidas de Desempeño Clave (22 Medidas):**
-- Pedido Perfecto: % de pedidos entregados con precisión
-- Indicador de Cadena de Suministro: Métrica compuesta (0-100%)
-- Precisión de Entrega: Identifica discrepancias
-- Cumplimiento de Cadena Fría: % de envíos controlados
-- Tasa de Relleno: Pedidos sin pedidos pendientes
-- Tiempo de Entrega Promedio: De pago a entrega
-- OTIF %: Tasa de entrega a tiempo y completa
-- Más...
+```
+┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────────────────┐        ┌──────────┐
+│  Datos Crudos   │         │   SQL Server 2019+       │         │   Power BI                │        │  Usua-   │
+│                 │────────▶│   (ETL & Validación)     │────────▶│  Dataset e Informes       │────────▶│  rios    │
+│ • Sistemas ERP  │         │                          │         │                           │        │ Analistas│
+│ • APIs/Base de  │         │ • Verificaciones Calidad │         │ • Esquema de Estrella (13 Tablas)  │ Gerentes │
+│   Datos         │         │ • Procedimientos Almac.  │         │ • 20 Relaciones Activas   │        │          │
+│ • Archivos      │         │ • Carga Staging/DW       │         │ • Lógica DAX (302 Medidas)        │          │
+│   Planos        │         │                          │         │                           │        │          │
+└─────────────────┘         └──────────────────────────┘         └───────────────────────────┘        └──────────┘
+```
 
 ---
 
-### FINANCIERO - Análisis de Ingresos y Costos
+## PÁGINAS DEL PANEL DE CONTROL
 
-Descripción general financiera completa de operaciones.
+📊 **DESCRIPCIÓN GENERAL** - Panel de Control Global de Desempeño
+
+<img src="docs/images/overview.png" width="700" alt="Panel de Control OVERVIEW">
 
 ---
 
-### ALMACENES - Visibilidad Logística Global
+📈 **DESEMPEÑO** - Analítica de Cadena de Suministro
 
-Seguimiento detallado de 44 almacenes distribuidos en 4 regiones, 44 países.
+<img src="docs/images/warehouses.png" width="700" alt="Panel de Control WAREHOUSES">
+
+---
+
+🏭 **ALMACENES** - Optimización de Inventario
+
+<img src="docs/images/performance.png" width="700" alt="Panel de Control PERFORMANCE">
+
+---
+
+💰 **FINANCIERO** - Rentabilidad y Economía
+
+<img src="docs/images/financial.png" width="700" alt="Panel de Control FINANCIAL">
+
+---
+
+## KPI POR CATEGORÍA
+
+### Descripción General Rápida de KPI
+
+El panel de control monitorea **61 indicadores clave de desempeño (KPI)** organizados en 4 categorías de negocio. Ver [docs/KPIs.md](docs/KPIs.md) para descripciones completas y cálculos.
+
+### 📦 KPI Clave de Transporte
+| Nombre del KPI | Descripción | Alcance |
+| :--- | :--- | :--- |
+| **OTIF %** | Tasa de Entrega a Tiempo y Completa | 🌍 Global |
+| **Tiempo de Entrega** | Días promedio desde orden a entrega | 🚚 Logística |
+| **Costo por KM** | Métrica de eficiencia de transporte | 💰 Financiero |
+| **Emisiones CO2** | Huella ambiental por KM | 🌱 ESG |
+
+### 🏭 KPI Clave de Almacén
+| Nombre del KPI | Descripción | Alcance |
+| :--- | :--- | :--- |
+| **Días en Inventario (DOH)** | Análisis de duración del almacenamiento | 📉 Riesgo |
+| **Rotación de Inventario** | COGS / Valor Promedio de Inventario | 🔄 Eficiencia |
+| **Riesgo de Vencimiento (GBP)** | Impacto financiero del stock que vence | 💰 Financiero |
+| **Inventario Muerto %** | Porcentaje de inventario no móvil | 📉 Riesgo |
+
+### ⚙️ KPI Clave de Desempeño
+*Métricas que rastrean eficiencia operativa, cumplimiento de calidad y precisión de pronósticos.*
+
+| Nombre del KPI | Descripción | Área de Enfoque |
+| :--- | :--- | :--- |
+| **Cumplimiento de Cadena Fría %** | Porcentaje de envíos en temperatura controlada | ❄️ Aseguramiento Calidad |
+| **MAPE** | Porcentaje de Error Absoluto Medio (Precisión de Pronósticos) | 📊 Planificación Demanda |
+| **Excursiones de Temperatura** | Número y severidad de incidentes térmicos | 🚨 Gestión Riesgos |
+| **Eficiencia Cadena Suministro** | Puntuación compuesta (0-100%) de operaciones | ⚡ Operaciones |
+| **Puntuación de Cumplimiento** | Puntuación de auditoría de cumplimiento (0-100%) | ⚖️ Cumplimiento |
+| **Tasa de Devolución %** | Productos devueltos vs pedidos totales | ↩️ Logística Inversa |
+| **Sesgo de Pronóstico** | Tendencia de sobreestimación/subestimación | 📈 Planificación |
+| **Tiempo Resolución Excursión** | Horas promedio para resolver incidentes térmicos | ⏱️ Agilidad |
+
+### 💰 KPI Clave Financieros
+*Indicadores económicos que miden rentabilidad, costo de servicio y valor de inventario.*
+
+| Nombre del KPI | Descripción | Impacto Comercial |
+| :--- | :--- | :--- |
+| **Margen Bruto %** | Relación de rentabilidad `(Ingresos - COGS) / Ingresos` | 💰 Rentabilidad |
+| **Costo Logístico Total** | Transporte + Cargos de almacenamiento combinados | 📉 Control Costos |
+| **Contribución Neta** | Ganancia neta después de todos los costos | 💵 Salud P&L |
+| **Costo Logístico %** | Gastos logísticos relativos a ingresos | ⚡ Eficiencia |
+| **Costo Almacenamiento Inventario** | Costo anual de almacenamiento y capital inmovilizado | 🏦 Capital Trabajo |
+| **Impacto Desabastecimiento** | Pérdida de ingresos estimada por desabastecimiento | ⚠️ Costo Oportunidad |
+| **Costo de Bienes Vendidos** | COGS Total (MTD, YTD, YoY) | 🧾 Contabilidad |
+| **Riesgo de Vencimiento (GBP)** | Valor financiero del inventario en riesgo | 🗑️ Gestión Residuos |
+
+**📊 Documentación Completa de KPI:** Ver [docs/KPIs.md](docs/KPIs.md) para descripciones detalladas, metodologías de cálculo y asignaciones de paneles.
+
+---
+
+## STACK TECNOLÓGICO
+
+| Componente | Tecnología | Versión |
+|-----------|-----------|---------|
+| Plataforma BI | Power BI Desktop | 2.149.1429.0 |
+| Transformación de Datos | Power Query | 2.149.1429.0 |
+| Análisis y Optimización | DAX Studio | 3.2.1 |
+| IDE | Visual Studio Code | 1.107.0 |
+| Hoja de Cálculo | Microsoft Excel | 2511 |
+| Base de Datos | SQL Server | 2019+ (SQLEXPRESS) |
+| Gestión Base de Datos | SQL Server Management Studio | 21.6.17 |
+
+---
+
+## MÉTRICAS DEL PROYECTO
+
+| Métrica | Valor |
+|--------|-------|
+| Páginas del Panel | 4 |
+| Cantidad de Visuales | 20+ (apilados/superpuestos, equivalente a 9-10 páginas) |
+| Tablas de Datos | 13 |
+| Tablas de Medidas | 5 |
+| Medidas Totales | 302 |
+| Relaciones | 20 |
+| Tamaño del Archivo de Informe | ~150MB |
+| Regiones Cubiertas | 4 |
+| Países Incluidos | 44 |
+| Almacenes Rastreados | 44 |
+| Transportistas Rastreados | 7 |
+| Proveedores Rastreados | 20 |
+| Productos Rastreados | 31 |
+| Categorías de Producto | 6 |
+| Modos de Transporte | 4 |
+| Pedidos Rastreados | 9 980 |
+| Clientes Rastreados | 2 535 |
+| Excursiones de Temperatura | 2 |
+| Volumen de Datos | 822 000+ registros |
+| Período de Retención de Datos | 2023-2025 (3 años) |
+| Tiempo de Actualización | 16-20 segundos |
+
+---
+
+## LICENCIA
+
+Este proyecto está bajo una **Licencia Proprietaria y Confidencial**.
+Este software NO es de código abierto y solo se ofrece bajo licencia comercial.
+
+Para solicitudes de licencia: https://www.linkedin.com/in/samson18/
+
+Ver archivo LICENSE para términos legales completos.
 
 ---
 
 ## SOPORTE
 
-Por favor contáctenos en: https://www.linkedin.com/in/samson18/
+Por favor contáctese: https://www.linkedin.com/in/samson18/
 
 ---
 
+
 **Versión:** 1.0.0
-**Última actualización:** Diciembre 2025
+**Última Actualización:** Diciembre 2025
 **Autor:** Marc James Samson
 **Estado:** Production Ready
-**Licencia:** Propietario y Confidencial
+**Licencia:** Proprietaria y Confidencial
 
-
-
+---
