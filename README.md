@@ -14,17 +14,23 @@
 
 Designed for supply chain managers, logistics coordinators, and financial analysts to monitor KPIs, identify bottlenecks, and optimize pharmaceutical distribution operations.
 
-### KEY HIGHLIGHTS
+### DATA FOUNDATION & GOVERNANCE
 
-- 4 interactive dashboards with drill-down capabilities
-- 180+ DAX measures for advanced analytics
-- Regional analysis: Africa, Americas, Asia, Europe (44 countries)
-- Carrier benchmarking: 7 major logistics providers (CMA, DB, DHL, FedEx, KN, Maersk, UPS)
-- Financial tracking: Revenue, COGS, margins, profitability analysis
-- Cold chain monitoring: Temperature compliance and excursion tracking
-- Warehouse optimization: Inventory health, Days on Hand (DOH), stock level analysis
-- Sustainability metrics: CO2 tracking per KM, per order, total carbon footprint
+This project demonstrates enterprise-grade data engineering practices applied to pharmaceutical supply chain analytics:
 
+**Dataset Engineering:**
+- **Source**: Entire dataset designed and architected from scratch following industry best practices
+- **Data Layer**: Imported into SQL Server 2019+ for rigorous transformation and validation
+- **Upstream Processing**: All data cleansing, enrichment, and quality checks performed at the SQL layer from Power BI
+- **Philosophy**: "Data quality must be built at the source, not corrected at the reporting layer"—ensuring clean, validated data flows directly into analytics
+
+**Data Quality Framework:**
+- Standardized validation rules applied during ETL
+- 13 data tables with 20 active relationships (star schema architecture)
+- 302 calculated measures for consistent KPI definitions
+- Refresh cycle: 9–12 seconds with optimized query performance
+
+This upstream-first approach guarantees data integrity across 75,000+ records spanning 4 regions, 44 countries, and 44 warehouses globally.
 ---
 
 ## DASHBOARD PAGES
@@ -298,6 +304,9 @@ Contact: https://www.linkedin.com/in/samson18/
 ---
 
 For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
+
+
 
 
 
