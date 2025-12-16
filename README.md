@@ -149,8 +149,11 @@ The dashboard tracks **61 key performance indicators (KPIs)** organized across 4
 | Carriers Tracked | 7 |
 | Suppliers Tracked | 20 |
 | Products Tracked | 31 |
+| Categories of Products | 6 |
 | Transport Modes | 4 |
 | Orders Tracked | 9,980 |
+| Customers Tracked | 2,535 |
+| Temperature Excursions | 2 |
 | Data Volume | 75,000+ records |
 | Data Retention Period | 2023-2025 (3 years) |
 | Refresh Time | 9-12 seconds |
