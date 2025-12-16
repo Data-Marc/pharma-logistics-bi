@@ -242,11 +242,12 @@ Demand forecasting and accuracy analysis for inventory optimization.
 | Component | Technology | Version |
 |-----------|-----------|---------|
 | BI Platform | Power BI Desktop | Latest (Premium License) |
+| Analysis & Optimization | DAX Studio | Latest |
 | Data Engine | Analysis Services | Tabular Model |
 | Database | SQL Server | 2019+ (SQLEXPRESS) |
 | Query Language | DAX | Latest |
-| Data Model | Star Schema | 29 tables, 20 relationships |
-| Measures | DAX Calculations | 180+ KPIs |
+| Data Model | Star Schema | 13 tables, 20 relationships |
+| Measures | DAX Calculations | 302 KPIs |
 
 ---
 
