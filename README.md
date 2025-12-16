@@ -35,6 +35,21 @@ This project demonstrates enterprise-grade data engineering practices applied to
 This upstream-first approach guarantees data integrity across 75,000+ records spanning 4 regions, 44 countries, and 44 warehouses globally.
 ---
 
+### Architecture Diagram
+
+```
+┌─────────────────┐         ┌──────────────────────────┐         ┌──────────────┐         ┌──────────┐
+│   Raw Data      │         │   SQL Server 2019+       │         │   Power BI   │         │  Users   │
+│                 │────────▶│   (ETL & Validation)     │────────▶│  Desktop     │────────▶│          │
+│ • ERP Systems   │         │                          │         │  & Service   │         │ Analysts │
+│ • APIs          │         │ • Constraints            │         │              │         │ Managers │
+│ • Databases     │         │ • Relationships          │         │ 4 Dashboards │         │          │
+│ • Files         │         │ • Data Quality Checks    │         │ 302 Measures │         │          │
+└─────────────────┘         └──────────────────────────┘         └──────────────┘         └──────────┘
+```
+
+---
+
 ## DASHBOARD PAGES
 
 📊 **OVERVIEW** - Global Performance Dashboard
