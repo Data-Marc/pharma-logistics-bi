@@ -33,7 +33,7 @@ Ce projet démontre les pratiques d'ingénierie des données de niveau entrepris
 - Règles de validation standardisées appliquées pendant l'ETL
 - 13 tables de données avec 20 relations actives (architecture de schéma en étoile)
 - 302 mesures calculées pour des définitions de KPI cohérentes
-Cette approche upstream-first garantit l'intégrité des données sur plus de 75 000 enregistrements couvrant 4 régions, 44 pays et 44 entrepôts mondialement.
+Cette approche upstream-first garantit l'intégrité des données sur plus de 822 000+ enregistrements couvrant 4 régions, 44 pays et 44 entrepôts mondialement.
 
 ---
 
