@@ -39,14 +39,14 @@ This upstream-first approach guarantees data integrity across 75,000+ records sp
 ### Architecture Diagram
 
 ```
-┌─────────────────┐         ┌──────────────────────────┐         ┌──────────────┐         ┌──────────┐
-│   Raw Data      │         │   SQL Server 2019+       │         │   Power BI   │         │  Users   │
-│                 │────────▶│   (ETL & Validation)     │────────▶│  Desktop     │────────▶│          │
-│ • ERP Systems   │         │                          │         │  & Service   │         │ Analysts │
-│ • APIs          │         │ • Constraints            │         │              │         │ Managers │
-│ • Databases     │         │ • Relationships          │         │ 4 Dashboards │         │          │
-│ • Files         │         │ • Data Quality Checks    │         │ 302 Measures │         │          │
-└─────────────────┘         └──────────────────────────┘         └──────────────┘         └──────────┘
+┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────────────────┐        ┌──────────┐
+│   Raw Data      │         │   SQL Server 2019+       │         │   Power BI                │        │  Users   │
+│                 │────────▶│   (ETL & Validation)     │────────▶│  Dataset & Reports        │────────▶│          │
+│ • ERP Systems   │         │                          │         │                           │        │ Analysts │
+│ • APIs/Databases│         │ • Data Quality Checks    │         │ • Star Schema (13 Tables) │        │ Managers │
+│ • Flat Files    │         │ • Stored Procedures      │         │ • 20 Active Relationships │        │          │
+│                 │         │ • Load to Staging/DW     │         │ • DAX Logic (302 Measures)│        │          │
+└─────────────────┘         └──────────────────────────┘         └───────────────────────────┘        └──────────┘
 ```
 
 ---
