@@ -1,6 +1,14 @@
 # PHARMA LOGISTICS - Power BI Dashboard
 
- [English](README.md) |  [Français](README.fr.md) |  [Español](README.es.md)
+---
+
+##  Choose Your Language | Choisissez Votre Langue | Elige Tu Idioma
+
+|  English |  Français |  Español |
+|:---:|:---:|:---:|
+| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
+
+---
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
@@ -307,6 +315,7 @@ Contact: https://www.linkedin.com/in/samson18/
 ---
 
 For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
 
 
 

@@ -1,6 +1,14 @@
 # PHARMA LOGISTICS - Panel de Control Power BI
 
- [English](README.md) |  [Français](README.fr.md) |  [Español](README.es.md)
+---
+
+##  Elige Tu Idioma | Choose Your Language | Choisissez Votre Langue
+
+|  English |  Français |  Español |
+|:---:|:---:|:---:|
+| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
+
+---
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
@@ -128,4 +136,5 @@ Por favor contáctenos en: https://www.linkedin.com/in/samson18/
 **Autor:** Marc James Samson
 **Estado:** Production Ready
 **Licencia:** Propietario y Confidencial
+
 

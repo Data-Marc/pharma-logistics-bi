@@ -1,6 +1,14 @@
 # PHARMA LOGISTICS - Tableau de Bord Power BI
 
- [English](README.md) |  [Français](README.fr.md) |  [Español](README.es.md)
+---
+
+##  Choisissez Votre Langue | Choose Your Language | Elige Tu Idioma
+
+|  English |  Français |  Español |
+|:---:|:---:|:---:|
+| [Read in English](README.md) | [Lire en Français](README.fr.md) | [Leer en Español](README.es.md) |
+
+---
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/releases)
@@ -128,4 +136,5 @@ Veuillez contacter: https://www.linkedin.com/in/samson18/
 **Auteur:** Marc James Samson
 **Statut:** Production Ready
 **Licence:** Propriétaire et Confidentiel
+
 
