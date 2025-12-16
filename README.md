@@ -1,4 +1,4 @@
-# PHARMA LOGISTICS - Power BI Dashboard
+﻿# PHARMA LOGISTICS - Power BI Dashboard
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
@@ -284,14 +284,27 @@ Demand forecasting and accuracy analysis for inventory optimization.
 
 | Metric | Value |
 |--------|-------|
+| **MODEL ARCHITECTURE** | |
 | Dashboard Pages | 4 |
 | Visuals Count | 20+ |
+| Data Tables | 13 |
 | Measure Tables | 5 |
 | Total Measures | 302 |
-| Data Tables | 13 |
 | Relationships | 20 |
-| Report File Size | ~150MB |
+| **GEOGRAPHIC & BUSINESS COVERAGE** | |
+| Regions Covered | 4 |
+| Countries Included | 44 |
+| Warehouses Tracked | 44 |
+| Carriers Tracked | 7 |
+| Suppliers Tracked | 20 |
+| Products Tracked | 31 |
+| Transport Modes | 4 |
+| **DATA VOLUME & ENTITIES** | |
+| Orders Tracked | 9,980 |
 | Data Volume | 75,000+ records |
+| Data Retention Period | 2023-2025 |
+| **PERFORMANCE & FILE METRICS** | |
+| Report File Size | ~150MB |
 | Refresh Time | 9-12 seconds |
 | Data Retention | 5 years (2021-2025) |
 | Regions Covered | 4 |
@@ -331,4 +344,5 @@ For installation help or licensing inquiries:
 ---
 
 For licensing inquiries and commercial use, please contact: https://www.linkedin.com/in/samson18/
+
 
