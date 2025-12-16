@@ -118,8 +118,6 @@ Seguimiento detallado de 44 almacenes distribuidos en 4 regiones, 44 países.
 
 ## SOPORTE
 
-Para consultas de licencia:
-
 Por favor contáctenos en: https://www.linkedin.com/in/samson18/
 
 ---
