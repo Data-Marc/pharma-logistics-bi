@@ -54,11 +54,25 @@ This upstream-first approach guarantees data integrity across 75,000+ records sp
 
 📊 **OVERVIEW** - Global Performance Dashboard
 
+<img src="docs/images/overview.png" width="700" alt="OVERVIEW Dashboard Preview">
+
+---
+
 📈 **PERFORMANCE** - Supply Chain Analytics
+
+<img src="docs/images/performance.png" width="700" alt="PERFORMANCE Dashboard Preview">
+
+---
 
 🏭 **WAREHOUSES** - Inventory Optimization
 
+<img src="docs/images/warehouses.png" width="700" alt="WAREHOUSES Dashboard Preview">
+
+---
+
 💰 **FINANCIAL** - Profitability & Economics
+
+<img src="docs/images/financial.png" width="700" alt="FINANCIAL Dashboard Preview">
 
 ---
 
