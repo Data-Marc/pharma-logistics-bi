@@ -169,7 +169,7 @@ The dashboard tracks **61 key performance indicators (KPIs)** organized across 4
 | Orders Tracked | 9,980 |
 | Customers Tracked | 2,535 |
 | Temperature Excursions | 2 |
-| Data Volume | 75,000+ records |
+| Data Volume | 822,000+ records |
 | Data Retention Period | 2023-2025 (3 years) |
 | Refresh Time | 16-20 seconds |
 
