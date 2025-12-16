@@ -248,6 +248,7 @@ Demand forecasting and accuracy analysis for inventory optimization.
 | IDE | Visual Studio Code | 1.107.0 |
 | Data Engine | Analysis Services | Tabular Model |
 | Database | SQL Server | 2019+ (SQLEXPRESS) |
+| Database Management | SQL Server Management Studio | 21.6.17 |
 
 ---
 
