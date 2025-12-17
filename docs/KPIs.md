@@ -101,7 +101,9 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 **By Warehouse:** Metrics tracked across 44 warehouses globally
 
-**By Carrier:** Performance metrics for 7 tracked carriers
+**By Carrier:** Performance metrics for 7 tracked carriers:
+
+CMA CGM Air Cargo, DB Schenker, DHL, FedEx, Kuehne+Nagel, Maersk, UPS HealthCare
 
 **By Product Category:** Analysis across 6 product categories:
 
