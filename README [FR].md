@@ -196,7 +196,7 @@ Ce projet n'est PAS open-source et est proposé uniquement pour une licence comm
 
 Pour les demandes de licence : https://www.linkedin.com/in/samson18/
 
-Voir le fichier LICENSE pour les termes juridiques complets.
+Voir le fichier [LICENSE](../LICENSE) pour les termes juridiques complets.
 
 ---
 

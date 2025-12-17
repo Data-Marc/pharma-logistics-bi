@@ -214,7 +214,7 @@ This project is NOT open-source and is offered for commercial licensing only.
 
 For licensing inquiries: https://www.linkedin.com/in/samson18/
 
-See LICENSE file for complete legal terms.
+See [LICENSE](LICENSE) file for complete legal terms.
 
 ---
 

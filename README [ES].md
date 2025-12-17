@@ -196,7 +196,7 @@ Este proyecto NO es de código abierto y solo se ofrece bajo licencia comercial.
 
 Para solicitudes de licencia: https://www.linkedin.com/in/samson18/
 
-Ver archivo LICENSE para términos legales completos.
+Ver archivo [LICENSE](../LICENSE) para términos legales completos.
 
 ---
 
