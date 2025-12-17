@@ -103,7 +103,9 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 **By Carrier:** Performance metrics for 7 tracked carriers
 
-**By Product Category:** Analysis across Biologic, Cold Chain Supply, Consumable, Medical Device, Prescription Drug, and Vaccine
+**By Product Category:** Analysis across 6 product categories:
+
+Biologic, Cold Chain Supply, Consumable, Medical Device, Prescription Drug, Vaccine
 
 ---
 
