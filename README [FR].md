@@ -40,14 +40,41 @@ Cette approche upstream-first garantit l'intégrité des données sur plus de 82
 ### Diagramme d'Architecture
 
 ```
-┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────────────────┐        ┌──────────┐
-│   Données Brutes│         │   SQL Server 2019+       │         │   Power BI                │        │ Utilisa- │
-│                 │────────▶│   (ETL & Validation)     │────────▶│  Dataset & Rapports       │────────▶│  teurs   │
-│ • Systèmes ERP  │         │                          │         │                           │        │ Analystes│
-│ • APIs/Bases de │         │ • Vérifications Qualité  │         │ • Schéma Étoile (13 Tables)       │ Managers │
-│   données       │         │ • Procédures Stockées    │         │ • 20 Relations Actives    │        │          │
-│ • Fichiers plats│         │ • Chargement Staging/DW  │         │ • Logique DAX (302 Mesures)       │          │
-└─────────────────┘         └──────────────────────────┘         └───────────────────────────┘        └──────────┘
+┌─────────────────┐         ┌──────────────────────────┐         ┌─────────────────────────────┐           ┌───────────────────┐
+│  Données Brutes │         │   SQL Server 2019+       │         │   Power BI                  │           │ Utilisateurs      │
+│                 ───────────▶   (ETL & Validation)    ──────────▶  Dataset & Rapports        ─────────────▶                 │                      
+│ • Systèmes ERP  │         │                          │         │                             │           │ Analystes         │
+│ • APIs/Bases de │         │ • Vérifications Qualité  │         │ • Schéma Étoile (13 Tables) │           │ Managers          │
+│   données       │         │ • Procédures Stockées    │         │ • 20 Relations Actives      │           │                   │
+│ • Fichiers plats│         │ • Chargement Staging/DW  │         │ • Logique DAX (302 Mesures) │           │                   │
+└─────────────────┘         └──────────────────────────┘         └─────────────────────────────┘           └───────────────────┘
+```mermaid
+graph LR
+    subgraph " "
+    A["<b>Données Brutes</b><br/>• ERP<br/>• APIs<br/>• Fichiers"]
+    end
+    
+    subgraph " "
+    B["<b>SQL Server 2019+</b><br/>• Qualité & Validation<br/>• Procédures Stockées<br/>• Staging/DW"]
+    end
+    
+    subgraph " "
+    C["<b>Power BI</b><br/>• Schéma Étoile (13 Tables)<br/>• 20 Relations Actives<br/>• 302 Mesures DAX"]
+    end
+    
+    subgraph " "
+    D["<b>Utilisateurs</b><br/>• Analystes<br/>• Managers"]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    
+    style A fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style C fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style D fill:#f9f9f9,stroke:#333,stroke-width:1px
+    ```
 ```
 
 ---
