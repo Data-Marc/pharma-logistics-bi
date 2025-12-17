@@ -90,10 +90,10 @@ Transactions Financial Metrics Performance KPIs
 ## Regional Structure
 
 **4 Regions:**
-- Region 1
-- Region 2
-- Region 3
-- Region 4
+- Africa
+- Americas
+- Asia
+- Europe
 
 **44 Warehouses** distributed globally with inventory and logistics tracking
 
@@ -102,12 +102,12 @@ Transactions Financial Metrics Performance KPIs
 ## Product Categories
 
 **6 Categories:**
-- Category 1
-- Category 2
-- Category 3
-- Category 4
-- Category 5
-- Category 6
+- Biologic
+- Cold Chain Supply
+- Consumable
+- Medical Device
+- Prescription Drug
+- Vaccine
 
 ---
 
