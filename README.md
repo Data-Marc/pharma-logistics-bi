@@ -60,10 +60,10 @@ graph LR
     B --> C
     C --> D
     
-    style A fill:#ffffff,stroke:#333
-    style B fill:#ffffff,stroke:#333
-    style C fill:#fff9c4,stroke:#fbc02d
-    style D fill:#e3f2fd,stroke:#1565c0
+    style A fill:#f5f5f5,stroke:#333,stroke-width:2px,color:#000
+    style B fill:#f5f5f5,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#ffd700,stroke:#ff8c00,stroke-width:2px,color:#000
+    style D fill:#87ceeb,stroke:#0066cc,stroke-width:2px,color:#000
 ```
 
 ---
