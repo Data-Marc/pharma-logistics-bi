@@ -99,7 +99,7 @@ graph LR
 
 ### Descripción General Rápida de KPI
 
-El panel de control monitorea **61 indicadores clave de desempeño (KPI)** organizados en 4 categorías de negocio. Ver [docs/KPIs.md](docs/KPIs.md) para descripciones completas y cálculos.
+📊 Documentación Completa de KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la lista completa de KPI propuestos.
 
 ### 📦 KPI Clave de Transporte
 | Nombre del KPI | Descripción | Alcance |
@@ -145,7 +145,7 @@ El panel de control monitorea **61 indicadores clave de desempeño (KPI)** organ
 | **Costo de Bienes Vendidos** | COGS Total (MTD, YTD, YoY) | 🧾 Contabilidad |
 | **Riesgo de Vencimiento (GBP)** | Valor financiero del inventario en riesgo | 🗑️ Gestión Residuos |
 
-**📊 Documentación Completa de KPI:** Ver [docs/KPIs.md](docs/KPIs.md) para descripciones detalladas, metodologías de cálculo y asignaciones de paneles.
+📊 Documentación Completa de KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la lista completa de KPI propuestos.
 
 ---
 

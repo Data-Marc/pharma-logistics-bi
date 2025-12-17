@@ -99,7 +99,7 @@ graph LR
 
 ### Aperçu Rapide des KPI
 
-Le tableau de bord suivi **61 indicateurs clés de performance (KPI)** organisés dans 4 catégories commerciales. Voir [docs/KPIs.md](docs/KPIs.md) pour les descriptions complètes et les calculs.
+📊 Documentation Complète des KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir l'intégralité des KPI proposés.
 
 ### 📦 KPI Clés de Transport
 | Nom du KPI | Description | Portée |
@@ -145,7 +145,7 @@ Le tableau de bord suivi **61 indicateurs clés de performance (KPI)** organisé
 | **Coût des Biens Vendus** | COGS Total (MTD, YTD, YoY) | 🧾 Comptabilité |
 | **Risque d'Expiration (GBP)** | Valeur financière de l'inventaire à risque | 🗑️ Gestion des Déchets |
 
-**📊 Documentation Complète des KPI :** Voir [docs/KPIs.md](docs/KPIs.md) pour les descriptions détaillées, les méthodes de calcul et les affectations de tableaux de bord.
+📊 Documentation Complète des KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir l'intégralité des KPI proposés.
 
 ---
 

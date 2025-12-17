@@ -118,7 +118,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ### Quick KPI Overview
 
-The dashboard tracks **61 key performance indicators (KPIs)** organized across 4 business categories. See [docs/KPIs.md](docs/KPIs.md) for complete descriptions and calculations.
+📊 Documentation Complète des KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir l'intégralité des KPI proposés.
 
 ### 📦 Key Transport KPIs
 | KPI Name | Description | Scope |
@@ -164,7 +164,7 @@ The dashboard tracks **61 key performance indicators (KPIs)** organized across 4
 | **Cost of Goods Sold** | Total COGS (MTP, YTD, YoY) | 📋 Accounting |
 | **Expiry Risk (GBP)** | Financial value of at-risk inventory | ♻️ Waste Mgmt |
 
-**📚 Full KPI Documentation:** See [docs/KPIs.md](docs/KPIs.md) for detailed descriptions, calculation methods, and dashboard assignments.
+📊 Full KPI Documentation: See [docs/KPIs.md](docs/KPIs.md) to view the complete list of proposed KPIs.
 
 ---
 
