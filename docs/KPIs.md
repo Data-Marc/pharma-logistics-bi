@@ -97,7 +97,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 ## 🌍 Regional & Geographic KPIs (Additional Context)
 
 **By Region:** Each above KPI can be tracked per region:
-- Region 1, Region 2, Region 3, Region 4
+- Africa, Americas, Asia, Europe
 
 **By Warehouse:** Metrics tracked across 44 warehouses globally
 
