@@ -147,20 +147,6 @@ graph LR
 
 ---
 
-## PILE TECHNOLOGIQUE
-
-| Composant | Technologie | Version |
-|-----------|-----------|---------|
-| Plateforme BI | Power BI Desktop | 2.149.1429.0 |
-| Transformation de Données | Power Query | 2.149.1429.0 |
-| Analyse & Optimisation | DAX Studio | 3.2.1 |
-| IDE | Visual Studio Code | 1.107.0 |
-| Feuille de Calcul | Microsoft Excel | 2511 |
-| Base de Données | SQL Server | 2019+ (SQLEXPRESS) |
-| Gestion Base de Données | SQL Server Management Studio | 21.6.17 |
-
----
-
 ## MÉTRIQUES DU PROJET
 
 | Métrique | Valeur |
@@ -186,6 +172,20 @@ graph LR
 | Volume de Données | 822 000+ enregistrements |
 | Période de Rétention des Données | 2023-2025 (3 ans) |
 | Temps d'Actualisation | 16-20 secondes |
+
+---
+
+## PILE TECHNOLOGIQUE
+
+| Composant | Technologie | Version |
+|-----------|-----------|---------|
+| Plateforme BI | Power BI Desktop | 2.149.1429.0 |
+| Transformation de Données | Power Query | 2.149.1429.0 |
+| Analyse & Optimisation | DAX Studio | 3.2.1 |
+| IDE | Visual Studio Code | 1.107.0 |
+| Feuille de Calcul | Microsoft Excel | 2511 |
+| Base de Données | SQL Server | 2019+ (SQLEXPRESS) |
+| Gestion Base de Données | SQL Server Management Studio | 21.6.17 |
 
 ---
 

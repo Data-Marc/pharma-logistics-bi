@@ -147,20 +147,6 @@ graph LR
 
 ---
 
-## STACK TECNOLÓGICO
-
-| Componente | Tecnología | Versión |
-|-----------|-----------|---------|
-| Plataforma BI | Power BI Desktop | 2.149.1429.0 |
-| Transformación de Datos | Power Query | 2.149.1429.0 |
-| Análisis y Optimización | DAX Studio | 3.2.1 |
-| IDE | Visual Studio Code | 1.107.0 |
-| Hoja de Cálculo | Microsoft Excel | 2511 |
-| Base de Datos | SQL Server | 2019+ (SQLEXPRESS) |
-| Gestión Base de Datos | SQL Server Management Studio | 21.6.17 |
-
----
-
 ## MÉTRICAS DEL PROYECTO
 
 | Métrica | Valor |
@@ -186,6 +172,20 @@ graph LR
 | Volumen de Datos | 822 000+ registros |
 | Período de Retención de Datos | 2023-2025 (3 años) |
 | Tiempo de Actualización | 16-20 segundos |
+
+---
+
+## STACK TECNOLÓGICO
+
+| Componente | Tecnología | Versión |
+|-----------|-----------|---------|
+| Plataforma BI | Power BI Desktop | 2.149.1429.0 |
+| Transformación de Datos | Power Query | 2.149.1429.0 |
+| Análisis y Optimización | DAX Studio | 3.2.1 |
+| IDE | Visual Studio Code | 1.107.0 |
+| Hoja de Cálculo | Microsoft Excel | 2511 |
+| Base de Datos | SQL Server | 2019+ (SQLEXPRESS) |
+| Gestión Base de Datos | SQL Server Management Studio | 21.6.17 |
 
 ---
 
