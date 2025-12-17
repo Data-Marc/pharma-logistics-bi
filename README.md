@@ -118,8 +118,6 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ### Quick KPI Overview
 
-📊 Documentation Complète des KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir l'intégralité des KPI proposés.
-
 ### 📦 Key Transport KPIs
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |

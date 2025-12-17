@@ -99,8 +99,6 @@ graph LR
 
 ### Aperçu Rapide des KPI
 
-📊 Documentation Complète des KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir l'intégralité des KPI proposés.
-
 ### 📦 KPI Clés de Transport
 | Nom du KPI | Description | Portée |
 | :--- | :--- | :--- |

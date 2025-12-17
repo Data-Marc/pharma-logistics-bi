@@ -99,8 +99,6 @@ graph LR
 
 ### Descripción General Rápida de KPI
 
-📊 Documentación Completa de KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la lista completa de KPI propuestos.
-
 ### 📦 KPI Clave de Transporte
 | Nombre del KPI | Descripción | Alcance |
 | :--- | :--- | :--- |
