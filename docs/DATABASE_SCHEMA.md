@@ -64,14 +64,18 @@ The following diagram illustrates the relationships between all major entities i
 
 | From Entity | To Entity | Relationship | Cardinality |
 | :--- | :--- | :--- | :--- |
+| **Orders** | Customers | One customer can place multiple orders | N:1 |
 | **Orders** | Shipments | One order can have multiple shipments | 1:N |
-| **Orders** | Inventory | Orders consume inventory | M:N |
+| **Orders** | Inventory | Orders consume inventory from stock | 1:N |
 | **Shipments** | Carriers | Each shipment uses one carrier | N:1 |
-| **Shipments** | Warehouses | Shipments originate from/go to warehouses | N:N |
+| **Shipments** | Warehouses | Shipments originate from one warehouse | N:1 |
+| **Shipments** | Date | Shipments tracked by date | N:1 |
 | **Inventory** | Products | Inventory tracks product SKUs | N:1 |
 | **Inventory** | Warehouses | Inventory stored in warehouses | N:1 |
+| **Inventory** | Date | Inventory snapshots by date | N:1 |
 | **Products** | Categories | Products belong to categories | N:1 |
 | **Warehouses** | Regions | Warehouses assigned to regions | N:1 |
+| **Customers** | Regions | Customers assigned to regions | N:1 |
 
 ---
 
