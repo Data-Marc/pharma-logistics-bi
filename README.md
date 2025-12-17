@@ -36,17 +36,34 @@ This project demonstrates enterprise-grade data engineering practices applied to
 This upstream-first approach guarantees data integrity across 822,000+ records spanning 4 regions, 44 countries, 44 warehouses, and 2,535 customers globally.
 ---
 
-### Architecture Diagram
+## 🏗️ Architecture Diagram
 
-```
-+-----------------+         +--------------------------+         +---------------------------+        +----------+
-�   Raw Data      �         �   SQL Server 2019+       �         �   Power BI                �        �  Users   �
-�                 �--------?�   (ETL & Validation)     �--------?�  Dataset & Reports        �--------?�        �
-� � ERP Systems   �         �                          �         �                           �        � Analysts �
-� � APIs/Databases�         � � Data Quality Checks    �         � � Star Schema (13 Tables) �        � Managers �
-� � Flat Files    �         � � Stored Procedures      �         � � 20 Active Relationships �        �          �
-�                 �         � � Load to Staging/DW     �         � � DAX Logic (302 Measures)�        �          �
-+-----------------+         +--------------------------+         +---------------------------+        +----------+
+```mermaid
+graph LR
+    subgraph "Source"
+    A["Raw Data<br/>• ERP Systems<br/>• APIs<br/>• Flat Files"]
+    end
+    
+    subgraph "Engineering"
+    B["SQL Server 2019+<br/>• Data Quality<br/>• ETL & Validation<br/>• Staging/DW"]
+    end
+    
+    subgraph "Analytics"
+    C["Power BI<br/>• Star Schema 13 Tables<br/>• 20 Active Relationships<br/>• DAX Logic 302 Measures"]
+    end
+    
+    subgraph "Business"
+    D["Users<br/>• Analysts<br/>• Managers<br/>• Supply Chain Teams"]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    
+    style A fill:#ffffff,stroke:#333
+    style B fill:#ffffff,stroke:#333
+    style C fill:#fff9c4,stroke:#fbc02d
+    style D fill:#e3f2fd,stroke:#1565c0
 ```
 
 ---
