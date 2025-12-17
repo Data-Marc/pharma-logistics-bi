@@ -60,8 +60,8 @@ graph LR
     B --> C
     C --> D
     
-    style A fill:#f5f5f5,stroke:#333,stroke-width:2px,color:#000
-    style B fill:#f5f5f5,stroke:#333,stroke-width:2px,color:#000
+    style A fill:#e8f4f8,stroke:#0066cc,stroke-width:2px,color:#000
+    style B fill:#ffe8cc,stroke:#ff6600,stroke-width:2px,color:#000
     style C fill:#ffd700,stroke:#ff8c00,stroke-width:2px,color:#000
     style D fill:#87ceeb,stroke:#0066cc,stroke-width:2px,color:#000
 ```
