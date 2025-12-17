@@ -1,6 +1,8 @@
 # PHARMA LOGISTICS - Power BI Dashboard
 #### By [Marc James Samson](https://www.linkedin.com/in/samson18/)
 
+---
+
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/blob/main/README.md)
 [![Power BI](https://img.shields.io/badge/Power%20BI-2.149.1429.0-F2CC8F?logo=powerbi)](https://powerbi.microsoft.com)
