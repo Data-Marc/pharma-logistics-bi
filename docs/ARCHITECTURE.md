@@ -78,40 +78,53 @@ graph TB
 ### Presentation Layer
 
 **Power BI Desktop Report Model** (Pharma Logistics.pbix)
-- 4 Dashboard pages with 413 interactive visuals
+- 4 Dashboard pages with 73 interactive visuals
 - Live connection to Analysis Services
-- Custom visuals and advanced formatting
+- Switchable button groups for comparative analysis
 - Bookmark navigation for user experience
 
 #### Dashboard Pages
 
 1. **Overview Page**
-   - 100 visuals
-   - Executive summary metrics
-   - KPI cards and gauges
-   - Geographic distribution maps
-   - Real-time status indicators
+   - 16 visuals
+   - 6 KPI summary cards (Total Orders, OTIF, Lead Time, etc.)
+   - Freight Cost by transportation mode (bar chart)
+   - Cold Chain Supply composition (pie chart)
+   - Total Revenue by Region with COGS (stacked bar)
+   - Inventory Cost vs Value comparison (switchable buttons)
+   - Supplier stockout financial impact (data table)
 
 2. **Warehouses Page**
-   - 107 visuals
-   - Inventory levels by warehouse
-   - Movement patterns and trends
-   - Storage efficiency metrics
-   - Warehouse performance comparisons
+   - 17 visuals
+   - 6 KPI summary cards
+   - Current Stock inventory table (switchable with Stock at Risk)
+   - Geographic warehouse distribution map (Microsoft Azure)
+   - Inventory Turnover by month (switchable with Warehouse Utilization %)
+   - Health Volume pie chart (switchable with Health Unit pie)
+   - Products in Stocks matrix (Medical Device, Consumable, etc.)
+   - Health Stock Unit and Volume data tables with reorder status
 
 3. **Performance Page**
-   - 106 visuals
-   - Operational KPIs
-   - Service level agreements (SLA) tracking
-   - Delivery performance analysis
-   - Transit time metrics
+   - 20 visuals
+   - 6 KPI summary cards
+   - Delivery Delays by supplier (switchable with Reliability Rate)
+   - Time Delay Categories stacked bar (switchable with Time Delay Visual)
+   - Lead Time by Suppliers (switchable with Delivery Delays)
+   - CO₂ per Kg analysis (switchable with CO₂ per 100 Km)
+   - CO₂ by Carrier comparison (switchable with CO₂ by Mode)
+   - CO₂ avg per Order trend (switchable with CO₂ per 100 Km)
+   - Delivery Performance matrix by region and carrier
 
 4. **Financial Page**
-   - 100 visuals
-   - Revenue and cost analysis
-   - Margin calculations
-   - Budget vs. actual comparisons
-   - Financial performance trends
+   - 20 visuals
+   - 6 KPI summary cards
+   - Actual Lead Time donut by carrier (switchable with Lead Time Total Orders)
+   - OTIF Carriers comparison (switchable with On Time Carriers)
+   - OTIF Breakdown % (switchable with Breakdown Cost %)
+   - Orders by Status waterfall chart (Delivered, Pending, Returned, Cancelled)
+   - Back Orders vs Orders (switchable with Excursion % vs Orders)
+   - Transport Lead Time vs Global Lead Time by carrier
+   - Delivery Performance and Quality Cost matrices by region
 
 ## KPI Architecture
 
