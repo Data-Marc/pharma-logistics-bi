@@ -1,4 +1,5 @@
-# PHARMA LOGISTICS - Panel de Control Power BI
+# PHARMA LOGISTICS - Panel de Control Power BI **Por [Marc James Samson](https://www.linkedin.com/in/marc-james-samson/)**
+
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/blob/main/README%20%5BES%5D.md)
@@ -9,8 +10,6 @@
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.107.0-007ACC?logo=visualstudiocode)](https://code.visualstudio.com)
 [![Excel](https://img.shields.io/badge/Excel-2511-217346?logo=microsoft-excel)](https://www.microsoft.com/excel)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
-
-**Por [Marc James Samson](https://www.linkedin.com/in/marc-james-samson/)**
 
 ---
 
