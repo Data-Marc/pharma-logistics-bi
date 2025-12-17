@@ -37,18 +37,34 @@ Este enfoque ascendente garantiza integridad de datos en más de 822,000+ regist
 
 ---
 
-### Diagrama de Arquitectura
+## 🏗️ Diagrama de Arquitectura
 
-```
-┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────────────────┐        ┌──────────────┐
-│  Datos Crudos   │         │   SQL Server 2019+       │         │   Power BI                │        │  Usuarios    │
-│                 │────────▶│   (ETL & Validación)     │────────▶│  Dataset e Informes       │────────▶│             │
-│ • Sistemas ERP  │         │                          │         │                           │        │ Analistas    │
-│ • APIs/Base de  │         │ • Verificaciones Calidad │         │ • Esquema de Estrella (13 Tablas)  │ Gerentes     │
-│   Datos         │         │ • Procedimientos Almac.  │         │ • 20 Relaciones Activas   │        │              │
-│ • Archivos      │         │ • Carga Staging/DW       │         │ • Lógica DAX (302 Medidas)│        │              │
-│   Planos        │         │                          │         │                           │        │              │
-└─────────────────┘         └──────────────────────────┘         └───────────────────────────┘        └──────────────┘
+```mermaid
+graph LR
+    subgraph "Source"
+    A["Datos Crudos<br/>• Sistemas ERP<br/>• APIs<br/>• Archivos Planos"]
+    end
+    
+    subgraph "Engineering"
+    B["SQL Server 2019+<br/>• Calidad Datos<br/>• ETL & Validación<br/>• Staging/DW"]
+    end
+    
+    subgraph "Analytics"
+    C["Power BI<br/>• Esquema Estrella 13 Tablas<br/>• 20 Relaciones Activas<br/>• Lógica DAX 302 Medidas"]
+    end
+    
+    subgraph "Business"
+    D["Usuarios<br/>• Analistas<br/>• Gerentes<br/>• Equipos Supply Chain"]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    
+    style A fill:#e8f4f8,stroke:#0066cc,stroke-width:2px,color:#000
+    style B fill:#ffe8cc,stroke:#ff6600,stroke-width:2px,color:#000
+    style C fill:#ffd700,stroke:#ff8c00,stroke-width:2px,color:#000
+    style D fill:#87ceeb,stroke:#0066cc,stroke-width:2px,color:#000
 ```
 
 ---

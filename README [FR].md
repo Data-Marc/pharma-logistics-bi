@@ -37,18 +37,34 @@ Cette approche upstream-first garantit l'intégrité des données sur plus de 82
 
 ---
 
-### Diagramme d'Architecture
+## 🏗️ Diagramme d'Architecture
 
-```
-┌─────────────────┐         ┌──────────────────────────┐         ┌─────────────────────────────┐           ┌───────────────────┐
-│  Données Brutes │         │   SQL Server 2019+       │         │   Power BI                  │           │ Utilisateurs      │
-│                 ───────────▶   (ETL & Validation)    ──────────▶  Dataset & Rapports        ─────────────▶                 │                      
-│ • Systèmes ERP  │         │                          │         │                             │           │ Analystes         │
-│ • APIs/Bases de │         │ • Vérifications Qualité  │         │ • Schéma Étoile (13 Tables) │           │ Managers          │
-│   données       │         │ • Procédures Stockées    │         │ • 20 Relations Actives      │           │                   │
-│ • Fichiers plats│         │ • Chargement Staging/DW  │         │ • Logique DAX (302 Mesures) │           │                   │
-└─────────────────┘         └──────────────────────────┘         └─────────────────────────────┘           └───────────────────┘
+```mermaid
+graph LR
+    subgraph "Source"
+    A["Données Brutes<br/>• Systèmes ERP<br/>• APIs<br/>• Fichiers Plats"]
+    end
+    
+    subgraph "Engineering"
+    B["SQL Server 2019+<br/>• Qualité Données<br/>• ETL & Validation<br/>• Staging/DW"]
+    end
+    
+    subgraph "Analytics"
+    C["Power BI<br/>• Schéma Étoile 13 Tables<br/>• 20 Relations Actives<br/>• Logique DAX 302 Mesures"]
+    end
+    
+    subgraph "Business"
+    D["Utilisateurs<br/>• Analystes<br/>• Managers<br/>• Équipes Supply Chain"]
+    end
 
+    A --> B
+    B --> C
+    C --> D
+    
+    style A fill:#e8f4f8,stroke:#0066cc,stroke-width:2px,color:#000
+    style B fill:#ffe8cc,stroke:#ff6600,stroke-width:2px,color:#000
+    style C fill:#ffd700,stroke:#ff8c00,stroke-width:2px,color:#000
+    style D fill:#87ceeb,stroke:#0066cc,stroke-width:2px,color:#000
 ```
 
 ---
