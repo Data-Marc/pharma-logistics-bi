@@ -143,7 +143,7 @@ graph LR
 | **Costo de Bienes Vendidos** | COGS Total (MTD, YTD, YoY) | 🧾 Contabilidad |
 | **Riesgo de Vencimiento (GBP)** | Valor financiero del inventario en riesgo | 🗑️ Gestión Residuos |
 
-📊 Documentación Completa de KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la lista completa de KPI propuestos.
+📊 Documentación Completa de 61 KPI: Ver docs/KPIs.md para ver la lista completa de KPI propuestos.
 
 ---
 

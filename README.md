@@ -162,7 +162,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 | **Cost of Goods Sold** | Total COGS (MTP, YTD, YoY) | 📋 Accounting |
 | **Expiry Risk (GBP)** | Financial value of at-risk inventory | ♻️ Waste Mgmt |
 
-📊 Full KPI Documentation: See [docs/KPIs.md](docs/KPIs.md) to view the complete list of proposed KPIs.
+📊 Full KPI Documentation of 61 KPIs: See docs/KPIs.md to view the complete list of proposed KPIs.
 
 ---
 

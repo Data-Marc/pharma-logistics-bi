@@ -143,7 +143,7 @@ graph LR
 | **Coût des Biens Vendus** | COGS Total (MTD, YTD, YoY) | 🧾 Comptabilité |
 | **Risque d'Expiration (GBP)** | Valeur financière de l'inventaire à risque | 🗑️ Gestion des Déchets |
 
-📊 Documentation Complète des KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir l'intégralité des KPI proposés.
+📊 Documentation Complète des 61 KPI : Voir docs/KPIs.md pour voir l'intégralité des KPI proposés.
 
 ---
 
