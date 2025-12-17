@@ -40,12 +40,12 @@ This upstream-first approach guarantees data integrity across 822,000+ records s
 
 ```
 +-----------------+         +--------------------------+         +---------------------------+        +----------+
-¦   Raw Data      ¦         ¦   SQL Server 2019+       ¦         ¦   Power BI                ¦        ¦  Users   ¦
-¦                 ¦--------?¦   (ETL & Validation)     ¦--------?¦  Dataset & Reports        ¦--------?¦        ¦
-¦ • ERP Systems   ¦         ¦                          ¦         ¦                           ¦        ¦ Analysts ¦
-¦ • APIs/Databases¦         ¦ • Data Quality Checks    ¦         ¦ • Star Schema (13 Tables) ¦        ¦ Managers ¦
-¦ • Flat Files    ¦         ¦ • Stored Procedures      ¦         ¦ • 20 Active Relationships ¦        ¦          ¦
-¦                 ¦         ¦ • Load to Staging/DW     ¦         ¦ • DAX Logic (302 Measures)¦        ¦          ¦
+ï¿½   Raw Data      ï¿½         ï¿½   SQL Server 2019+       ï¿½         ï¿½   Power BI                ï¿½        ï¿½  Users   ï¿½
+ï¿½                 ï¿½--------?ï¿½   (ETL & Validation)     ï¿½--------?ï¿½  Dataset & Reports        ï¿½--------?ï¿½        ï¿½
+ï¿½ ï¿½ ERP Systems   ï¿½         ï¿½                          ï¿½         ï¿½                           ï¿½        ï¿½ Analysts ï¿½
+ï¿½ ï¿½ APIs/Databasesï¿½         ï¿½ ï¿½ Data Quality Checks    ï¿½         ï¿½ ï¿½ Star Schema (13 Tables) ï¿½        ï¿½ Managers ï¿½
+ï¿½ ï¿½ Flat Files    ï¿½         ï¿½ ï¿½ Stored Procedures      ï¿½         ï¿½ ï¿½ 20 Active Relationships ï¿½        ï¿½          ï¿½
+ï¿½                 ï¿½         ï¿½ ï¿½ Load to Staging/DW     ï¿½         ï¿½ ï¿½ DAX Logic (302 Measures)ï¿½        ï¿½          ï¿½
 +-----------------+         +--------------------------+         +---------------------------+        +----------+
 ```
 
@@ -73,25 +73,25 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ## DASHBOARD PAGES
 
-?? **OVERVIEW** - Global Performance Dashboard
+ğŸ“Š **OVERVIEW** - Global Performance Dashboard
 
 <img src="docs/images/overview.png" width="700" alt="OVERVIEW Dashboard Preview">
 
 ---
 
-?? **PERFORMANCE** - Supply Chain Analytics
+ğŸ“ˆ **PERFORMANCE** - Supply Chain Analytics
 
 <img src="docs/images/warehouses.png" width="700" alt="WAREHOUSES Dashboard Preview">
 
 ---
 
-?? **WAREHOUSES** - Inventory Optimization
+ğŸ­ **WAREHOUSES** - Inventory Optimization
 
 <img src="docs/images/performance.png" width="700" alt="PERFORMANCE Dashboard Preview">
 
 ---
 
-?? **FINANCIAL** - Profitability & Economics
+ğŸ’° **FINANCIAL** - Profitability & Economics
 
 <img src="docs/images/financial.png" width="700" alt="FINANCIAL Dashboard Preview">
 
