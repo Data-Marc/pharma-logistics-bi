@@ -1,6 +1,5 @@
 # PHARMA LOGISTICS - Panel de Control Power BI
-
-Por [Marc James Samson](https://www.linkedin.com/in/marc-james-samson/)
+#### Por [Marc James Samson](https://www.linkedin.com/in/samson18/)
 
 ---
 
