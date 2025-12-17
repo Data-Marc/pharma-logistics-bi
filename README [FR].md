@@ -1,5 +1,7 @@
 # PHARMA LOGISTICS - Tableau de Bord Power BI
 
+Par [Marc James Samson](https://www.linkedin.com/in/marc-james-samson/)
+
 
 [![License: PROPRIETARY](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/Data-Marc/pharma-logistics-bi/blob/main/README%20%5BFR%5D.md)
