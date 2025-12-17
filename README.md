@@ -78,7 +78,6 @@ graph LR
 | **[ Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
 | [ KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
 | [ Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
-| [ Setup Guide](docs/SETUP_GUIDE.md) | Implementation and deployment instructions |
 
 ###  Database Schema Diagram
 

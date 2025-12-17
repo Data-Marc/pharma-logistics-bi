@@ -136,7 +136,6 @@ Transactions Financial Metrics Performance KPIs
 - 📊 [KPIs Documentation](./KPIs.md) - Comprehensive KPI definitions
 - 🏗️ [Architecture Guide](./ARCHITECTURE.md) - System architecture overview
 - 📖 [Data Dictionary](./DATA_DICTIONARY.md) - Detailed field descriptions
-- ⚙️ [Setup Guide](./SETUP_GUIDE.md) - Implementation instructions
 
 ---
 
