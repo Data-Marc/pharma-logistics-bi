@@ -194,7 +194,7 @@ El panel de control monitorea **61 indicadores clave de desempeño (KPI)** organ
 ## LICENCIA
 
 Este proyecto está bajo una **Licencia Proprietaria y Confidencial**.
-Este software NO es de código abierto y solo se ofrece bajo licencia comercial.
+Este proyecto NO es de código abierto y solo se ofrece bajo licencia comercial.
 
 Para solicitudes de licencia: https://www.linkedin.com/in/samson18/
 

@@ -215,7 +215,7 @@ The dashboard tracks **61 key performance indicators (KPIs)** organized across 4
 ## LICENSE
 
 This project is licensed under a **Proprietary and Confidential License**.
-This software is NOT open-source and is offered for commercial licensing only.
+This project is NOT open-source and is offered for commercial licensing only.
 
 For licensing inquiries: https://www.linkedin.com/in/samson18/
 

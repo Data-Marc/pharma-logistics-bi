@@ -194,7 +194,7 @@ Le tableau de bord suivi **61 indicateurs clés de performance (KPI)** organisé
 ## LICENCE
 
 Ce projet est concédé sous une **Licence Propriétaire et Confidentielle**.
-Ce logiciel n'est PAS open-source et est proposé uniquement pour une licence commerciale.
+Ce projet n'est PAS open-source et est proposé uniquement pour une licence commerciale.
 
 Pour les demandes de licence : https://www.linkedin.com/in/samson18/
 
