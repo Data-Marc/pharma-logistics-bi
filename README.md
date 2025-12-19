@@ -97,19 +97,6 @@ The system is built on a SQL Server 2019+ database with **13 tables**, where all
 
 ---
 
-## DOCUMENTATION
-
-###  Project Documentation
-
-| Document | Description |
-| :--- | :--- |
-| [ Architecture Guide](docs/ARCHITECTURE.md) | System architecture, data flow, and technology decisions |
-| **[ Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
-| [ KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
-| [ Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
-
----
-
 ###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
 
 <img src="./docs/images/PowerQuery.png" width="900" alt="Power Query Interface">
@@ -231,6 +218,19 @@ Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the 
 | Data Volume | 822,000+ records |
 | Data Retention Period | 2023-2025 (3 years) |
 | Refresh Time | 16-20 seconds |
+
+---
+
+## DOCUMENTATION
+
+###  Project Documentation
+
+| Document | Description |
+| :--- | :--- |
+| [ Architecture Guide](docs/ARCHITECTURE.md) | System architecture, data flow, and technology decisions |
+| **[ Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
+| [ KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
+| [ Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
 
 ---
 
