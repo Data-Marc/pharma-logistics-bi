@@ -13,6 +13,7 @@
 [![Excel](https://img.shields.io/badge/Excel-2511-217346?logo=microsoft-excel)](https://www.microsoft.com/excel)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 
+
 ---
 
 ## DESCRIPCIÓN GENERAL
@@ -38,7 +39,7 @@ Este enfoque ascendente garantiza integridad de datos en más de 822,000+ regist
 
 ---
 
-## 🏗️ Diagrama de Arquitectura
+## Diagrama de Arquitectura
 
 ```mermaid
 graph LR
@@ -70,47 +71,53 @@ graph LR
 
 ---
 
----
-
 ## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Arquitectura de Base de Datos
 
-![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
+<img src="./docs/images/SQL_Screenshot.png" width="900" alt="Esquema Base de Datos SQL Server">
 
-El sistema está construido sobre una base de datos SQL Server con **13 tablas**:
+El sistema está construido sobre una base de datos SQL Server 2019+ con **13 tablas**, donde todas las limpiezas de datos, transformaciones, cálculos de negocio, restricciones de integridad referencial y definiciones de relaciones se aplican en la capa de datos. Esta arquitectura upstream-first garantiza la consistencia de los datos, elimina el procesamiento redundante en la capa analítica y optimiza el rendimiento general.
+
+[Ver DATABASE_SCHEMA.md completo](docs/DATABASE_SCHEMA.md) | [Diccionario de Datos](docs/DATA_DICTIONARY.md)
+
+---
+
+###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
+
+<img src="./docs/images/PowerQuery.png" width="900" alt="Interfaz Power Query">
+
+---
+
+###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Diagrama del Esquema de Base de Datos
+
+<img src="docs/images/Relations%20Table.png" width="900" alt="Tabla de Relaciones">
+
+El diagrama anterior ilustra el modelo de datos completo con todas las relaciones de entidades, incluyendo Pedidos, Envíos, Inventario, Almacenes, Transportistas, Productos y Transacciones.
+
+---
+
+## PÁGINAS DEL PANEL DE CONTROL
+
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**DESCRIPCIÓN GENERAL** - Panel de Control de Desempeño Global
+
+<img src="docs/images/overview.png" width="900" alt="Vista Previa Panel OVERVIEW">
 
 ---
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
 
-![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
-
-El sistema está construido sobre una base de datos SQL Server con **13 tablas**:
+<img src="docs/images/warehouses.png" width="900" alt="Vista Previa Panel WAREHOUSES">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
-
-<img src="docs/images/warehouses.png" width="700" alt="Panel de Control WAREHOUSES">
-
----
-
-<<<<<<< HEAD
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
-=======
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
->>>>>>> e88a2d3c1e3100017ee22f5c017f20eb046c54fb
 
-<img src="docs/images/performance.png" width="700" alt="Panel de Control PERFORMANCE">
+<img src="docs/images/performance.png" width="900" alt="Vista Previa Panel PERFORMANCE">
 
 ---
 
-<<<<<<< HEAD
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
-=======
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
->>>>>>> e88a2d3c1e3100017ee22f5c017f20eb046c54fb
 
-<img src="docs/images/financial.png" width="700" alt="Panel de Control FINANCIAL">
+<img src="docs/images/financial.png" width="900" alt="Vista Previa Panel FINANCIAL">
 
 ---
 
@@ -118,7 +125,9 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 
 ### Descripción General Rápida de KPI
 
-### 📦 KPI Clave de Transporte
+### KPI Clave de Transporte
+*Métricas que rastrean eficiencia de transporte, desempeño logístico y sostenibilidad operativa.*
+
 | Nombre del KPI | Descripción | Alcance |
 | :--- | :--- | :--- |
 | **OTIF %** | Tasa de Entrega a Tiempo y Completa | 🌍 Global |
@@ -126,7 +135,9 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 | **Costo por KM** | Métrica de eficiencia de transporte | 💰 Financiero |
 | **Emisiones CO2** | Huella ambiental por KM | 🌱 ESG |
 
-### 🏭 KPI Clave de Almacén
+### KPI Clave de Almacén
+*Métricas que analizan optimización de inventario, gestión de stock y productividad de almacenes.*
+
 | Nombre del KPI | Descripción | Alcance |
 | :--- | :--- | :--- |
 | **Días en Inventario (DOH)** | Análisis de duración del almacenamiento | 📉 Riesgo |
@@ -134,35 +145,35 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 | **Riesgo de Vencimiento (GBP)** | Impacto financiero del stock que vence | 💰 Financiero |
 | **Inventario Muerto %** | Porcentaje de inventario no móvil | 📉 Riesgo |
 
-### ⚙️ KPI Clave de Desempeño
+### KPI Clave de Desempeño
 *Métricas que rastrean eficiencia operativa, cumplimiento de calidad y precisión de pronósticos.*
 
 | Nombre del KPI | Descripción | Área de Enfoque |
 | :--- | :--- | :--- |
 | **Cumplimiento de Cadena Fría %** | Porcentaje de envíos en temperatura controlada | ❄️ Aseguramiento Calidad |
 | **MAPE** | Porcentaje de Error Absoluto Medio (Precisión de Pronósticos) | 📊 Planificación Demanda |
-| **Excursiones de Temperatura** | Número y severidad de incidentes térmicos | 🚨 Gestión Riesgos |
-| **Eficiencia Cadena Suministro** | Puntuación compuesta (0-100%) de operaciones | ⚡ Operaciones |
-| **Puntuación de Cumplimiento** | Puntuación de auditoría de cumplimiento (0-100%) | ⚖️ Cumplimiento |
-| **Tasa de Devolución %** | Productos devueltos vs pedidos totales | ↩️ Logística Inversa |
+| **Excursiones de Temperatura** | Número y severidad de incidentes térmicos | ⚠️ Gestión Riesgos |
+| **Eficiencia Cadena Suministro** | Puntuación compuesta (0-100%) de operaciones | ⚙️ Operaciones |
+| **Puntuación de Cumplimiento** | Puntuación de auditoría de cumplimiento (0-100%) | ✅ Cumplimiento |
+| **Tasa de Devolución %** | Productos devueltos vs pedidos totales | 🔄 Logística Inversa |
 | **Sesgo de Pronóstico** | Tendencia de sobreestimación/subestimación | 📈 Planificación |
-| **Tiempo Resolución Excursión** | Horas promedio para resolver incidentes térmicos | ⏱️ Agilidad |
+| **Tiempo Resolución Excursión** | Horas promedio para resolver incidentes térmicos | ⚡ Agilidad |
 
-### 💰 KPI Clave Financieros
+### KPI Clave Financieros
 *Indicadores económicos que miden rentabilidad, costo de servicio y valor de inventario.*
 
 | Nombre del KPI | Descripción | Impacto Comercial |
 | :--- | :--- | :--- |
-| **Margen Bruto %** | Relación de rentabilidad `(Ingresos - COGS) / Ingresos` | 💰 Rentabilidad |
-| **Costo Logístico Total** | Transporte + Cargos de almacenamiento combinados | 📉 Control Costos |
-| **Contribución Neta** | Ganancia neta después de todos los costos | 💵 Salud P&L |
-| **Costo Logístico %** | Gastos logísticos relativos a ingresos | ⚡ Eficiencia |
-| **Costo Almacenamiento Inventario** | Costo anual de almacenamiento y capital inmovilizado | 🏦 Capital Trabajo |
-| **Impacto Desabastecimiento** | Pérdida de ingresos estimada por desabastecimiento | ⚠️ Costo Oportunidad |
-| **Costo de Bienes Vendidos** | COGS Total (MTD, YTD, YoY) | 🧾 Contabilidad |
-| **Riesgo de Vencimiento (GBP)** | Valor financiero del inventario en riesgo | 🗑️ Gestión Residuos |
+| **Margen Bruto %** | Relación de rentabilidad `(Ingresos - COGS) / Ingresos` | 📈 Rentabilidad |
+| **Costo Logístico Total** | Transporte + Cargos de almacenamiento combinados | 💸 Control Costos |
+| **Contribución Neta** | Ganancia neta después de todos los costos | 💰 Salud P&L |
+| **Costo Logístico %** | Gastos logísticos relativos a ingresos | 📊 Eficiencia |
+| **Costo Almacenamiento Inventario** | Costo anual de almacenamiento y capital inmovilizado | 💼 Capital Trabajo |
+| **Impacto Desabastecimiento** | Pérdida de ingresos estimada por desabastecimiento | 🎯 Costo Oportunidad |
+| **Costo de Bienes Vendidos** | COGS Total (MTD, YTD, YoY) | 📋 Contabilidad |
+| **Riesgo de Vencimiento (GBP)** | Valor financiero del inventario en riesgo | ♻️ Gestión Residuos |
 
-📊 Documentación Completa de 61 KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la lista completa de KPI propuestos.
+Documentación Completa de 61 KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la lista completa de KPI propuestos.
 
 ---
 
@@ -194,6 +205,19 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 
 ---
 
+## DOCUMENTACIÓN
+
+###  Documentación del Proyecto
+
+| Documento | Descripción |
+| :--- | :--- |
+| [Guía de Arquitectura](docs/ARCHITECTURE.md) | Arquitectura del sistema, flujo de datos y decisiones tecnológicas |
+| **[Esquema de Base de Datos](docs/DATABASE_SCHEMA.md)** | **Modelo de datos, relaciones de entidades y estructura de base de datos** |
+| [Documentación de KPI](docs/KPIs.md) | Definiciones completas de KPI, cálculos y lógica de negocio |
+| [Diccionario de Datos](docs/DATA_DICTIONARY.md) | Descripciones detalladas de campos y mapeo de datos |
+
+---
+
 ## STACK TECNOLÓGICO
 
 | Componente | Tecnología | Versión |
@@ -215,7 +239,7 @@ Este proyecto NO es de código abierto y solo se ofrece bajo licencia comercial.
 
 Para solicitudes de licencia: https://www.linkedin.com/in/samson18/
 
-Ver archivo [LICENSE](../LICENSE) para términos legales completos.
+Ver archivo [LICENSE](LICENSE) para términos legales completos.
 
 ---
 
@@ -233,3 +257,11 @@ Por favor contáctese: https://www.linkedin.com/in/samson18/
 **Licencia:** Proprietaria y Confidencial
 
 ---
+
+<div align="center">
+
+<a href="https://www.linkedin.com/in/samson18/" target="_blank" style="text-decoration: none;"><img src="./docs/images/Linkedin 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" style="text-decoration: none;"><img src="./docs/images/Youtube 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 7 .png" width="39" height="39" style="vertical-align: middle;"/></a>
+
+</div>

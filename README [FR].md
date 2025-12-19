@@ -1,6 +1,5 @@
 # PHARMA LOGISTICS - Tableau de Bord Power BI
-
-Par [Marc James Samson](https://www.linkedin.com/in/marc-james-samson/)
+#### Par [Marc James Samson](https://www.linkedin.com/in/samson18/)
 
 ---
 
@@ -39,7 +38,7 @@ Cette approche upstream-first garantit l'intégrité des données sur plus de 82
 
 ---
 
-## 🏗️ Diagramme d'Architecture
+## Diagramme d'Architecture
 
 ```mermaid
 graph LR
@@ -73,35 +72,49 @@ graph LR
 
 ## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Architecture des Bases de Données
 
-![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
+<img src="./docs/images/SQL_Screenshot.png" width="900" alt="Schéma Base de Données SQL Server">
 
-Le système est construit sur une base de données **SQL Server avec 13 tables** organisées en schéma en étoile pour optimiser les requêtes analytiques.
+Le système est construit sur une base de données SQL Server 2019+ avec **13 tables**, où tous les nettoyages de données, transformations, calculs métier, contraintes d'intégrité référentielle et définitions de relations sont appliquées à la couche données. Cette architecture upstream-first garantit la cohérence des données, élimine les traitements redondants dans la couche analytique et optimise les performances globales.
+
+[Consulter DATABASE_SCHEMA.md complet](docs/DATABASE_SCHEMA.md) | [Dictionnaire des Données](docs/DATA_DICTIONARY.md)
 
 ---
+
+###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
+
+<img src="./docs/images/PowerQuery.png" width="900" alt="Interface Power Query">
+
+---
+
+###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Diagramme du Schéma de Base de Données
+
+<img src="docs/images/Relations%20Table.png" width="900" alt="Tableau des Relations">
+
+Le diagramme ci-dessus illustre le modèle de données complet avec toutes les relations d'entités, incluant Commandes, Expéditions, Inventaire, Entrepôts, Transporteurs, Produits et Transactions.
 
 ## PAGES DU TABLEAU DE BORD
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**APERÇU** - Tableau de Bord Global de Performance
 
-<img src="docs/images/overview.png" width="700" alt="Aperçu du Tableau de Bord OVERVIEW">
+<img src="docs/images/overview.png" width="900" alt="Aperçu du Tableau de Bord OVERVIEW">
 
 ---
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**PERFORMANCE** - Analytique de Chaîne d'Approvisionnement
 
-<img src="docs/images/warehouses.png" width="700" alt="Aperçu du Tableau de Bord WAREHOUSES">
+<img src="docs/images/warehouses.png" width="900" alt="Aperçu du Tableau de Bord WAREHOUSES">
 
 ---
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**ENTREPÔTS** - Optimisation de l'Inventaire
 
-<img src="docs/images/performance.png" width="700" alt="Aperçu du Tableau de Bord PERFORMANCE">
+<img src="docs/images/performance.png" width="900" alt="Aperçu du Tableau de Bord PERFORMANCE">
 
 ---
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIER** - Rentabilité & Économie
 
-<img src="docs/images/financial.png" width="700" alt="Aperçu du Tableau de Bord FINANCIAL">
+<img src="docs/images/financial.png" width="900" alt="Aperçu du Tableau de Bord FINANCIAL">
 
 ---
 
@@ -109,7 +122,9 @@ Le système est construit sur une base de données **SQL Server avec 13 tables**
 
 ### Aperçu Rapide des KPI
 
-### 📦 KPI Clés de Transport
+### KPI Clés de Transport
+*Métriques suivi l'efficacité des transports, la performance logistique et la durabilité opérationnelle.*
+
 | Nom du KPI | Description | Portée |
 | :--- | :--- | :--- |
 | **OTIF %** | Taux de Livraison à l'Heure et Complet | 🌍 Global |
@@ -117,7 +132,9 @@ Le système est construit sur une base de données **SQL Server avec 13 tables**
 | **Coût par KM** | Métrique d'efficacité de transport | 💰 Financier |
 | **Émissions CO2** | Empreinte environnementale par KM | 🌱 ESG |
 
-### 🏭 KPI Clés d'Entrepôt
+### KPI Clés d'Entrepôt
+*Métriques analysant l'optimisation de l'inventaire, la gestion du stock et la productivité des entrepôts.*
+
 | Nom du KPI | Description | Portée |
 | :--- | :--- | :--- |
 | **Jours en Stock (DOH)** | Analyse de durée d'entreposage | 📉 Risque |
@@ -125,35 +142,35 @@ Le système est construit sur une base de données **SQL Server avec 13 tables**
 | **Risque d'Expiration (GBP)** | Impact financier du stock expirant | 💰 Financier |
 | **Stock Mort %** | Pourcentage d'inventaire non-mobile | 📉 Risque |
 
-### ⚙️ KPI Clés de Performance
+### KPI Clés de Performance
 *Métriques suivi l'efficacité opérationnelle, la conformité qualité et la précision des prévisions.*
 
 | Nom du KPI | Description | Domaine de Focus |
 | :--- | :--- | :--- |
 | **Conformité Chaîne Froide %** | Pourcentage d'expéditions en température contrôlée | ❄️ Assurance Qualité |
 | **MAPE** | Erreur Moyenne Absolue en Pourcentage (Précision des prévisions) | 📊 Planification de la Demande |
-| **Excursions de Température** | Nombre et sévérité des incidents thermiques | 🚨 Gestion des Risques |
-| **Efficacité Chaîne d'Approvisionnement** | Score composite (0-100%) des opérations | ⚡ Opérations |
-| **Score de Conformité** | Score d'audit de conformité (0-100%) | ⚖️ Conformité |
-| **Taux de Retour %** | Produits retournés par rapport aux commandes totales | ↩️ Logistique Inverse |
+| **Excursions de Température** | Nombre et sévérité des incidents thermiques | ⚠️ Gestion des Risques |
+| **Efficacité Chaîne d'Approvisionnement** | Score composite (0-100%) des opérations | ⚙️ Opérations |
+| **Score de Conformité** | Score d'audit de conformité (0-100%) | ✅ Conformité |
+| **Taux de Retour %** | Produits retournés par rapport aux commandes totales | 🔄 Logistique Inverse |
 | **Biais de Prévision** | Tendance de sur/sous-estimation | 📈 Planification |
-| **Temps de Résolution d'Excursion** | Heures moyennes pour résoudre les incidents thermiques | ⏱️ Agilité |
+| **Temps de Résolution d'Excursion** | Heures moyennes pour résoudre les incidents thermiques | ⚡ Agilité |
 
-### 💰 KPI Clés Financiers
+### KPI Clés Financiers
 *Indicateurs économiques mesurant la rentabilité, le coût de service et la valeur d'inventaire.*
 
 | Nom du KPI | Description | Impact Commercial |
 | :--- | :--- | :--- |
-| **Marge Brute %** | Ratio de rentabilité `(Rev - COGS) / Rev` | 💰 Rentabilité |
-| **Coût Logistique Total** | Transport + Frais de stockage d'inventaire combinés | 📉 Contrôle des Coûts |
-| **Contribution Nette** | Bénéfice net après tous les coûts | 💵 Santé du P&L |
-| **Coût Logistique %** | Frais généraux logistiques relatifs aux revenus | ⚡ Efficacité |
-| **Coût de Stockage d'Inventaire** | Coût annuel de stockage et capital immobilisé | 🏦 Fonds de Roulement |
-| **Impact des Ruptures de Stock** | Perte de revenu estimée par les ruptures | ⚠️ Coût d'Opportunité |
-| **Coût des Biens Vendus** | COGS Total (MTD, YTD, YoY) | 🧾 Comptabilité |
-| **Risque d'Expiration (GBP)** | Valeur financière de l'inventaire à risque | 🗑️ Gestion des Déchets |
+| **Marge Brute %** | Ratio de rentabilité `(Rev - COGS) / Rev` | � Rentabilité |
+| **Coût Logistique Total** | Transport + Frais de stockage d'inventaire combinés | 💸 Contrôle des Coûts |
+| **Contribution Nette** | Bénéfice net après tous les coûts | 💰 Santé du P&L |
+| **Coût Logistique %** | Frais généraux logistiques relatifs aux revenus | 📊 Efficacité |
+| **Coût de Stockage d'Inventaire** | Coût annuel de stockage et capital immobilisé | 💼 Fonds de Roulement |
+| **Impact des Ruptures de Stock** | Perte de revenu estimée par les ruptures | 🎯 Coût d'Opportunité |
+| **Coût des Biens Vendus** | COGS Total (MTD, YTD, YoY) | 📋 Comptabilité |
+| **Risque d'Expiration (GBP)** | Valeur financière de l'inventaire à risque | ♻️ Gestion des Déchets |
 
-📊 Documentation Complète des 61 KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir l'intégralité des KPI proposés.
+Documentation Complète des 61 KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir l'intégralité des KPI proposés.
 
 ---
 
@@ -170,18 +187,31 @@ Le système est construit sur une base de données **SQL Server avec 13 tables**
 | Taille du Fichier Rapport | ~150MB |
 | Régions Couvertes | 4 |
 | Pays Inclus | 44 |
-| Entrepôts Suivi | 44 |
-| Transporteurs Suivi | 7 |
-| Fournisseurs Suivi | 20 |
+| Entrepôts Suivis | 44 |
+| Transporteurs Suivis | 7 |
+| Fournisseurs Suivis | 20 |
 | Produits Suivi | 31 |
 | Catégories de Produits | 6 |
 | Modes de Transport | 4 |
-| Commandes Suivi | 9 980 |
-| Clients Suivi | 2 535 |
+| Commandes Suivies | 9 980 |
+| Clients Suivis | 2 535 |
 | Excursions de Température | 2 |
 | Volume de Données | 822 000+ enregistrements |
 | Période de Rétention des Données | 2023-2025 (3 ans) |
 | Temps d'Actualisation | 16-20 secondes |
+
+---
+
+## DOCUMENTATION
+
+###  Documentation du Projet
+
+| Document | Description |
+| :--- | :--- |
+| [Guide d'Architecture](docs/ARCHITECTURE.md) | Architecture système, flux de données et décisions technologiques |
+| **[Schéma de Base de Données](docs/DATABASE_SCHEMA.md)** | **Modèle de données, relations d'entités et structure de base de données** |
+| [Documentation des KPI](docs/KPIs.md) | Définitions complètes des KPI, calculs et logique métier |
+| [Dictionnaire des Données](docs/DATA_DICTIONARY.md) | Descriptions détaillées des champs et mappage des données |
 
 ---
 
@@ -206,7 +236,7 @@ Ce projet n'est PAS open-source et est proposé uniquement pour une licence comm
 
 Pour les demandes de licence : https://www.linkedin.com/in/samson18/
 
-Voir le fichier [LICENSE](../LICENSE) pour les termes juridiques complets.
+Voir le fichier [LICENSE](LICENSE) pour les termes juridiques complets.
 
 ---
 
@@ -224,3 +254,11 @@ Veuillez contacter : https://www.linkedin.com/in/samson18/
 **Licence :** Propriétaire et Confidentielle
 
 ---
+
+<div align="center">
+
+<a href="https://www.linkedin.com/in/samson18/" target="_blank" style="text-decoration: none;"><img src="./docs/images/Linkedin 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" style="text-decoration: none;"><img src="./docs/images/Youtube 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 7 .png" width="39" height="39" style="vertical-align: middle;"/></a>
+
+</div>
