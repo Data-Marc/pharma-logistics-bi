@@ -70,7 +70,7 @@ graph LR
 
 ---
 
-## <img src="./docs/images/SQL 96 crop.png" width="40" height="40" alt="SQL Server" style="vertical-align:middle"/> Database Architecture
+## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>  Database Architecture
 
 ![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
 
@@ -118,25 +118,25 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ## DASHBOARD PAGES
 
-<img src="./docs/images/Power Bi 96 crop.png" width="40" height="40" alt="Power BI" style="vertical-align:middle"/> **OVERVIEW** - Global Performance Dashboard
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>  **OVERVIEW** - Global Performance Dashboard
 
 <img src="docs/images/overview.png" width="700" alt="OVERVIEW Dashboard Preview">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="40" height="40" alt="Power BI" style="vertical-align:middle"/> **PERFORMANCE** - Supply Chain Analytics
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>  **PERFORMANCE** - Supply Chain Analytics
 
 <img src="docs/images/warehouses.png" width="700" alt="WAREHOUSES Dashboard Preview">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="40" height="40" alt="Power BI" style="vertical-align:middle"/> **WAREHOUSES** - Inventory Optimization
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>  **WAREHOUSES** - Inventory Optimization
 
 <img src="docs/images/performance.png" width="700" alt="PERFORMANCE Dashboard Preview">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="40" height="40" alt="Power BI" style="vertical-align:middle"/> **FINANCIAL** - Profitability & Economics
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>  **FINANCIAL** - Profitability & Economics
 
 <img src="docs/images/financial.png" width="700" alt="FINANCIAL Dashboard Preview">
 
