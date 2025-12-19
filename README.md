@@ -38,7 +38,7 @@ This project demonstrates enterprise-grade data engineering practices applied to
 This upstream-first approach guarantees data integrity across 822,000+ records spanning 4 regions, 44 countries, 44 warehouses, and 2,535 customers globally.
 ---
 
-## 🏗️ Architecture Diagram
+## Architecture Diagram
 
 ```mermaid
 graph LR
@@ -155,6 +155,8 @@ The above diagram illustrates the complete data model with all entity relationsh
 ### Quick KPI Overview
 
 ### Key Transport KPIs
+*Metrics tracking transportation efficiency, logistics performance, and operational sustainability.*
+
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
 | **OTIF %** | On-Time In-Full Delivery Rate | 🌍 Global |
@@ -163,6 +165,8 @@ The above diagram illustrates the complete data model with all entity relationsh
 | **CO2 Emissions** | Environmental footprint per KM | 🌱 ESG |
 
 ### Key Warehouse KPIs
+*Metrics analyzing inventory optimization, stock management, and warehouse productivity.*
+
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
 | **Days on Hand (DOH)** | Stock duration analysis | 📉 Risk |
