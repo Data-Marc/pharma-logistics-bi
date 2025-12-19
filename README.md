@@ -118,25 +118,25 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ## DASHBOARD PAGES
 
-<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **OVERVIEW** - Global Performance Dashboard
+<img src="./docs/images/Power BI icon.png" width="50" height="50" alt="Power BI" style="vertical-align:middle"/> **OVERVIEW** - Global Performance Dashboard
 
 <img src="docs/images/overview.png" width="700" alt="OVERVIEW Dashboard Preview">
 
 ---
 
-<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **PERFORMANCE** - Supply Chain Analytics
+<img src="./docs/images/Power BI icon.png" width="50" height="50" alt="Power BI" style="vertical-align:middle"/> **PERFORMANCE** - Supply Chain Analytics
 
 <img src="docs/images/warehouses.png" width="700" alt="WAREHOUSES Dashboard Preview">
 
 ---
 
-<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **WAREHOUSES** - Inventory Optimization
+<img src="./docs/images/Power BI icon.png" width="50" height="50" alt="Power BI" style="vertical-align:middle"/> **WAREHOUSES** - Inventory Optimization
 
 <img src="docs/images/performance.png" width="700" alt="PERFORMANCE Dashboard Preview">
 
 ---
 
-<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **FINANCIAL** - Profitability & Economics
+<img src="./docs/images/Power BI icon.png" width="50" height="50" alt="Power BI" style="vertical-align:middle"/> **FINANCIAL** - Profitability & Economics
 
 <img src="docs/images/financial.png" width="700" alt="FINANCIAL Dashboard Preview">
 

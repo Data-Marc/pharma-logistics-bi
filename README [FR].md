@@ -81,25 +81,25 @@ Le système est construit sur une base de données **SQL Server avec 13 tables**
 
 ## PAGES DU TABLEAU DE BORD
 
-<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **APERÇU** - Tableau de Bord Global de Performance
+<img src="./docs/images/Power BI icon.png" width="50" height="50" alt="Power BI" style="vertical-align:middle"/> **APERÇU** - Tableau de Bord Global de Performance
 
 <img src="docs/images/overview.png" width="700" alt="Aperçu du Tableau de Bord OVERVIEW">
 
 ---
 
-<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **PERFORMANCE** - Analytique de Chaîne d'Approvisionnement
+<img src="./docs/images/Power BI icon.png" width="50" height="50" alt="Power BI" style="vertical-align:middle"/> **PERFORMANCE** - Analytique de Chaîne d'Approvisionnement
 
 <img src="docs/images/warehouses.png" width="700" alt="Aperçu du Tableau de Bord WAREHOUSES">
 
 ---
 
-<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **ENTREPÔTS** - Optimisation de l'Inventaire
+<img src="./docs/images/Power BI icon.png" width="50" height="50" alt="Power BI" style="vertical-align:middle"/> **ENTREPÔTS** - Optimisation de l'Inventaire
 
 <img src="docs/images/performance.png" width="700" alt="Aperçu du Tableau de Bord PERFORMANCE">
 
 ---
 
-<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **FINANCIER** - Rentabilité & Économie
+<img src="./docs/images/Power BI icon.png" width="50" height="50" alt="Power BI" style="vertical-align:middle"/> **FINANCIER** - Rentabilité & Économie
 
 <img src="docs/images/financial.png" width="700" alt="Aperçu du Tableau de Bord FINANCIAL">
 
