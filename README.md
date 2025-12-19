@@ -110,7 +110,7 @@ The system is built on a SQL Server database with **13 tables**:
 
 ###  Database Schema Diagram
 
-![Relations Table](docs/images/Relations%20Table.png)
+![Relations Table](docs/images/Relations%20Table.png){: width="700"}
 
 The above diagram illustrates the complete data model with all entity relationships, including Orders, Shipments, Inventory, Warehouses, Carriers, Products, and Transactions.
 
