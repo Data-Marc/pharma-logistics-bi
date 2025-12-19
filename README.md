@@ -266,7 +266,7 @@ Please contact: https://www.linkedin.com/in/samson18/
 
 <a href="https://www.linkedin.com/in/samson18/" target="_blank" style="text-decoration: none;"><img src="./docs/images/Linkedin 96 crop 4.png" width="40" height="40" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://youtu.be/FwUXnIbzaoo" target="_blank" style="text-decoration: none;"><img src="./docs/images/Youtube 96 crop 4.png" width="40" height="40" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 5.png" width="40" height="40" style="vertical-align: middle;"/></a>
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 7 .png" width="40" height="40" style="vertical-align: middle;"/></a>
 
 </div>
 
