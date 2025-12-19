@@ -71,7 +71,7 @@ graph LR
 
 ---
 
-## ![SQL Server](./docs/images/SQL%20icone.png) Architecture Base de Données
+## <img src="./docs/images/SQL icone.png" width="30" height="30" alt="SQL Server"/> Architecture Base de Données
 
 ![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
 
