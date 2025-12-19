@@ -4,6 +4,16 @@ Complete reference for all tables, columns, and measures.
 
 ---
 
+## ![SQL Server](https://img.icons8.com/color/48/000000/microsoft-sql-server.png) Database Architecture
+
+![SQL Server](https://img.shields.io/badge/-SQL%20Server-CC2927?style=flat&logo=microsoft-sql-server&logoColor=white)
+
+![SQL Server Database Schema](../images/architecture/database_schema.png)
+
+The system is built on a SQL Server database with **13 tables** providing comprehensive pharmaceutical supply chain tracking across orders, transportation, inventory, and quality compliance.
+
+---
+
 ## Fact Tables
 
 ### Orders
