@@ -146,7 +146,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ### Quick KPI Overview
 
-### 📦 Key Transport KPIs
+### Key Transport KPIs
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
 | **OTIF %** | On-Time In-Full Delivery Rate | 🌍 Global |
@@ -154,7 +154,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 | **Cost per KM** | Transport efficiency metric | 💰 Financial |
 | **CO2 Emissions** | Environmental footprint per KM | 🌱 ESG |
 
-### 🏭 Key Warehouse KPIs
+### Key Warehouse KPIs
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
 | **Days on Hand (DOH)** | Stock duration analysis | 📉 Risk |
@@ -162,7 +162,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 | **Expiry Risk (GBP)** | Financial impact of expiring stock | 💰 Financial |
 | **Dead Stock %** | Non-moving inventory percentage | 📉 Risk |
 
-### ⚙️ Key Performance KPIs
+### Key Performance KPIs
 *Metrics tracking operational efficiency, quality compliance, and forecast accuracy.*
 
 | KPI Name | Description | Focus Area |
@@ -176,7 +176,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 | **Forecast Bias** | Over/Under estimation tendency | 📈 Planning |
 | **Excursion Resolution Time** | Average hours to resolve thermal incidents | ⚡ Agility |
 
-### 💰 Key Financial KPIs
+### Key Financial KPIs
 *Economic indicators measuring profitability, cost-to-serve, and inventory value.*
 
 | KPI Name | Description | Business Impact |
@@ -190,7 +190,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 | **Cost of Goods Sold** | Total COGS (MTP, YTD, YoY) | 📋 Accounting |
 | **Expiry Risk (GBP)** | Financial value of at-risk inventory | ♻️ Waste Mgmt |
 
-📊 Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the complete list of proposed KPIs.
+Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the complete list of proposed KPIs.
 
 ---
 
