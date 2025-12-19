@@ -71,6 +71,14 @@ graph LR
 
 ---
 
+## ![SQL Server](./docs/images/SQL%20icone.png) Architecture Base de Données
+
+![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
+
+Le système est construit sur une base de données **SQL Server avec 13 tables** organisées en schéma en étoile pour optimiser les requêtes analytiques.
+
+---
+
 ## PAGES DU TABLEAU DE BORD
 
 📊 **APERÇU** - Tableau de Bord Global de Performance

@@ -6,6 +6,31 @@ This document describes the database schema and data relationships for the Pharm
 
 ---
 
+## ![SQL Server](../images/SQL%20icone.png) Database Architecture
+
+![SQL Server Database Schema](../images/SQL_Screenshot.png)
+
+The system is built on a SQL Server database with **13 tables** organized as:
+
+**Fact Tables** (9.8K+ transaction records)
+- Orders
+- Transportation
+- Inventory
+- TemperatureExcursions
+- ForecastWeekly
+- Returns
+
+**Dimension Tables** (Reference data)
+- Customers
+- Warehouses
+- Products
+- Suppliers
+- DIM_Carrier
+- Date (Calendar)
+- v_LeadTime_Orders (Analytics view)
+
+---
+
 ## Entity Relationship Diagram (ERD)
 
 The following diagram illustrates the relationships between all major entities in the pharma logistics database:
