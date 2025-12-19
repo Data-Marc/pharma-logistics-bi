@@ -70,11 +70,13 @@ graph LR
 
 ---
 
-## PÁGINAS DEL PANEL DE CONTROL
+---
 
-📊 **DESCRIPCIÓN GENERAL** - Panel de Control Global de Desempeño
+## <img src="./docs/images/SQL icone.png" width="50" height="50" alt="SQL Server" style="vertical-align:middle"/> Arquitectura de Base de Datos
 
-<img src="docs/images/overview.png" width="700" alt="Panel de Control OVERVIEW">
+![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
+
+El sistema está construido sobre una base de datos SQL Server con **13 tablas**:
 
 ---
 

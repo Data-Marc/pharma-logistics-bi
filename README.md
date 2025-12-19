@@ -70,6 +70,33 @@ graph LR
 
 ---
 
+## <img src="./docs/images/SQL icone.png" width="50" height="50" alt="SQL Server" style="vertical-align:middle"/> Database Architecture
+
+![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
+
+The system is built on a SQL Server database with **13 tables**:
+
+**Fact Tables** (Transactions)
+- Orders (9.8K+ records)
+- Transportation
+- Inventory
+- TemperatureExcursions
+- ForecastWeekly
+- Returns
+
+**Dimension Tables** (Context)
+- Customers
+- Warehouses
+- Products
+- Suppliers
+- DIM_Carrier
+- Date (Calendar)
+- v_LeadTime_Orders (view)
+
+[View full DATABASE_SCHEMA.md](docs/DATABASE_SCHEMA.md) | [Data Dictionary](docs/DATA_DICTIONARY.md)
+
+---
+
 ## DOCUMENTATION
 
 ###  Project Documentation
