@@ -108,6 +108,8 @@ The system is built on a SQL Server database with **13 tables**:
 | [ KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
 | [ Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
 
+---
+
 ###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
 
 <img src="./docs/images/PowerQuery.png" width="900" alt="Power Query Interface">
