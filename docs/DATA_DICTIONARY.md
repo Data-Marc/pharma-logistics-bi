@@ -4,7 +4,7 @@ Complete reference for all tables, columns, and measures.
 
 ---
 
-## <img src="../images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>  Database Architecture
+## <img src="../images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>     Database Architecture
 
 ![SQL Server Database Schema](../images/SQL_Screenshot.png)
 
