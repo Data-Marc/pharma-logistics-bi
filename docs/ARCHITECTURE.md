@@ -66,7 +66,7 @@ graph TB
 
 **Model Components:**
 - **20 Active Relationships** between tables
-- **302 Calculated Measures** including:
+- **202 Calculated Measures** including:
   - KPI calculations
   - Financial aggregations
   - Performance metrics

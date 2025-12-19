@@ -435,5 +435,5 @@ Once the missing columns are added, create measures with:
 3. **Power BI Model** - Add calculated columns/measures
 
 **Last Updated**: December 2025
-**Model Complexity**: 13 tables | 20+ relationships | 302 measures (existing) + 8 new
+**Model Complexity**: 13 tables | 20+ relationships | 202 measures (existing) + 8 new
 

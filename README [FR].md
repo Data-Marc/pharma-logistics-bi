@@ -51,7 +51,7 @@ graph LR
     end
     
     subgraph "Analytics"
-    C["Power BI<br/>• Schéma Étoile 13 Tables<br/>• 20 Relations Actives<br/>• Logique DAX 302 Mesures"]
+    C["Power BI<br/>• Schéma Étoile 13 Tables<br/>• 20 Relations Actives<br/>• Logique DAX 202 Mesures"]
     end
     
     subgraph "Business"
@@ -182,7 +182,7 @@ Documentation Complète des 61 KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir
 | Nombre de Visuels | 20+ (empilés/superposés, équivalent à 9-10 pages) |
 | Tableaux de Données | 13 |
 | Tableaux de Mesures | 5 |
-| Mesures Totales | 302 |
+| Mesures Totales | 202 |
 | Relations | 20 |
 | Taille du Fichier Rapport | ~150MB |
 | Régions Couvertes | 4 |
