@@ -72,7 +72,7 @@ graph LR
 
 ---
 
-## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arquitectura de Base de Datos
+## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Arquitectura de Base de Datos
 
 ![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
 
