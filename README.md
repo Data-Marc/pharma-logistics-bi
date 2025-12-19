@@ -74,7 +74,7 @@ graph LR
 
 <img src="./docs/images/SQL_Screenshot.png" width="900" alt="SQL Server Database Schema">
 
-The system is built on a SQL Server database with **13 tables**:
+The system is built on a SQL Server 2019+ database with **13 tables**, where all data cleansing, transformations, business calculations, referential integrity constraints, and relationship definitions are enforced at the data layer. This upstream-first architecture ensures data consistency, eliminates redundant processing in the analytics layer, and optimizes overall performance.
 
 **Fact Tables** (Transactions)
 - Orders (9.8K+ records)
