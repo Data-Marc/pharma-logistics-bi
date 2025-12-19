@@ -116,6 +116,12 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ---
 
+###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
+
+![Power Query](docs/images/Power%20Query.png)
+
+---
+
 ## DASHBOARD PAGES
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**OVERVIEW** - Global Performance Dashboard
