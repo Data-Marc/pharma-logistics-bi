@@ -72,7 +72,7 @@ graph LR
 
 ---
 
-## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>             Arquitectura de Base de Datos
+## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arquitectura de Base de Datos
 
 ![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
 
@@ -80,19 +80,19 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>             **DESEMPEÑO** - Analítica de Cadena de Suministro
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
 
 <img src="docs/images/warehouses.png" width="700" alt="Panel de Control WAREHOUSES">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>             **ALMACENES** - Optimización de Inventario
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
 
 <img src="docs/images/performance.png" width="700" alt="Panel de Control PERFORMANCE">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>             **FINANCIERO** - Rentabilidad y Economía
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
 
 <img src="docs/images/financial.png" width="700" alt="Panel de Control FINANCIAL">
 
