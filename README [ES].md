@@ -82,17 +82,37 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
 
+![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
+
+El sistema está construido sobre una base de datos SQL Server con **13 tablas**:
+
+---
+
+<<<<<<< HEAD
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
+=======
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
+>>>>>>> e88a2d3c1e3100017ee22f5c017f20eb046c54fb
+
 <img src="docs/images/warehouses.png" width="700" alt="Panel de Control WAREHOUSES">
 
 ---
 
+<<<<<<< HEAD
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
+=======
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
+>>>>>>> e88a2d3c1e3100017ee22f5c017f20eb046c54fb
 
 <img src="docs/images/performance.png" width="700" alt="Panel de Control PERFORMANCE">
 
 ---
 
+<<<<<<< HEAD
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
+=======
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
+>>>>>>> e88a2d3c1e3100017ee22f5c017f20eb046c54fb
 
 <img src="docs/images/financial.png" width="700" alt="Panel de Control FINANCIAL">
 
