@@ -262,6 +262,26 @@ Please contact: https://www.linkedin.com/in/samson18/
 
 ---
 
+## Connect With Me
+
+<div align="center">
+
+<a href="https://www.linkedin.com/in/samson18/" target="_blank">
+  <img src="./docs/images/Linkedin 96 crop.png" width="35" height="35" alt="LinkedIn" style="margin: 0 10px; vertical-align:middle"/>
+</a>
+
+<a href="https://youtu.be/FwUXnIbzaoo" target="_blank">
+  <img src="./docs/images/Youtube 96 crop.png" width="35" height="35" alt="YouTube" style="margin: 0 10px; vertical-align:middle"/>
+</a>
+
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank">
+  <img src="./docs/images/Notion 96 crop.png" width="35" height="35" alt="Notion Portfolio" style="margin: 0 10px; vertical-align:middle"/>
+</a>
+
+</div>
+
+---
+
 
 
 
