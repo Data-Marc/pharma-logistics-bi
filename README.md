@@ -116,9 +116,9 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ---
 
-###  <img src="./docs/images/Power%20Query.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
+###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
 
-<img src="./docs/images/Power%20Query.png" width="900" alt="Power Query">
+<img src="./docs/images/Power Query.png" width="900" alt="Power Query">
 
 ---
 
