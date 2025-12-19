@@ -86,13 +86,13 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
 
 <img src="docs/images/performance.png" width="700" alt="Panel de Control PERFORMANCE">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
 
 <img src="docs/images/financial.png" width="700" alt="Panel de Control FINANCIAL">
 
