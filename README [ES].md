@@ -80,19 +80,19 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 
 ---
 
-📈 **DESEMPEÑO** - Analítica de Cadena de Suministro
+<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **DESEMPEÑO** - Analítica de Cadena de Suministro
 
 <img src="docs/images/warehouses.png" width="700" alt="Panel de Control WAREHOUSES">
 
 ---
 
-🏭 **ALMACENES** - Optimización de Inventario
+<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **ALMACENES** - Optimización de Inventario
 
 <img src="docs/images/performance.png" width="700" alt="Panel de Control PERFORMANCE">
 
 ---
 
-💰 **FINANCIERO** - Rentabilidad y Economía
+<img src="./docs/images/Power BI icon.png" width="25" height="25" alt="Power BI" style="vertical-align:middle"/> **FINANCIERO** - Rentabilidad y Economía
 
 <img src="docs/images/financial.png" width="700" alt="Panel de Control FINANCIAL">
 
