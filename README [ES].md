@@ -80,7 +80,7 @@ El sistema está construido sobre una base de datos SQL Server con **13 tablas**
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
 
 <img src="docs/images/warehouses.png" width="700" alt="Panel de Control WAREHOUSES">
 
