@@ -110,7 +110,7 @@ The system is built on a SQL Server database with **13 tables**:
 
 ###  Database Schema Diagram
 
-<img src="docs/images/Relations%20Table.png" width="700" alt="Relations Table">
+![Relations Table](docs/images/Relations%20Table.png)
 
 The above diagram illustrates the complete data model with all entity relationships, including Orders, Shipments, Inventory, Warehouses, Carriers, Products, and Transactions.
 
@@ -120,19 +120,19 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**OVERVIEW** - Global Performance Dashboard
 
-<img src="docs/images/overview.png" width="700" alt="OVERVIEW Dashboard Preview">
+<img src="docs/images/overview.png" width="900" alt="OVERVIEW Dashboard Preview">
 
 ---
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**PERFORMANCE** - Supply Chain Analytics
 
-<img src="docs/images/warehouses.png" width="700" alt="WAREHOUSES Dashboard Preview">
+<img src="docs/images/warehouses.png" width="900" alt="WAREHOUSES Dashboard Preview">
 
 ---
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**WAREHOUSES** - Inventory Optimization
 
-<img src="docs/images/performance.png" width="700" alt="PERFORMANCE Dashboard Preview">
+<img src="docs/images/performance.png" width="900" alt="PERFORMANCE Dashboard Preview">
 
 ---
 
