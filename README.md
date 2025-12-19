@@ -72,7 +72,7 @@ graph LR
 
 ## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
 
-![SQL Server Database Schema](./docs/images/SQL_Screenshot.png)
+<img src="./docs/images/SQL_Screenshot.png" width="900" alt="SQL Server Database Schema">
 
 The system is built on a SQL Server database with **13 tables**:
 
@@ -116,7 +116,7 @@ The system is built on a SQL Server database with **13 tables**:
 
 ###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Schema Diagram
 
-![Relations Table](docs/images/Relations%20Table.png)
+<img src="docs/images/Relations%20Table.png" width="900" alt="Relations Table">
 
 The above diagram illustrates the complete data model with all entity relationships, including Orders, Shipments, Inventory, Warehouses, Carriers, Products, and Transactions.
 
