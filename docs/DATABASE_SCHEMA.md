@@ -90,25 +90,24 @@ The following diagram illustrates the relationships between all major entities i
 | From Entity | To Entity | Relationship | Cardinality |
 | :--- | :--- | :--- | :--- |
 | **Orders** | Customers | One customer can place multiple orders | N:1 |
-| **Orders** | Shipments | One order can have multiple shipments | 1:N |
-| **Orders** | Inventory | Orders consume inventory from stock | 1:N |
+| **Orders** | Transportation | One order has one transportation record | N:1 |
+| **Orders** | Inventory | Orders consume inventory from stock | N:1 |
 | **Orders** | Date | Orders placed by date | N:1 |
-| **Shipments** | Carriers | Each shipment uses one carrier | N:1 |
-| **Shipments** | Warehouses | Shipments originate from one warehouse | N:1 |
-| **Shipments** | Date | Shipments tracked by date | N:1 |
+| **Transportation** | DIM_Carrier | Each shipment uses one carrier | N:1 |
+| **Transportation** | Warehouses | Shipments originate from one warehouse | N:1 |
+| **Transportation** | Date | Shipments tracked by date | N:1 |
 | **Inventory** | Products | Inventory tracks product SKUs | N:1 |
 | **Inventory** | Warehouses | Inventory stored in warehouses | N:1 |
 | **Inventory** | Date | Inventory snapshots by date | N:1 |
-| **Products** | Categories | Products belong to categories | N:1 |
 | **Products** | Suppliers | Products sourced from suppliers | N:1 |
-| **Warehouses** | Regions | Warehouses assigned to regions | N:1 |
-| **Customers** | Regions | Customers assigned to regions | N:1 |
-| **Transactions** | Orders | Financial transactions linked to orders | N:1 |
-| **Transactions** | Shipments | Financial transactions linked to shipments | N:1 |
-| **Transactions** | Date | Transactions recorded by date | N:1 |
-| **Carriers** | Regions | Carriers operate in regions | N:N |
-| **Suppliers** | Regions | Suppliers located in regions | N:1 |
-| **Suppliers** | Warehouses | Suppliers supply warehouses | N:N |
+| **Warehouses** | Warehouses | Warehouses assigned to regions (via Region column) | N:1 |
+| **Customers** | Warehouses | Customers assigned to regions (via Region column) | N:1 |
+| **TemperatureExcursions** | Transportation | Temperature violations linked to shipments | N:1 |
+| **TemperatureExcursions** | Date | Excursions recorded by date | N:1 |
+| **Returns** | Orders | Returns linked to original orders | N:1 |
+| **Returns** | Date | Returns recorded by date | N:1 |
+| **DIM_Carrier** | Warehouses | Carriers service from warehouses | N:1 |
+| **Suppliers** | Warehouses | Suppliers supply warehouses | N:1 |
 
 ---
 
