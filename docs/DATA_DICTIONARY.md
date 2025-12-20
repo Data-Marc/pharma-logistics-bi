@@ -189,9 +189,9 @@ Time dimension table.
 | Year | 2023-2025 | Current Year |
 | Month | Jan-Dec | Current Month |
 | Region | Africa, Americas, Asia, Europe | All |
-| Country | 50+ countries | All |
+| Country | 44 countries | All |
 | Carrier | 7 carriers | All |
-| Transport Mode | Air, Sea, Land | All |
+| Transport Mode | Air, Sea, Rail, Truck | All |
 | Warehouse | 44 warehouses | All |
 
 ---
