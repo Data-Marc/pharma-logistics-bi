@@ -145,9 +145,9 @@ Suppliers
 
 ## Related Documentation
 
-- 📊 [KPIs Documentation](./KPIs.md) - Comprehensive KPI definitions
-- 🏗️ [Architecture Guide](./ARCHITECTURE.md) - System architecture overview
-- 📖 [Data Dictionary](./DATA_DICTIONARY.md) - Detailed field descriptions
+- [KPIs Documentation](./KPIs.md) - Comprehensive KPI definitions
+- [Architecture Guide](./ARCHITECTURE.md) - System architecture overview
+- [Data Dictionary](./DATA_DICTIONARY.md) - Detailed field descriptions
 
 ---
 
