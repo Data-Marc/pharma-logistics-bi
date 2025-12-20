@@ -32,8 +32,8 @@ Ce projet démontre les pratiques d'ingénierie des données de niveau entrepris
 - Traitement en amont : Tous les nettoyages de données, enrichissements et validations de qualité sont effectués au niveau SQL avant d'atteindre Power BI. Suivant le principe : « Effectuez les transformations de données aussi loin en amont (près de la source) que possible, et seulement en aval (dans le rapport) si nécessaire » (Maxime de Roche). Cela garantit l'intégrité des données, maintient une source unique de vérité et optimise les performances des rapports.
 
 - Règles de validation standardisées appliquées pendant l'ETL
-- 13 tables de données avec 20 relations actives (architecture de schéma en étoile)
-- 302 mesures calculées pour des définitions de KPI cohérentes
+- 13 tables de données avec 15 relations actives + 5 relations inactives (architecture de schéma en étoile)
+- 202 mesures calculées pour des définitions de KPI cohérentes
 Cette approche upstream-first garantit l'intégrité des données sur plus de 822 000+ enregistrements couvrant 4 régions, 44 pays, 44 entrepôts et 2 535 clients mondialement.
 
 ---
@@ -90,7 +90,7 @@ Le système est construit sur une base de données SQL Server 2019+ avec **13 ta
 
 <img src="docs/images/Relations%20Table.png" width="900" alt="Tableau des Relations">
 
-Le diagramme ci-dessus illustre le modèle de données complet avec toutes les relations d'entités, incluant Commandes, Expéditions, Inventaire, Entrepôts, Transporteurs, Produits et Transactions.
+Le diagramme ci-dessus illustre le modèle de données complet avec toutes les relations d'entités, incluant Commandes, Transport, Inventaire, Entrepôts, Transporteurs, Produits et Retours.
 
 ## PAGES DU TABLEAU DE BORD
 

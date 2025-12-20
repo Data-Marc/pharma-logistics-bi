@@ -33,8 +33,8 @@ This project demonstrates enterprise-grade data engineering practices applied to
 - Upstream Processing: All data cleansing, enrichment, and quality validations are performed at the SQL layer before reaching Power BI. Following the principle: "Perform data transformations as far upstream (close to the source) as possible, and only downstream (in the report) when necessary" (Roche's Maxim). This ensures data integrity, maintains a single source of truth, and optimizes report performance.
 
 - Standardized validation rules applied during ETL
-- 13 data tables with 20 active relationships (star schema architecture)
-- 302 calculated measures for consistent KPI definitions
+- 13 data tables with 15 active + 5 inactive relationships (star schema architecture)
+- 202 calculated measures for consistent KPI definitions
 This upstream-first approach guarantees data integrity across 822,000+ records spanning 4 regions, 44 countries, 44 warehouses, and 2,535 customers globally.
 ---
 
@@ -51,7 +51,7 @@ graph LR
     end
     
     subgraph "Analytics"
-    C["Power BI<br/>• Star Schema 13 Tables<br/>• 20 Active Relationships<br/>• DAX Logic 202 Measures"]
+    C["Power BI<br/>• Star Schema 13 Tables<br/>• 15 Active + 5 Inactive Relationships<br/>• DAX Logic 202 Measures"]
     end
     
     subgraph "Business"
@@ -90,7 +90,7 @@ The system is built on a SQL Server 2019+ database with **13 tables**, where all
 
 <img src="docs/images/Relations%20Table.png" width="900" alt="Relations Table">
 
-The above diagram illustrates the complete data model with all entity relationships, including Orders, Shipments, Inventory, Warehouses, Carriers, Products, and Transactions.
+The above diagram illustrates the complete data model with all entity relationships, including Orders, Transportation, Inventory, Warehouses, Carriers, Products, and Returns.
 
 ---
 
