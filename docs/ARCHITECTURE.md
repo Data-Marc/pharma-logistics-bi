@@ -80,13 +80,13 @@ graph TB
 
 **Model Components:**
 - **20 Active Relationships** between tables
-- **202 Calculated Measures** including:
+- **202 Calculated Measures** with DAX variables for performance optimization
   - KPI calculations
   - Financial aggregations
   - Performance metrics
 - **User Hierarchies:**
   - Geographic hierarchy (Region -> Country -> Warehouse)
-  - Time hierarchy (Year -> Month -> Day)
+  - Time hierarchy (Year -> Quarter -> Month -> Day)
   - Product hierarchy (Category -> Product)
 
 ### Presentation Layer
@@ -171,6 +171,8 @@ graph TB
 - Revenue per region
 - Margin by product
 - ROI metrics
+
+**Full KPI Documentation:** See [docs/KPIs.md](../docs/KPIs.md) to view the complete list of all 61 proposed KPIs.
 
 ## Technologies Stack
 
