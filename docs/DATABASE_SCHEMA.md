@@ -89,8 +89,6 @@ The following diagram illustrates the relationships between all major entities i
 
 **Total: 20 Relationships (15 Active + 5 Inactive)**
 
-### Active Relationships (15)
-
 | From Table | From Column | To Table | To Column | Cardinality | Status |
 | :--- | :--- | :--- | :--- | :---: | :---: |
 | **Orders** | CustomerID | Customers | CustomerID | N:1 | ✅ Active |
@@ -108,11 +106,6 @@ The following diagram illustrates the relationships between all major entities i
 | **ForecastWeekly** | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Active |
 | **v_LeadTime_Orders** | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Active |
 | **v_LeadTime_Orders** | OrderDate | Date | Date | N:1 | ✅ Active |
-
-### Inactive Relationships (5)
-
-| From Table | From Column | To Table | To Column | Cardinality | Status |
-| :--- | :--- | :--- | :--- | :---: | :---: |
 | **ForecastWeekly** | WeekStart | Date | Date | N:1 | ❌ Inactive |
 | **v_LeadTime_Orders** | DeliveryDate | Date | Date | N:1 | ❌ Inactive |
 | **v_LeadTime_Orders** | ShipDate | Date | Date | N:1 | ❌ Inactive |
