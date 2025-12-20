@@ -33,8 +33,8 @@ Este proyecto demuestra las prácticas de ingeniería de datos de nivel empresar
 - Procesamiento Ascendente: Todas las limpiezas de datos, enriquecimientos y validaciones de calidad se realizan a nivel SQL antes de llegar a Power BI. Siguiendo el principio: "Realiza transformaciones de datos lo más aguas arriba (cercano a la fuente) posible, y solo aguas abajo (en el informe) si es necesario" (Maxim de Roche). Esto asegura integridad de datos, mantiene una única fuente de verdad y optimiza el desempeño del informe.
 
 - Reglas de validación estandarizadas aplicadas durante ETL
-- 13 tablas de datos con 20 relaciones activas (arquitectura de esquema de estrella)
-- 302 medidas calculadas para definiciones de KPI consistentes
+- 13 tablas de datos con 20 relaciones (15 activas + 5 inactivas, arquitectura de esquema de estrella)
+- 202 medidas calculadas para definiciones de KPI consistentes
 Este enfoque ascendente garantiza integridad de datos en más de 822,000+ registros cubriendo 4 regiones, 44 países, 44 almacenes y 2,535 clientes globalmente.
 
 ---
@@ -52,7 +52,7 @@ graph LR
     end
     
     subgraph "Analytics"
-    C["Power BI<br/>• Esquema Estrella 13 Tablas<br/>• 20 Relaciones Activas<br/>• Lógica DAX 202 Medidas"]
+    C["Power BI<br/>• Esquema Estrella 13 Tablas<br/>• 20 Relaciones (15 Activas + 5 Inactivas)<br/>• Lógica DAX 202 Medidas"]
     end
     
     subgraph "Business"

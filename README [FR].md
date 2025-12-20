@@ -32,7 +32,7 @@ Ce projet démontre les pratiques d'ingénierie des données de niveau entrepris
 - Traitement en amont : Tous les nettoyages de données, enrichissements et validations de qualité sont effectués au niveau SQL avant d'atteindre Power BI. Suivant le principe : « Effectuez les transformations de données aussi loin en amont (près de la source) que possible, et seulement en aval (dans le rapport) si nécessaire » (Maxime de Roche). Cela garantit l'intégrité des données, maintient une source unique de vérité et optimise les performances des rapports.
 
 - Règles de validation standardisées appliquées pendant l'ETL
-- 13 tables de données avec 15 relations actives + 5 relations inactives (architecture de schéma en étoile)
+- 13 tables de données avec 20 relations (15 actives + 5 inactives, architecture de schéma en étoile)
 - 202 mesures calculées pour des définitions de KPI cohérentes
 Cette approche upstream-first garantit l'intégrité des données sur plus de 822 000+ enregistrements couvrant 4 régions, 44 pays, 44 entrepôts et 2 535 clients mondialement.
 
@@ -51,7 +51,7 @@ graph LR
     end
     
     subgraph "Analytics"
-    C["Power BI<br/>• Schéma Étoile 13 Tables<br/>• 20 Relations Actives<br/>• Logique DAX 202 Mesures"]
+    C["Power BI<br/>• Schéma Étoile 13 Tables<br/>• 20 Relations (15 Actives + 5 Inactives)<br/>• Logique DAX 202 Mesures"]
     end
     
     subgraph "Business"
