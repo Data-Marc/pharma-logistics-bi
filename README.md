@@ -84,7 +84,7 @@ graph LR
     end
     
     subgraph "Analytics"
-    C["Power BI<br/>• Star Schema 13 Tables<br/>• 20 Relationships (15 Active + 5 Inactive)<br/>• DAX Logic 202 Measures"]
+    C["Power BI<br/>• Star Schema 13 Tables<br/>• 20 Relationships<br/>• DAX Logic 202 Measures"]
     end
     
     subgraph "Business"
