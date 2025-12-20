@@ -33,9 +33,42 @@ This project demonstrates enterprise-grade data engineering practices applied to
 - Upstream Processing: All data cleansing, enrichment, and quality validations are performed at the SQL layer before reaching Power BI. Following the principle: "Perform data transformations as far upstream (close to the source) as possible, and only downstream (in the report) when necessary" (Roche's Maxim). This ensures data integrity, maintains a single source of truth, and optimizes report performance.
 
 - Standardized validation rules applied during ETL
-- 13 data tables with 20 relationships (15 active + 5 inactive, star schema architecture)
+- **13 data tables with 20 relationships** (star schema architecture)
 - 202 calculated measures for consistent KPI definitions
+
 This upstream-first approach guarantees data integrity across 822,000+ records spanning 4 regions, 44 countries, 44 warehouses, and 2,535 customers globally.
+
+### Data Model Relationships
+
+#### Active Relationships (15)
+
+| From Table | From Column | To Table | To Column | Cardinality | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Orders | CustomerID | Customers | CustomerID | N:1 | ✅ Active |
+| Orders | ProductID | Products | ProductID | N:1 | ✅ Active |
+| Orders | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Active |
+| Orders | Date | Date | Date | N:1 | ✅ Active |
+| Orders | OrderID | Returns | OrderID | N:1 | ✅ Active |
+| Orders | OrderID | TemperatureExcursions | OrderID | N:1 | ✅ Active |
+| Transportation | OrderID | Orders | OrderID | N:1 | ✅ Active |
+| Transportation | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Active |
+| Inventory | ProductID | Products | ProductID | N:1 | ✅ Active |
+| Inventory | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Active |
+| Products | SupplierID | Suppliers | SupplierID | N:1 | ✅ Active |
+| ForecastWeekly | ProductID | Products | ProductID | N:1 | ✅ Active |
+| ForecastWeekly | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Active |
+| v_LeadTime_Orders | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Active |
+| v_LeadTime_Orders | OrderDate | Date | Date | N:1 | ✅ Active |
+
+#### Inactive Relationships (5)
+
+| From Table | From Column | To Table | To Column | Cardinality | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| ForecastWeekly | WeekStart | Date | Date | N:1 | ❌ Inactive |
+| v_LeadTime_Orders | DeliveryDate | Date | Date | N:1 | ❌ Inactive |
+| v_LeadTime_Orders | ShipDate | Date | Date | N:1 | ❌ Inactive |
+| v_LeadTime_Orders | WarehouseID | Warehouses | WarehouseID | N:1 | ❌ Inactive |
+| Orders | Region | v_LeadTime_Orders | Region | N:1 | ❌ Inactive |
 ---
 
 ## Architecture Diagram

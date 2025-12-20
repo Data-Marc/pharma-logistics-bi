@@ -33,9 +33,42 @@ Este proyecto demuestra las prácticas de ingeniería de datos de nivel empresar
 - Procesamiento Ascendente: Todas las limpiezas de datos, enriquecimientos y validaciones de calidad se realizan a nivel SQL antes de llegar a Power BI. Siguiendo el principio: "Realiza transformaciones de datos lo más aguas arriba (cercano a la fuente) posible, y solo aguas abajo (en el informe) si es necesario" (Maxim de Roche). Esto asegura integridad de datos, mantiene una única fuente de verdad y optimiza el desempeño del informe.
 
 - Reglas de validación estandarizadas aplicadas durante ETL
-- 13 tablas de datos con 20 relaciones (15 activas + 5 inactivas, arquitectura de esquema de estrella)
+- **13 tablas de datos con 20 relaciones** (arquitectura de esquema de estrella)
 - 202 medidas calculadas para definiciones de KPI consistentes
+
 Este enfoque ascendente garantiza integridad de datos en más de 822,000+ registros cubriendo 4 regiones, 44 países, 44 almacenes y 2,535 clientes globalmente.
+
+### Relaciones del Modelo de Datos
+
+#### Relaciones Activas (15)
+
+| Tabla Origen | Columna Origen | Tabla Destino | Columna Destino | Cardinalidad | Estado |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Orders | CustomerID | Customers | CustomerID | N:1 | ✅ Activa |
+| Orders | ProductID | Products | ProductID | N:1 | ✅ Activa |
+| Orders | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Activa |
+| Orders | Date | Date | Date | N:1 | ✅ Activa |
+| Orders | OrderID | Returns | OrderID | N:1 | ✅ Activa |
+| Orders | OrderID | TemperatureExcursions | OrderID | N:1 | ✅ Activa |
+| Transportation | OrderID | Orders | OrderID | N:1 | ✅ Activa |
+| Transportation | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Activa |
+| Inventory | ProductID | Products | ProductID | N:1 | ✅ Activa |
+| Inventory | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Activa |
+| Products | SupplierID | Suppliers | SupplierID | N:1 | ✅ Activa |
+| ForecastWeekly | ProductID | Products | ProductID | N:1 | ✅ Activa |
+| ForecastWeekly | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Activa |
+| v_LeadTime_Orders | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Activa |
+| v_LeadTime_Orders | OrderDate | Date | Date | N:1 | ✅ Activa |
+
+#### Relaciones Inactivas (5)
+
+| Tabla Origen | Columna Origen | Tabla Destino | Columna Destino | Cardinalidad | Estado |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| ForecastWeekly | WeekStart | Date | Date | N:1 | ❌ Inactiva |
+| v_LeadTime_Orders | DeliveryDate | Date | Date | N:1 | ❌ Inactiva |
+| v_LeadTime_Orders | ShipDate | Date | Date | N:1 | ❌ Inactiva |
+| v_LeadTime_Orders | WarehouseID | Warehouses | WarehouseID | N:1 | ❌ Inactiva |
+| Orders | Region | v_LeadTime_Orders | Region | N:1 | ❌ Inactiva |
 
 ---
 
