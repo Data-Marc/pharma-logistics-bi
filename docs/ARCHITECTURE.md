@@ -229,7 +229,7 @@ graph TB
 ### Recovery Procedures
 - Database restore: Standard SQL Server procedure
 - Model restore: TMSL script deployment
-- Report restore: Git-based version control
+- Report restore: Azure Blob Storage with encryption + automated backup (planned evolution)
 
 ## Future Enhancements
 
