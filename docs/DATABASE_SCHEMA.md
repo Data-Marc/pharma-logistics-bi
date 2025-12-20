@@ -31,7 +31,7 @@ The system is built on a SQL Server database with **13 tables** organized as:
 
 ---
 
-###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Entity Relationship Diagram (ERD)
+###  <img src="./images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Entity Relationship Diagram (ERD)
 
 
 The following diagram illustrates the relationships between all major entities in the pharma logistics database:
