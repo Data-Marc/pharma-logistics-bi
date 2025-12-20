@@ -132,11 +132,10 @@ Last-Mile Cost = Freight + Fuel + Labor + Vehicle Depreciation
 ### Days on Hand (DOH)
 **Calculation Method:**
 ```
-DOH = Average Inventory Value ÷ Daily COGS
-  OR
 DOH = 365 ÷ Inventory Turnover Ratio
 ```
-**Example:** £500,000 ÷ £5,000 = 100 days
+**Example:** 365 ÷ 3.65 = 100 days
+(where Inventory Turnover = Annual COGS ÷ Average Inventory Value = £1,825,000 ÷ £500,000 = 3.65)
 
 ---
 
@@ -336,12 +335,12 @@ Return % = (Units Returned) ÷ Total Units Shipped × 100%
 **Calculation Method:**
 ```
 Bias = Average of (Forecast - Actual) for all periods
-  Positive (+) = Over-forecast (forecasted higher than actual)
-  Negative (-) = Under-forecast (forecasted lower than actual)
+  Positive (+) = Over-forecasting (forecasted higher than actual)
+  Negative (-) = Under-forecasting (forecasted lower than actual)
 ```
 **Example:**
-- If Forecast = 100 and Actual = 95, then Bias = +5 (Over-forecast by 5 units)
-- If Forecast = 100 and Actual = 105, then Bias = -5 (Under-forecast by 5 units)
+- If Forecast = 100 and Actual = 95, then Bias = +5 (Over-forecasting by 5 units)
+- If Forecast = 100 and Actual = 105, then Bias = -5 (Under-forecasting by 5 units)
 
 ---
 
