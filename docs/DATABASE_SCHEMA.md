@@ -177,5 +177,4 @@ Transactions Financial Metrics Performance KPIs
 ---
 
 **Last Updated:** December 2025  
-**Schema Version:** 1.0.0  
-**Data Model Compliance:** ISO 8601, HIPAA, GDP
+**Schema Version:** 1.0.0
