@@ -2,9 +2,16 @@
 
 Complete reference guide for all 61 KPIs with calculation methodologies and formulas.
 
+## Notes :
+
+- All calculations follow industry-standard methodologies independent of system implementation
+- Pharmaceutical-specific considerations are embedded in target thresholds
+- Formulas can be aggregated by region, product category, carrier, or customer segment
+- Historical trends should be tracked month-over-month and year-over-year
+
 ---
 
-## 📦 Transport & Logistics KPIs (12)
+##  Transport & Logistics KPIs (12)
 
 ### OTIF % (On-Time In-Full Delivery Rate)
 **Calculation Method:**
@@ -117,7 +124,7 @@ Last-Mile Cost = Freight + Fuel + Labor + Vehicle Depreciation
 
 ---
 
-## 🏭 Warehouse & Inventory KPIs (14)
+##  Warehouse & Inventory KPIs (14)
 
 ### Days on Hand (DOH)
 **Calculation Method:**
@@ -429,7 +436,7 @@ Accuracy % = (Correct Documents) ÷ Total Documents × 100%
 
 ---
 
-## 💰 Financial & Revenue KPIs (17)
+##  Financial & Revenue KPIs (17)
 
 ### Gross Margin %
 **Calculation Method:**
@@ -588,15 +595,6 @@ Trend % = ((Current Margin - Prior Margin) ÷ Prior Margin) × 100%
 Break-Even Units = Fixed Costs ÷ (Price per Unit - Variable Cost per Unit)
 ```
 **Example:** £100K ÷ (£200 - £120) = 1,250 units
-
----
-
-## Additional Notes
-
-- All calculations follow industry-standard methodologies independent of system implementation
-- Pharmaceutical-specific considerations are embedded in target thresholds
-- Formulas can be aggregated by region, product category, carrier, or customer segment
-- Historical trends should be tracked month-over-month and year-over-year
 
 ---
 
