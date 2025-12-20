@@ -144,28 +144,28 @@ graph TB
 
 **61 KPIs** organized across 4 categories:
 
-### Transport KPIs (16)
+### Transport KPIs
 - On-time delivery rate
 - Average transit time
 - Freight cost per unit
 - Vehicle utilization rate
 - Delivery distance optimization
 
-### Warehouse KPIs (18)
+### Warehouse KPIs
 - Inventory turnover rate
 - Storage utilization rate
 - Order fulfillment time
 - Warehouse operation cost
 - Stock accuracy rate
 
-### Performance KPIs (15)
+### Performance KPIs
 - Overall equipment effectiveness (OEE)
 - Process adherence rate
 - Quality score
 - Productivity metrics
 - Compliance indicators
 
-### Financial KPIs (12)
+### Financial KPIs
 - Total logistics cost
 - Cost per shipment
 - Revenue per region
@@ -180,7 +180,7 @@ graph TB
 |-----------|-----------|---------|
 | **Database** | SQL Server | 2019+ |
 | **Semantic Model** | Analysis Services (Tabular) | 2022+ |
-| **BI Platform** | Power BI Desktop | Latest |
+| **BI Platform** | Power BI Desktop | 2.149.1429.0 |
 | **Refresh Engine** | Analysis Services Refresh | Scheduled Daily |
 | **Reporting** | Power BI Service | Cloud-based |
 
@@ -191,12 +191,6 @@ graph TB
 - **Time:** Off-peak hours (after business close)
 - **Duration:** Less than 30 seconds
 - **Trigger:** Scheduled refresh + on-demand capability
-
-### Maintenance Tasks
-- Daily: Data refresh from SQL Server
-- Weekly: Data quality validation
-- Monthly: Performance optimization and indexing
-- Quarterly: Model review and KPI validation
 
 ## Security Architecture
 
@@ -251,7 +245,6 @@ graph TB
 
 - Real-time data streaming (if required)
 - Advanced ML predictive analytics
-- Geospatial analysis expansion
 - Mobile-optimized dashboards
 - API layer for third-party integrations
 
