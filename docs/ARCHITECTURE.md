@@ -6,7 +6,7 @@ The Pharma Logistics BI solution follows a modern three-tier data architecture c
 
 ```mermaid
 graph LR
-    A["SQL Server 2019+<br/>PharmaLogistics Database"] -->|Daily Refresh| B["Analysis Services<br/>Tabular Model<br/>SemanticModel"]
+    A["SQL Server 2019+<br/>PharmaLogistics Database"] -->|Refresh: 8 times/day| B["Analysis Services<br/>Tabular Model<br/>SemanticModel"]
     B -->|Data Binding| C["Power BI Desktop<br/>Report Model"]
     C -->|Live Connection| D["Power BI Dashboard<br/>4 Dashboard Pages"]
     
@@ -22,11 +22,11 @@ graph LR
 graph TB
     A["SQL Server Database<br/>- 822,000+ Records<br/>- 13 Data Tables"] -->|Extract| B["ETL Process"]
     B -->|Transform & Load| C["Analysis Services<br/>Tabular Model"]
-    C -->|Refresh Daily| D["Semantic Model Cache"]
+    C -->|Refresh: 8 times/day| D["Semantic Model Cache"]
     D -->|Power BI Query| E["Report Visualizations"]
     E -->|Render| F["End-User Dashboard"]
     
-    G["Refresh Schedule: Daily"] -.-> B
+    G["Refresh: 8 times/day"] -.-> B
     
     style A fill:#1f77b4,stroke:#333,stroke-width:2px,color:#fff
     style B fill:#ff7f0e,stroke:#333,stroke-width:2px,color:#fff
