@@ -74,9 +74,7 @@ graph LR
 
 ## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
 
-<div align="center">
   <img src="./docs/images/SQL_Screenshot.png" width="900" alt="SQL Server Database Schema">
-</div>
 
 The system is built on a SQL Server 2019+ database with **13 tables**, where all data cleansing, transformations, business calculations, referential integrity constraints, and relationship definitions are enforced at the data layer. This upstream-first architecture ensures data consistency, eliminates redundant processing in the analytics layer, and optimizes overall performance.
 
@@ -86,9 +84,7 @@ The system is built on a SQL Server 2019+ database with **13 tables**, where all
 
 ###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
 
-<div align="center">
 <img src="./docs/images/PowerQuery.png" width="900" alt="Power Query Interface">
-</div>
 
 ---
 
