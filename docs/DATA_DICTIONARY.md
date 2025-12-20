@@ -193,6 +193,7 @@ Time dimension table.
 | Carrier | 7 carriers | All |
 | Transport Mode | Air, Sea, Rail, Truck | All |
 | Warehouse | 44 warehouses | All |
+| Suppliers Countries | 7 Countries | All |
 
 ---
 
