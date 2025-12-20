@@ -120,7 +120,7 @@ The following diagram illustrates the relationships between all major entities i
 ## Data Flow
 
 ```
-Orders → Transportation → DIM_Carrier
+Orders → Transportation → Carrier
    ↓
 Customers, Products, Warehouses, Date
    ↓
