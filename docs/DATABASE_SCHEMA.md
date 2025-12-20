@@ -6,14 +6,16 @@ This document describes the database schema and data relationships for the Pharm
 
 ---
 
-## <img src="./images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
+### <img src="./images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
+
+The following image shows a few tables in the pharma logistics SQL database:
 
 <img src="./images/SQL_Screenshot.png" width="900" alt="SQL Server Database Schema">
 
 The system is built on a SQL Server database with **13 tables** organized as:
 
-**Fact Tables** (9.8K+ transaction records)
-- Orders
+**Fact Tables** 
+- Orders (9.8K+ transaction records)
 - Transportation
 - Inventory
 - TemperatureExcursions
@@ -31,7 +33,8 @@ The system is built on a SQL Server database with **13 tables** organized as:
 
 ---
 
-##  <img src="./images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Entity Relationship Diagram (ERD)
+###  <img src="./images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Entity Relationship Diagram (ERD)
+
 
 The following diagram illustrates the relationships between all major entities in the pharma logistics database:
 
@@ -117,7 +120,7 @@ The following diagram illustrates the relationships between all major entities i
 ## Data Flow
 
 ```
-Orders → Transportation → DIM_Carrier
+Orders → Transportation → Carrier
    ↓
 Customers, Products, Warehouses, Date
    ↓
@@ -136,17 +139,48 @@ Suppliers
 - ✅ Referential integrity enforced
 - ✅ Unique constraints on business keys
 - ✅ Audit timestamps on all transactional data
-- ✅ Data normalization (3NF)
+- ✅ Data normalization
 
 ---
 
 ## Related Documentation
 
-- 📊 [KPIs Documentation](./KPIs.md) - Comprehensive KPI definitions
-- 🏗️ [Architecture Guide](./ARCHITECTURE.md) - System architecture overview
-- 📖 [Data Dictionary](./DATA_DICTIONARY.md) - Detailed field descriptions
+- [KPIs Documentation](./KPIs.md) - Comprehensive KPI definitions
+- [Architecture Guide](./ARCHITECTURE.md) - System architecture overview
+- [Data Dictionary](./DATA_DICTIONARY.md) - Detailed field descriptions
 
 ---
 
-**Last Updated:** December 2025  
-**Schema Version:** 1.0.0
+## LICENSE
+
+This project is licensed under a **Proprietary and Confidential License**.
+This project is NOT open-source and is offered for commercial licensing only.
+
+For licensing inquiries: https://www.linkedin.com/in/samson18/
+
+See [LICENSE](LICENSE) file for complete legal terms.
+
+---
+
+## SUPPORT
+
+Please contact: https://www.linkedin.com/in/samson18/
+
+---
+
+
+**Version:** 1.0.0
+**Last Updated:** December 2025
+**Author:** Marc James Samson
+**Status:** Production Ready
+**License:** Proprietary and Confidential
+
+---
+
+<div align="center">
+
+<a href="https://www.linkedin.com/in/samson18/" target="_blank" style="text-decoration: none;"><img src="./docs/images/Linkedin 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" style="text-decoration: none;"><img src="./docs/images/Youtube 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 7 .png" width="39" height="39" style="vertical-align: middle;"/></a>
+
+</div>
