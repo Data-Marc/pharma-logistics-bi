@@ -140,16 +140,6 @@ Suppliers
 
 ---
 
-## Refresh Schedules
-
-- **Real-time:** Shipment tracking, Temperature monitoring
-- **Hourly:** Order processing, Inventory movements
-- **Daily:** Financial reconciliation, KPI calculations
-- **Weekly:** Reporting aggregations
-- **Monthly:** Historical analysis and archiving
-
----
-
 ## Related Documentation
 
 - 📊 [KPIs Documentation](./KPIs.md) - Comprehensive KPI definitions
