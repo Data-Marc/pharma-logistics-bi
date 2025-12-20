@@ -45,7 +45,7 @@ graph TB
 - Primary operational database
 - Contains 13 fact and dimension tables
 - 822,000+ records across 4 regions
-- Data coverage: 44 countries, 44 warehouses
+- Data coverage: 44 countries, 44 warehouses, 20 suppliers, 7 carriers, 2,535 customers, 31 products, 9,980 orders
 - Supports real-time queries and scheduled refreshes
 
 **Key Tables:**
