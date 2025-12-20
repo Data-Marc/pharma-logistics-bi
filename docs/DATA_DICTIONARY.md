@@ -2,7 +2,7 @@
 
 Complete reference for all tables, columns, and measures.
 
-For technical questions, see [ARCHITECTURE.md](./ARCHITECTURE.md)
+For technical questions, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**
 
 ---
 
