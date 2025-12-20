@@ -600,5 +600,36 @@ Break-Even Units = Fixed Costs ÷ (Price per Unit - Variable Cost per Unit)
 
 ---
 
-**Last Updated:** December 2025  
-**Total KPIs Documented:** 61
+## LICENSE
+
+This project is licensed under a **Proprietary and Confidential License**.
+This project is NOT open-source and is offered for commercial licensing only.
+
+For licensing inquiries: https://www.linkedin.com/in/samson18/
+
+See [LICENSE](LICENSE) file for complete legal terms.
+
+---
+
+## SUPPORT
+
+Please contact: https://www.linkedin.com/in/samson18/
+
+---
+
+
+**Version:** 1.0.0
+**Last Updated:** December 2025
+**Author:** Marc James Samson
+**Status:** Production Ready
+**License:** Proprietary and Confidential
+
+---
+
+<div align="center">
+
+<a href="https://www.linkedin.com/in/samson18/" target="_blank" style="text-decoration: none;"><img src="./images/Linkedin 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" style="text-decoration: none;"><img src="./images/Youtube 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./images/Notion 96 crop 7 .png" width="39" height="39" style="vertical-align: middle;"/></a>
+
+</div>
