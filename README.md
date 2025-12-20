@@ -86,7 +86,9 @@ The system is built on a SQL Server 2019+ database with **13 tables**, where all
 
 ###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
 
+<div align="center">
 <img src="./docs/images/PowerQuery.png" width="900" alt="Power Query Interface">
+</div>
 
 ---
 
