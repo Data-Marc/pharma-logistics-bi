@@ -191,7 +191,6 @@ graph TB
 - Connection string encryption
 
 ### Access Control
-- Power BI Azure AD integration
 - Workspace-level permissions
 - Row-level security filters
 - Audit logging enabled
