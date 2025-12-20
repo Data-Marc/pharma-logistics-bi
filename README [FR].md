@@ -37,38 +37,6 @@ Ce projet démontre les pratiques d'ingénierie des données de niveau entrepris
 
 Cette approche upstream-first garantit l'intégrité des données sur plus de 822 000+ enregistrements couvrant 4 régions, 44 pays, 44 entrepôts et 2 535 clients mondialement.
 
-### Relations du Modèle de Données
-
-#### Relations Actives (15)
-
-| Tableau Source | Colonne Source | Tableau Cible | Colonne Cible | Cardinalité | Statut |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Orders | CustomerID | Customers | CustomerID | N:1 | ✅ Actif |
-| Orders | ProductID | Products | ProductID | N:1 | ✅ Actif |
-| Orders | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Actif |
-| Orders | Date | Date | Date | N:1 | ✅ Actif |
-| Orders | OrderID | Returns | OrderID | N:1 | ✅ Actif |
-| Orders | OrderID | TemperatureExcursions | OrderID | N:1 | ✅ Actif |
-| Transportation | OrderID | Orders | OrderID | N:1 | ✅ Actif |
-| Transportation | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Actif |
-| Inventory | ProductID | Products | ProductID | N:1 | ✅ Actif |
-| Inventory | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Actif |
-| Products | SupplierID | Suppliers | SupplierID | N:1 | ✅ Actif |
-| ForecastWeekly | ProductID | Products | ProductID | N:1 | ✅ Actif |
-| ForecastWeekly | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Actif |
-| v_LeadTime_Orders | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Actif |
-| v_LeadTime_Orders | OrderDate | Date | Date | N:1 | ✅ Actif |
-
-#### Relations Inactives (5)
-
-| Tableau Source | Colonne Source | Tableau Cible | Colonne Cible | Cardinalité | Statut |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| ForecastWeekly | WeekStart | Date | Date | N:1 | ❌ Inactif |
-| v_LeadTime_Orders | DeliveryDate | Date | Date | N:1 | ❌ Inactif |
-| v_LeadTime_Orders | ShipDate | Date | Date | N:1 | ❌ Inactif |
-| v_LeadTime_Orders | WarehouseID | Warehouses | WarehouseID | N:1 | ❌ Inactif |
-| Orders | Region | v_LeadTime_Orders | Region | N:1 | ❌ Inactif |
-
 ---
 
 ## Diagramme d'Architecture
