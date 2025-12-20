@@ -48,12 +48,26 @@ graph TB
 - Data coverage: 44 countries, 44 warehouses, 20 suppliers, 7 carriers, 2,535 customers, 31 products, 9,980 orders
 - Supports real-time queries and scheduled refreshes
 
-**Key Tables:**
-- `Shipments` - Transportation records
-- `Warehouse_Movements` - Inventory operations
-- `Regions` - Geographic dimensions
-- `Products` - Pharmaceutical product catalog
-- `Customers` - Distribution network nodes
+**Key Tables (13 Total):**
+
+**Fact Tables (Transaction Data):**
+- `Orders` (9,800+ records) - Primary transaction records
+- `Transportation` (9,800+ records) - Logistics and carrier details
+- `Inventory` (5,000+ records) - Warehouse stock levels
+- `Returns` - Product returns and reverse logistics
+- `TemperatureExcursions` - Cold chain temperature violations
+- `ForecastWeekly` - Demand forecasting data
+
+**Dimension Tables (Reference Data):**
+- `Customers` (200 unique) - Distribution network nodes
+- `Warehouses` (44 worldwide) - Geographic warehouse distribution
+- `Products` (500 items) - Pharmaceutical product catalog
+- `Suppliers` (20) - Supplier master data
+- `DIM_Carrier` (7 carriers) - Logistics provider master
+- `Date` (1,825+ records) - Time dimension for all date-based analysis
+
+**Analytics Views:**
+- `v_LeadTime_Orders` - Lead time calculations view
 
 ### Semantic Layer
 
@@ -86,27 +100,26 @@ graph TB
 #### Dashboard Pages
 
 1. **Overview Page**
-   - 16 visuals
-   - 6 KPI summary cards (Total Orders, OTIF, Lead Time, etc.)
+   - KPI summary cards (Total Orders, OTIF, Lead Time, etc.)
    - Freight Cost by transportation mode (bar chart)
    - Cold Chain Supply composition (pie chart)
    - Total Revenue by Region with COGS (stacked bar)
    - Inventory Cost vs Value comparison (switchable buttons)
    - Supplier stockout financial impact (data table)
+   - And more
 
 2. **Warehouses Page**
-   - 17 visuals
-   - 6 KPI summary cards
+   - KPI summary cards
    - Current Stock inventory table (switchable with Stock at Risk)
    - Geographic warehouse distribution map (Microsoft Azure)
    - Inventory Turnover by month (switchable with Warehouse Utilization %)
    - Health Volume pie chart (switchable with Health Unit pie)
    - Products in Stocks matrix (Medical Device, Consumable, etc.)
    - Health Stock Unit and Volume data tables with reorder status
+   - And more
 
 3. **Performance Page**
-   - 20 visuals
-   - 6 KPI summary cards
+   - KPI summary cards
    - Delivery Delays by supplier (switchable with Reliability Rate)
    - Time Delay Categories stacked bar (switchable with Time Delay Visual)
    - Lead Time by Suppliers (switchable with Delivery Delays)
@@ -114,10 +127,10 @@ graph TB
    - CO₂ by Carrier comparison (switchable with CO₂ by Mode)
    - CO₂ avg per Order trend (switchable with CO₂ per 100 Km)
    - Delivery Performance matrix by region and carrier
+   - And more
 
 4. **Financial Page**
-   - 20 visuals
-   - 6 KPI summary cards
+   - KPI summary cards
    - Actual Lead Time donut by carrier (switchable with Lead Time Total Orders)
    - OTIF Carriers comparison (switchable with On Time Carriers)
    - OTIF Breakdown % (switchable with Breakdown Cost %)
@@ -125,6 +138,7 @@ graph TB
    - Back Orders vs Orders (switchable with Excursion % vs Orders)
    - Transport Lead Time vs Global Lead Time by carrier
    - Delivery Performance and Quality Cost matrices by region
+   - And more
 
 ## KPI Architecture
 
