@@ -87,38 +87,52 @@ The following diagram illustrates the relationships between all major entities i
 
 ## Key Relationships
 
-| From Entity | To Entity | Relationship | Cardinality |
-| :--- | :--- | :--- | :--- |
-| **Orders** | Customers | One customer can place multiple orders | N:1 |
-| **Orders** | Transportation | One order has one transportation record | N:1 |
-| **Orders** | Inventory | Orders consume inventory from stock | N:1 |
-| **Orders** | Date | Orders placed by date | N:1 |
-| **Transportation** | DIM_Carrier | Each shipment uses one carrier | N:1 |
-| **Transportation** | Warehouses | Shipments originate from one warehouse | N:1 |
-| **Transportation** | Date | Shipments tracked by date | N:1 |
-| **Inventory** | Products | Inventory tracks product SKUs | N:1 |
-| **Inventory** | Warehouses | Inventory stored in warehouses | N:1 |
-| **Inventory** | Date | Inventory snapshots by date | N:1 |
-| **Products** | Suppliers | Products sourced from suppliers | N:1 |
-| **Warehouses** | Warehouses | Warehouses assigned to regions (via Region column) | N:1 |
-| **Customers** | Warehouses | Customers assigned to regions (via Region column) | N:1 |
-| **TemperatureExcursions** | Transportation | Temperature violations linked to shipments | N:1 |
-| **TemperatureExcursions** | Date | Excursions recorded by date | N:1 |
-| **Returns** | Orders | Returns linked to original orders | N:1 |
-| **Returns** | Date | Returns recorded by date | N:1 |
-| **DIM_Carrier** | Warehouses | Carriers service from warehouses | N:1 |
-| **Suppliers** | Warehouses | Suppliers supply warehouses | N:1 |
+**Total: 20 Relationships (15 Active + 5 Inactive)**
+
+### Active Relationships (15)
+
+| From Table | From Column | To Table | To Column | Cardinality | Status |
+| :--- | :--- | :--- | :--- | :---: | :---: |
+| **Orders** | CustomerID | Customers | CustomerID | N:1 | ✅ Active |
+| **Orders** | ProductID | Products | ProductID | N:1 | ✅ Active |
+| **Orders** | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Active |
+| **Orders** | Date | Date | Date | N:1 | ✅ Active |
+| **Orders** | OrderID | Returns | OrderID | N:1 | ✅ Active |
+| **Orders** | OrderID | TemperatureExcursions | OrderID | N:1 | ✅ Active |
+| **Transportation** | OrderID | Orders | OrderID | N:1 | ✅ Active |
+| **Transportation** | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Active |
+| **Inventory** | ProductID | Products | ProductID | N:1 | ✅ Active |
+| **Inventory** | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Active |
+| **Products** | SupplierID | Suppliers | SupplierID | N:1 | ✅ Active |
+| **ForecastWeekly** | ProductID | Products | ProductID | N:1 | ✅ Active |
+| **ForecastWeekly** | WarehouseID | Warehouses | WarehouseID | N:1 | ✅ Active |
+| **v_LeadTime_Orders** | Carrier | DIM_Carrier | Carrier | N:1 | ✅ Active |
+| **v_LeadTime_Orders** | OrderDate | Date | Date | N:1 | ✅ Active |
+
+### Inactive Relationships (5)
+
+| From Table | From Column | To Table | To Column | Cardinality | Status |
+| :--- | :--- | :--- | :--- | :---: | :---: |
+| **ForecastWeekly** | WeekStart | Date | Date | N:1 | ❌ Inactive |
+| **v_LeadTime_Orders** | DeliveryDate | Date | Date | N:1 | ❌ Inactive |
+| **v_LeadTime_Orders** | ShipDate | Date | Date | N:1 | ❌ Inactive |
+| **v_LeadTime_Orders** | WarehouseID | Warehouses | WarehouseID | N:1 | ❌ Inactive |
+| **Orders** | Region | v_LeadTime_Orders | Region | N:1 | ❌ Inactive |
 
 ---
 
 ## Data Flow
 
 ```
-Orders → Shipments → Inventory → Warehouses
-   ↓         ↓            ↓           ↓
-Customers  Carriers   Products    Regions
-   ↓         ↓            ↓           ↓
-Transactions Financial Metrics Performance KPIs
+Orders → Transportation → DIM_Carrier
+   ↓
+Customers, Products, Warehouses, Date
+   ↓
+Returns, TemperatureExcursions
+   ↓
+Inventory, ForecastWeekly
+   ↓
+Suppliers
 ```
 
 ---
