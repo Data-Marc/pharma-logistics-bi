@@ -83,10 +83,13 @@ Average Transit Time = Σ(Transit Days) ÷ Number of Shipments
 ```
 Carrier Score (0-100%) = Weighted average of:
   - OTIF (40% weight)
-  - Damage Rate (30% weight)
+  - Damage Rate (30% weight) → Use (100% - Damage Rate)
   - Compliance (30% weight)
 ```
-**Example:** (95% × 0.4) + (98% × 0.3) + (99% × 0.3) = 96.7%
+**Example:**
+- OTIF = 95%, Damage Rate = 2%, Compliance = 99%
+- Score = (95% × 0.4) + ((100% - 2%) × 0.3) + (99% × 0.3)
+- Score = 38% + 29.4% + 29.7% = 97.1%
 
 ---
 
@@ -122,11 +125,11 @@ Last-Mile Cost = Freight + Fuel + Labor + Vehicle Depreciation
 ### Days on Hand (DOH)
 **Calculation Method:**
 ```
-DOH = (Average Inventory Value ÷ Daily COGS) × Number of Days
+DOH = Average Inventory Value ÷ Daily COGS
   OR
 DOH = 365 ÷ Inventory Turnover Ratio
 ```
-**Example:** £500,000 ÷ £5,000 × Number of Days = 100 days
+**Example:** £500,000 ÷ £5,000 = 100 days
 
 ---
 
@@ -168,12 +171,21 @@ Capacity % = (Current Volume) ÷ Maximum Volume × 100%
 
 ---
 
-### Stock Accuracy %
+### Stock Accuracy % (Quantity)
 **Calculation Method:**
 ```
-Accuracy % = (Accurate Items) ÷ Total Items Audited × 100%
+Quantity Accuracy % = (Items with Correct Count) ÷ Total Items Audited × 100%
 ```
 **Example:** 950 ÷ 1,000 × 100% = 95%
+
+### Stock Accuracy % (Value)
+**Calculation Method:**
+```
+Value Accuracy % = (Items with Correct Value) ÷ Total Items Audited × 100%
+  Note: In pharma, a 1 unit variance of £1 product differs from a £1000 product.
+  Value Accuracy captures this difference better than Quantity Accuracy.
+```
+**Example:** £995,000 ÷ £1,000,000 × 100% = 99.5% (only £5K variance)
 
 ---
 
@@ -316,10 +328,13 @@ Return % = (Units Returned) ÷ Total Units Shipped × 100%
 ### Forecast Bias
 **Calculation Method:**
 ```
-Bias = Average of (Actual - Forecast) for all periods
-  Positive (+) = Over-forecast; Negative (-) = Under-forecast
+Bias = Average of (Forecast - Actual) for all periods
+  Positive (+) = Over-forecast (forecasted higher than actual)
+  Negative (-) = Under-forecast (forecasted lower than actual)
 ```
-**Example:** Average bias of +5 units (over-forecasting)
+**Example:**
+- If Forecast = 100 and Actual = 95, then Bias = +5 (Over-forecast by 5 units)
+- If Forecast = 100 and Actual = 105, then Bias = -5 (Under-forecast by 5 units)
 
 ---
 
