@@ -139,7 +139,7 @@ Suppliers
 - ✅ Referential integrity enforced
 - ✅ Unique constraints on business keys
 - ✅ Audit timestamps on all transactional data
-- ✅ Data normalization (3NF)
+- ✅ Data normalization
 
 ---
 
