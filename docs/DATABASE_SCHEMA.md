@@ -14,8 +14,8 @@ The following image shows a few tables in the pharma logistics SQL database:
 
 The system is built on a SQL Server database with **13 tables** organized as:
 
-**Fact Tables** (9.8K+ transaction records)
-- Orders
+**Fact Tables** 
+- Orders (9.8K+ transaction records)
 - Transportation
 - Inventory
 - TemperatureExcursions
