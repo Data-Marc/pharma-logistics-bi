@@ -8,7 +8,9 @@ This document describes the database schema and data relationships for the Pharm
 
 ## <img src="./images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
 
+<div style="text-align: center;">
 <img src="./images/SQL_Screenshot.png" width="900" alt="SQL Server Database Schema">
+</div>
 
 The system is built on a SQL Server database with **13 tables** organized as:
 
@@ -35,7 +37,9 @@ The system is built on a SQL Server database with **13 tables** organized as:
 
 The following diagram illustrates the relationships between all major entities in the pharma logistics database:
 
-![Relations Table](./images/Relations%20Table.png)
+<div style="text-align: center;">
+<img src="./images/Relations%20Table.png" width="900" alt="Entity Relationship Diagram">
+</div>
 
 ---
 
