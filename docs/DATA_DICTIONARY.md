@@ -2,8 +2,6 @@
 
 Complete reference for all tables, columns, and measures.
 
-For technical questions, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**
-
 ---
 
 ## <img src="../images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
@@ -205,7 +203,7 @@ Time dimension table.
 
 ---
 
-**For technical questions, see ARCHITECTURE.md**
+For technical questions, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**
 
 ---
 
