@@ -201,7 +201,6 @@ graph TB
 - Tabular model uses in-memory engine (Vertipaq)
 - Calculation engine optimized for DAX
 - Materialized aggregations for large datasets
-- Compression ratio: Typical 10:1 from source
 
 ### Scalability
 - Supports growing data volume (currently 822K+ records)
@@ -217,8 +216,6 @@ graph TB
 - **Power BI** <-> **Power BI Service** (cloud sync)
 
 ### External Connections
-- Azure Key Vault for credentials (recommended)
-- Service Principal for automated refresh
 - Power BI Gateway for on-premises connectivity (if applicable)
 
 ## Disaster Recovery
