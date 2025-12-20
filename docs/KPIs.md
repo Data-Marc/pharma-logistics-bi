@@ -5,7 +5,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## 📦 Transport & Logistics KPIs (12)
+## Transport & Logistics KPIs (12)
 
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
@@ -24,7 +24,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## 🏭 Warehouse & Inventory KPIs (14)
+## Warehouse & Inventory KPIs (14)
 
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
@@ -45,7 +45,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## ⚙️ Performance & Quality KPIs (18)
+## Performance & Quality KPIs (18)
 
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
@@ -70,7 +70,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## 💰 Financial & Revenue KPIs (17)
+## Financial & Revenue KPIs (17)
 
 | KPI Name | Description | Scope |
 | :--- | :--- | :--- |
@@ -94,7 +94,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## 🌍 Regional & Geographic KPIs (Additional Context)
+## Regional & Geographic KPIs (Additional Context)
 
 **By Region:** Each above KPI can be tracked per region:
 - Africa, Americas, Asia, Europe
@@ -109,7 +109,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## 📊 Summary by Category
+## Summary by Category
 
 | Category | Count | Focus |
 | :--- | :---: | :--- |
@@ -121,7 +121,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## 🔄 Calculation Methodology
+## Calculation Methodology
 
 ### Top-Level Calculations:
 - **OTIF % = (Orders On-Time × Orders In-Full) / Total Orders × 100**
@@ -139,7 +139,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## 📋 Data Refresh Schedule
+## Data Refresh Schedule
 
 - **Real-time:** OTIF, Temperature Excursions, System Uptime
 - **Hourly:** Processing Time, Excursion Resolution Time
@@ -149,7 +149,7 @@ Comprehensive key performance indicators (KPIs) for the pharmaceutical logistics
 
 ---
 
-## 🎯 Target Ranges & Alerts
+## Target Ranges & Alerts
 
 All KPIs include:
 - ✅ Target values by business requirement
