@@ -6,9 +6,9 @@ This document describes the database schema and data relationships for the Pharm
 
 ---
 
-## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
+## <img src="./images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
 
-<img src="./docs/images/SQL_Screenshot.png" width="900" alt="SQL Server Database Schema">
+<img src="./images/SQL_Screenshot.png" width="900" alt="SQL Server Database Schema">
 
 The system is built on a SQL Server database with **13 tables** organized as:
 
