@@ -130,30 +130,6 @@ Suppliers
 
 ---
 
-## Regional Structure
-
-**4 Regions:**
-- Africa
-- Americas
-- Asia
-- Europe
-
-**44 Warehouses** distributed globally with inventory and logistics tracking
-
----
-
-## Product Categories
-
-**6 Categories:**
-- Biologic
-- Cold Chain Supply
-- Consumable
-- Medical Device
-- Prescription Drug
-- Vaccine
-
----
-
 ## Data Quality Standards
 
 - ✅ All foreign keys validated
