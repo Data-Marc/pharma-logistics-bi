@@ -71,7 +71,7 @@ Warehouse stock levels and metrics.
 - `StockValue` (Double) - Current value (£)
 - `InventoryHoldingCost` (Double) - Annual holding cost (£)
 
-**Refresh**: Daily | **Update Frequency**: Daily
+**Refresh**: 8 times per day | **Update Frequency**: 8 times per day
 
 ---
 

@@ -171,9 +171,9 @@ graph TB
 ## Data Refresh & Maintenance
 
 ### Refresh Schedule
-- **Frequency:** Daily
+- **Frequency:** 8 times per day
 - **Time:** Off-peak hours (after business close)
-- **Duration:** 15-30 minutes typical
+- **Duration:** Less than 30 seconds
 - **Trigger:** Scheduled refresh + on-demand capability
 
 ### Maintenance Tasks
