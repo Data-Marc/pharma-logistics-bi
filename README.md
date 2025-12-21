@@ -114,7 +114,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 <img src="docs/images/performance.png" width="900" alt="PERFORMANCE Dashboard Preview">
 
-📹 [Watch Warehouses Demo Video](https://github.com/Data-Marc/pharma-logistics-bi/raw/main/docs/images/Warehouses%20Video_3.mp4)
+[![Warehouses Demo Video](https://img.youtube.com/vi/5pByxKXDiVc/maxresdefault.jpg)](https://youtu.be/5pByxKXDiVc)
 
 ---
 
