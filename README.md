@@ -118,7 +118,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIAL** - Profitability & Economics
 
-<img src="docs/images/financial.png" width="900" alt="FINANCIAL Dashboard Preview">
+<img src="docs/images/Financial_Video_1.gif" width="900" alt="FINANCIAL Dashboard Preview">
 
 ---
 
