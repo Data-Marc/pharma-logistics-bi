@@ -114,6 +114,8 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 <img src="docs/images/performance.png" width="900" alt="PERFORMANCE Dashboard Preview">
 
+📹 [Watch Warehouses Demo Video](https://github.com/Data-Marc/pharma-logistics-bi/raw/main/docs/images/Warehouses%20Video_3.mp4)
+
 ---
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIAL** - Profitability & Economics
