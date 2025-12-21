@@ -25,9 +25,10 @@ OTIF % = (Orders On-time ∩ In-full) ÷ Total Orders × 100%
 ### Lead Time
 **Calculation Method:**
 ```
-Lead Time = Σ(Delivery Date - Order Date) ÷ Number of Orders
+Lead Time = Delivery Date - Order Date
 ```
-**Example:** 500 days ÷ 100 orders = 5 days average
+**Example:** 10/10/2025 - 01/10/2025 = 9 Days
+
 
 ---
 
