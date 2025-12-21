@@ -112,9 +112,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**WAREHOUSES** - Inventory Optimization
 
-<img src="docs/images/Warehouses_Video_4.gif" width="100%" alt="Warehouses Inventory Optimization">
-
-[![Warehouses Demo Video](https://img.youtube.com/vi/5pByxKXDiVc/maxresdefault.jpg)](https://youtu.be/5pByxKXDiVc)
+<img src="docs/images/Warehouses_GIF_1.gif" width="70%" alt="Warehouses Inventory Optimization">
 
 ---
 
