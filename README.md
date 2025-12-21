@@ -100,7 +100,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**OVERVIEW** - Global Performance Dashboard
 
-<img src="docs/images/overview.png" width="900" alt="OVERVIEW Dashboard Preview">
+<img src="docs/images/Overview_Video_2.gif" width="900" alt="OVERVIEW Dashboard Preview">
 
 ---
 
