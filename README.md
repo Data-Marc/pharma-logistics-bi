@@ -78,7 +78,7 @@ graph LR
 
 The system is built on a SQL Server 2019+ database with **13 tables**, where all data cleansing, transformations, business calculations, referential integrity constraints, and relationship definitions are enforced at the data layer. This upstream-first architecture ensures data consistency, eliminates redundant processing in the analytics layer, and optimizes overall performance.
 
-[View full DATABASE_SCHEMA.md](docs/DATABASE_SCHEMA.md) | [Data Dictionary](docs/DATA_DICTIONARY.md)
+[DATABASE_SCHEMA](docs/DATABASE_SCHEMA.md) | [Data Dictionary](docs/DATA_DICTIONARY.md)
 
 ---
 
