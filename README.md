@@ -261,9 +261,9 @@ Please contact: https://www.linkedin.com/in/samson18/
 
 <div align="center">
 
-<a href="https://www.linkedin.com/in/samson18/" target="_blank" style="text-decoration: none;"><img src="./doc/images/Linkedin 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" style="text-decoration: none;"><img src="./doc/images/Youtube 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./doc/images/Notion 96 crop 7 .png" width="39" height="39" style="vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/samson18/" target="_blank" style="text-decoration: none;"><img src="./docs/images/Linkedin 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" style="text-decoration: none;"><img src="./docs/images/Youtube 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>
 
 </div>
 
