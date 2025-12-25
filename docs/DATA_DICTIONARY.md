@@ -1,11 +1,11 @@
-﻿# Data Dictionary - Pharma Logistics BI
+#﻿# Data Dictionary - Pharma Logistics BI
 
 Complete reference for all tables, columns, and measures.
 
 ---
 
 
-## Fact Tables
+### Fact Tables
 
 ### Orders
 Primary transaction table for all pharmaceutical orders.
@@ -182,7 +182,7 @@ Time dimension table.
 
 ---
 
-## Filters & Slicers
+### Filters & Slicers
 
 | Slicer | Values | Default |
 |--------|--------|---------|
@@ -201,7 +201,7 @@ For technical questions, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**
 
 ---
 
-## LICENSE
+### LICENSE
 
 This project is licensed under a **Proprietary and Confidential License**.
 This project is NOT open-source and is offered for commercial licensing only.
@@ -212,7 +212,7 @@ See [LICENSE](LICENSE) file for complete legal terms.
 
 ---
 
-## SUPPORT
+### SUPPORT
 
 Please contact: https://www.linkedin.com/in/samson18/
 
