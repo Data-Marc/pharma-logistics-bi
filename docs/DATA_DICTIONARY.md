@@ -10,21 +10,32 @@ Complete reference for all tables, columns, and measures.
 ### Orders
 Primary transaction table for all pharmaceutical orders.
 
-| Column | Data Type | Description |
-|--------|-----------|-------------|
-| OrderID | String | Unique order identifier |
-| CustomerID | String | Foreign key to Customers |
-| ProductID | String | Foreign key to Products |
-| Quantity | Integer | Order quantity (units) |
-| TotalCost | Double | Total order value (Â£) |
-| WarehouseID | String | Warehouse that fulfilled order |
-| Region | String | Geographic region |
-| Status | String | Order status |
-| Date | DateTime | Order date |
-| DeliveryDate | DateTime | Actual delivery date |
-| OnTime_Flag | Integer | 1 if on-time, 0 otherwise |
-| InFull_Flag | Integer | 1 if in-full, 0 otherwise |
-| OTIF_Flag | Integer | 1 if OTIF, 0 otherwise |
+| Column               | Data Type   | Description                                                                                  |
+|----------------------|-------------|----------------------------------------------------------------------------------------------|
+| OrderID              | String      | Unique order identifier                                                                      |
+| CustomerID           | String      | Foreign key to Customers table                                                               |
+| ProductID            | String      | Foreign key to Products table                                                                |
+| ShipDate             | DateTime    | Date the order was shipped                                                                   |
+| Quantity             | Integer     | Order quantity (units)                                                                       |
+| UnitPrice            | Double      | Price per unit at the time of order                                                          |
+| TotalCost            | Double      | Total order value (£)                                                                        |
+| WarehouseID          | String      | Warehouse that fulfilled the order                                                           |
+| Region               | String      | Geographic region of the order                                                               |
+| Status               | String      | Order status (e.g., Delivered, Returned, Pending)                                            |
+| BatchNo              | String      | Batch number for traceability                                                                |
+| ExpiryDate           | DateTime    | Expiry date of the product in the order                                                      |
+| TemperatureRange     | String      | Required temperature range for the product                                                   |
+| ColdChainRequired    | String      | Indicates if cold chain is required ("Yes"/"No")                                             |
+| RequestedDeliveryDate| DateTime    | Date requested by the customer for delivery                                                  |
+| DeliveryDate         | DateTime    | Actual delivery date                                                                         |
+| DeliveredQuantity    | Integer     | Quantity actually delivered                                                                  |
+| OnTime_Flag          | Integer     | 1 if delivered on time, 0 otherwise                                                          |
+| InFull_Flag          | Integer     | 1 if delivered in full, 0 otherwise                                                          |
+| OTIF_Flag            | Integer     | 1 if On Time In Full, 0 otherwise                                                            |
+| DeliveryAccuracy     | Double      | Accuracy of delivery (e.g., % of correct items delivered)                                    |
+| SerialTracked        | String      | Serial number tracking information                                                           |
+| Mode                 | String      | Transport mode (e.g., Air, Road, Sea)                                                        |
+| Date                 | DateTime    | Order date                                                                                   |
 
 **Metrics**: ~9,800 records | Updated daily
 
