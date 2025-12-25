@@ -1,4 +1,4 @@
-# Contributing Guidelines
+## Contributing Guidelines
 
 ### IMPORTANT: Proprietary Design & Dashboard
 
