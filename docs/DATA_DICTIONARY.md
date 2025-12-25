@@ -5,7 +5,7 @@ Complete reference for all tables, columns, and measures.
 ---
 
 
-### Fact Tables
+### Fact Tables:
 
 ### Orders
 Primary transaction table for all pharmaceutical orders.
@@ -37,6 +37,7 @@ Primary transaction table for all pharmaceutical orders.
 | Mode                 | String      | Transport mode (e.g., Air, Road, Sea)                                                        |
 | Date                 | DateTime    | Order date                                                                                   |
 
+**Metrics**: ~9,800 records | 1:1 with Orders
 
 ---
 
