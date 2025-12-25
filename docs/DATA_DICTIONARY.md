@@ -194,7 +194,8 @@ Time dimension table.
 
 **Records**: 1,108 (4 years of dates)
 <p align="center">
-	<img src="./images/Tables.gif" alt="Tables GIF" width="600"/>
+	<img src="./images/Tables.gif" alt="Tables GIF" width="900"/>
+
 </p>
 
 ---
