@@ -43,17 +43,19 @@ Primary transaction table for all pharmaceutical orders.
 ### Transportation
 Logistics and carrier details for each order.
 
-| Column | Data Type | Description |
-|--------|-----------|-------------|
-| OrderID | String | Foreign key to Orders |
-| Carrier | String | Carrier name |
-| TransportCost | Double | Cost of transportation (Â£) |
-| DistanceKm | Double | Distance traveled (km) |
-| LeadTime | Integer | Delivery lead time (days) |
-| ShipDate | DateTime | Shipment date |
-| DeliveryDate | DateTime | Delivery date |
-| Status | String | Transport status |
-| Mode | String | Transport mode (Air/Sea/Land) |
+| Column             | Data Type | Description                                                        |
+|--------------------|-----------|--------------------------------------------------------------------|
+| TransportID        | String    | Unique transport operation identifier                              |
+| OrderID            | String    | Foreign key to Orders table                                        |
+| Carrier            | String    | Name of the carrier or logistics provider                          |
+| Mode               | String    | Transport mode (e.g., Air, Road, Sea)                              |
+| DistanceKm         | Integer   | Distance traveled for the order (in kilometers)                    |
+| TransportCost      | Double    | Cost of transportation for the order (in £)                        |
+| CO2EmissionKg      | Double    | Estimated CO2 emissions for the transport (in kilograms)           |
+| TemperatureControl | String    | Temperature setpoint for transport (e.g., "2–8°C", "15–25°C")      |
+| DataLoggerUsed     | String    | Indicates if a data logger was used for temperature monitoring     |
+| DamageFlag         | Integer   | 1 if shipment was damaged, 0 otherwise                             |
+| LostFlag           | Integer   | 1 if shipment was lost, 0 otherwise                                |
 
 **Metrics**: ~9,800 records | 1:1 with Orders
 
