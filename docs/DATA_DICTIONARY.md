@@ -121,11 +121,7 @@ Product master data.
 | DosageForm       | String    | Dosage form (e.g., tablet, capsule, liquid)              |
 | Strength         | String    | Product strength or concentration (e.g., 500mg, 10%)     |
 | TemperatureRange | String    | Required temperature range for storage/transport         |
-| UnitCost         | Double    | Cost per unit (£)                                        |
-| Weight           | Double    | Weight per unit (kg)                                     |
-| Volume           | Double    | Volume per unit (liters or cm³)                          |
 | SupplierID       | String    | Foreign key to Suppliers table                           |
-| SimulatedVolume  | Double    | Simulated volume (calculated)                            |
 | UnitCost         | Decimal   | Cost per unit (£)                                        |
 | Weight           | Decimal   | Weight per unit (kg)                                     |
 | Volume           | Decimal   | Volume per unit (liters or cm³)                          |
