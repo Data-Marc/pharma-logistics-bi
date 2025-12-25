@@ -125,7 +125,6 @@ Product master data.
 | UnitCost         | Decimal   | Cost per unit (£)                                        |
 | Weight           | Decimal   | Weight per unit (kg)                                     |
 | Volume           | Decimal   | Volume per unit (liters or cm³)                          |
-| SupplierID       | String    | Foreign key to Suppliers table                           |
 | SimulatedVolume  | Decimal   | Simulated volume (calculated)                            |
 
 **Records**: 10,000 products
