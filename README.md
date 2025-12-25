@@ -16,7 +16,7 @@
 
 ---
 
-## OVERVIEW
+### OVERVIEW
 
 **Pharma Logistics BI** is a comprehensive pharmaceutical supply chain management dashboard built with Power BI. It provides real-time visibility into orders, transportation, inventory, quality compliance, and financial performance across multiple regions and logistics providers.
 
@@ -40,7 +40,7 @@ This upstream-first approach guarantees data integrity across 822,000+ records s
 
 ---
 
-## Architecture Diagram
+### Architecture Diagram
 
 ```mermaid
 graph LR
@@ -96,7 +96,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ---
 
-## DASHBOARD PAGES
+### DASHBOARD PAGES
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**OVERVIEW** - Global Performance Dashboard
 
@@ -122,7 +122,7 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ---
 
-## KPI BY CATEGORY
+### KPI BY CATEGORY
 
 ### Quick KPI Overview
 
@@ -178,7 +178,7 @@ Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the 
 
 ---
 
-## PROJECT METRICS
+### PROJECT METRICS
 
 | Metric | Value |
 |--------|-------|
@@ -219,7 +219,7 @@ Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the 
 
 ---
 
-## TECHNOLOGY STACK
+### TECHNOLOGY STACK
 
 | Component | Technology | Version |
 |-----------|-----------|---------|
@@ -233,7 +233,7 @@ Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the 
 
 ---
 
-## LICENSE
+### LICENSE
 
 This project is licensed under a **Proprietary and Confidential License**.
 This project is NOT open-source and is offered for commercial licensing only.
@@ -244,7 +244,7 @@ See [LICENSE](LICENSE) file for complete legal terms.
 
 ---
 
-## SUPPORT
+### SUPPORT
 
 Please contact: https://www.linkedin.com/in/samson18/
 
