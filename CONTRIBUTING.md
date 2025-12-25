@@ -37,11 +37,11 @@ If you see an issue or have feedback, please contact the owner directly rather t
 ## Design & Intellectual Property Protection
 
 The following elements are **strictly protected**:
-- ✓ Dashboard page designs and layouts
-- ✓ Visual components and report structures
-- ✓ KPI calculations and business logic
-- ✓ Color schemes, typography, and visual hierarchy
-- ✓ All screenshot imagery
+✓ Dashboard page designs and layouts
+✓ Visual components and report structures
+✓ KPI calculations and business logic
+✓ Color schemes, typography, and visual hierarchy
+✓ All screenshot imagery
 
 **Do NOT:**
 - Attempt to recreate this design
