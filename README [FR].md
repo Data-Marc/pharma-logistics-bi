@@ -71,7 +71,7 @@ graph LR
 
 ---
 
-### <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Architecture des Bases de Données
+### <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;Architecture des Bases de Données
 
 <img src="./docs/images/SQL_Screenshot.png" width="900" alt="Schéma Base de Données SQL Server">
 
@@ -81,13 +81,13 @@ Le système est construit sur une base de données SQL Server 2019+ avec **13 ta
 
 ---
 
-###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
+###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;Power Query
 
 <img src="./docs/images/PowerQuery.png" width="900" alt="Interface Power Query">
 
 ---
 
-###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Diagramme du Schéma de Base de Données
+###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;Diagramme du Schéma de Base de Données
 
 <img src="docs/images/Relations%20Table.png" width="900" alt="Tableau des Relations">
 
@@ -95,25 +95,25 @@ Le diagramme ci-dessus illustre le modèle de données complet avec toutes les r
 
 ## PAGES DU TABLEAU DE BORD
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**APERÇU** - Tableau de Bord Global de Performance
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**APERÇU** - Tableau de Bord Global de Performance
 
 <img src="docs/images/overview.png" width="900" alt="Aperçu du Tableau de Bord OVERVIEW">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**PERFORMANCE** - Analytique de Chaîne d'Approvisionnement
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**PERFORMANCE** - Analytique de Chaîne d'Approvisionnement
 
 <img src="docs/images/warehouses.png" width="900" alt="Aperçu du Tableau de Bord WAREHOUSES">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**ENTREPÔTS** - Optimisation de l'Inventaire
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**ENTREPÔTS** - Optimisation de l'Inventaire
 
 <img src="docs/images/performance.png" width="900" alt="Aperçu du Tableau de Bord PERFORMANCE">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIER** - Rentabilité & Économie
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**FINANCIER** - Rentabilité & Économie
 
 <img src="docs/images/financial.png" width="900" alt="Aperçu du Tableau de Bord FINANCIAL">
 
