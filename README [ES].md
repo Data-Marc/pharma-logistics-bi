@@ -1,4 +1,4 @@
-# PHARMA LOGISTICS - Panel de Control Power BI
+## PHARMA LOGISTICS - Panel de Control Power BI
 #### Por [Marc James Samson](https://www.linkedin.com/in/samson18/)
 
 ---
@@ -16,7 +16,7 @@
 
 ---
 
-## DESCRIPCIÓN GENERAL
+### DESCRIPCIÓN GENERAL
 
 **Pharma Logistics BI** es un panel de control integral de gestión de cadena de suministro farmacéutica construido con Power BI. Ofrece visibilidad en tiempo real de pedidos, transporte, inventario, cumplimiento de calidad y desempeño financiero en múltiples regiones y proveedores logísticos.
 
@@ -40,7 +40,7 @@ Este enfoque ascendente garantiza integridad de datos en más de 822,000+ regist
 
 ---
 
-## Diagrama de Arquitectura
+### Diagrama de Arquitectura
 
 ```mermaid
 graph LR
@@ -96,7 +96,7 @@ El diagrama anterior ilustra el modelo de datos completo con todas las relacione
 
 ---
 
-## PÁGINAS DEL PANEL DE CONTROL
+### PÁGINAS DEL PANEL DE CONTROL
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**DESCRIPCIÓN GENERAL** - Panel de Control de Desempeño Global
 
@@ -122,7 +122,7 @@ El diagrama anterior ilustra el modelo de datos completo con todas las relacione
 
 ---
 
-## KPI POR CATEGORÍA
+### KPI POR CATEGORÍA
 
 ### Descripción General Rápida de KPI
 
@@ -178,7 +178,7 @@ Documentación Completa de 61 KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la 
 
 ---
 
-## MÉTRICAS DEL PROYECTO
+### MÉTRICAS DEL PROYECTO
 
 | Métrica | Valor |
 |--------|-------|
@@ -206,7 +206,7 @@ Documentación Completa de 61 KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la 
 
 ---
 
-## DOCUMENTACIÓN
+### DOCUMENTACIÓN
 
 ###  Documentación del Proyecto
 
@@ -219,7 +219,7 @@ Documentación Completa de 61 KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la 
 
 ---
 
-## STACK TECNOLÓGICO
+### STACK TECNOLÓGICO
 
 | Componente | Tecnología | Versión |
 |-----------|-----------|---------|
@@ -233,7 +233,7 @@ Documentación Completa de 61 KPI: Ver [docs/KPIs.md](docs/KPIs.md) para ver la 
 
 ---
 
-## LICENCIA
+### LICENCIA
 
 Este proyecto está bajo una **Licencia Proprietaria y Confidencial**.
 Este proyecto NO es de código abierto y solo se ofrece bajo licencia comercial.
@@ -244,25 +244,25 @@ Ver archivo [LICENSE](LICENSE) para términos legales completos.
 
 ---
 
-## SOPORTE
+### SOPORTE
 
-Por favor contáctese: https://www.linkedin.com/in/samson18/
+Please contact: https://www.linkedin.com/in/samson18/
 
 ---
 
 
-**Versión:** 1.0.0
-**Última Actualización:** Diciembre 2025
-**Autor:** Marc James Samson
-**Estado:** Production Ready
-**Licencia:** Proprietaria y Confidencial
+**Version:** 1.0.0
+**Last Updated:** December 2025
+**Author:** Marc James Samson
+**Status:** Production Ready
+**License:** Proprietary and Confidential
 
 ---
 
 <div align="center">
 
-<a href="https://www.linkedin.com/in/samson18/" target="_blank" style="text-decoration: none;"><img src="./docs/images/Linkedin 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" style="text-decoration: none;"><img src="./docs/images/Youtube 96 crop 4.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 7 .png" width="39" height="39" style="vertical-align: middle;"/></a>
+<a href="https://www.linkedin.com/in/samson18/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — Marc Samson" style="text-decoration: none;"><img src="./docs/images/Linkedin 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" rel="noopener noreferrer" aria-label="YouTube — Marc Samson" style="text-decoration: none;"><img src="./docs/images/Youtube 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" rel="noopener noreferrer" aria-label="Notion — Portfolio Marc Samson" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>
 
 </div>
