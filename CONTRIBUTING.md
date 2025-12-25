@@ -19,7 +19,7 @@ This repository showcases a **proprietary Power BI dashboard design** owned by M
 
 ---
 
-## 🚫 Contribution Policy
+## Contribution Policy
 
 This repository exists for:
 
