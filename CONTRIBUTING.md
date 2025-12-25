@@ -19,7 +19,7 @@ This repository showcases a **proprietary Power BI dashboard design** owned by M
 
 ---
 
-## Contribution Policy
+### Contribution Policy
 
 This repository exists for:
 
@@ -34,7 +34,7 @@ If you see an issue or have feedback, please contact the owner directly rather t
 
 ---
 
-## Design & Intellectual Property Protection
+### Design & Intellectual Property Protection
 
 The following elements are **strictly protected:**  
 
@@ -54,7 +54,7 @@ The following elements are **strictly protected:**
 
 ---
 
-## For Potential Clients/Partners
+### For Potential Clients/Partners
 
 If you are interested in:
 - **Licensing** this dashboard design
@@ -67,7 +67,7 @@ If you are interested in:
 
 ---
 
-## Security & Confidentiality
+### Security & Confidentiality
 
 - Do not share, redistribute, or discuss this design publicly
 - Do not attempt to reverse-engineer or recreate the dashboard
@@ -77,7 +77,7 @@ If you are interested in:
 
 ---
 
-## LICENSE
+### LICENSE
 
 This project is licensed under a **Proprietary and Confidential License**.
 This project is NOT open-source and is offered for commercial licensing only.
@@ -88,7 +88,7 @@ See [LICENSE](LICENSE) file for complete legal terms.
 
 ---
 
-## SUPPORT
+### SUPPORT
 
 Please contact: https://www.linkedin.com/in/samson18/
 
