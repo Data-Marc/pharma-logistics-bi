@@ -109,7 +109,7 @@ Le diagramme ci-dessus illustre le modèle de données complet avec toutes les r
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**ENTREPÔTS** - Optimisation de l'Inventaire
 
-<img src="docs/images/performance.png" width="900" alt="Aperçu du Tableau de Bord PERFORMANCE">
+<img src="docs/images/Warehouses_Video_5.gif" width="900" alt="Warehouses Inventory Optimization">
 
 ---
 
