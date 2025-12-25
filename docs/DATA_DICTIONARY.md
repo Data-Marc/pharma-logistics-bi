@@ -7,6 +7,8 @@ Complete reference for all tables, columns, and measures.
 
 ### Fact Tables:
 
+<img src="./images/Tables.gif" alt="Tables GIF" width="900"/>
+
 ### Orders
 Primary transaction table for all pharmaceutical orders.
 
@@ -193,10 +195,6 @@ Time dimension table.
 | Fiscal Month Number | Integer   | Fiscal month number                         |
 
 **Records**: 1,108 (4 years of dates)
-<p align="center">
-	<img src="./images/Tables.gif" alt="Tables GIF" width="900"/>
-
-</p>
 
 ---
 
