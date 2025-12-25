@@ -112,16 +112,21 @@ Customer master data.
 ### Products
 Product master data.
 
-| Column | Data Type | Description |
-|--------|-----------|-------------|
-| ProductID | String | Unique product code |
-| ProductName | String | Product name |
-| Category | String | Product category |
-| UnitCost | Double | Cost per unit (Â£) |
-| UnitPrice | Double | Selling price (Â£) |
-| SupplierID | String | Primary supplier |
+| Column           | Data Type | Description                                              |
+|------------------|-----------|----------------------------------------------------------|
+| ProductID        | String    | Unique product code                                      |
+| ProductName      | String    | Product name                                             |
+| Category         | String    | Product category                                         |
+| DosageForm       | String    | Dosage form (e.g., tablet, capsule, liquid)              |
+| Strength         | String    | Product strength or concentration (e.g., 500mg, 10%)     |
+| TemperatureRange | String    | Required temperature range for storage/transport         |
+| UnitCost         | Double    | Cost per unit (£)                                        |
+| Weight           | Double    | Weight per unit (kg)                                     |
+| Volume           | Double    | Volume per unit (liters or cm³)                          |
+| SupplierID       | String    | Foreign key to Suppliers table                           |
+| SimulatedVolume  | Double    | Simulated volume (calculated)                            |
 
-**Records**: ~500 products
+**Records**: 10,000 products
 
 ---
 
