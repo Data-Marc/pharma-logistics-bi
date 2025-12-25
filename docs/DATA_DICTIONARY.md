@@ -7,6 +7,8 @@ Complete reference for all tables, columns, and measures.
 
 ### Fact Tables:
 
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**FACT & DIMENSION TABLES** - Table views in Poer BI
+
 <img src="./images/Tables.gif" alt="Tables GIF" width="900"/>
 
 ### Orders
