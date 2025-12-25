@@ -216,6 +216,7 @@ Time dimension table.
 | Customers Countries | 44 Countries | All |
 
 
+
 <img src="./images/Slicers.gif" alt="Slicers GIF" width="900"/>
 
 
