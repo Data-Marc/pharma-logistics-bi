@@ -1,4 +1,4 @@
-# PHARMA LOGISTICS - Power BI Dashboard
+## PHARMA LOGISTICS - Power BI Dashboard
 #### By [Marc James Samson](https://www.linkedin.com/in/samson18/)
 
 ---
@@ -74,7 +74,7 @@ graph LR
 
 ---
 
-## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
+### <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Architecture
 
   <img src="./docs/images/SQL_Screenshot.png" width="900" alt="SQL Server Database Schema">
 
@@ -208,7 +208,7 @@ Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the 
 
 ---
 
-## DOCUMENTATION
+### DOCUMENTATION
 
 ###  Project Documentation
 
