@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-## IMPORTANT: Proprietary Design & Dashboard
+### IMPORTANT: Proprietary Design & Dashboard
 
 This repository showcases a **proprietary Power BI dashboard design** owned by Marc James Samson. It is currently under commercial licensing evaluation.
 
