@@ -169,14 +169,28 @@ Carrier/logistics provider master.
 ### Date
 Time dimension table.
 
-| Column | Data Type | Description |
-|--------|-----------|-------------|
-| Date | DateTime | Full date |
-| DateKey | Integer | Date key for joining |
-| MonthShort | String | Month abbreviation |
-| Quarter | String | Q1-Q4 |
-| Year | Integer | 4-digit year |
-| WeekNumber | Integer | Week of year |
+| Column              | Data Type | Description                                 |
+|---------------------|-----------|---------------------------------------------|
+| Date                | DateTime  | Full date                                   |
+| Year                | Integer   | 4-digit year                                |
+| Month Number        | Integer   | Month number (1-12)                         |
+| Month Name          | String    | Full month name (e.g., July)                |
+| Month Short         | String    | Month abbreviation (e.g., Jul)              |
+| Month               | String    | Month in MM format or name                  |
+| Quarter Number      | Integer   | Quarter number (1-4)                        |
+| Quarter Name        | String    | Quarter label (e.g., Q1, Q2, Q3, Q4, T1...) |
+| Semester            | String    | Semester (e.g., S1, S2)                     |
+| Week Number         | Integer   | Week of year                                |
+| Day                 | Integer   | Day of month                                |
+| Day of Week Number  | Integer   | Day of week (1=Monday, 7=Sunday)            |
+| Day Name            | String    | Day name (e.g., Monday)                     |
+| Is Weekend          | Boolean   | True if weekend, False otherwise            |
+| Year-Quarter        | String    | Year and quarter (e.g., 2024-T3)            |
+| Date Key            | Integer   | Date key for joining                        |
+| Month Key           | Integer   | Month key (e.g., 202407)                    |
+| Fiscal Year         | Integer   | Fiscal year                                 |
+| Fiscal Quarter      | String    | Fiscal quarter (e.g., Q1)                   |
+| Fiscal Month Number | Integer   | Fiscal month number                         |
 
 **Records**: 1,825+ (5 years of dates)
 
