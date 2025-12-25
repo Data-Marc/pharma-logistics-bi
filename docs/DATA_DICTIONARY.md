@@ -133,17 +133,22 @@ Product master data.
 ### Warehouses
 Warehouse locations and capacities.
 
-| Column | Data Type | Description |
-|--------|-----------|-------------|
-| WarehouseID | String | Warehouse code |
-| WarehouseName | String | Official name |
-| Location | String | City/Region |
-| Country | String | Country |
-| Capacity | Integer | Max units |
-| MinStock_Warehouse | Integer | Min stock level |
-| SafetyVolume_Warehouse | Integer | Safety stock |
-| MaxVolume_Warehouse | Integer | Max volume |
-| ReorderPoint_Warehouse | Integer | Reorder threshold |
+| Column                      | Data Type | Description                                                      |
+|-----------------------------|-----------|------------------------------------------------------------------|
+| WarehouseID                 | String    | Unique warehouse identifier                                      |
+| WarehouseName               | String    | Official name of the warehouse                                   |
+| Country                     | String    | Country where the warehouse is located                           |
+| Region                      | String    | Geographic region of the warehouse                               |
+| Capacity                    | Integer   | Maximum storage capacity (units)                                 |
+| UtilizationRate             | Double    | Current utilization rate (%)                                     |
+| MinStock_Warehouse          | Integer   | Minimum stock level for the warehouse                            |
+| MaxStock_Warehouse          | Integer   | Maximum stock level for the warehouse                            |
+| SafetyStock_Warehouse       | Integer   | Safety stock level for the warehouse                             |
+| ReorderPoint_Warehouse      | Integer   | Reorder threshold for the warehouse                              |
+| MinVolume_Warehouse         | Double    | Minimum volume threshold (m³ or liters)                          |
+| MaxVolume_Warehouse         | Double    | Maximum volume threshold (m³ or liters)                          |
+| SafetyVolume_Warehouse      | Double    | Safety volume threshold (m³ or liters)                           |
+| ReorderPointVolume_Warehouse| Double    | Reorder point for volume (m³ or liters)                          |
 
 **Records**: 44 warehouses
 
