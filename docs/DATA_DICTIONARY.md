@@ -11,6 +11,8 @@ Complete reference for all tables, columns, and measures.
 
 <img src="./images/Tables.gif" alt="Tables GIF" width="900"/>
 
+---
+
 ### Orders
 Primary transaction table for all pharmaceutical orders.
 
