@@ -65,14 +65,6 @@ If you are interested in:
 
 ---
 
-## License Information
-
-See [LICENSE](./LICENSE) for complete legal terms.
-
-This design and associated materials are provided under a **Proprietary and Confidential License**.
-
----
-
 ## Security & Confidentiality
 
 - Do not share, redistribute, or discuss this design publicly
@@ -83,7 +75,37 @@ This design and associated materials are provided under a **Proprietary and Conf
 
 ---
 
-**Version:** 1.0.0  
-**Last Updated:** December 2025  
-**Owner:** Marc James Samson  
-**Status:** Proprietary - Commercial Licensing Available
+## LICENSE
+
+This project is licensed under a **Proprietary and Confidential License**.
+This project is NOT open-source and is offered for commercial licensing only.
+
+For licensing inquiries: https://www.linkedin.com/in/samson18/
+
+See [LICENSE](LICENSE) file for complete legal terms.
+
+---
+
+## SUPPORT
+
+Please contact: https://www.linkedin.com/in/samson18/
+
+---
+
+
+**Version:** 1.0.0
+**Last Updated:** December 2025
+**Author:** Marc James Samson
+**Status:** Production Ready
+**License:** Proprietary and Confidential
+
+---
+
+<div align="center">
+
+<a href="https://www.linkedin.com/in/samson18/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — Marc Samson" style="text-decoration: none;"><img src="./docs/images/Linkedin 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/FwUXnIbzaoo" target="_blank" rel="noopener noreferrer" aria-label="YouTube — Marc Samson" style="text-decoration: none;"><img src="./docs/images/Youtube 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://marc-james-samson.notion.site/Portfolio-Marc-James-Samson-2a8e9aa7668d8060a208f8b13f609e7b" target="_blank" rel="noopener noreferrer" aria-label="Notion — Portfolio Marc Samson" style="text-decoration: none;"><img src="./docs/images/Notion 96 crop 10.png" width="39" height="39" style="vertical-align: middle;"/></a>
+
+</div>
+
