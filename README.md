@@ -22,6 +22,8 @@
 
 Designed for supply chain managers, logistics coordinators, and financial analysts to monitor KPIs, identify bottlenecks, and optimize pharmaceutical distribution operations.
 
+---
+
 ### DATA FOUNDATION & GOVERNANCE
 
 This project demonstrates enterprise-grade data engineering practices applied to pharmaceutical supply chain analytics:
