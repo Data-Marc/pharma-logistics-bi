@@ -93,11 +93,7 @@ Warehouse inventory levels and metrics.
 ### Customers
 Customer master data.
 
-| Column | Data Type | Description |
-|--------|-----------|-------------|
-| CustomerID | String | Unique customer identifier |
-| CustomerName | String | Official customer name |
-| Type | String | Customer type (Hospital, Pharmacy, Clinic) |
+
 
 | Column          | Data Type | Description                                         |
 |-----------------|-----------|-----------------------------------------------------|
