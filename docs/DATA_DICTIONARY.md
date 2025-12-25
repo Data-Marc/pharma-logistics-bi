@@ -157,12 +157,10 @@ Warehouse locations and capacities.
 ### DIM_Carrier
 Carrier/logistics provider master.
 
-| Column | Data Type | Description |
-|--------|-----------|-------------|
-| Carrier | String | Carrier name |
-| CarrierCode | String | Short code |
-| ServiceType | String | Service level |
-| ColdChainCapable | String | Y/N cold chain |
+| Column   | Data Type | Description                |
+|----------|-----------|----------------------------|
+| Carrier  | String    | Carrier name               |
+| Carrier2 | String    | Carrier short code/alias   |
 
 **Records**: 7 carriers (CMA, DB, DHL, FedEx, KN, Maersk, UPS)
 
