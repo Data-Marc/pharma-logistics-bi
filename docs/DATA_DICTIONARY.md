@@ -154,7 +154,7 @@ Warehouse locations and capacities.
 
 ---
 
-### DIM_Carrier
+### Carriers
 Carrier/logistics provider master.
 
 | Column   | Data Type | Description                |
