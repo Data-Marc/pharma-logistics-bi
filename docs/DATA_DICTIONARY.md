@@ -78,7 +78,6 @@ Warehouse inventory levels and metrics.
 | SafetyStock         | Integer   | Safety buffer quantity to prevent stockouts                                 |
 | DaysHeld            | Integer   | Number of days the product has been held in inventory                       |
 | StockValue          | Decimal   | Current inventory value (£)                                                 |
-| DaysHeld            | Integer   | Number of days the product has been held in inventory                       |
 | InventoryHoldingCost| Decimal   | Estimated holding cost for the inventory (£)                                |
 | WarehouseName       | String    | Name of the warehouse                                                       |
 | Country             | String    | Country where the warehouse is located                                      |
