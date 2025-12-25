@@ -44,6 +44,7 @@ The following elements are **strictly protected:**
 &nbsp;&nbsp; ✓ Color schemes, typography, and visual hierarchy  
 &nbsp;&nbsp; ✓ All screenshot imagery
 
+
 **Do NOT:**
 - Attempt to recreate this design
 - Copy or modify the dashboard layouts
