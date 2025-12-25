@@ -100,7 +100,7 @@ El diagrama anterior ilustra el modelo de datos completo con todas las relacione
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**DESCRIPCIÓN GENERAL** - Panel de Control de Desempeño Global
 
-<img src="docs/images/overview.png" width="900" alt="Vista Previa Panel OVERVIEW">
+<img src="docs/images/Overview_Video_2.gif" width="900" alt="OVERVIEW Dashboard Preview">
 
 ---
 
@@ -112,13 +112,13 @@ El diagrama anterior ilustra el modelo de datos completo con todas las relacione
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
 
-<img src="docs/images/performance.png" width="900" alt="Vista Previa Panel PERFORMANCE">
+<img src="docs/images/Warehouses_Video_5.gif" width="900" alt="Warehouses Inventory Optimization">
 
 ---
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
 
-<img src="docs/images/financial.png" width="900" alt="Vista Previa Panel FINANCIAL">
+<img src="docs/images/Financial_Video_1.gif" width="900" alt="FINANCIAL Dashboard Preview">
 
 ---
 
