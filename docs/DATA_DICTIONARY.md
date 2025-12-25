@@ -17,8 +17,8 @@ Primary transaction table for all pharmaceutical orders.
 | ProductID            | String      | Foreign key to Products table                                                                |
 | ShipDate             | DateTime    | Date the order was shipped                                                                   |
 | Quantity             | Integer     | Order quantity (units)                                                                       |
-| UnitPrice            | Double      | Price per unit at the time of order                                                          |
-| TotalCost            | Double      | Total order value (£)                                                                        |
+| UnitPrice            | Decimal     | Price per unit at the time of order                                                          |
+| TotalCost            | Decimal     | Total order value (£)                                                                        |
 | WarehouseID          | String      | Warehouse that fulfilled the order                                                           |
 | Region               | String      | Geographic region of the order                                                               |
 | Status               | String      | Order status (e.g., Delivered, Returned, Pending)                                            |
@@ -32,7 +32,7 @@ Primary transaction table for all pharmaceutical orders.
 | OnTime_Flag          | Integer     | 1 if delivered on time, 0 otherwise                                                          |
 | InFull_Flag          | Integer     | 1 if delivered in full, 0 otherwise                                                          |
 | OTIF_Flag            | Integer     | 1 if On Time In Full, 0 otherwise                                                            |
-| DeliveryAccuracy     | Double      | Accuracy of delivery (e.g., % of correct items delivered)                                    |
+| DeliveryAccuracy     | Decimal     | Accuracy of delivery (e.g., % of correct items delivered)                                    |
 | SerialTracked        | String      | Serial number tracking information                                                           |
 | Mode                 | String      | Transport mode (e.g., Air, Road, Sea)                                                        |
 | Date                 | DateTime    | Order date                                                                                   |
@@ -51,8 +51,8 @@ Logistics and carrier details for each order.
 | Carrier            | String    | Name of the carrier or logistics provider                          |
 | Mode               | String    | Transport mode (e.g., Air, Road, Sea)                              |
 | DistanceKm         | Integer   | Distance traveled for the order (in kilometers)                    |
-| TransportCost      | Double    | Cost of transportation for the order (in £)                        |
-| CO2EmissionKg      | Double    | Estimated CO2 emissions for the transport (in kilograms)           |
+| TransportCost      | Decimal   | Cost of transportation for the order (in £)                        |
+| CO2EmissionKg      | Decimal   | Estimated CO2 emissions for the transport (in kilograms)           |
 | TemperatureControl | String    | Temperature setpoint for transport (e.g., "2–8°C", "15–25°C")      |
 | DataLoggerUsed     | String    | Indicates if a data logger was used for temperature monitoring     |
 | DamageFlag         | Integer   | 1 if shipment was damaged, 0 otherwise                             |
@@ -76,9 +76,10 @@ Warehouse inventory levels and metrics.
 | StockLevel          | Integer   | Current quantity in stock                                                   |
 | ReorderPoint        | Integer   | Minimum stock level before reorder is triggered                             |
 | SafetyStock         | Integer   | Safety buffer quantity to prevent stockouts                                 |
-| StockValue          | Double    | Current inventory value (£)                                                 |
 | DaysHeld            | Integer   | Number of days the product has been held in inventory                       |
-| InventoryHoldingCost| Double    | Estimated holding cost for the inventory (£)                                |
+| StockValue          | Decimal   | Current inventory value (£)                                                 |
+| DaysHeld            | Integer   | Number of days the product has been held in inventory                       |
+| InventoryHoldingCost| Decimal   | Estimated holding cost for the inventory (£)                                |
 | WarehouseName       | String    | Name of the warehouse                                                       |
 | Country             | String    | Country where the warehouse is located                                      |
 | MinStock_Inventory  | Integer   | Minimum stock level for this product in this warehouse                      |
@@ -125,6 +126,11 @@ Product master data.
 | Volume           | Double    | Volume per unit (liters or cm³)                          |
 | SupplierID       | String    | Foreign key to Suppliers table                           |
 | SimulatedVolume  | Double    | Simulated volume (calculated)                            |
+| UnitCost         | Decimal   | Cost per unit (£)                                        |
+| Weight           | Decimal   | Weight per unit (kg)                                     |
+| Volume           | Decimal   | Volume per unit (liters or cm³)                          |
+| SupplierID       | String    | Foreign key to Suppliers table                           |
+| SimulatedVolume  | Decimal   | Simulated volume (calculated)                            |
 
 **Records**: 10,000 products
 
@@ -140,15 +146,15 @@ Warehouse locations and capacities.
 | Country                     | String    | Country where the warehouse is located                           |
 | Region                      | String    | Geographic region of the warehouse                               |
 | Capacity                    | Integer   | Maximum storage capacity (units)                                 |
-| UtilizationRate             | Double    | Current utilization rate (%)                                     |
+| UtilizationRate             | Decimal   | Current utilization rate (%)                                     |
 | MinStock_Warehouse          | Integer   | Minimum stock level for the warehouse                            |
 | MaxStock_Warehouse          | Integer   | Maximum stock level for the warehouse                            |
 | SafetyStock_Warehouse       | Integer   | Safety stock level for the warehouse                             |
 | ReorderPoint_Warehouse      | Integer   | Reorder threshold for the warehouse                              |
-| MinVolume_Warehouse         | Double    | Minimum volume threshold (m³ or liters)                          |
-| MaxVolume_Warehouse         | Double    | Maximum volume threshold (m³ or liters)                          |
-| SafetyVolume_Warehouse      | Double    | Safety volume threshold (m³ or liters)                           |
-| ReorderPointVolume_Warehouse| Double    | Reorder point for volume (m³ or liters)                          |
+| MinVolume_Warehouse         | Decimal   | Minimum volume threshold (m³ or liters)                          |
+| MaxVolume_Warehouse         | Decimal   | Maximum volume threshold (m³ or liters)                          |
+| SafetyVolume_Warehouse      | Decimal   | Safety volume threshold (m³ or liters)                           |
+| ReorderPointVolume_Warehouse| Decimal   | Reorder point for volume (m³ or liters)                          |
 
 **Records**: 44 warehouses
 
