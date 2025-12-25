@@ -97,7 +97,7 @@ Le diagramme ci-dessus illustre le modèle de données complet avec toutes les r
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**APERÇU** - Tableau de Bord Global de Performance
 
-<img src="docs/images/overview.png" width="900" alt="Aperçu du Tableau de Bord OVERVIEW">
+<img src="docs/images/Overview_Video_2.gif" width="900" alt="OVERVIEW Dashboard Preview">
 
 ---
 
@@ -115,7 +115,7 @@ Le diagramme ci-dessus illustre le modèle de données complet avec toutes les r
 
 <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**FINANCIER** - Rentabilité & Économie
 
-<img src="docs/images/financial.png" width="900" alt="Aperçu du Tableau de Bord FINANCIAL">
+<img src="docs/images/Financial_Video_1.gif" width="900" alt="FINANCIAL Dashboard Preview">
 
 ---
 
