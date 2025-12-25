@@ -64,20 +64,26 @@ Logistics and carrier details for each order.
 ### Inventory
 Warehouse inventory levels and metrics.
 
-| Column | Data Type | Description |
-|--------|-----------|-------------|
-| InventoryID | String | Unique identifier |
-| WarehouseID | String | Warehouse location |
-| ProductID | String | Product stored |
-| CurrentStock | Integer | Current quantity on hand |
-| MinStock | Integer | Minimum stock level |
-| SafetyStock | Integer | Safety buffer quantity |
-| ReorderPoint | Integer | Reorder trigger level |
-| MaxStock | Integer | Maximum capacity |
-| StockValue | Double | Current inventory value (Â£) |
-| InventoryHoldingCost | Double | Annual holding cost (Â£) |
+| Column              | Data Type | Description                                                                 |
+|---------------------|-----------|-----------------------------------------------------------------------------|
+| ProductID           | String    | Foreign key to Products table                                               |
+| WarehouseID         | String    | Foreign key to Warehouses table                                             |
+| StockDate           | DateTime  | Date of the inventory record                                                |
+| LotNumber           | String    | Batch or lot number for traceability                                        |
+| ExpiryDate          | DateTime  | Expiry date of the product in stock                                         |
+| TemperatureRange    | String    | Required temperature range for storage (e.g., "2–8°C", "15–25°C")           |
+| StockLevel          | Integer   | Current quantity in stock                                                   |
+| ReorderPoint        | Integer   | Minimum stock level before reorder is triggered                             |
+| SafetyStock         | Integer   | Safety buffer quantity to prevent stockouts                                 |
+| StockValue          | Double    | Current inventory value (£)                                                 |
+| DaysHeld            | Integer   | Number of days the product has been held in inventory                       |
+| InventoryHoldingCost| Double    | Estimated holding cost for the inventory (£)                                |
+| WarehouseName       | String    | Name of the warehouse                                                       |
+| Country             | String    | Country where the warehouse is located                                      |
+| MinStock_Inventory  | Integer   | Minimum stock level for this product in this warehouse                      |
+| MaxStock_Inventory  | Integer   | Maximum stock level for this product in this warehouse                      |
 
-**Metrics**: ~5,000 records | Updated daily
+**Metrics**: 1,368 records | Updated daily
 
 ---
 
