@@ -72,7 +72,7 @@ graph LR
 
 ---
 
-### <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Arquitectura de Base de Datos
+### <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;Arquitectura de Base de Datos
 
 <img src="./docs/images/SQL_Screenshot.png" width="900" alt="Esquema Base de Datos SQL Server">
 
@@ -82,13 +82,13 @@ El sistema está construido sobre una base de datos SQL Server 2019+ con **13 ta
 
 ---
 
-###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
+###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;Power Query
 
 <img src="./docs/images/PowerQuery.png" width="900" alt="Interfaz Power Query">
 
 ---
 
-###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Diagrama del Esquema de Base de Datos
+###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;Diagrama del Esquema de Base de Datos
 
 <img src="docs/images/Relations%20Table.png" width="900" alt="Tabla de Relaciones">
 
@@ -98,25 +98,25 @@ El diagrama anterior ilustra el modelo de datos completo con todas las relacione
 
 ### PÁGINAS DEL PANEL DE CONTROL
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**DESCRIPCIÓN GENERAL** - Panel de Control de Desempeño Global
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**DESCRIPCIÓN GENERAL** - Panel de Control de Desempeño Global
 
 <img src="docs/images/overview.png" width="900" alt="Vista Previa Panel OVERVIEW">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**DESEMPEÑO** - Analítica de Cadena de Suministro
 
 <img src="docs/images/warehouses.png" width="900" alt="Vista Previa Panel WAREHOUSES">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**ALMACENES** - Optimización de Inventario
 
 <img src="docs/images/performance.png" width="900" alt="Vista Previa Panel PERFORMANCE">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**FINANCIERO** - Rentabilidad y Economía
 
 <img src="docs/images/financial.png" width="900" alt="Vista Previa Panel FINANCIAL">
 
