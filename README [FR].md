@@ -1,4 +1,4 @@
-# PHARMA LOGISTICS - Tableau de Bord Power BI
+## PHARMA LOGISTICS - Tableau de Bord Power BI
 #### Par [Marc James Samson](https://www.linkedin.com/in/samson18/)
 
 ---
@@ -15,7 +15,7 @@
 
 ---
 
-## APERÇU
+### APERÇU
 
 **Pharma Logistics BI** est un tableau de bord complet de gestion de la chaîne d'approvisionnement pharmaceutique construit avec Power BI. Il offre une visibilité en temps réel sur les commandes, le transport, l'inventaire, la conformité qualité et la performance financière dans plusieurs régions et prestataires logistiques.
 
@@ -39,7 +39,7 @@ Cette approche upstream-first garantit l'intégrité des données sur plus de 82
 
 ---
 
-## Diagramme d'Architecture
+### Diagramme d'Architecture
 
 ```mermaid
 graph LR
@@ -71,7 +71,7 @@ graph LR
 
 ---
 
-## <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Architecture des Bases de Données
+### <img src="./docs/images/SQL 96 crop.png" width="35" height="35" alt="SQL Server" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Architecture des Bases de Données
 
 <img src="./docs/images/SQL_Screenshot.png" width="900" alt="Schéma Base de Données SQL Server">
 
@@ -119,7 +119,7 @@ Le diagramme ci-dessus illustre le modèle de données complet avec toutes les r
 
 ---
 
-## KPI PAR CATÉGORIE
+### KPI PAR CATÉGORIE
 
 ### Aperçu Rapide des KPI
 
@@ -175,7 +175,7 @@ Documentation Complète des 61 KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir
 
 ---
 
-## MÉTRIQUES DU PROJET
+### MÉTRIQUES DU PROJET
 
 | Métrique | Valeur |
 |--------|-------|
@@ -203,7 +203,7 @@ Documentation Complète des 61 KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir
 
 ---
 
-## DOCUMENTATION
+### DOCUMENTATION
 
 ###  Documentation du Projet
 
@@ -216,7 +216,7 @@ Documentation Complète des 61 KPI : Voir [docs/KPIs.md](docs/KPIs.md) pour voir
 
 ---
 
-## PILE TECHNOLOGIQUE
+### PILE TECHNOLOGIQUE
 
 | Composant | Technologie | Version |
 |-----------|-----------|---------|
