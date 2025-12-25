@@ -1,6 +1,5 @@
 ## Data Dictionary - Pharma Logistics BI
-
-Complete reference for all tables, columns, and measures.
+Complete reference for all tables, columns, and Slicers.
 
 ---
 
