@@ -36,7 +36,8 @@ If you see an issue or have feedback, please contact the owner directly rather t
 
 ## Design & Intellectual Property Protection
 
-The following elements are **strictly protected** &nbsp;&nbsp; ✓ Dashboard page designs and layouts  
+The following elements are **strictly protected:** 
+&nbsp;&nbsp; ✓ Dashboard page designs and layouts  
 &nbsp;&nbsp; ✓ Visual components and report structures  
 &nbsp;&nbsp; ✓ KPI calculations and business logic  
 &nbsp;&nbsp; ✓ Color schemes, typography, and visual hierarchy  
