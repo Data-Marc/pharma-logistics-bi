@@ -199,35 +199,6 @@ Time dimension table.
 
 **Records**: 1,108 (4 years of dates)
 
----
-
-## Key Measures
-
-### Revenue KPIs
-- `Revenue` : Total revenue from orders (Â£)
-- `Revenue MTP` : Month-to-date revenue
-- `Revenue YTD` : Year-to-date revenue
-
-### Cost KPIs
-- `COGS` : Cost of Goods Sold
-- `Total Logistics Cost` : Transport + Inventory holding
-- `Cost per Order` : Average cost per transaction
-
-### Performance KPIs
-- `Perf_OTIF %` : On-Time In-Full percentage
-- `Perf_On-Time Delivery %` : On-time delivery rate
-- `Perf_In-Full %` : In-full delivery rate
-- `Perf_Perfect Order %` : Perfect orders
-
-### Financial KPIs
-- `Gross Margin %` : (Revenue - COGS) / Revenue
-- `Net Contribution` : Revenue - COGS - Logistics Cost
-- `Efficiency Score` : (1 - Logistics Cost/Revenue) * 100
-
-### Warehouse KPIs
-- `Current Stock` : Units on hand
-- `Days on Hand (90d)` : DOH based on 90-day demand
-- `Inventory Turns` : COGS / Average Inventory Value
 
 ---
 
