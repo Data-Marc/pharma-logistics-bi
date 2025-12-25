@@ -84,13 +84,13 @@ The system is built on a SQL Server 2019+ database with **13 tables**, where all
 
 ---
 
-###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Power Query
+###  <img src="./docs/images/Power Query icon.png" width="35" height="35" alt="Power Query" style="vertical-align:middle"/>&nbsp;&nbsp;Power Query
 
 <img src="./docs/images/PowerQuery.png" width="900" alt="Power Query Interface">
 
 ---
 
-###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;Database Schema Diagram
+###  <img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;Database Schema Diagram
 
 <img src="docs/images/Relations%20Table.png" width="900" alt="Relations Table">
 
@@ -100,25 +100,25 @@ The above diagram illustrates the complete data model with all entity relationsh
 
 ### DASHBOARD PAGES
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**OVERVIEW** - Global Performance Dashboard
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**OVERVIEW** - Global Performance Dashboard
 
 <img src="docs/images/Overview_Video_2.gif" width="900" alt="OVERVIEW Dashboard Preview">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**PERFORMANCE** - Supply Chain Analytics
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**PERFORMANCE** - Supply Chain Analytics
 
 <img src="docs/images/warehouses.png" width="900" alt="WAREHOUSES Dashboard Preview">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**WAREHOUSES** - Inventory Optimization
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**WAREHOUSES** - Inventory Optimization
 
 <img src="docs/images/Warehouses_Video_5.gif" width="900" alt="Warehouses Inventory Optimization">
 
 ---
 
-<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;&nbsp;**FINANCIAL** - Profitability & Economics
+<img src="./docs/images/Power Bi 96 crop.png" width="35" height="35" alt="Power BI" style="vertical-align:middle"/>&nbsp;&nbsp;**FINANCIAL** - Profitability & Economics
 
 <img src="docs/images/Financial_Video_1.gif" width="900" alt="FINANCIAL Dashboard Preview">
 
