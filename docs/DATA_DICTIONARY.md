@@ -24,7 +24,7 @@ Primary transaction table for all pharmaceutical orders.
 | Status               | String      | Order status (e.g., Delivered, Returned, Pending)                                            |
 | BatchNo              | String      | Batch number for traceability                                                                |
 | ExpiryDate           | DateTime    | Expiry date of the product in the order                                                      |
-**Records**: 1,108 records (4 years)
+| TemperatureRange     | String      | Temperature setpoint for transport (e.g., "2–8°C", "15–25°C")                                |
 | ColdChainRequired    | String      | Indicates if cold chain is required ("Yes"/"No")                                             |
 | RequestedDeliveryDate| DateTime    | Date requested by the customer for delivery                                                  |
 | DeliveryDate         | DateTime    | Actual delivery date                                                                         |
@@ -192,7 +192,7 @@ Time dimension table.
 | Fiscal Quarter      | String    | Fiscal quarter (e.g., Q1)                   |
 | Fiscal Month Number | Integer   | Fiscal month number                         |
 
-**Records**: 1,825+ (5 years of dates)
+**Records**: 1,108 (4 years of dates)
 
 ---
 
