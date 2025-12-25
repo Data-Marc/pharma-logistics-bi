@@ -98,11 +98,18 @@ Customer master data.
 | CustomerID | String | Unique customer identifier |
 | CustomerName | String | Official customer name |
 | Type | String | Customer type (Hospital, Pharmacy, Clinic) |
-| Country | String | Primary country |
-| Region | String | Geographic region |
-| Industry | String | Industry segment |
 
-**Records**: ~200 unique customers
+| Column          | Data Type | Description                                         |
+|-----------------|-----------|-----------------------------------------------------|
+| CustomerID      | String    | Unique customer identifier                          |
+| CustomerName    | String    | Official customer name                              |
+| Type            | String    | Customer type (e.g., Hospital, Pharmacy, Clinic)    |
+| Country         | String    | Country of the customer                             |
+| Region          | String    | Geographic region of the customer                   |
+| Industry        | String    | Industry segment (e.g., Healthcare, Retail)         |
+| CustomerSegment | String    | Customer segmentation/category (e.g., Key Account)  |
+
+**Records**: 10,000 customers
 
 ---
 
