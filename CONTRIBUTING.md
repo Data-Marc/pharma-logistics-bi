@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-## ⚠️ IMPORTANT: Proprietary Design & Dashboard
+## IMPORTANT: Proprietary Design & Dashboard
 
 This repository showcases a **proprietary Power BI dashboard design** owned by Marc James Samson. It is currently under commercial licensing evaluation.
 
@@ -34,7 +34,7 @@ If you see an issue or have feedback, please contact the owner directly rather t
 
 ---
 
-## 🎨 Design & Intellectual Property Protection
+## Design & Intellectual Property Protection
 
 The following elements are **strictly protected**:
 - ✓ Dashboard page designs and layouts
@@ -52,7 +52,7 @@ The following elements are **strictly protected**:
 
 ---
 
-## 💼 For Potential Clients/Partners
+## For Potential Clients/Partners
 
 If you are interested in:
 - **Licensing** this dashboard design
@@ -65,7 +65,7 @@ If you are interested in:
 
 ---
 
-## 📋 License Information
+## License Information
 
 See [LICENSE](./LICENSE) for complete legal terms.
 
@@ -73,7 +73,7 @@ This design and associated materials are provided under a **Proprietary and Conf
 
 ---
 
-## 🔒 Security & Confidentiality
+## Security & Confidentiality
 
 - Do not share, redistribute, or discuss this design publicly
 - Do not attempt to reverse-engineer or recreate the dashboard
