@@ -37,7 +37,6 @@ Primary transaction table for all pharmaceutical orders.
 | Mode                 | String      | Transport mode (e.g., Air, Road, Sea)                                                        |
 | Date                 | DateTime    | Order date                                                                                   |
 
-**Metrics**: ~9,800 records | Updated daily
 
 ---
 
