@@ -12,4 +12,4 @@ DAX Studio provides a VertiPaq Analyzer feature, which offers a detailed view of
 
 This analysis is crucial for identifying large tables, understanding memory distribution, and detecting potential optimization opportunities. In the example below, no referential integrity violations or anomalies are present, and the distribution of memory and table sizes appears consistent with a well-structured Power BI model. Such insights help ensure that your model remains efficient, scalable, and easy to maintain.
 
-<img src="./images/Dax%20Studio_Vertipaq.png" alt="VertiPaq Analyzer in DAX Studio" width="900" />
+<img src="./images/Dax%20Studio_Vertipaq.png" alt="VertiPaq Analyzer in DAX Studio" height="600" />
