@@ -45,4 +45,4 @@ In the VertiPaq Analyzer screenshot (Columns tab), the "Encoding" column indicat
 • Dictionary sizes are small compared to the total column size, indicating efficient compression.
 • High-cardinality columns (e.g., OrderID, ProductID) are also well compressed thanks to appropriate encoding.
 
-<u>**Professional conclusion:** VertiPaq compression is effective in this model. The use of "HASH" encoding for text and "VALUE" for numeric columns optimizes memory usage. There are no signs of excessive memory consumption or poor compression. This ensures strong performance and optimal resource utilization.</u>
+**Professional conclusion:** VertiPaq compression is effective in this model. The use of "HASH" encoding for text and "VALUE" for numeric columns optimizes memory usage. There are no signs of excessive memory consumption or poor compression. This ensures strong performance and optimal resource utilization.
