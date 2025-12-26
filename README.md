@@ -218,6 +218,7 @@ Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the 
 | **[ Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
 | [ KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
 | [ Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
+| [Dax Studio](docs/dax-studio.md) | DAX optimization techniques |
 
 ---
 
