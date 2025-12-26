@@ -202,7 +202,7 @@ Time dimension table.
 
 ---
 
-### Filters & Slicers
+## Filters & Slicers
 
 | Slicer | Values | Default |
 |--------|--------|---------|
