@@ -1,3 +1,20 @@
+### Professional Analysis of the VertiPaq Analyzer Screenshot (Relationships Tab)
+
+The VertiPaq Analyzer Relationships tab provides a comprehensive overview of the referential integrity and cardinality of the model’s relationships.
+
+**Key observations:**
+
+All relationships show 0 “Missing Keys” and 0 “Invalid Rows,” indicating there are no orphaned foreign keys or invalid records. Referential integrity is fully maintained.
+Cardinalities are consistent with a well-designed star or snowflake schema, as typically expected in Power BI models.
+Most 1:M Ratio % values are at or near 100%, which is standard for fact-to-dimension relationships.
+
+**Points to monitor:**
+
+Some relationships, such as Returns[Order_ID] → Orders[Order_ID] (2,803%) and Inventory[ProductID] → Products[ProductID] (730%), display a 1:M Ratio % significantly above 100%. This means that, on average, there are many more occurrences in the source table for each key in the target table. While this is not necessarily an error, it may indicate a highly detailed fact table or potential data duplication.
+Elevated ratios are not inherently problematic if they align with business logic (e.g., multiple returns per order, multiple inventory records per product). However, it is important to confirm that these ratios are intentional and do not result in unexpected aggregations or duplicate reporting.
+
+**Conclusion:**
+No technical errors or referential integrity violations are present. The relational model is structurally sound, and key quality is excellent. High 1:M ratios on certain relationships should be reviewed in the context of business requirements to ensure they are expected and do not impact report accuracy.
 
 
 # DAX Studio
