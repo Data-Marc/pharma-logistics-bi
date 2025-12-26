@@ -24,25 +24,25 @@ The VertiPaq Analyzer Columns view demonstrates that the majority of columns in 
 
 <img src="./images/Dax%20Studio_Vertipaq_2.png" alt="VertiPaq Analyzer Columns Compression" width="900" />
 
-### Analyse professionnelle du screenshot VertiPaq Analyzer (onglet Columns)
+### Professional Analysis of the VertiPaq Analyzer Screenshot (Columns Tab)
 
-Après analyse du screenshot VertiPaq Analyzer (onglet Columns), voici un retour professionnel :
+After analyzing the VertiPaq Analyzer screenshot (Columns tab), here is a professional summary:
 
-• Les colonnes affichent des cardinalités, tailles et types d’encodage cohérents avec un modèle Power BI bien structuré.
-• Les colonnes de type “HASH” sont attendues pour des chaînes de caractères, et “VALUE” pour des numériques.
-• Les tailles de dictionnaire et de colonne sont proportionnelles à la cardinalité et au type de données.
-• Le pourcentage de la base de données (% DB) et de la table (% Table) est bien réparti, sans concentration anormale sur une seule colonne.
-• Aucune colonne ne semble occuper une taille disproportionnée par rapport à sa cardinalité ou à la table.
-• Les colonnes d’ID (OrderID, ProductID, CustomerID, etc.) ont des tailles et cardinalités attendues.
-• Pas de colonne “RI Violations” ou d’indicateur d’erreur visible.
+• The columns display cardinalities, sizes, and encoding types that are consistent with a well-structured Power BI model.
+• "HASH" encoding is expected for text columns, while "VALUE" is used for numeric columns.
+• Dictionary and column sizes are proportional to the cardinality and data type.
+• The percentage of database (% DB) and table (% Table) memory is well distributed, with no abnormal concentration in a single column.
+• No column appears to occupy a disproportionate size relative to its cardinality or table.
+• ID columns (OrderID, ProductID, CustomerID, etc.) have expected sizes and cardinalities.
+• There are no "RI Violations" columns or visible error indicators.
 
-**Conclusion** : Aucune anomalie ou problème de modélisation n’est détecté sur ce screenshot. La distribution mémoire, l’encodage et la structure des colonnes sont conformes aux bonnes pratiques Power BI. Si tu veux une analyse plus poussée (par exemple, sur la compression ou la pertinence métier de certaines colonnes), précise ta demande !
+**Conclusion:** No anomalies or modeling issues are detected in this screenshot. Memory distribution, encoding, and column structure all conform to Power BI best practices. If you require a more in-depth analysis (for example, on compression or business relevance of certain columns), please specify!
 
-Sur le screenshot VertiPaq Analyzer (onglet Columns), la colonne “Encoding” indique le type de compression appliqué à chaque colonne :
+In the VertiPaq Analyzer screenshot (Columns tab), the "Encoding" column indicates the type of compression applied to each column:
 
-• La majorité des colonnes sont en “HASH”, ce qui signifie que VertiPaq utilise un dictionnaire pour compresser les valeurs distinctes (idéal pour les chaînes de caractères ou les colonnes à faible cardinalité).
-• Les colonnes numériques (“VALUE”) sont stockées de façon optimisée, souvent en utilisant le type de données natif le plus compact possible.
-• Les tailles de dictionnaire (“Dictionary”) sont faibles par rapport à la taille totale des colonnes, ce qui montre une bonne efficacité de compression.
-• Les colonnes à forte cardinalité (ex : OrderID, ProductID) restent bien compressées grâce à l’encodage adapté.
+• Most columns use "HASH" encoding, meaning VertiPaq uses a dictionary to compress distinct values (ideal for text or low-cardinality columns).
+• Numeric columns ("VALUE") are stored optimally, often using the most compact native data type possible.
+• Dictionary sizes are small compared to the total column size, indicating efficient compression.
+• High-cardinality columns (e.g., OrderID, ProductID) are also well compressed thanks to appropriate encoding.
 
-**Conclusion professionnelle** : La compression VertiPaq est efficace sur ce modèle. L’utilisation de l’encodage “HASH” pour les chaînes et “VALUE” pour les numériques permet d’optimiser la mémoire. Aucun signe de surconsommation ou de mauvaise compression n’est visible. Cela garantit de bonnes performances et une utilisation optimale des ressources.
+**Professional conclusion:** VertiPaq compression is effective in this model. The use of "HASH" encoding for text and "VALUE" for numeric columns optimizes memory usage. There are no signs of excessive memory consumption or poor compression. This ensures strong performance and optimal resource utilization.
