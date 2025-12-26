@@ -66,6 +66,17 @@ No technical errors or referential integrity violations are present. The relatio
 
 ---
 
+### LICENSE
+
+This project is licensed under a **Proprietary and Confidential License**.
+This project is NOT open-source and is offered for commercial licensing only.
+
+For licensing inquiries: https://www.linkedin.com/in/samson18/
+
+See [LICENSE](LICENSE) file for complete legal terms.
+
+---
+
 ### SUPPORT
 
 Please contact: https://www.linkedin.com/in/samson18/
