@@ -36,7 +36,7 @@ After analyzing the VertiPaq Analyzer screenshot (Columns tab), here is a profes
 • ID columns (OrderID, ProductID, CustomerID, etc.) have expected sizes and cardinalities.
 • There are no "RI Violations" columns or visible error indicators.
 
-**Conclusion: No anomalies or modeling issues are detected in this screenshot. Memory distribution, encoding, and column structure all conform to Power BI best practices. If you require a more in-depth analysis (for example, on compression or business relevance of certain columns), please specify!**
+##**Conclusion: No anomalies or modeling issues are detected in this screenshot. Memory distribution, encoding, and column structure all conform to Power BI best practices. If you require a more in-depth analysis (for example, on compression or business relevance of certain columns), please specify!**##
 
 In the VertiPaq Analyzer screenshot (Columns tab), the "Encoding" column indicates the type of compression applied to each column:
 
