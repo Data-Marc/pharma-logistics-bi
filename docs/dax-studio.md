@@ -10,6 +10,7 @@ VertiPaq is the in-memory columnar storage engine used by Power BI, Analysis Ser
 
 DAX Studio provides a VertiPaq Analyzer feature, which offers a detailed view of the internal structure and memory usage of your Power BI model. The screenshot below illustrates the VertiPaq Analyzer's Tables view, where you can see key metrics such as cardinality, total size, number of columns, partitions, and the percentage of database memory used by each table.
 
-This analysis is crucial for identifying large tables, understanding memory distribution, and detecting potential optimization opportunities. In the example below, no referential integrity violations or anomalies are present, and the distribution of memory and table sizes appears consistent with a well-structured Power BI model. Such insights help ensure that your model remains efficient, scalable, and easy to maintain.
+
+This analysis is crucial for identifying large tables, understanding memory distribution, and detecting potential optimization opportunities. Notably, despite the complete creation of this project and all its metadata from scratch, the VertiPaq Analyzer reveals that there are no referential integrity (RI) violations or anomalies. This demonstrates a high level of rigor in the data modeling process and confirms that the model structure is robust, reliable, and fully compliant with best practices. The distribution of memory and table sizes appears consistent with a well-structured Power BI model. Such insights help ensure that your model remains efficient, scalable, and easy to maintain.
 
 <img src="./images/Dax%20Studio_Vertipaq.png" alt="VertiPaq Analyzer in DAX Studio" width="900" height="1800" />
