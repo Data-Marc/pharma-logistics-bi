@@ -214,11 +214,11 @@ Full KPI Documentation of 61 KPIs: See [docs/KPIs.md](docs/KPIs.md) to view the 
 
 | Document | Description |
 | :--- | :--- |
-| [ Architecture Guide](docs/ARCHITECTURE.md) | System architecture, data flow, and technology decisions |
-| **[ Database Schema](docs/DATABASE_SCHEMA.md)** | **Data model, entity relationships, and database structure** |
-| [ KPIs Documentation](docs/KPIs.md) | Complete KPI definitions, calculations, and business logic |
-| [Calculation Methods](docs/KPI_GLOSSARY.md) | Calculation Methods |
-| [ Data Dictionary](docs/DATA_DICTIONARY.md) | Detailed field descriptions and data mapping |
+| [Architecture Guide](docs/ARCHITECTURE.md) | System architecture & data flow |
+| [Database Schema](docs/DATABASE_SCHEMA.md) | Data model & relationships |
+| [KPIs Documentation](docs/KPIs.md) | KPI definitions & logicc |
+| [Calculation Methods](docs/KPI_GLOSSARY.md) | Calculation formulas |
+| [Data Dictionary](docs/DATA_DICTIONARY.md) | Field descriptions & mapping |
 | [Dax Studio](docs/dax-studio.md) | DAX optimization techniques |
 
 ---
