@@ -1,4 +1,9 @@
+
+# ...existing code...
+
 ## Professional Analysis of the VertiPaq Analyzer Screenshot (Relationships Tab)
+
+<img src="./images/Dax%20Studio_Vertipaq_Relationship.png" alt="VertiPaq Analyzer Relationships" width="900" />
 
 The VertiPaq Analyzer Relationships tab provides a comprehensive overview of the referential integrity and cardinality of the model’s relationships.
 
