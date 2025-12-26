@@ -13,7 +13,7 @@ DAX Studio provides a VertiPaq Analyzer feature, which offers a detailed view of
 
 This analysis is crucial for identifying large tables, understanding memory distribution, and detecting potential optimization opportunities. Notably, despite the complete creation of this project and all its metadata from scratch, the VertiPaq Analyzer reveals that there are no referential integrity (RI) violations or anomalies. This demonstrates a high level of rigor in the data modeling process and confirms that the model structure is robust, reliable, and fully compliant with best practices. The distribution of memory and table sizes appears consistent with a well-structured Power BI model. Such insights help ensure that your model remains efficient, scalable, and easy to maintain.
 
-<img src="./images/Dax%20Studio_Vertipaq.png" alt="VertiPaq Analyzer in DAX Studio" width="900" height="1800" />
+<img src="./images/Dax%20Studio_Vertipaq.png" alt="VertiPaq Analyzer in DAX Studio" width="1000" height="1800" />
 
 ### VertiPaq Compression Efficiency
 
@@ -22,7 +22,7 @@ One of the key strengths of VertiPaq lies in its advanced data compression capab
 The VertiPaq Analyzer Columns view demonstrates that the majority of columns in this model benefit from optimal compression. Dictionary sizes remain small relative to the total column size, and the encoding types are well suited to the data types and cardinalities present. This results in a highly efficient in-memory model, ensuring fast response times and optimal resource utilization, even with large datasets. No evidence of excessive memory consumption or suboptimal compression is present, confirming that the model design leverages VertiPaq’s full potential.
 
 
-<img src="./images/Dax%20Studio_Vertipaq_2.png" alt="VertiPaq Analyzer Columns Compression" width="900" />
+<img src="./images/Dax%20Studio_Vertipaq_2.png" alt="VertiPaq Analyzer Columns Compression" width="1000" />
 
 ### Professional Analysis of the VertiPaq Analyzer Screenshot (Columns Tab)
 
@@ -62,5 +62,5 @@ Elevated ratios are not inherently problematic if they align with business logic
 Conclusion:
 No technical errors or referential integrity violations are present. The relational model is structurally sound, and key quality is excellent. High 1:M ratios on certain relationships should be reviewed in the context of business requirements to ensure they are expected and do not impact report accuracy.
 
-<img src="./images/Dax%20Studio_Vertipaq_Relationship.png" alt="VertiPaq Analyzer Columns Compression" width="900" />
+<img src="./images/Dax%20Studio_Vertipaq_Relationship.png" alt="VertiPaq Analyzer Columns Compression" width="1000" />
 
