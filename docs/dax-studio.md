@@ -1,0 +1,3 @@
+# DAX Studio
+
+Using DAX Studio is considered a best practice when developing DAX measures or optimizing a Power BI model. The tool allows you to run and inspect queries to verify the accuracy of calculations, analyze performance, and identify potential bottlenecks. With features such as Server Timings, Query Plan, and memory usage analysis, it becomes possible to clearly understand how the engine executes DAX expressions. This validation step not only helps ensure functional correctness, but also contributes to a smoother user experience by reducing response times and making the model more robust and easier to maintain over time.
