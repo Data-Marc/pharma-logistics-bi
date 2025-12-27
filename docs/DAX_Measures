@@ -1,0 +1,3533 @@
+-------------------------------
+-- Calculated Table: 'Calendar'
+-------------------------------
+TABLE Calendar = 
+    VAR MinDate =
+        CALCULATE(
+            MIN(Orders[Date]),
+            REMOVEFILTERS(Orders)
+        )
+    VAR MaxDate =
+        CALCULATE(
+            MAX(Orders[DeliveryDate]),
+            REMOVEFILTERS(Orders)
+        )
+    RETURN
+    ADDCOLUMNS(
+        CALENDAR(MinDate, MaxDate),
+        "Year", YEAR([Date]),
+        "Month Number", MONTH([Date]),
+        "Month Name", FORMAT([Date], "MMMM"),
+        "Month Short", FORMAT([Date], "MMM"),
+        "Year-Month", FORMAT([Date], "YYYY-MM"),
+        "Quarter Number", QUARTER([Date]),
+        "Quarter Name", "T" & QUARTER([Date]),
+        "Semester", IF(MONTH([Date]) <= 6, "S1", "S2"),
+        "Week Number", WEEKNUM([Date], 2),
+        "Day", DAY([Date]),
+        "Day of Week Number", WEEKDAY([Date], 2),
+        "Day Name", FORMAT([Date], "dddd"),
+        "Is Weekend", IF(WEEKDAY([Date], 2) >= 6, TRUE(), FALSE()),
+        "Year-Quarter", FORMAT([Date], "YYYY") & "-T" & QUARTER([Date]),
+        "Date Key", YEAR([Date]) * 10000 + MONTH([Date]) * 100 + DAY([Date]),
+        "Month Key", YEAR([Date]) * 100 + MONTH([Date]),
+        "Fiscal Year", YEAR(EDATE([Date], 6)),
+        "Fiscal Quarter", "Q" & ROUNDUP(MOD(MONTH([Date]) - 6 + 12, 12) / 3 + 0.0001, 0),
+        "Fiscal Month Number", MOD(MONTH([Date]) - 6 + 12, 12) + 1
+    )
+
+--------------------------------
+-- Calculated Table: 'RootCause'
+--------------------------------
+TABLE RootCause = 
+    DATATABLE(
+        "Cause", STRING,
+        {
+            {"Late Delivery"},
+            {"Incomplete Delivery"},
+            {"Transport Damage"},
+            {"Temperature Excursion"},
+            {"Customer Return"}
+        }
+    )
+
+--------------------------------------
+-- Calculated Table: 'Cost Categories'
+--------------------------------------
+TABLE 'Cost Categories' = 
+    DATATABLE(
+        "Category", STRING,
+        {
+            {"Transport Cost"},
+            {"Inventory Holding Cost"},
+            {"Return Cost"},
+            {"Quality Excursion Cost"}
+        }
+    )
+    , Visible = FALSE
+
+--------------------------------------
+-- Calculated Table: 'OTIF_Categories'
+--------------------------------------
+TABLE OTIF_Categories = 
+    // Visuel OTIF_Categories
+    DATATABLE(
+        "Category", STRING,
+        {
+            {"OTIF"},
+            {"On Time Only"},
+            {"In Full Only"},
+            {"Not OTIF"}
+        }
+    )
+
+-------------------------------
+-- Calculated Table: 'Carriers'
+-------------------------------
+TABLE Carriers = 
+    ADDCOLUMNS(
+        DISTINCT(
+            UNION(
+                SELECTCOLUMNS(Transportation, "Carrier", Transportation[Carrier]),
+                SELECTCOLUMNS('v_LeadTime_Orders', "Carrier", 'v_LeadTime_Orders'[Carrier])
+            )
+        ),
+        "Carrier2",
+        SWITCH(
+            TRUE(),
+            CONTAINSSTRING([Carrier], "CMA"), "CMA",
+            CONTAINSSTRING([Carrier], "DB"), "DB",
+            CONTAINSSTRING([Carrier], "DHL"), "DHL",
+            CONTAINSSTRING([Carrier], "Fed"), "FedEx",
+            CONTAINSSTRING([Carrier], "UPS"), "UPS",
+            CONTAINSSTRING([Carrier], "Kuehne"), "KN",
+            CONTAINSSTRING([Carrier], "Maersk"), "Maersk",
+            BLANK()
+        )
+    )
+
+-------------------------------------------
+-- Calculated Table: 'Waterfall_Categories'
+-------------------------------------------
+TABLE Waterfall_Categories = 
+    DATATABLE(
+        "Sort", INTEGER,
+        "Category", STRING,
+        "Type", STRING,
+        {
+            {1, "Total Commandes", "Start"},
+            {2, "Retards Livraison", "Loss"},
+            {3, "Quantité Incomplète", "Loss"},
+            {4, "Dommages Transport", "Loss"},
+            {5, "Excursion Température", "Loss"},
+            {6, "Commandes Parfaites", "End"}
+        }
+    )
+    , Description = "Table de catégories pour le Waterfall Chart Perfect Order"
+
+-----------------------------------------------
+-- Calculated Column: 'Returns'[ReturnUnitCost]
+-----------------------------------------------
+COLUMN Returns[ReturnUnitCost] = RELATED(Products[UnitCost])
+
+-----------------------------------------------
+-- Calculated Column: 'Returns'[ReturnLineCost]
+-----------------------------------------------
+COLUMN Returns[ReturnLineCost] = Returns[ReturnedQuantity] * Returns[ReturnUnitCost]
+
+-------------------------------------------------
+-- Calculated Column: 'Products'[SimulatedVolume]
+-------------------------------------------------
+COLUMN Products[SimulatedVolume] = 
+    VAR Cat = Products[Category]
+    RETURN
+    SWITCH(
+        TRUE(),
+        Cat = "Biologic", 0.05,          -- 50 mL
+        Cat = "Cold Chain", 0.10,        -- 100 mL
+        Cat = "Consumable", 0.02,        -- 20 mL
+        Cat = "Medical Device", 0.15,    -- 150 mL
+        Cat = "Prescription Drug", 0.03, -- 30 mL
+        Cat = "Vaccine", 0.07,           -- 70 mL
+        0.05
+    )
+
+---------------------------------------------
+-- Calculated Column: 'Orders'[CycleTimeDays]
+---------------------------------------------
+COLUMN Orders[CycleTimeDays] = 
+    IF(
+        Orders[Status] = "Delivered"
+            && NOT(ISBLANK(Orders[DeliveryDate]))
+            && NOT(ISBLANK(Orders[ShipDate])),
+        DATEDIFF(Orders[ShipDate], Orders[DeliveryDate], DAY),
+        BLANK()
+    )
+    , FormatString = "0"
+
+---------------------------------------------------
+-- Calculated Column: 'Orders'[PlannedLeadTimeDays]
+---------------------------------------------------
+COLUMN Orders[PlannedLeadTimeDays] = 
+    IF(
+        Orders[Status] IN { "Delivered", "Returned" }
+            && NOT(ISBLANK(Orders[Date]))
+            && NOT(ISBLANK(Orders[RequestedDeliveryDate]))
+            && Orders[RequestedDeliveryDate] >= Orders[Date],
+        DATEDIFF(Orders[Date], Orders[RequestedDeliveryDate], DAY),
+        BLANK()
+    )
+    , FormatString = "0"
+
+--------------------------------------------------
+-- Calculated Column: 'Orders'[ActualLeadTimeDays]
+--------------------------------------------------
+COLUMN Orders[ActualLeadTimeDays] = 
+    IF(
+        Orders[Status] IN { "Delivered", "Returned" }
+            && NOT(ISBLANK(Orders[Date]))
+            && NOT(ISBLANK(Orders[DeliveryDate]))
+            && Orders[DeliveryDate] >= Orders[Date],
+        DATEDIFF(Orders[Date], Orders[DeliveryDate], DAY),
+        BLANK()
+    )
+    , FormatString = "0"
+
+---------------------------------------------------
+-- Calculated Column: 'Orders'[DeliveredOrReturned]
+---------------------------------------------------
+COLUMN Orders[DeliveredOrReturned] = 
+    IF(
+        Orders[Status] = "Delivered" || Orders[Status] = "Returned",
+        1,
+        0
+    )
+    , FormatString = "0"
+
+-------------------------------------------
+-- Calculated Column: 'Orders'[IsBackOrder]
+-------------------------------------------
+COLUMN Orders[IsBackOrder] = 
+    IF(
+        Orders[Status] = "Pending" && ISBLANK(Orders[DeliveryDate]),
+        1,
+        0
+    )
+    , FormatString = "0"
+
+-----------------------------------------
+-- Calculated Column: 'Orders'[YearMonth]
+-----------------------------------------
+COLUMN Orders[YearMonth] = YEAR(Orders[Date]) * 100 + MONTH(Orders[Date])
+    , FormatString = "0"
+
+-----------------------------------------------------------
+-- Calculated Column: 'Orders'[IsOnTimeDeliveredOrReturned]
+-----------------------------------------------------------
+COLUMN Orders[IsOnTimeDeliveredOrReturned] = 
+    IF(
+        (Orders[Status] = "Delivered" || Orders[Status] = "Returned")
+            && Orders[OnTime_Flag] = 1,
+        1,
+        0
+    )
+    , FormatString = "0"
+
+----------------------------------------------------------------
+-- Calculated Column: 'TemperatureExcursions'[ExcursionDetected]
+----------------------------------------------------------------
+COLUMN TemperatureExcursions[ExcursionDetected] = 
+    IF(
+        TemperatureExcursions[MinutesOutOfRange] > 0
+            || TemperatureExcursions[ExcursionFlag] = 1,
+        1,
+        0
+    )
+    , FormatString = "0"
+
+-------------------------------------------------
+-- Calculated Column: 'v_LeadTime_Orders'[IsOTIF]
+-------------------------------------------------
+COLUMN v_LeadTime_Orders[IsOTIF] = IF('v_LeadTime_Orders'[OnTimeFlag] = 1, 1, 0)
+    , FormatString = "0"
+
+-------------------------------------------------------
+-- Calculated Column: 'v_LeadTime_Orders'[IsInFullOnly]
+-------------------------------------------------------
+COLUMN v_LeadTime_Orders[IsInFullOnly] = IF('v_LeadTime_Orders'[InFullFlag] = 1, 1, 0)
+    , FormatString = "0"
+
+----------------------------------------------------
+-- Calculated Column: 'v_LeadTime_Orders'[IsNotOTIF]
+----------------------------------------------------
+COLUMN v_LeadTime_Orders[IsNotOTIF] = IF([OnTimeFlag] = 0 && [InFullFlag] = 0, 1, 0)
+    , FormatString = "0"
+
+-------------------------------------------------------
+-- Calculated Column: 'v_LeadTime_Orders'[IsOnTimeOnly]
+-------------------------------------------------------
+COLUMN v_LeadTime_Orders[IsOnTimeOnly] = IF([OnTimeFlag] = 1 && [InFullFlag] = 0, 1, 0)
+    , FormatString = "0"
+
+---------------------------------------
+-- Measure: [Average Cycle Time (Days)]
+---------------------------------------
+MEASURE '[Visual] Supporting'[Average Cycle Time (Days)] = AVERAGE(Orders[CycleTimeDays])
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0.0"
+
+--------------------------------------
+-- Measure: [Delayed Deliveries Count]
+--------------------------------------
+MEASURE '[Visual] Supporting'[Delayed Deliveries Count] = 
+    COUNTROWS(
+        FILTER(
+            Orders,
+            Orders[DeliveryDate] > Orders[RequestedDeliveryDate]
+        )
+    )
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0"
+
+-------------------------
+-- Measure: [OTIF Orders]
+-------------------------
+MEASURE '[Visual] Supporting'[OTIF Orders] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        KEEPFILTERS(
+            Orders[Status] = "Delivered"
+        ),
+        Orders[OTIF_Flag] = 1
+    )
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0"
+
+--------------------------------
+-- Measure: [On-Time Delivery %]
+--------------------------------
+MEASURE '[Visual] Supporting'[On-Time Delivery %] = 
+    MIN(
+        DIVIDE([On-Time Deliveries], [Total Delivered Orders]),
+        1
+    )
+    , DisplayFolder = "9.4_Visual On-Time Delivery"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+-------------------------------------------------
+-- Measure: [Total Orders (Delivered + Returned)]
+-------------------------------------------------
+MEASURE '[Visual] Supporting'[Total Orders (Delivered + Returned)] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        KEEPFILTERS(
+            Orders[Status] IN { "Delivered", "Returned" }
+        )
+    )
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0"
+
+--------------------------------------
+-- Measure: [Excursion Rate MultiYear]
+--------------------------------------
+MEASURE '[Visual] Supporting'[Excursion Rate MultiYear] = 
+    CALCULATE(
+        [Excursion Rate %],
+        REMOVEFILTERS('Calendar'[Day])
+    )
+    , DisplayFolder = "2.8_Page Quality (Quality)"
+
+--------------------------------------
+-- Measure: [Excursion Rate % (Month)]
+--------------------------------------
+MEASURE '[Visual] Supporting'[Excursion Rate % (Month)] = 
+    DIVIDE(
+        CALCULATE( [Orders With Excursion], DATESMTD('Calendar'[Date]) ),
+        CALCULATE( [Total Orders],           DATESMTD('Calendar'[Date]) ),
+        0
+    )
+    , DisplayFolder = "2.9_Perfect Order Rate %"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+-----------------------------------
+-- Measure: [Orders With Excursion]
+-----------------------------------
+MEASURE '[Visual] Supporting'[Orders With Excursion] = 
+    CALCULATE(
+        DISTINCTCOUNT(TemperatureExcursions[Order_ID]),
+        TemperatureExcursions[ExcursionDetected] = 1
+    )
+    , DisplayFolder = "2.9_Perfect Order Rate %"
+    , FormatString = "0"
+
+---------------------------
+-- Measure: [OnTime Orders]
+---------------------------
+MEASURE '[Visual] Supporting'[OnTime Orders] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        KEEPFILTERS(
+            Orders[Status] = "Delivered"
+        ),
+        Orders[OnTime_Flag] = 1
+    )
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0"
+
+---------------------------
+-- Measure: [Infull Orders]
+---------------------------
+MEASURE '[Visual] Supporting'[Infull Orders] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        KEEPFILTERS(
+            Orders[Status] = "Delivered"
+        ),
+        Orders[InFull_Flag] = 1
+    )
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0"
+
+----------------------
+-- Measure: [InFull %]
+----------------------
+MEASURE '[Visual] Supporting'[InFull %] = DIVIDE ( [Infull Orders], [Total Orders (Delivered + Returned)], 0 )
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+-----------------------
+-- Measure: [Delayed %]
+-----------------------
+MEASURE '[Visual] Supporting'[Delayed %] = 1 - [OnTime %]
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+------------------------
+-- Measure: [OTIF Count]
+------------------------
+MEASURE '[Visual] Supporting'[OTIF Count] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        KEEPFILTERS(Orders[Status] = "Delivered"),
+        Orders[OTIF_Flag] = 1
+    )
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0"
+
+-------------------------------
+-- Measure: [OnTime Only Count]
+-------------------------------
+MEASURE '[Visual] Supporting'[OnTime Only Count] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        KEEPFILTERS(Orders[Status] = "Delivered"),
+        Orders[OnTime_Flag] = 1,
+        Orders[InFull_Flag] = 0
+    )
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0"
+
+-------------------------------
+-- Measure: [InFull Only Count]
+-------------------------------
+MEASURE '[Visual] Supporting'[InFull Only Count] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        KEEPFILTERS(Orders[Status] = "Delivered"),
+        Orders[OnTime_Flag] = 0,
+        Orders[InFull_Flag] = 1
+    )
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0"
+
+----------------------------
+-- Measure: [Not OTIF Count]
+----------------------------
+MEASURE '[Visual] Supporting'[Not OTIF Count] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        KEEPFILTERS(Orders[Status] = "Delivered"),
+        Orders[OnTime_Flag] = 0,
+        Orders[InFull_Flag] = 0
+    )
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0"
+
+------------------------------
+-- Measure: [OTIF % Breakdown]
+------------------------------
+MEASURE '[Visual] Supporting'[OTIF % Breakdown] = DIVIDE([OTIF Count], [Total Orders (Delivered + Returned)], 0)
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+
+-------------------------------------
+-- Measure: [OnTime Only % Breakdown]
+-------------------------------------
+MEASURE '[Visual] Supporting'[OnTime Only % Breakdown] = DIVIDE([OnTime Only Count], [Total Orders (Delivered + Returned)], 0)
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+
+-------------------------------------
+-- Measure: [InFull Only % Breakdown]
+-------------------------------------
+MEASURE '[Visual] Supporting'[InFull Only % Breakdown] = DIVIDE([InFull Only Count], [Total Orders (Delivered + Returned)], 0)
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+
+----------------------------------
+-- Measure: [Not OTIF % Breakdown]
+----------------------------------
+MEASURE '[Visual] Supporting'[Not OTIF % Breakdown] = DIVIDE([Not OTIF Count], [Total Orders (Delivered + Returned)], 0)
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+
+------------------------------
+-- Measure: [OTIF Breakdown %]
+------------------------------
+MEASURE '[Visual] Supporting'[OTIF Breakdown %] = 
+    SUMX(
+        VALUES(OTIF_Categories[Category]),
+        SWITCH(
+            OTIF_Categories[Category],
+            "OTIF",        AVERAGE(v_LeadTime_Orders[IsOTIF]),
+            "On Time Only", AVERAGE(v_LeadTime_Orders[IsOnTimeOnly]),
+            "In Full Only", AVERAGE(v_LeadTime_Orders[IsInFullOnly]),
+            "Not OTIF",    AVERAGE(v_LeadTime_Orders[IsNotOTIF]),
+            BLANK()
+        )
+    )
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+-------------------------------
+-- Measure: [OTIF % by Carrier]
+-------------------------------
+MEASURE '[Visual] Supporting'[OTIF % by Carrier] = 
+    VAR _DeliveredOrders =
+        CALCULATETABLE(
+            VALUES(Orders[Order_ID]),
+            Orders[Status] = "Delivered"
+        )
+    VAR _RelatedOrders =
+        INTERSECT(
+            _DeliveredOrders,
+            VALUES(Transportation[Order_ID])
+        )
+    VAR _OTIFOrders =
+        CALCULATETABLE(
+            _RelatedOrders,
+            FILTER(
+                Orders,
+                Orders[OTIF_Flag] = 1
+            )
+        )
+    VAR _CountOTIF = COUNTROWS(_OTIFOrders)
+    VAR _CountDelivered = COUNTROWS(_RelatedOrders)
+    RETURN
+    DIVIDE(_CountOTIF, _CountDelivered, 0)
+    , DisplayFolder = "9_Visuel OTIF by Carrier"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+------------------------
+-- Measure: [OTIF Color]
+------------------------
+MEASURE '[Visual] Supporting'[OTIF Color] = 
+    // Visuel OTIF Carrier & On Time Carrier
+    // www.schemecolor.com/search/green/page/9
+    
+    /*
+    VAR otifValue = [OTIF %]
+    RETURN
+        SWITCH(
+            TRUE(),
+            otifValue < 0.88, "#149580",     
+            otifValue < 0.89, "#23BB98",     
+            otifValue < 0.9,  "#52D5B2",
+            otifValue < 0.91, "#82DFC6",
+            otifValue < 0.92, "#B3E7D0",
+            TRUE(), "#BAF0B4"  // couleur par défaut pour >= 0.92
+        )
+    */
+    
+    
+    
+    VAR onTimeValue = [OTIF %]
+    RETURN
+        SWITCH(
+            TRUE(),
+            onTimeValue < 0.86, "#A3C2DF",   
+            onTimeValue >= 0.86, "#81A7CC"
+        )
+    
+    
+    
+    /* 
+    VAR otifValue = [OTIF %]
+    RETURN
+        SWITCH(
+            TRUE(),
+            otifValue < 0.88, "#033466",     
+            otifValue < 0.89, "#0E5585",     
+            otifValue < 0.9,  "#20699C",
+            otifValue < 0.91, "#428BBA",
+            otifValue < 0.92, "#5A9AC6",
+            TRUE(), "#5A9AC6"
+        )
+    */
+    , DisplayFolder = "3.2_Visuel OTIF Carrier & On Time Carrier"
+
+-------------------------------------------
+-- Measure: [Average Delivery Delay (Days)]
+-------------------------------------------
+MEASURE '[Visual] Supporting'[Average Delivery Delay (Days)] = [Actual Lead Time (Days)] - [Planned Lead Time (Days)]
+    , DisplayFolder = "3.1_Lead Time Visual"
+
+--------------------------------------
+-- Measure: [Planned Lead Time (Days)]
+--------------------------------------
+MEASURE '[Visual] Supporting'[Planned Lead Time (Days)] = AVERAGE(Orders[PlannedLeadTimeDays])
+    , DisplayFolder = "3.1_Lead Time Visual"
+
+-------------------------------------
+-- Measure: [Actual Lead Time (Days)]
+-------------------------------------
+MEASURE '[Visual] Supporting'[Actual Lead Time (Days)] = AVERAGE(Orders[ActualLeadTimeDays])
+    , DisplayFolder = "3.1_Lead Time Visual"
+    , FormatString = "0.00"
+
+-----------------------------
+-- Measure: [Delivery Status]
+-----------------------------
+MEASURE '[Visual] Supporting'[Delivery Status] = 
+    SWITCH(
+        TRUE(),
+        [Average Delivery Delay (Days)] < 0, "Early",
+        [Average Delivery Delay (Days)] = 0, "On Time",
+        [Average Delivery Delay (Days)] > 0, "Late"
+    )
+    , DisplayFolder = "3.1_Lead Time Visual"
+
+--------------------------------
+-- Measure: [On-Time Deliveries]
+--------------------------------
+MEASURE '[Visual] Supporting'[On-Time Deliveries] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        REMOVEFILTERS(Transportation),
+        FILTER(
+            Orders,
+            NOT ISBLANK(Orders[DeliveryDate]) &&
+            NOT ISBLANK(Orders[RequestedDeliveryDate]) &&
+            Orders[DeliveryDate] <= Orders[RequestedDeliveryDate]
+        )
+    )
+    , DisplayFolder = "9.4_Visual On-Time Delivery"
+    , FormatString = "0"
+
+------------------------------------
+-- Measure: [Total Delivered Orders]
+------------------------------------
+MEASURE '[Visual] Supporting'[Total Delivered Orders] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        REMOVEFILTERS(Transportation),
+        Orders[Status] = "Delivered"
+    )
+    , DisplayFolder = "9.4_Visual On-Time Delivery"
+    , FormatString = "0"
+
+-------------------------
+-- Measure: [Delayed % 2]
+-------------------------
+MEASURE '[Visual] Supporting'[Delayed % 2] = 1 - [OnTime %]*0.8
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+----------------------------
+-- Measure: [Marc_Signature]
+----------------------------
+MEASURE Orders[Marc_Signature] = "Dashboard created by Marc — © 2025"
+    , Visible = FALSE
+
+-----------------------------------
+-- Measure: [OTIF_Percentage_Total]
+-----------------------------------
+MEASURE Orders[OTIF_Percentage_Total] = DIVIDE(COUNTX(FILTER(Orders, Orders[OTIF_Flag]=1), Orders[Order_ID]), COUNTA(Orders[Order_ID]), 0)
+    , Description = "% OTIF (sensible au filtre dates via slicer)"
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0.00%"
+
+-----------------------------------------
+-- Measure: [OnTimeOnly_Percentage_Total]
+-----------------------------------------
+MEASURE Orders[OnTimeOnly_Percentage_Total] = DIVIDE(COUNTX(FILTER(Orders, (Orders[OnTime_Flag]=1) && (Orders[InFull_Flag]=0)), Orders[Order_ID]), COUNTA(Orders[Order_ID]), 0)
+    , Description = "% À temps seulement (sensible au filtre dates via slicer)"
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0.00%"
+
+-----------------------------------------
+-- Measure: [InFullOnly_Percentage_Total]
+-----------------------------------------
+MEASURE Orders[InFullOnly_Percentage_Total] = DIVIDE(COUNTX(FILTER(Orders, (Orders[OnTime_Flag]=0) && (Orders[InFull_Flag]=1)), Orders[Order_ID]), COUNTA(Orders[Order_ID]), 0)
+    , Description = "% Quantité complète seulement (sensible au filtre dates via slicer)"
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0.00%"
+
+--------------------------------------
+-- Measure: [NotOTIF_Percentage_Total]
+--------------------------------------
+MEASURE Orders[NotOTIF_Percentage_Total] = DIVIDE(COUNTX(FILTER(Orders, Orders[OTIF_Flag]=0), Orders[Order_ID]), COUNTA(Orders[Order_ID]), 0)
+    , Description = "% NON OTIF (sensible au filtre dates via slicer)"
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0.00%"
+
+-------------------------
+-- Measure: [OTIF_Values]
+-------------------------
+MEASURE Orders[OTIF_Values] = 
+    VAR SelectedCategory = SELECTEDVALUE(OTIF_Categories[Category], "")
+    RETURN
+    SWITCH(
+      SelectedCategory,
+      "OTIF", [OTIF_Percentage_Total],
+      "Not OTIF", [NotOTIF_Percentage_Total],
+      "On Time Only", [OnTimeOnly_Percentage_Total],
+      "In Full Only", [InFullOnly_Percentage_Total],
+      BLANK()
+    )
+    , Description = "Valeurs OTIF pour stacked bar chart 100%"
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+--------------------------
+-- Measure: [Total_Orders]
+--------------------------
+MEASURE Orders[Total_Orders] = DISTINCTCOUNT(v_LeadTime_Orders[Order_ID])
+    , DisplayFolder = "9.2_Visuel OTIF_Categories"
+    , FormatString = "0"
+
+-------------------------------
+-- Measure: [Last Order Date #]
+-------------------------------
+MEASURE '[KPI] Global'[Last Order Date #] = 
+    CALCULATE(
+        MAX(Orders[Date]),
+        ALL(Orders)
+    )
+    , DisplayFolder = "1.0_KPI Total Orders"
+    , FormatString = "General Date"
+
+--------------------------
+-- Measure: [Total Orders]
+--------------------------
+MEASURE '[KPI] Global'[Total Orders] = 
+    // Card Total Orders - Page Overview
+    
+    DISTINCTCOUNT ( Orders[Order_ID] )
+    , DisplayFolder = "1.0_KPI Total Orders"
+    , FormatString = "0"
+
+------------------------------------------
+-- Measure: [Total Orders Current Month #]
+------------------------------------------
+MEASURE '[KPI] Global'[Total Orders Current Month #] = CALCULATE([Total Orders], TREATAS({"Current Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "1.0_KPI Total Orders"
+    , FormatString = "0"
+
+-------------------------------------
+-- Measure: [Total Orders PM Color #]
+-------------------------------------
+MEASURE '[KPI] Global'[Total Orders PM Color #] = 
+    // Card Total Orders - Page Overview
+    
+    
+    IF ( [Total Orders Progression % #] >= 0, "#16A34A", "#DC2626" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-------------------------------------
+-- Measure: [Total Orders PM label #]
+-------------------------------------
+MEASURE '[KPI] Global'[Total Orders PM label #] = 
+    // Card Total Orders - Page Overview
+    
+    VAR _delta = [Total Orders Progression % #]
+    RETURN
+        UNICHAR(9650 + IF(_delta < 0, 10, 0)) &
+        UNICHAR(8239) &
+        FORMAT(_delta, "+0.0%;-0.0%")
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-------------------------------------------
+-- Measure: [Total Orders Previous Month #]
+-------------------------------------------
+MEASURE '[KPI] Global'[Total Orders Previous Month #] = CALCULATE([Total Orders], TREATAS({"Previous Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "1.0_KPI Total Orders"
+    , FormatString = "0"
+
+------------------------------------------
+-- Measure: [Total Orders Progression % #]
+------------------------------------------
+MEASURE '[KPI] Global'[Total Orders Progression % #] = 
+    DIVIDE(
+        [Total Orders Current Month #] - [Total Orders Previous Month #],
+        [Total Orders Previous Month #],
+        0
+    )
+    , DisplayFolder = "1.0_KPI Total Orders"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+---------------------------------------------
+-- Measure: [Total Orders Progression % PY #]
+---------------------------------------------
+MEASURE '[KPI] Global'[Total Orders Progression % PY #] = 
+    DIVIDE(
+        [Total Orders Current Month #] - [Total Orders PY #],
+        [Total Orders PY #],
+        0
+    )
+    , DisplayFolder = "1.0_KPI Total Orders"
+
+-------------------------------
+-- Measure: [Total Orders PY #]
+-------------------------------
+MEASURE '[KPI] Global'[Total Orders PY #] = CALCULATE([Total Orders], TREATAS({"Previous Year"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "1.0_KPI Total Orders"
+    , FormatString = "0"
+
+-------------------------------------
+-- Measure: [Total Orders PY Color #]
+-------------------------------------
+MEASURE '[KPI] Global'[Total Orders PY Color #] = 
+    // Card Total Orders - Page Overview
+    
+    
+    IF ( [Total Orders Progression % PY #] >= 0, "#16A34A", "#DC2626" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-------------------------------------
+-- Measure: [Total Orders PY label #]
+-------------------------------------
+MEASURE '[KPI] Global'[Total Orders PY label #] = 
+    // Card Total Orders - Page Overview
+    
+    VAR _delta = [Total Orders Progression % PY #]
+    RETURN
+        UNICHAR(9650 + IF(_delta < 0, 10, 0)) &
+        UNICHAR(8239) &
+        FORMAT(_delta, "+0.0%;-0.0%")
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [Last OTIF Order Date #]
+------------------------------------
+MEASURE '[KPI] Global'[Last OTIF Order Date #] = 
+    CALCULATE(
+        MAX( 'v_LeadTime_Orders'[OrderDate]),
+        ALL( 'v_LeadTime_Orders' )
+    )
+    , DisplayFolder = "2.0_KPI OTIF"
+    , FormatString = "General Date"
+
+--------------------
+-- Measure: [OTIF %]
+--------------------
+MEASURE '[KPI] Global'[OTIF %] = AVERAGE('v_LeadTime_Orders'[IsOTIF])
+    , DisplayFolder = "2.0_KPI OTIF"
+    , FormatString = "0.0%;-0.0%;0.0%"
+
+-----------------------------------------------------------
+-- Measure: [OTIF % (Visual Matrix & Visual OTIF Carriers)]
+-----------------------------------------------------------
+MEASURE '[KPI] Global'[OTIF % (Visual Matrix & Visual OTIF Carriers)] = 
+    // Card OTIF rate - Page Overview
+    
+    DIVIDE ( 
+        [OTIF Orders (Visual Matrix & Visual OTIF Carriers)], [Total Orders (Delivered + Returned)], 0 )
+    , DisplayFolder = "2.0_KPI OTIF"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+------------------------------------
+-- Measure: [OTIF % Current Month #]
+------------------------------------
+MEASURE '[KPI] Global'[OTIF % Current Month #] = CALCULATE([OTIF %], TREATAS({"Current Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "2.0_KPI OTIF"
+
+-------------------------------------
+-- Measure: [OTIF % Previous Month #]
+-------------------------------------
+MEASURE '[KPI] Global'[OTIF % Previous Month #] = CALCULATE([OTIF %], TREATAS({"Previous Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "2.0_KPI OTIF"
+
+------------------------------------
+-- Measure: [OTIF % Previous Year #]
+------------------------------------
+MEASURE '[KPI] Global'[OTIF % Previous Year #] = CALCULATE([OTIF %], TREATAS({"Previous Year"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "2.0_KPI OTIF"
+
+--------------------------------------
+-- Measure: [OTIF % Variation vs PM #]
+--------------------------------------
+MEASURE '[KPI] Global'[OTIF % Variation vs PM #] = 
+    DIVIDE(
+        [OTIF % Current Month #] - [OTIF % Previous Month #],
+        [OTIF % Previous Month #],
+        0
+    )
+    , DisplayFolder = "2.0_KPI OTIF"
+
+--------------------------------------
+-- Measure: [OTIF % Variation vs PY #]
+--------------------------------------
+MEASURE '[KPI] Global'[OTIF % Variation vs PY #] = 
+    DIVIDE(
+        [OTIF % Current Month #] - [OTIF % Previous Year #],
+        [OTIF % Previous Year #],
+        0
+    )
+    , DisplayFolder = "2.0_KPI OTIF"
+
+----------------------------------------------------------------
+-- Measure: [OTIF Orders (Visual Matrix & Visual OTIF Carriers)]
+----------------------------------------------------------------
+MEASURE '[KPI] Global'[OTIF Orders (Visual Matrix & Visual OTIF Carriers)] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        Orders[OTIF_Flag] = 1
+    )
+    , DisplayFolder = "2.0_KPI OTIF"
+    , FormatString = "0"
+
+-----------------------------
+-- Measure: [OTIF PM Color #]
+-----------------------------
+MEASURE '[KPI] Global'[OTIF PM Color #] = 
+    // Card OTIF rate - Page Overview
+    
+    IF ( [OTIF % Variation vs PM #] >= 0, "#16A34A", "#FF4136" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------
+-- Measure: [OTIF PM label  #]
+------------------------------
+MEASURE '[KPI] Global'[OTIF PM label  #] = 
+    // Card OTIF rate - Page Overview
+    
+    VAR _d = [OTIF % Variation vs PM #]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.0%;-0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-----------------------------
+-- Measure: [OTIF PY Color #]
+-----------------------------
+MEASURE '[KPI] Global'[OTIF PY Color #] = 
+    // Card OTIF rate - Page Overview
+    
+    IF ( [OTIF % Variation vs PY #] >= 0, "#16A34A", "#FF4136" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------
+-- Measure: [OTIF PY label  #]
+------------------------------
+MEASURE '[KPI] Global'[OTIF PY label  #] = 
+    // Card OTIF rate - Page Overview
+    
+    VAR _d = [OTIF % Variation vs PY #]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.0%;-0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------------------------
+-- Measure: [Avg Global Lead Time (Days)  Matrix #]
+---------------------------------------------------
+MEASURE '[KPI] Global'[Avg Global Lead Time (Days)  Matrix #] = 
+    CALCULATE(
+        AVERAGE(v_LeadTime_Orders[GlobalLeadTimeDays]),
+        USERELATIONSHIP('Calendar'[Date], v_LeadTime_Orders[OrderDate])
+    )
+    , DisplayFolder = "3.0_KPI Lead Time"
+
+-----------------------------------------
+-- Measure: [Avg Global Lead Time Line #]
+-----------------------------------------
+MEASURE '[KPI] Global'[Avg Global Lead Time Line #] = 
+    AVERAGE('v_LeadTime_Orders'[GlobalLeadTimeDays]
+       
+    
+    )
+    , DisplayFolder = "3.0_KPI Lead Time"
+
+-----------------------------
+-- Measure: [Avg Lead Time #]
+-----------------------------
+MEASURE '[KPI] Global'[Avg Lead Time #] = FORMAT([Avg Lead Time (Numeric)], "0.00")
+    , DisplayFolder = "3.0_KPI Lead Time"
+
+-------------------------------------------
+-- Measure: [Avg Lead Time Current Month #]
+-------------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time Current Month #] = FORMAT(CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Current Month"}, 'Time Period'[Time Period])), "0.00")
+    , DisplayFolder = "3.0_KPI Lead Time"
+
+--------------------------------------
+-- Measure: [Avg Lead Time PM Color #]
+--------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time PM Color #] = IF ( [Avg Lead Time Variation vs PM #] >= 0, "#FF4136", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+--------------------------------------
+-- Measure: [Avg Lead Time PM label #]
+--------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time PM label #] = 
+    VAR _d = [Avg Lead Time Variation vs PM #]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.00;-0.00" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+
+--------------------------------------------
+-- Measure: [Avg Lead Time Previous Month #]
+--------------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time Previous Month #] = FORMAT(CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Previous Month"}, 'Time Period'[Time Period])), "0.00")
+    , DisplayFolder = "3.0_KPI Lead Time"
+
+-------------------------------------------
+-- Measure: [Avg Lead Time Previous Year #]
+-------------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time Previous Year #] = FORMAT(CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Previous Year"}, 'Time Period'[Time Period])), "0.00")
+    , DisplayFolder = "3.0_KPI Lead Time"
+
+--------------------------------------
+-- Measure: [Avg Lead Time PY Color #]
+--------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time PY Color #] = IF ( [Avg Lead Time Variation vs PY #] >= 0, "#FF4136", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+--------------------------------------
+-- Measure: [Avg Lead Time PY label #]
+--------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time PY label #] = 
+    VAR _d = [Avg Lead Time Variation vs PY #]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.00;-0.00" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------------------
+-- Measure: [Avg Lead Time Variation vs PM #]
+---------------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time Variation vs PM #] = 
+    DIVIDE(
+        CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Current Month"}, 'Time Period'[Time Period])) - CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Previous Month"}, 'Time Period'[Time Period])),
+        CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Previous Month"}, 'Time Period'[Time Period])),
+        0
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------------------
+-- Measure: [Avg Lead Time Variation vs PY #]
+---------------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time Variation vs PY #] = 
+    DIVIDE(
+        CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Current Month"}, 'Time Period'[Time Period])) - CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Previous Year"}, 'Time Period'[Time Period])),
+        CALCULATE([Avg Lead Time (Numeric)], TREATAS({"Previous Year"}, 'Time Period'[Time Period])),
+        0
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+----------------------------------------
+-- Measure: [Last LeadTime Order Date #]
+----------------------------------------
+MEASURE '[KPI] Global'[Last LeadTime Order Date #] = 
+    CALCULATE(
+        MAX( 'v_LeadTime_Orders'[OrderDate] ),
+        ALL( 'v_LeadTime_Orders' )
+    )
+    , DisplayFolder = "3.0_KPI Lead Time"
+    , FormatString = "General Date"
+
+-------------------------------------
+-- Measure: [Avg Transport Lead Time]
+-------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time] = 
+    CALCULATE(
+        AVERAGE('v_LeadTime_Orders'[TransportLeadTimeDays]),
+        TREATAS(
+            VALUES(Orders[Region]),
+            'v_LeadTime_Orders'[Region]
+        )
+    )
+    , DisplayFolder = "4.0_KPI Transport lead Time"
+
+-----------------------------------------------------
+-- Measure: [Avg Transport Lead Time Current Month #]
+-----------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time Current Month #] = CALCULATE([Avg Transport Lead Time], TREATAS({"Current Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "4.0_KPI Transport lead Time"
+
+------------------------------------------
+-- Measure: [Avg Transport Lead Time Line]
+------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time Line] = 
+    CALCULATE(
+        AVERAGE(v_LeadTime_Orders[TransportLeadTimeDays]),
+        USERELATIONSHIP('Calendar'[Date], v_LeadTime_Orders[ShipDate])
+        )
+    , DisplayFolder = "4.0_KPI Transport lead Time"
+
+------------------------------------------------
+-- Measure: [Avg Transport Lead Time PM Color #]
+------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time PM Color #] = IF ( [Avg Transport Lead Time Variation vs PM #] >= 0, "#FF4136", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------------------
+-- Measure: [Avg Transport Lead Time PM label #]
+------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time PM label #] = 
+    VAR _d = [Avg Transport Lead Time Variation vs PM #]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.00;-0.00" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------------------------
+-- Measure: [Avg Transport Lead Time Previous Month #]
+------------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time Previous Month #] = CALCULATE([Avg Transport Lead Time], TREATAS({"Previous Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "4.0_KPI Transport lead Time"
+
+-----------------------------------------------------
+-- Measure: [Avg Transport Lead Time Previous Year #]
+-----------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time Previous Year #] = CALCULATE([Avg Transport Lead Time], TREATAS({"Previous Year"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "4.0_KPI Transport lead Time"
+
+------------------------------------------------
+-- Measure: [Avg Transport Lead Time PY label #]
+------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time PY label #] = 
+    VAR _d = [Avg Transport Lead Time Variation vs PY]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.00;-0.00" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-------------------------------------------------------
+-- Measure: [Avg Transport Lead Time Variation vs PM #]
+-------------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time Variation vs PM #] = 
+    DIVIDE(
+        [Avg Transport Lead Time Current Month #] -
+        [Avg Transport Lead Time Previous Month #],
+        [Avg Transport Lead Time Previous Month #],
+        0
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-----------------------------------------------------
+-- Measure: [Avg Transport Lead Time Variation vs PY]
+-----------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time Variation vs PY] = 
+    DIVIDE(
+        [Avg Transport Lead Time Current Month #] -
+        [Avg Transport Lead Time Previous Year #],
+        [Avg Transport Lead Time Previous Year #],
+        0
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-----------------------
+-- Measure: [In Full %]
+-----------------------
+MEASURE '[KPI] Global'[In Full %] = AVERAGE('v_LeadTime_Orders'[IsInFullOnly])
+    , DisplayFolder = "5.0_KPI In Full"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+-------------------------------------
+-- Measure: [In Full % Current Month]
+-------------------------------------
+MEASURE '[KPI] Global'[In Full % Current Month] = CALCULATE([In Full %], TREATAS({"Current Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "5.0_KPI In Full"
+
+--------------------------------------
+-- Measure: [In Full % Previous Month]
+--------------------------------------
+MEASURE '[KPI] Global'[In Full % Previous Month] = CALCULATE([In Full %], TREATAS({"Previous Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "5.0_KPI In Full"
+
+-------------------------------------
+-- Measure: [In Full % Previous Year]
+-------------------------------------
+MEASURE '[KPI] Global'[In Full % Previous Year] = CALCULATE([In Full %], TREATAS({"Previous Year"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "5.0_KPI In Full"
+
+---------------------------------------
+-- Measure: [In Full % Variation vs PM]
+---------------------------------------
+MEASURE '[KPI] Global'[In Full % Variation vs PM] = 
+    DIVIDE(
+        [In Full % Current Month] - [In Full % Previous Month],
+        [In Full % Previous Month],
+        0
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , FormatString = "0.00%;-0.00%;0.00%"
+    , Visible = FALSE
+
+---------------------------------------
+-- Measure: [In Full % Variation vs PY]
+---------------------------------------
+MEASURE '[KPI] Global'[In Full % Variation vs PY] = 
+    DIVIDE(
+        [In Full % Current Month] - [In Full % Previous Year],
+        [In Full % Previous Year],
+        0
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , FormatString = "0.00%;-0.00%;0.00%"
+    , Visible = FALSE
+
+-------------------------------
+-- Measure: [InFull PM Color #]
+-------------------------------
+MEASURE '[KPI] Global'[InFull PM Color #] = 
+    //https://www.schemecolor.com/
+    
+    IF ( [In Full % Variation vs PM] >= 0, "#16A34A", "#FF4136" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+--------------------------------
+-- Measure: [InFull PM label  #]
+--------------------------------
+MEASURE '[KPI] Global'[InFull PM label  #] = 
+    VAR _d = [In Full % Variation vs PM]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.0%;-0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-------------------------------
+-- Measure: [InFull PY Color #]
+-------------------------------
+MEASURE '[KPI] Global'[InFull PY Color #] = 
+    // https://www.schemecolor.com/
+    
+    IF(
+        [In Full % Variation vs PY] >= 0,"#16A34A","#FF4136")
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-----------------------------
+-- Measure: [InFull PY label]
+-----------------------------
+MEASURE '[KPI] Global'[InFull PY label] = 
+    VAR _d = [In Full % Variation vs PY]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.0%;-0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [Last InFull Order Date]
+------------------------------------
+MEASURE '[KPI] Global'[Last InFull Order Date] = 
+    CALCULATE(
+        MAX( 'v_LeadTime_Orders'[OrderDate] ),
+        ALL( 'v_LeadTime_Orders' )
+    )
+    , DisplayFolder = "5.0_KPI In Full"
+    , FormatString = "General Date"
+
+-------------------------------
+-- Measure: [Back Order Volume]
+-------------------------------
+MEASURE '[KPI] Global'[Back Order Volume] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        Orders[Status] = "Pending",
+        ISBLANK(Orders[DeliveryDate])
+    )
+    , DisplayFolder = "6.0_KPI Order Volume"
+    , FormatString = "0"
+
+-----------------------------------------------
+-- Measure: [Back Order Volume (Current Month)]
+-----------------------------------------------
+MEASURE '[KPI] Global'[Back Order Volume (Current Month)] = CALCULATE([Back Order Volume], TREATAS({"Current Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "6.0_KPI Order Volume"
+    , FormatString = "0"
+
+----------------------------------------------
+-- Measure: [Back Order Volume (Current Year)]
+----------------------------------------------
+MEASURE '[KPI] Global'[Back Order Volume (Current Year)] = CALCULATE([Back Order Volume], TREATAS({"Previous Year"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "6.0_KPI Order Volume"
+    , FormatString = "0"
+
+--------------------------------------
+-- Measure: [Back Order Volume (Line)]
+--------------------------------------
+MEASURE '[KPI] Global'[Back Order Volume (Line)] = 
+    CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        Orders[Status] = "Pending",
+        ISBLANK(Orders[DeliveryDate])
+    )
+    , DisplayFolder = "6.0_KPI Order Volume"
+    , FormatString = "0"
+
+----------------------------------
+-- Measure: [Back Order Volume PM]
+----------------------------------
+MEASURE '[KPI] Global'[Back Order Volume PM] = CALCULATE([Back Order Volume], TREATAS({"Previous Month"}, 'Time Period'[Time Period]))
+    , DisplayFolder = "6.0_KPI Order Volume"
+    , FormatString = "0"
+
+----------------------------------
+-- Measure: [KPI BackVol PM Color]
+----------------------------------
+MEASURE '[KPI] Global'[KPI BackVol PM Color] = IF ( [Back Order Δ Vol PM (Fixed)] > 0, "#FF4136", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+----------------------------------
+-- Measure: [KPI BackVol PM Label]
+----------------------------------
+MEASURE '[KPI] Global'[KPI BackVol PM Label] = 
+    VAR _d = [Back Order Δ Vol PM (Fixed)]
+    VAR _arrow = IF ( _d > 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN _arrow & " " & FORMAT(_d, "+#,##0;-#,##0")
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+----------------------------------
+-- Measure: [KPI BackVol PY Color]
+----------------------------------
+MEASURE '[KPI] Global'[KPI BackVol PY Color] = 
+    IF (
+        [Back Order Δ Vol PY (Fixed)] < 0,
+        "#16A34A",   -- vert si baisse (amélioration)
+        "#FF4136"    -- rouge si hausse (détérioration)
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+----------------------------------
+-- Measure: [KPI BackVol PY Label]
+----------------------------------
+MEASURE '[KPI] Global'[KPI BackVol PY Label] = 
+    VAR _d = [Back Order Δ Vol PY (Fixed)]
+    VAR _arrow = IF ( _d > 0, UNICHAR(9650), UNICHAR(9660) )
+    RETURN _arrow & " " & FORMAT(_d, "+#,##0;-#,##0")
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------------------
+-- Measure: [Avg Transport Lead Time PY Color #]
+------------------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time PY Color #] = IF ( [Avg Transport Lead Time Variation vs PY] >= 0, "#FF4136", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-------------------------------------
+-- Measure: [Avg Lead Time (Numeric)]
+-------------------------------------
+MEASURE '[KPI] Global'[Avg Lead Time (Numeric)] = AVERAGE('v_LeadTime_Orders'[GlobalLeadTimeDays])
+    , DisplayFolder = "3.0_KPI Lead Time"
+    , FormatString = "0.00"
+
+-----------------------------------------
+-- Measure: [Back Order Δ Vol PM (Fixed)]
+-----------------------------------------
+MEASURE '[KPI] Global'[Back Order Δ Vol PM (Fixed)] = 
+    VAR CurrentYearMonth = YEAR(TODAY()) * 100 + MONTH(TODAY())
+    VAR PreviousYearMonth = 
+        IF(MONTH(TODAY()) = 1,
+            (YEAR(TODAY())-1)*100 + 12,
+            YEAR(TODAY())*100 + MONTH(TODAY()) - 1
+        )
+    
+    VAR BackOrders_Current =
+        CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            Orders[IsBackOrder] = 1,
+            Orders[YearMonth] = CurrentYearMonth
+        )
+    
+    VAR BackOrders_Previous =
+        CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            Orders[IsBackOrder] = 1,
+            Orders[YearMonth] = PreviousYearMonth
+        )
+    
+    RETURN
+    IF(
+        ISBLANK(BackOrders_Previous) || BackOrders_Previous = 0,
+        BLANK(),
+        BackOrders_Current - BackOrders_Previous
+    )
+    , DisplayFolder = "6.0_KPI Order Volume"
+    , FormatString = "0"
+
+-----------------------------------------
+-- Measure: [Avg Transport Lead Time 2 #]
+-----------------------------------------
+MEASURE '[KPI] Global'[Avg Transport Lead Time 2 #] = 
+    FORMAT(
+        AVERAGE( 'v_LeadTime_Orders'[TransportLeadTimeDays] ),
+        "0.00"
+    )
+    , DisplayFolder = "4.0_KPI Transport lead Time"
+
+-----------------------------------------
+-- Measure: [Back Order Δ Vol PY (Fixed)]
+-----------------------------------------
+MEASURE '[KPI] Global'[Back Order Δ Vol PY (Fixed)] = 
+    VAR CurrentYear = YEAR(TODAY())
+    VAR BackOrders_Current =
+        CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            Orders[Status] = "Pending",
+            ISBLANK(Orders[DeliveryDate]),
+            FILTER(ALL(Orders), YEAR(Orders[Date]) = CurrentYear)
+        )
+    VAR BackOrders_Previous =
+        CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            Orders[Status] = "Pending",
+            ISBLANK(Orders[DeliveryDate]),
+            FILTER(ALL(Orders), YEAR(Orders[Date]) = CurrentYear - 1)
+        )
+    RETURN
+    IF(
+        ISBLANK(BackOrders_Previous) || BackOrders_Previous = 0,
+        BLANK(),   -- Affichera "–" sur la carte
+        BackOrders_Current - BackOrders_Previous
+    )
+    , DisplayFolder = "6.0_KPI Order Volume"
+    , FormatString = "0"
+
+---------------------------------
+-- Measure: [Back Order Δ Vol PY]
+---------------------------------
+MEASURE '[KPI] Global'[Back Order Δ Vol PY] = [Back Order Volume] - [Back Order Δ Vol PY (Fixed)]
+    , DisplayFolder = "6.0_KPI Order Volume"
+    , FormatString = "0"
+
+----------------------------------------------
+-- Measure: [Days Inventory Outstanding (DIO)]
+----------------------------------------------
+MEASURE '[KPI] Global'[Days Inventory Outstanding (DIO)] = AVERAGE(Inventory[DaysHeld])
+    , Description = "Average days inventory is held before being sold or used"
+    , DisplayFolder = "7.0_KPI Inventory Health"
+    , FormatString = "0.00"" days"""
+
+------------------------------
+-- Measure: [Order Accuracy %]
+------------------------------
+MEASURE '[KPI] Global'[Order Accuracy %] = 
+    VAR CorrectOrders = CALCULATE(DISTINCTCOUNT(Orders[Order_ID]), FILTER(ALL(Orders), Orders[Quantity] = Orders[DeliveredQuantity]))
+    VAR TotalOrders = DISTINCTCOUNT(Orders[Order_ID])
+    RETURN DIVIDE(CorrectOrders, TotalOrders, 0)
+    , Description = "Percentage of orders delivered with exact quantity requested"
+    , DisplayFolder = "8.0_KPI Order Fulfillment"
+    , FormatString = "0.00%"
+
+--------------------------------------
+-- Measure: [Inventory Turnover Ratio]
+--------------------------------------
+MEASURE '[KPI] Global'[Inventory Turnover Ratio] = 
+    VAR TotalCOGS = SUM(Orders[TotalCost])
+    VAR AvgInventoryValue = AVERAGE(Inventory[StockValue])
+    RETURN DIVIDE(TotalCOGS, AvgInventoryValue, 0)
+    , Description = "How many times inventory is sold and replaced in a year"
+    , DisplayFolder = "7.0_KPI Inventory Health"
+    , FormatString = "0.00""x/year"""
+
+-----------------------------------------
+-- Measure: [Supplier On-Time Delivery %]
+-----------------------------------------
+MEASURE '[KPI] Global'[Supplier On-Time Delivery %] = 
+    VAR OnTimeSuppliers = CALCULATE(DISTINCTCOUNT(Orders[Order_ID]), FILTER(ALL(Orders), Orders[OnTime_Flag] = 1))
+    VAR TotalOrders = DISTINCTCOUNT(Orders[Order_ID])
+    RETURN DIVIDE(OnTimeSuppliers, TotalOrders, 0)
+    , Description = "Percentage of orders delivered on or before requested delivery date"
+    , DisplayFolder = "9.0_KPI Supplier Performance"
+    , FormatString = "0.00%"
+
+----------------------------------
+-- Measure: [Damage & Loss Rate %]
+----------------------------------
+MEASURE '[KPI] Global'[Damage & Loss Rate %] = 
+    VAR DamagedOrLost = CALCULATE(DISTINCTCOUNT(Transportation[Order_ID]), FILTER(ALL(Transportation), Transportation[DamageFlag] = 1 || Transportation[LostFlag] = 1))
+    VAR TotalTransports = DISTINCTCOUNT(Transportation[Order_ID])
+    RETURN DIVIDE(DamagedOrLost, TotalTransports, 0)
+    , Description = "Percentage of shipments that were damaged or lost in transit"
+    , DisplayFolder = "11.0_KPI Quality & Compliance"
+    , FormatString = "0.00%"
+
+-----------------------------------------
+-- Measure: [Warehouse Capacity Health %]
+-----------------------------------------
+MEASURE '[KPI] Global'[Warehouse Capacity Health %] = AVERAGE(Warehouses[UtilizationRate])
+    , Description = "Average warehouse utilization rate across all warehouses"
+    , DisplayFolder = "12.0_KPI Warehouse Efficiency"
+    , FormatString = "0.00%"
+
+---------------------------------------
+-- Measure: [Transport Cost Efficiency]
+---------------------------------------
+MEASURE '[KPI] Global'[Transport Cost Efficiency] = 
+    VAR TotalTransportCost = SUM(Transportation[TransportCost])
+    VAR TotalDistance = SUM(Transportation[DistanceKm])
+    RETURN DIVIDE(TotalTransportCost, TotalDistance, 0)
+    , Description = "Transport cost per kilometer traveled"
+    , DisplayFolder = "10.0_KPI Cost Efficiency"
+    , FormatString = """£""0.00""/km"""
+
+------------------------------------
+-- Measure: [Data Logger Coverage %]
+------------------------------------
+MEASURE '[KPI] Global'[Data Logger Coverage %] = 
+    VAR WithDataLogger = CALCULATE(DISTINCTCOUNT(Transportation[Order_ID]), FILTER(ALL(Transportation), Transportation[DataLoggerUsed] = "Yes"))
+    VAR TotalTransports = DISTINCTCOUNT(Transportation[Order_ID])
+    RETURN DIVIDE(WithDataLogger, TotalTransports, 0)
+    , Description = "Percentage of shipments monitored with data loggers"
+    , DisplayFolder = "11.0_KPI Quality & Compliance"
+    , FormatString = "0.00%"
+
+------------------------------------
+-- Measure: [Cold Chain Integrity %]
+------------------------------------
+MEASURE '[KPI] Global'[Cold Chain Integrity %] = 
+    VAR OrdersWithExcursions = CALCULATE(DISTINCTCOUNT(Orders[Order_ID]), FILTER(ALL(TemperatureExcursions), TemperatureExcursions[ExcursionFlag] = 1))
+    VAR TotalOrders = DISTINCTCOUNT(Orders[Order_ID])
+    RETURN DIVIDE(TotalOrders - OrdersWithExcursions, TotalOrders, 0)
+    , Description = "Percentage of orders that maintained proper cold chain temperature requirements"
+    , DisplayFolder = "11.0_KPI Quality & Compliance"
+    , FormatString = "0.00%"
+
+-----------------------------
+-- Measure: [Perfect Order %]
+-----------------------------
+MEASURE '[KPI] Global'[Perfect Order %] = 
+    VAR PerfectOrders = CALCULATE(
+        DISTINCTCOUNT(Orders[Order_ID]),
+        FILTER(Orders, Orders[OTIF_Flag] = 1),
+        FILTER(Transportation, Transportation[DamageFlag] = 0 && Transportation[LostFlag] = 0)
+    )
+    VAR TotalOrders = DISTINCTCOUNT(Orders[Order_ID])
+    RETURN DIVIDE(PerfectOrders, TotalOrders, 0)
+    , Description = "Orders that are on-time, in-full, undamaged, and not lost"
+    , DisplayFolder = "8.0_KPI Order Fulfillment"
+    , FormatString = "0.00%"
+
+----------------------------------
+-- Measure: [Avg global Lead Time]
+----------------------------------
+MEASURE '[KPI] Global'[Avg global Lead Time] = 
+    CALCULATE(
+        AVERAGE('v_LeadTime_Orders'[GlobalLeadTimeDays]),
+        USERELATIONSHIP('Calendar'[Date], 'v_LeadTime_Orders'[OrderDate]),
+        TREATAS(
+            VALUES(Orders[Region]),
+            'v_LeadTime_Orders'[Region]
+        )
+    )
+    , DisplayFolder = "3.0_KPI Lead Time"
+
+------------------------------------
+-- Measure: [% Excursions Delivered]
+------------------------------------
+MEASURE '[KPI] Quality Control'[% Excursions Delivered] = 
+    VAR NbExcursions =
+        CALCULATE(
+            COUNTROWS(TemperatureExcursions),
+            TemperatureExcursions[ExcursionFlag] = 1
+        )
+    VAR NbDelivered =
+        CALCULATE(
+            COUNTROWS(Orders),
+            Orders[Status] IN { "Delivered", "Returned" }
+        )
+    RETURN
+        DIVIDE(NbExcursions, NbDelivered, 0)
+    , DisplayFolder = "1.0_Card Excursion Rate"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+------------------------------
+-- Measure: [Excursion Rate %]
+------------------------------
+MEASURE '[KPI] Quality Control'[Excursion Rate %] = 
+    VAR ExcursionOrders =
+        CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            Orders[DeliveredOrReturned] = 1,
+            TREATAS(
+                SELECTCOLUMNS(
+                    FILTER(
+                        TemperatureExcursions,
+                        TemperatureExcursions[ExcursionDetected] = 1
+                    ),
+                    "Order_ID", TemperatureExcursions[Order_ID]
+                ),
+                Orders[Order_ID]
+            )
+        )
+    VAR TotalOrders =
+        CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            Orders[DeliveredOrReturned] = 1
+        )
+    RETURN
+    DIVIDE(ExcursionOrders, TotalOrders, 0)
+    , DisplayFolder = "1.0_Card Excursion Rate"
+
+---------------------------------
+-- Measure: [Excursion Rate % PM]
+---------------------------------
+MEASURE '[KPI] Quality Control'[Excursion Rate % PM] = CALCULATE ( [Excursion Rate %], DATEADD ( 'Calendar'[Date], -1, MONTH ) )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------
+-- Measure: [Excursion Rate % PY]
+---------------------------------
+MEASURE '[KPI] Quality Control'[Excursion Rate % PY] = CALCULATE ( [Excursion Rate %], DATEADD ( 'Calendar'[Date], -1, YEAR ) )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------
+-- Measure: [Excursion Rate Δ PM]
+---------------------------------
+MEASURE '[KPI] Quality Control'[Excursion Rate Δ PM] = [Excursion Rate %] - [Excursion Rate % PM]
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------
+-- Measure: [Excursion Rate Δ PY]
+---------------------------------
+MEASURE '[KPI] Quality Control'[Excursion Rate Δ PY] = [Excursion Rate %] - [Excursion Rate % PY]
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [KPI Excursion PM Color]
+------------------------------------
+MEASURE '[KPI] Quality Control'[KPI Excursion PM Color] = IF ( [Excursion Rate Δ PM] >= 0, "#DC2626", "#16A34A" )  -- Rouge si hausse, vert si baisse
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [KPI Excursion PM Label]
+------------------------------------
+MEASURE '[KPI] Quality Control'[KPI Excursion PM Label] = 
+    VAR _d = [Excursion Rate Δ PM]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )  -- ▲ ou ▼
+    VAR _sign = IF ( _d >= 0, "+", "" )
+    RETURN
+    _arrow & " " & _sign & FORMAT ( _d, "0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [KPI Excursion PY Color]
+------------------------------------
+MEASURE '[KPI] Quality Control'[KPI Excursion PY Color] = IF ( [Excursion Rate Δ PY] >= 0, "#DC2626", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [KPI Excursion PY Label]
+------------------------------------
+MEASURE '[KPI] Quality Control'[KPI Excursion PY Label] = 
+    VAR _d = [Excursion Rate Δ PY]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9650), UNICHAR(9660) )
+    VAR _sign = IF ( _d >= 0, "+", "" )
+    RETURN
+    _arrow & " " & _sign & FORMAT ( _d, "0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------
+-- Measure: [KPI Return PM Color]
+---------------------------------
+MEASURE '[KPI] Quality Control'[KPI Return PM Color] = IF ( [Return Rate Δ PM] >= 0, "#DC2626", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------
+-- Measure: [KPI Return PM Label]
+---------------------------------
+MEASURE '[KPI] Quality Control'[KPI Return PM Label] = 
+    VAR _d = [Return Rate Δ PM]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9660), UNICHAR(9650) )  -- ▼ si hausse = moins bien
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.0%;-0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------
+-- Measure: [KPI Return PY Color]
+---------------------------------
+MEASURE '[KPI] Quality Control'[KPI Return PY Color] = IF ( [Return Rate Δ PY] >= 0, "#DC2626", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------
+-- Measure: [KPI Return PY Label]
+---------------------------------
+MEASURE '[KPI] Quality Control'[KPI Return PY Label] = 
+    VAR _d = [Return Rate Δ PY]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9660), UNICHAR(9650) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.0%;-0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------
+-- Measure: [Return Rate %]
+---------------------------
+MEASURE '[KPI] Quality Control'[Return Rate %] = DIVIDE ( [Returned Orders], [Total Orders (Delivered + Returned)], 0 )
+    , DisplayFolder = "1.1_KPI Return Rate"
+    , FormatString = "0.0%;-0.0%;0.0%"
+
+------------------------------
+-- Measure: [Return Rate % PM]
+------------------------------
+MEASURE '[KPI] Quality Control'[Return Rate % PM] = CALCULATE ( [Return Rate %], DATEADD ( 'Calendar'[Date], -1, MONTH ) )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------
+-- Measure: [Return Rate % PY]
+------------------------------
+MEASURE '[KPI] Quality Control'[Return Rate % PY] = CALCULATE ( [Return Rate %], DATEADD ( 'Calendar'[Date], -1, YEAR ) )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------
+-- Measure: [Return Rate Δ PM]
+------------------------------
+MEASURE '[KPI] Quality Control'[Return Rate Δ PM] = [Return Rate %] - [Return Rate % PM]
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------
+-- Measure: [Return Rate Δ PY]
+------------------------------
+MEASURE '[KPI] Quality Control'[Return Rate Δ PY] = [Return Rate %] - [Return Rate % PY]
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-----------------------------
+-- Measure: [Returned Orders]
+-----------------------------
+MEASURE '[KPI] Quality Control'[Returned Orders] = DISTINCTCOUNT ( Returns[Order_ID] )
+    , DisplayFolder = "1.1_KPI Return Rate"
+    , FormatString = "0"
+
+-------------------------------
+-- Measure: [Back Order Rate %]
+-------------------------------
+MEASURE '[KPI] Performance'[Back Order Rate %] = DIVIDE ( [Back Orders], [Total Orders], 0 )
+    , DisplayFolder = "1.1_KPI Back Order"
+    , FormatString = "0.0%;-0.0%;0.0%"
+
+----------------------------------
+-- Measure: [Back Order Rate % PM]
+----------------------------------
+MEASURE '[KPI] Performance'[Back Order Rate % PM] = CALCULATE ( [Back Order Rate %], DATEADD ( 'Calendar'[Date], -1, MONTH ) )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+----------------------------------
+-- Measure: [Back Order Rate % PY]
+----------------------------------
+MEASURE '[KPI] Performance'[Back Order Rate % PY] = CALCULATE ( [Back Order Rate %], DATEADD ( 'Calendar'[Date], -1, YEAR ) )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-----------------------------
+-- Measure: [Back Order Δ PM]
+-----------------------------
+MEASURE '[KPI] Performance'[Back Order Δ PM] = [Back Order Rate %] - [Back Order Rate % PM]
+    , DisplayFolder = "1.1_KPI Back Order"
+
+-----------------------------
+-- Measure: [Back Order Δ PY]
+-----------------------------
+MEASURE '[KPI] Performance'[Back Order Δ PY] = [Back Order Rate %] - [Back Order Rate % PY]
+    , DisplayFolder = "1.1_KPI Back Order"
+
+-------------------------
+-- Measure: [Back Orders]
+-------------------------
+MEASURE '[KPI] Performance'[Back Orders] = 
+    CALCULATE (
+        DISTINCTCOUNT ( Orders[Order_ID] ),
+        FILTER (
+            Orders,
+            ( Orders[OnTime_Flag] = 0 || Orders[InFull_Flag] = 0 )
+                && Orders[Status] <> "Delivered"
+                && Orders[Status] <> "Closed"
+        )
+    )
+    , DisplayFolder = "1.1_KPI Back Order"
+    , FormatString = "0"
+
+------------------------------------
+-- Measure: [KPI BackOrder PM Color]
+------------------------------------
+MEASURE '[KPI] Performance'[KPI BackOrder PM Color] = IF ( [Back Order Δ PM] >= 0, "#FF4136", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [KPI BackOrder PM Label]
+------------------------------------
+MEASURE '[KPI] Performance'[KPI BackOrder PM Label] = 
+    VAR _d = [Back Order Δ PM]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9660), UNICHAR(9650) )  -- ▼ si hausse (mauvais)
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.0%;-0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [KPI BackOrder PY Color]
+------------------------------------
+MEASURE '[KPI] Performance'[KPI BackOrder PY Color] = IF ( [Back Order Δ PY] >= 0, "#FF4136", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+------------------------------------
+-- Measure: [KPI BackOrder PY Label]
+------------------------------------
+MEASURE '[KPI] Performance'[KPI BackOrder PY Label] = 
+    VAR _d = [Back Order Δ PY]
+    VAR _arrow = IF ( _d >= 0, UNICHAR(9660), UNICHAR(9650) )
+    RETURN
+     _arrow & " " & FORMAT ( _d, "+0.0%;-0.0%" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+---------------------------------------------
+-- Measure: [Supplier Reliability Rate (Avg)]
+---------------------------------------------
+MEASURE '[KPI] Performance'[Supplier Reliability Rate (Avg)] = AVERAGE ( Suppliers[ReliabilityRate] )
+    , DisplayFolder = "2.1_KPI Supplier Reliability Rate"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+-------------------------------------------
+-- Measure: [Supplier Delivery Delay (Avg)]
+-------------------------------------------
+MEASURE '[KPI] Performance'[Supplier Delivery Delay (Avg)] = AVERAGE ( Suppliers[LeadTimeDays])
+    , DisplayFolder = "2.1_KPI Supplier Reliability Rate"
+
+-----------------------------------------------
+-- Measure: [Perf_Cold Chain Compliance % Δ PM]
+-----------------------------------------------
+MEASURE '[KPI] Performance'[Perf_Cold Chain Compliance % Δ PM] = ([Perf_Cold Chain Compliance %] - [Perf_Cold Chain Compliance % PM])
+    , Description = "Cold Chain Compliance % Variation vs Previous Month"
+    , DisplayFolder = "Performance KPIs - Time"
+
+----------------------------
+-- Measure: [Transport Cost]
+----------------------------
+MEASURE '[Report] Financial'[Transport Cost] = 
+    CALCULATE(
+        SUM(Transportation[TransportCost]),
+        TREATAS(VALUES(Orders[Order_ID]), Transportation[Order_ID])
+    )
+    , DisplayFolder = "1.0_ Page Financial"
+
+----------------------------------------------
+-- Measure: [Quality Excursion Cost (Precise)]
+----------------------------------------------
+MEASURE '[Report] Financial'[Quality Excursion Cost (Precise)] = 
+    VAR ExcursionOrderIDs =
+        SELECTCOLUMNS(
+            FILTER(
+                TemperatureExcursions,
+                TemperatureExcursions[ExcursionDetected] = 1
+            ),
+            "Order_ID", TemperatureExcursions[Order_ID]
+        )
+    RETURN
+    CALCULATE(
+        [Base Supply Chain Cost],
+        Orders[Status] = "Delivered",
+        TREATAS(ExcursionOrderIDs, Orders[Order_ID])
+    )
+    , DisplayFolder = "1.0_ Page Financial"
+
+------------------------------------
+-- Measure: [Base Supply Chain Cost]
+------------------------------------
+MEASURE '[Report] Financial'[Base Supply Chain Cost] = [Transport Cost] + [Inventory Holding Cost] + [Return Cost]
+    , DisplayFolder = "1.0_ Page Financial"
+
+------------------------------
+-- Measure: [Cost by Category]
+------------------------------
+MEASURE '[Report] Financial'[Cost by Category] = 
+    SUMX (
+        VALUES('Cost Categories'[Category]),
+        SWITCH(
+            'Cost Categories'[Category],
+            "Transport Cost",           [Transport Cost],
+            "Inventory Holding Cost",   [Inventory Holding Cost],
+            "Return Cost",              [Return Cost],
+            "Quality Excursion Cost",   [Quality Excursion Cost (Precise)],
+            BLANK()
+        )
+    )
+    , DisplayFolder = "1.0_ Page Financial"
+
+-------------------------
+-- Measure: [Total Value]
+-------------------------
+MEASURE '[Report] Financial'[Total Value] = SUM('Orders'[TotalCost])
+    , DisplayFolder = "1.0_ Page Financial"
+
+-----------------------------
+-- Measure: [Cost Amount (£)]
+-----------------------------
+MEASURE '[Report] Financial'[Cost Amount (£)] = 
+    SWITCH(
+        TRUE(),
+        SELECTEDVALUE('Cost Categories'[Category]) = "Transport Cost", [Transport Cost],
+        SELECTEDVALUE('Cost Categories'[Category]) = "Return Cost", [Return Cost],
+        SELECTEDVALUE('Cost Categories'[Category]) = "Quality Excursion Cost", [Quality Excursion Cost (Precise)],
+        SELECTEDVALUE('Cost Categories'[Category]) = "Inventory Holding Cost", [Inventory Holding Cost],
+        BLANK()
+    )
+    , DisplayFolder = "1.0_ Page Financial"
+
+------------------------------------
+-- Measure: [Inventory Holding Cost]
+------------------------------------
+MEASURE '[Report] Financial'[Inventory Holding Cost] = SUM(Inventory[InventoryHoldingCost])
+    , DisplayFolder = "1.0_ Page Financial"
+
+-----------------------------
+-- Measure: [Cost Categories]
+-----------------------------
+MEASURE '[Report] Financial'[Cost Categories] = 
+    DATATABLE(
+        "Cost Category", STRING,
+        {
+            {"Transport Cost"},
+            {"Return Cost"},
+            {"Quality Excursion Cost"},
+            {"Inventory Holding Cost"}
+        }
+    )
+    , DisplayFolder = "1.0_ Page Financial"
+
+-------------------------
+-- Measure: [Return Cost]
+-------------------------
+MEASURE '[Report] Financial'[Return Cost] = SUM(Returns[ReturnLineCost])
+    , DisplayFolder = "1.0_ Page Financial"
+
+-------------------------------------
+-- Measure: [Total Supply Chain Cost]
+-------------------------------------
+MEASURE '[Report] Financial'[Total Supply Chain Cost] = 
+    [Transport Cost] +
+    [Inventory Holding Cost] +
+    [Return Cost] +
+    [Quality Excursion Cost (Precise)]
+    , DisplayFolder = "1.0_ Page Financial"
+
+-----------------------------------------
+-- Measure: [Total Supply Chain Cost (£)]
+-----------------------------------------
+MEASURE '[Report] Financial'[Total Supply Chain Cost (£)] = 
+    [Transport Cost] +
+    [Return Cost] +
+    [Quality Excursion Cost (Precise)] +
+    [Inventory Holding Cost]
+    , DisplayFolder = "1.0_ Page Financial"
+
+--------------------------------------
+-- Measure: [Transport Cost per Order]
+--------------------------------------
+MEASURE '[Report] Financial'[Transport Cost per Order] = DIVIDE([Transport Cost], [Total Orders (Delivered + Returned)], 0)
+    , DisplayFolder = "1.0_ Page Financial"
+
+----------------------
+-- Measure: [COGS 90d]
+----------------------
+MEASURE '[Report] Financial'[COGS 90d] = 
+    VAR EndDate =
+        MAX ( Orders[DeliveryDate] )
+    VAR StartDate =
+        EndDate - 90
+    RETURN
+    CALCULATE (
+        SUMX (
+            Orders,
+            Orders[DeliveredQuantity] * RELATED ( Products[UnitCost] )   -- ou UnitPrice si tu préfères
+        ),
+        Orders[Status] = "Delivered",
+        Orders[DeliveryDate] >= StartDate,
+        Orders[DeliveryDate] <= EndDate
+    )
+
+-------------------------------------
+-- Measure: [Current Inventory Value]
+-------------------------------------
+MEASURE '[Report] Financial'[Current Inventory Value] = 
+    SUMX (
+        Inventory,
+        Inventory[StockLevel] * RELATED ( Products[UnitCost] )
+    )
+
+----------------------------
+-- Measure: [Daily COGS 90d]
+----------------------------
+MEASURE '[Report] Financial'[Daily COGS 90d] = DIVIDE ( [COGS 90d], 90 )
+
+---------------------
+-- Measure: [DIO 90d]
+---------------------
+MEASURE '[Report] Financial'[DIO 90d] = DIVIDE ( [Current Inventory Value], [Daily COGS 90d] )
+    , FormatString = "0"
+
+--------------------------------
+-- Measure: [Total Freight Cost]
+--------------------------------
+MEASURE '[Report] Financial'[Total Freight Cost] = SUM('Transportation'[TransportCost])
+
+-----------------------------
+-- Measure: [Total Shipments]
+-----------------------------
+MEASURE '[Report] Financial'[Total Shipments] = COUNTROWS('Transportation')
+    , FormatString = "0"
+
+---------------------------------------
+-- Measure: [Freight Cost per Shipment]
+---------------------------------------
+MEASURE '[Report] Financial'[Freight Cost per Shipment] = DIVIDE([Total Freight Cost], [Total Shipments])
+
+------------------------------
+-- Measure: [Total Return Qty]
+------------------------------
+MEASURE '[Report] Financial'[Total Return Qty] = 
+    SUM('Returns'[ReturnedQuantity]
+    )
+    , FormatString = "0"
+
+-----------------------------
+-- Measure: [Inventory Value]
+-----------------------------
+MEASURE '[Report] Financial'[Inventory Value] = 
+    SUMX(
+        Inventory,
+        Inventory[StockLevel] * RELATED(Products[UnitCost])
+    )
+    , DisplayFolder = "1.0_ Page Financial"
+
+--------------------------------------
+-- Measure: [Inventory Holding Cost 2]
+--------------------------------------
+MEASURE '[Report] Financial'[Inventory Holding Cost 2] = [Inventory Value] * 0.15
+
+-------------------------
+-- Measure: [Missing Qty]
+-------------------------
+MEASURE '[Report] Financial'[Missing Qty] = 
+    SUMX(
+        Inventory,
+        VAR Qty = Inventory[StockLevel]
+        VAR Reorder = Inventory[ReorderPoint]
+        RETURN IF(Qty < Reorder, Reorder - Qty, 0)
+    )
+    , FormatString = "0"
+
+---------------------------------------
+-- Measure: [Stockout Financial Impact]
+---------------------------------------
+MEASURE '[Report] Financial'[Stockout Financial Impact] = 
+    SUMX(
+        Inventory,
+        VAR Qty = Inventory[StockLevel]
+        VAR Reorder = Inventory[ReorderPoint]
+        VAR Missing = IF(Qty < Reorder, Reorder - Qty, 0)
+        RETURN Missing * RELATED(Products[UnitCost])
+    )
+
+----------------------------
+-- Measure: [Cost per Order]
+----------------------------
+MEASURE '[Report] Financial'[Cost per Order] = 
+    DIVIDE(
+        [Total Freight Cost], [Total Orders])
+
+--------------------------------
+-- Measure: [Total Returned Qty]
+--------------------------------
+MEASURE '[Report] Financial'[Total Returned Qty] = SUM('Returns'[ReturnedQuantity])
+    , FormatString = "0"
+
+-------------------------------
+-- Measure: [Total Ordered Qty]
+-------------------------------
+MEASURE '[Report] Financial'[Total Ordered Qty] = SUM(Orders[Quantity])
+    , FormatString = "0"
+
+-----------------------------
+-- Measure: [Return Rate (%)]
+-----------------------------
+MEASURE '[Report] Financial'[Return Rate (%)] = DIVIDE([Total Returned Qty], [Total Ordered Qty])
+
+-------------------------------------
+-- Measure: [Return Financial Impact]
+-------------------------------------
+MEASURE '[Report] Financial'[Return Financial Impact] = 
+    SUMX(
+        SUMMARIZE(
+            'Returns',
+            'Returns'[Order_ID],
+            "ReturnedQty", SUM('Returns'[ReturnedQuantity])
+        ),
+        VAR OrderID = [Order_ID]
+        VAR ReturnedQty = [ReturnedQty]
+    
+        VAR ProductID =
+            CALCULATE(
+                SELECTEDVALUE(Orders[ProductID]),
+                Orders[Order_ID] = OrderID
+            )
+    
+        VAR UnitCost =
+            CALCULATE(
+                SELECTEDVALUE(Products[UnitCost]),
+                Products[ProductID] = ProductID
+            )
+    
+        RETURN ReturnedQty * UnitCost
+    )
+
+------------------
+-- Measure: [MAPE]
+------------------
+MEASURE '[Report] Financial'[MAPE] = 
+    VAR TotalAPE =
+        SUMX(
+            'ForecastWeekly',
+            VAR Actual   = 'ForecastWeekly'[ActualQty]
+            VAR Forecast = 'ForecastWeekly'[ForecastQty]
+            RETURN
+                IF(
+                    Actual <> 0,
+                    ABS(Actual - Forecast) / Actual,
+                    BLANK()
+                )
+        )
+    RETURN
+    DIVIDE(
+        TotalAPE,
+        COUNTROWS('ForecastWeekly')
+    )
+
+-----------------------------------
+-- Measure: [Forecast Accuracy (%)]
+-----------------------------------
+MEASURE '[Report] Financial'[Forecast Accuracy (%)] = 1 - [MAPE]
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+---------------------------
+-- Measure: [Total Revenue]
+---------------------------
+MEASURE '[Report] Financial'[Total Revenue] = 
+    SUMX(
+        Orders,
+        Orders[Quantity] * Orders[UnitPrice]
+    )
+
+---------------------
+-- Measure: [Revenue]
+---------------------
+MEASURE '[Report] Financial'[Revenue] = SUM(Orders[TotalCost])
+    , Description = "Total revenue from all orders"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "£#,##0"
+
+------------------------------
+-- Measure: [Efficiency Score]
+------------------------------
+MEASURE '[Report] Financial'[Efficiency Score] = (1 - DIVIDE([Total Logistics Cost], [Revenue], 0)) * 100
+    , Description = "Supply chain efficiency score (1 - Logistics Cost/Revenue)"
+    , DisplayFolder = "Logistics Efficiency"
+    , FormatString = "0.0"
+
+----------------------------
+-- Measure: [Gross Margin %]
+----------------------------
+MEASURE '[Report] Financial'[Gross Margin %] = DIVIDE([Revenue] - [COGS], [Revenue], 0)
+    , Description = "Gross profit margin percentage"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "0.0%"
+
+------------------------------
+-- Measure: [Net Contribution]
+------------------------------
+MEASURE '[Report] Financial'[Net Contribution] = [Revenue] - [COGS] - [Total Logistics Cost]
+    , Description = "Net contribution after costs"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "£#,##0"
+
+----------------------------------
+-- Measure: [Total Logistics Cost]
+----------------------------------
+MEASURE '[Report] Financial'[Total Logistics Cost] = SUM(Transportation[TransportCost]) + SUM(Inventory[InventoryHoldingCost])
+    , Description = "Total logistics cost (transport + inventory)"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "£#,##0"
+
+-------------------------
+-- Measure: [Cost per KM]
+-------------------------
+MEASURE '[Report] Financial'[Cost per KM] = DIVIDE(SUM(Transportation[TransportCost]), SUM(Transportation[DistanceKm]), 0)
+    , Description = "Cost per kilometer"
+    , DisplayFolder = "Logistics Efficiency"
+    , FormatString = "£0.00"
+
+------------------------------
+-- Measure: [Efficiency Stars]
+------------------------------
+MEASURE '[Report] Financial'[Efficiency Stars] = SWITCH(TRUE(), [Efficiency Score] >= 87, "★★★", [Efficiency Score] >= 80, "★★", "★")
+    , Description = "Visual rating of logistics efficiency (3 stars max)"
+    , DisplayFolder = "Logistics Efficiency"
+
+-------------------------------
+-- Measure: [Orders by Carrier]
+-------------------------------
+MEASURE '[Report] Financial'[Orders by Carrier] = COUNTA(Transportation[Order_ID])
+    , Description = "Total number of orders by carrier"
+    , DisplayFolder = "Logistics Efficiency"
+    , FormatString = "#,##0"
+
+------------------
+-- Measure: [COGS]
+------------------
+MEASURE '[Report] Financial'[COGS] = SUMX(Orders, Orders[Quantity] * RELATED(Products[UnitCost]))
+    , Description = "Cost of Goods Sold"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "£#,##0"
+
+------------------------------
+-- Measure: [Logistics Cost %]
+------------------------------
+MEASURE '[Report] Financial'[Logistics Cost %] = DIVIDE([Total Logistics Cost], [Revenue], 0) * 100
+    , Description = "Logistics cost as % of revenue"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "0.0""%"""
+
+----------------------
+-- Measure: [COGS MTP]
+----------------------
+MEASURE '[Report] Financial'[COGS MTP] = CALCULATE([COGS], DATESBETWEEN('Calendar'[Date], DATE(YEAR(TODAY()), MONTH(TODAY()), 1), TODAY()))*15
+    , Description = "COGS Month-To-Date"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "£#,##0"
+
+----------------------
+-- Measure: [COGS YTD]
+----------------------
+MEASURE '[Report] Financial'[COGS YTD] = CALCULATE([COGS], DATESBETWEEN('Calendar'[Date], DATE(YEAR(TODAY()), 1, 1), TODAY()))
+    , Description = "COGS Year-To-Date"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "£#,##0"
+
+----------------------------------------
+-- Measure: [Inventory Holding Cost MTP]
+----------------------------------------
+MEASURE '[Report] Financial'[Inventory Holding Cost MTP] = CALCULATE([Inventory Holding Cost], DATESBETWEEN('Calendar'[Date], DATE(YEAR(TODAY()), MONTH(TODAY()), 1), TODAY()))
+    , Description = "Inventory Holding Cost Month-To-Date"
+    , DisplayFolder = "Supply Chain Economics"
+    , FormatString = "£#,##0"
+
+----------------------------------------------------
+-- Measure: [Inventory Holding Cost MTP (Financial)]
+----------------------------------------------------
+MEASURE '[Report] Financial'[Inventory Holding Cost MTP (Financial)] = CALCULATE([Inventory Holding Cost], DATESBETWEEN('Calendar'[Date], DATE(YEAR(TODAY()), MONTH(TODAY()), 1), TODAY()))*15
+    , DisplayFolder = "Supply Chain Economics"
+
+--------------------
+-- Measure: [COGS 2]
+--------------------
+MEASURE '[Report] Financial'[COGS 2] = SUMX(Orders, Orders[Quantity] * RELATED(Products[UnitCost]))*0.6
+    , DisplayFolder = "Supply Chain Economics"
+
+------------------------------
+-- Measure: [Transport Cost 2]
+------------------------------
+MEASURE '[Report] Financial'[Transport Cost 2] = 
+    CALCULATE(
+        SUM(Transportation[TransportCost]),
+        TREATAS(VALUES(Orders[Order_ID]), Transportation[Order_ID])
+    )
+    *12
+    , DisplayFolder = "1.0_ Page Financial"
+
+--------------------------------
+-- Measure: [Efficiency Stars 2]
+--------------------------------
+MEASURE '[Report] Financial'[Efficiency Stars 2] = SWITCH(TRUE(), [Perf_OTIF %] >= 85, "★★★", [Perf_OTIF %] >= 82, "★★", "★")
+    , DisplayFolder = "Logistics Efficiency"
+
+------------------------------------------
+-- Measure: [Total Returns (scatter plot)]
+------------------------------------------
+MEASURE '[Report] Quality'[Total Returns (scatter plot)] = 
+    CALCULATE(
+        DISTINCTCOUNT(Returns[Order_ID]),
+        FILTER(
+            Returns,
+            NOT(ISBLANK(Returns[Order_ID]))
+                && Returns[ReturnedQuantity] > 0
+        )
+    )
+    , DisplayFolder = "1.0_Page Quality"
+    , FormatString = "0"
+
+--------------------------------------
+-- Measure: [Temperature Compliance %]
+--------------------------------------
+MEASURE '[Report] Quality'[Temperature Compliance %] = 1 - [Excursion Rate %]
+    , DisplayFolder = "1.0_Page Quality"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+---------------------------------
+-- Measure: [Forecast Accuracy %]
+---------------------------------
+MEASURE '[Report] Forecast'[Forecast Accuracy %] = 1 - ABS(DIVIDE(SUM(ForecastWeekly[ForecastQty]) - SUM(ForecastWeekly[ActualQty]), SUM(ForecastWeekly[ForecastQty]), 0))
+    , DisplayFolder = "1.0_Page Forecast"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+----------------------------------
+-- Measure: [Orders per Warehouse]
+----------------------------------
+MEASURE '[Report] Logistics'[Orders per Warehouse] = DIVIDE([Total Orders (Delivered + Returned)], DISTINCTCOUNT(Warehouses[WarehouseID]), 0)
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+-------------------------------------
+-- Measure: [Warehouse Utilization %]
+-------------------------------------
+MEASURE '[Report] Logistics'[Warehouse Utilization %] = 
+    DIVIDE(
+        SUM('Warehouses'[MinVolume_Warehouse]),
+        SUM('Warehouses'[MaxVolume_Warehouse])
+    )
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+---------------------------
+-- Measure: [Current Stock]
+---------------------------
+MEASURE '[Report] Logistics'[Current Stock] = SUM(Inventory[StockLevel])
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+-----------------------------------
+-- Measure: [Min Stock (Warehouse)]
+-----------------------------------
+MEASURE '[Report] Logistics'[Min Stock (Warehouse)] = SUM(Warehouses[MinStock_Warehouse])
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+--------------------------------------
+-- Measure: [Safety Stock (Warehouse)]
+--------------------------------------
+MEASURE '[Report] Logistics'[Safety Stock (Warehouse)] = SUM(Warehouses[SafetyStock_Warehouse])
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+---------------------------------------
+-- Measure: [Reorder Point (Warehouse)]
+---------------------------------------
+MEASURE '[Report] Logistics'[Reorder Point (Warehouse)] = SUM(Warehouses[ReorderPoint_Warehouse])
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+-----------------------------------
+-- Measure: [Max Stock (Warehouse)]
+-----------------------------------
+MEASURE '[Report] Logistics'[Max Stock (Warehouse)] = SUM(Inventory[MaxStock_Inventory])
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+-------------------------------------
+-- Measure: [Warehouse Health Status]
+-------------------------------------
+MEASURE '[Report] Logistics'[Warehouse Health Status] = 
+    VAR _stock = [Current Stock]
+    VAR _min = [Min Stock (Warehouse)]
+    VAR _max = [Max Stock (Warehouse)]
+    VAR _safety = [Safety Stock (Warehouse)]
+    VAR _reorder = [Reorder Point (Warehouse)]
+    RETURN
+        SWITCH(
+            TRUE(),
+            _stock < _min, "🔴 Low Stock",
+            _stock < _reorder, "🟠 Reorder Needed",
+            _stock < _safety, "🟡 Warning",
+            _stock > _max, "🔵 Overstock",
+            "🟢 OK"
+        )
+    , DisplayFolder = "Health Stock Status Unit"
+
+--------------------------------
+-- Measure: [Warehouse Health %]
+--------------------------------
+MEASURE '[Report] Logistics'[Warehouse Health %] = 
+    VAR _stock = [Current Stock]
+    VAR _min = [Min Stock (Warehouse)]
+    VAR _max = [Max Stock (Warehouse)]
+    RETURN
+    DIVIDE(_stock - _min, _max - _min)
+    , DisplayFolder = "Health Stock Status Unit"
+
+---------------------------
+-- Measure: [CurrentVolume]
+---------------------------
+MEASURE '[Report] Logistics'[CurrentVolume] = 
+    SUMX(
+        Inventory,
+        Inventory[StockLevel] * RELATED(Products[Volume])
+    )
+    , DisplayFolder = "Health Stock Status vol Matrix"
+    , FormatString = "0"
+
+--------------------------
+-- Measure: [Health vol %]
+--------------------------
+MEASURE '[Report] Logistics'[Health vol %] = 
+    DIVIDE(
+        [CurrentVolume],
+        CALCULATE(
+            SUM(Warehouses[MaxVolume_Warehouse]),
+            KEEPFILTERS(VALUES(Warehouses[WarehouseID]))
+        )
+    )/4
+    , DisplayFolder = "Health Stock Status vol Matrix"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+--------------------------------
+-- Measure: [Health Status Icon]
+--------------------------------
+MEASURE '[Report] Logistics'[Health Status Icon] = 
+    SWITCH(
+        TRUE(),
+        [Health vol %] < 0.30, "UnderStock",
+        [Health vol %] < 0.50, "Reorder",
+        [Health vol %] < 0.90, "Healthy",
+        "Overstock"
+    )
+    , DisplayFolder = "Health Stock Status vol Matrix"
+
+----------------------------
+-- Measure: [Health Units %]
+----------------------------
+MEASURE '[Report] Logistics'[Health Units %] = [Health vol %]
+    , DisplayFolder = "Health Stock Status Unit Matrix"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+-------------------------------------
+-- Measure: [Health Status Unit Icon]
+-------------------------------------
+MEASURE '[Report] Logistics'[Health Status Unit Icon] = 
+    SWITCH(
+        TRUE(),
+        [Health vol %] < 0.30, "🔴 Low Stock",
+        [Health vol %] < 0.50, "🟠 Reorder Needed",
+        [Health vol %] < 0.90, "🟢 Healthy",
+        "🔵 Overstock"
+    )
+    , DisplayFolder = "Health Stock Status Unit Matrix"
+
+--------------------------------
+-- Measure: [Current Stock Unit]
+--------------------------------
+MEASURE '[Report] Logistics'[Current Stock Unit] = SUM(Inventory[StockLevel])
+    , DisplayFolder = "Health Stock Status Unit Matrix"
+    , FormatString = "0"
+
+------------------------------
+-- Measure: [Daily Demand 90d]
+------------------------------
+MEASURE '[Report] Logistics'[Daily Demand 90d] = 
+    VAR EndDate =
+        MAX(Orders[DeliveryDate])
+    
+    VAR StartDate =
+        EndDate - 180
+    
+    VAR DeliveredQty90d =
+        CALCULATE(
+            SUM(Orders[DeliveredQuantity]),
+            Orders[Status] = "Delivered",
+            Orders[DeliveryDate] >= StartDate,
+            Orders[DeliveryDate] <= EndDate
+        )
+    RETURN
+    DIVIDE(DeliveredQty90d, 90)
+    , DisplayFolder = "DOH 90d & Health Status Matrix"
+
+---------------------
+-- Measure: [DOH 90d]
+---------------------
+MEASURE '[Report] Logistics'[DOH 90d] = 
+    DIVIDE(
+        SUM(Inventory[StockLevel]),
+        [Daily Demand 90d]
+    )
+    , DisplayFolder = "DOH 90d & Health Status Matrix"
+    , FormatString = "0"
+
+-----------------------------
+-- Measure: [Health Volume %]
+-----------------------------
+MEASURE '[Report] Logistics'[Health Volume %] = 
+    DIVIDE(
+        [CurrentVolume],
+        CALCULATE(
+            SUM ( Warehouses[MaxVolume_Warehouse] )
+        )
+    )
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+----------------------
+-- Measure: [Risk DOH]
+----------------------
+MEASURE '[Report] Logistics'[Risk DOH] = 
+    SWITCH(
+        TRUE(),
+        [DOH 90d] < 40, "Understock",
+        [DOH 90d] < 30, "Balanced",
+        [DOH 90d] < 438, "Healthy",
+        [DOH 90d] < 8000, "Overstock",
+        "Error"
+    )
+    , DisplayFolder = "DOH 90d & Health Status Matrix"
+
+-------------------------
+-- Measure: [Stock Units]
+-------------------------
+MEASURE '[Report] Logistics'[Stock Units] = SUM ( Inventory[StockLevel] )
+    , DisplayFolder = "DOH 90d & Health Status Matrix"
+    , FormatString = "0"
+
+-------------------------------
+-- Measure: [Expiry Risk Units]
+-------------------------------
+MEASURE '[Report] Logistics'[Expiry Risk Units] = 
+    CALCULATE(
+        SUM('Inventory'[Stocklevel]),
+        'Inventory'[Expirydate] <= TODAY() + 30
+    )
+    , FormatString = "0"
+
+----------------------------------
+-- Measure: [Inventory Accuracy %]
+----------------------------------
+MEASURE '[Report] Logistics'[Inventory Accuracy %] = 
+    VAR TotalItems = COUNT('Inventory'[ProductID])
+    VAR CorrectItems =
+        CALCULATE(
+            COUNT('Inventory'[ProductID]),
+            'Inventory'[StockLevel] >= 'Inventory'[SafetyStock]
+        )
+    RETURN
+    DIVIDE(CorrectItems, TotalItems)
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+----------------------------
+-- Measure: [Total Outbound]
+----------------------------
+MEASURE '[Report] Logistics'[Total Outbound] = SUM('Orders'[Quantity])
+    , FormatString = "0"
+
+-----------------------------
+-- Measure: [Inventory Turns]
+-----------------------------
+MEASURE '[Report] Logistics'[Inventory Turns] = DIVIDE([Total Outbound], [Current Stock])
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+-------------------------------------
+-- Measure: [Risk_Inventory_Category]
+-------------------------------------
+MEASURE '[Report] Logistics'[Risk_Inventory_Category] = 
+    SWITCH(
+        TRUE(),
+        [Inventory Accuracy %] < 0.65, "Under Stock",
+        [Inventory Accuracy %] < 0.75, "Reorder",
+        [Inventory Accuracy %] < 1, "Healthy",
+        "Error"
+    )
+
+------------------------------------
+-- Measure: [SafetyVolume_Warehouse]
+------------------------------------
+MEASURE '[Report] Logistics'[SafetyVolume_Warehouse] = AVERAGE(Warehouses[SafetyVolume_Warehouse])
+    , Description = "Average safety volume per warehouse"
+    , DisplayFolder = "Warehouse KPIs"
+    , FormatString = "0"
+
+--------------------------------
+-- Measure: [MinStock_Warehouse]
+--------------------------------
+MEASURE '[Report] Logistics'[MinStock_Warehouse] = AVERAGE(Warehouses[MinStock_Warehouse])
+    , Description = "Average minimum stock level per warehouse"
+    , DisplayFolder = "Warehouse KPIs"
+    , FormatString = "0"
+
+------------------------------------
+-- Measure: [ReorderPoint_Warehouse]
+------------------------------------
+MEASURE '[Report] Logistics'[ReorderPoint_Warehouse] = AVERAGE(Warehouses[ReorderPoint_Warehouse])
+    , Description = "Average reorder point per warehouse"
+    , DisplayFolder = "Warehouse KPIs"
+    , FormatString = "0"
+
+---------------------------------
+-- Measure: [MaxVolume_Warehouse]
+---------------------------------
+MEASURE '[Report] Logistics'[MaxVolume_Warehouse] = AVERAGE(Warehouses[MaxVolume_Warehouse])
+    , Description = "Average maximum volume per warehouse"
+    , DisplayFolder = "Warehouse KPIs"
+    , FormatString = "0"
+
+----------------------------
+-- Measure: [Risk_Inventory]
+----------------------------
+MEASURE '[Report] Logistics'[Risk_Inventory] = 
+    SWITCH(
+        TRUE(),
+        [Inventory Accuracy %] < 0.65, " ▼",
+        [Inventory Accuracy %] < 0.75, " ■",
+        [Inventory Accuracy %] < 1, " ▲",
+        "▼"
+    )
+
+----------------------------------
+-- Measure: [Health_Status_Icon 2]
+----------------------------------
+MEASURE '[Report] Logistics'[Health_Status_Icon 2] = 
+    SWITCH(
+        TRUE(),
+        [Health vol %] < 0.30, "▼",
+        [Health vol %] < 0.50, "■",
+        [Health vol %] < 0.90, "▲",
+        "▼"
+    )
+    , DisplayFolder = "Health Stock Status vol Matrix"
+
+------------------------
+-- Measure: [Risk_DOH 2]
+------------------------
+MEASURE '[Report] Logistics'[Risk_DOH 2] = 
+    SWITCH(
+        TRUE(),
+        [DOH 90d] < 30, "▼",
+        [DOH 90d] < 40, "■",
+        [DOH 90d] < 438, "▲",
+        [DOH 90d] < 8000, "▼",
+        "★"
+    )
+    , DisplayFolder = "DOH 90d & Health Status Matrix"
+
+--------------------------------------
+-- Measure: [Safety Stock (Inventory)]
+--------------------------------------
+MEASURE '[Report] Logistics'[Safety Stock (Inventory)] = SUM(Inventory[SafetyStock])
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+---------------------------------
+-- Measure: [Reorder (Inventory)]
+---------------------------------
+MEASURE '[Report] Logistics'[Reorder (Inventory)] = SUM(Inventory[ReorderPoint])
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+-----------------------------------
+-- Measure: [Min Stock (Inventory)]
+-----------------------------------
+MEASURE '[Report] Logistics'[Min Stock (Inventory)] = SUM(Inventory[MinStock_Inventory])
+    , DisplayFolder = "Health Stock Status Unit"
+    , FormatString = "0"
+
+----------------------
+-- Measure: [Health %]
+----------------------
+MEASURE '[Report] Logistics'[Health %] = 
+    DIVIDE(
+        SUM(Inventory[StockLevel]),
+        SUM(Inventory[MaxStock_Inventory]),
+        0
+    ) * 100
+    , DisplayFolder = "Health Stock Status Unit"
+
+------------------------------------
+-- Measure: [Orders Count by Status]
+------------------------------------
+MEASURE '[Report] Overview'[Orders Count by Status] = DISTINCTCOUNT(Orders[Order_ID])
+    , DisplayFolder = "1.0_Visual Orders Count By Status"
+    , FormatString = "0"
+
+----------------------
+-- Measure: [OnTime %]
+----------------------
+MEASURE '[Report] Overview'[OnTime %] = 
+    DIVIDE(
+        SUM(Orders[IsOnTimeDeliveredOrReturned]),
+        SUM(Orders[DeliveredOrReturned]),
+        0
+    )
+    , DisplayFolder = "2.1_Visual OTIF Carriers & On Time carriers"
+    , FormatString = "0.00%;-0.00%;0.00%"
+
+----------------------------------
+-- Measure: [CO2 per Kg Delivered]
+----------------------------------
+MEASURE '[Report] Performance'[CO2 per Kg Delivered] = 
+    DIVIDE(
+        SUM(Transportation[CO2EmissionKg]),
+        SUM(Orders[DeliveredQuantity])
+    )
+    , DisplayFolder = "9.0_Page Performance"
+
+----------------------------
+-- Measure: [CO2 per 100 Km]
+----------------------------
+MEASURE '[Report] Performance'[CO2 per 100 Km] = 
+    DIVIDE(
+        SUM(Transportation[CO2EmissionKg]),
+        SUM(Transportation[DistanceKm]) / 100
+    )
+    , DisplayFolder = "9.0_Page Performance"
+
+-------------------------------
+-- Measure: [CO2 Avg per Order]
+-------------------------------
+MEASURE '[Report] Performance'[CO2 Avg per Order] = 
+    DIVIDE(
+        SUM(Transportation[CO2EmissionKg]),
+        DISTINCTCOUNT(v_LeadTime_Orders[Order_ID])
+    )
+    , DisplayFolder = "9.0_Page Performance"
+
+-----------------------
+-- Measure: [CO2 Total]
+-----------------------
+MEASURE '[Report] Performance'[CO2 Total] = 
+    CALCULATE(
+        SUM(Transportation[CO2EmissionKg]),
+        KEEPFILTERS(Orders[Status] IN {"Delivered", "Returned"})
+    )
+    , DisplayFolder = "9.0_Page Performance"
+    , FormatString = "0.00"
+
+----------------------------------
+-- Measure: [Perf_Perfect Order %]
+----------------------------------
+MEASURE '[Report] Performance'[Perf_Perfect Order %] = (DIVIDE(COUNTX(FILTER(Orders, (Orders[OnTime_Flag]=1)*(Orders[InFull_Flag]=1)*(Orders[DeliveryAccuracy]=1)), Orders[Order_ID]), COUNTA(Orders[Order_ID]), 0) * 100) - 12
+    , Description = "Orders that are on-time, in-full and accurately delivered"
+    , DisplayFolder = "Performance KPIs"
+
+------------------------------------------------
+-- Measure: [Perf_Supply Chain Efficiency Score]
+------------------------------------------------
+MEASURE '[Report] Performance'[Perf_Supply Chain Efficiency Score] = IFERROR((([Perf_OTIF %] + [Perf_On-Time Delivery %] + [Perf_In-Full %]) / 3), 0)
+    , Description = "Composite supply chain efficiency score"
+    , DisplayFolder = "Performance KPIs"
+
+--------------------------------------
+-- Measure: [Perf_Delivery Accuracy %]
+--------------------------------------
+MEASURE '[Report] Performance'[Perf_Delivery Accuracy %] = DIVIDE(COUNTX(FILTER(Orders, Orders[DeliveredQuantity] = Orders[Quantity]), Orders[Order_ID]), COUNTA(Orders[Order_ID]), 0) * 100
+    , Description = "Percentage of orders with zero receiving discrepancies"
+    , DisplayFolder = "Performance KPIs"
+
+------------------------------------------
+-- Measure: [Perf_Cold Chain Compliance %]
+------------------------------------------
+MEASURE '[Report] Performance'[Perf_Cold Chain Compliance %] = DIVIDE(COUNTX(FILTER(Orders, Orders[ColdChainRequired]="Yes" && Orders[Status]="Delivered"), Orders[Order_ID]), COUNTX(FILTER(Orders, Orders[ColdChainRequired]="Yes"), Orders[Order_ID]), 0) * 100
+    , Description = "Percentage of orders with cold chain compliance"
+    , DisplayFolder = "Performance KPIs"
+
+---------------------------------
+-- Measure: [Perf_Cost per Order]
+---------------------------------
+MEASURE '[Report] Performance'[Perf_Cost per Order] = DIVIDE(SUMX(Orders, Orders[TotalCost]), COUNTA(Orders[Order_ID]), 0)
+    , Description = "Average cost per order"
+    , DisplayFolder = "Performance KPIs"
+
+-------------------------
+-- Measure: [Perf_OTIF %]
+-------------------------
+MEASURE '[Report] Performance'[Perf_OTIF %] = DIVIDE(SUMX(Orders, Orders[OTIF_Flag]), COUNTA(Orders[Order_ID]), 0) * 100
+    , Description = "OTIF orders percentage"
+    , DisplayFolder = "Performance KPIs"
+
+-------------------------------------
+-- Measure: [Perf_On-Time Delivery %]
+-------------------------------------
+MEASURE '[Report] Performance'[Perf_On-Time Delivery %] = DIVIDE(SUMX(Orders, Orders[OnTime_Flag]), COUNTA(Orders[Order_ID]), 0) * 100
+    , Description = "On-time orders percentage"
+    , DisplayFolder = "Performance KPIs"
+
+----------------------------
+-- Measure: [Perf_In-Full %]
+----------------------------
+MEASURE '[Report] Performance'[Perf_In-Full %] = DIVIDE(SUMX(Orders, Orders[InFull_Flag]), COUNTA(Orders[Order_ID]), 0) * 100
+    , Description = "Orders delivered in full"
+    , DisplayFolder = "Performance KPIs"
+
+------------------------------------
+-- Measure: [Perf_Order Fill Rate %]
+------------------------------------
+MEASURE '[Report] Performance'[Perf_Order Fill Rate %] = DIVIDE(SUMX(Orders, Orders[DeliveredQuantity]), SUMX(Orders, Orders[Quantity]), 0) * 100
+    , Description = "Percentage of order lines fulfilled without backorders"
+    , DisplayFolder = "Performance KPIs"
+
+---------------------------------------
+-- Measure: [Perf_Avg Lead Time (Days)]
+---------------------------------------
+MEASURE '[Report] Performance'[Perf_Avg Lead Time (Days)] = DIVIDE(SUMX(Orders, IF(ISBLANK(Orders[DeliveryDate]), BLANK(), Orders[DeliveryDate] - Orders[ShipDate])), COUNTX(FILTER(Orders, NOT(ISBLANK(Orders[DeliveryDate]))), Orders[Order_ID]), 0)
+    , Description = "Average lead time in days from order to delivery"
+    , DisplayFolder = "Performance KPIs"
+
+-----------------------------------
+-- Measure: [Perf_Efficiency Score]
+-----------------------------------
+MEASURE '[Report] Performance'[Perf_Efficiency Score] = IFERROR((([Perf_OTIF %] + [Perf_On-Time Delivery %] + [Perf_In-Full %]) / 3), 0)
+    , Description = "Composite supply chain efficiency score"
+    , DisplayFolder = "Performance KPIs"
+
+--------------------------------------
+-- Measure: [Perf_On-Time Performance]
+--------------------------------------
+MEASURE '[Report] Performance'[Perf_On-Time Performance] = DIVIDE(SUMX(Orders, Orders[OnTime_Flag]), COUNTA(Orders[Order_ID]), 0)
+    , Description = "On-time delivery performance vs target"
+    , DisplayFolder = "Performance KPIs"
+
+--------------------------------------
+-- Measure: [Perf_In-Full Performance]
+--------------------------------------
+MEASURE '[Report] Performance'[Perf_In-Full Performance] = DIVIDE(SUMX(Orders, Orders[InFull_Flag]), COUNTA(Orders[Order_ID]), 0)
+    , Description = "In-full delivery performance vs target"
+    , DisplayFolder = "Performance KPIs"
+
+---------------------------------
+-- Measure: [Perf_Traceability %]
+---------------------------------
+MEASURE '[Report] Performance'[Perf_Traceability %] = DIVIDE(COUNTX(FILTER(Orders, Orders[SerialTracked]="Yes"), Orders[Order_ID]), COUNTA(Orders[Order_ID]), 0) * 100
+    , Description = "Orders with serial number tracking capability"
+    , DisplayFolder = "Performance KPIs"
+
+-----------------------------------
+-- Measure: [Perf_OnTime % Δ vs PM]
+-----------------------------------
+MEASURE '[Report] Performance'[Perf_OnTime % Δ vs PM] = 
+    VAR Current = [Perf_OnTime % MTD]
+    VAR Previous = [Perf_OnTime % PM]
+    RETURN
+    IF(Previous = 0, 0, (Current - Previous) / Previous)
+    , Description = "Variation On-Time % vs mois précédent"
+    , DisplayFolder = "1.0_Matrix Performance Régions"
+    , FormatString = "0.00%"
+
+-------------------------------
+-- Measure: [Perf_OnTime % YTD]
+-------------------------------
+MEASURE '[Report] Performance'[Perf_OnTime % YTD] = 
+    VAR CurrentYear = YEAR(MAX('Calendar'[Date]))
+    RETURN
+    CALCULATE(
+        [Perf_On-Time Delivery %],
+        'Calendar'[Year] = CurrentYear,
+        'Calendar'[Date] <= MAX('Calendar'[Date])
+    )
+    , Description = "On-Time % année à date"
+    , DisplayFolder = "1.0_Matrix Performance Régions"
+
+------------------------------
+-- Measure: [Perf_CO2 Avg MTD]
+------------------------------
+MEASURE '[Report] Performance'[Perf_CO2 Avg MTD] = 
+    VAR CurrentMonth = MONTH(MAX('Calendar'[Date]))
+    VAR CurrentYear = YEAR(MAX('Calendar'[Date]))
+    RETURN
+    CALCULATE(
+        [CO2 Avg per Order],
+        'Calendar'[Month Number] = CurrentMonth,
+        'Calendar'[Year] = CurrentYear
+    )
+    , Description = "CO2 moyen par commande pour le mois en cours"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+------------------------------
+-- Measure: [Perf_CO2 Avg YTD]
+------------------------------
+MEASURE '[Report] Performance'[Perf_CO2 Avg YTD] = 
+    VAR CurrentYear = YEAR(MAX('Calendar'[Date]))
+    RETURN
+    CALCULATE(
+        [CO2 Avg per Order],
+        'Calendar'[Year] = CurrentYear,
+        'Calendar'[Date] <= MAX('Calendar'[Date])
+    )
+    , Description = "CO2 moyen année à date"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+-----------------------------
+-- Measure: [Perf_CO2 Avg PM]
+-----------------------------
+MEASURE '[Report] Performance'[Perf_CO2 Avg PM] = 
+    VAR CurrentDate = MAX('Calendar'[Date])
+    VAR PreviousMonthDate = EOMONTH(CurrentDate, -1)
+    RETURN
+    CALCULATE(
+        [CO2 Avg per Order],
+        'Calendar'[Date] = PreviousMonthDate
+    )
+    , Description = "CO2 moyen du mois précédent"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+--------------------------------
+-- Measure: [Perf_Cost Order PM]
+--------------------------------
+MEASURE '[Report] Performance'[Perf_Cost Order PM] = 
+    VAR CurrentDate = MAX('Calendar'[Date])
+    VAR PreviousMonthDate = EOMONTH(CurrentDate, -1)
+    RETURN
+    CALCULATE(
+        [Perf_Cost per Order],
+        'Calendar'[Date] = PreviousMonthDate
+    )
+    , Description = "Coût par commande du mois précédent"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "£#,##0.00"
+
+---------------------------------
+-- Measure: [Perf_Cost Order MTD]
+---------------------------------
+MEASURE '[Report] Performance'[Perf_Cost Order MTD] = 
+    VAR CurrentMonth = MONTH(MAX('Calendar'[Date]))
+    VAR CurrentYear = YEAR(MAX('Calendar'[Date]))
+    RETURN
+    CALCULATE(
+        [Perf_Cost per Order],
+        'Calendar'[Month Number] = CurrentMonth,
+        'Calendar'[Year] = CurrentYear
+    )
+    , Description = "Coût par commande pour le mois en cours"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "£#,##0.00"
+
+-----------------------------------
+-- Measure: [Perf_CO2 Avg Delta PM]
+-----------------------------------
+MEASURE '[Report] Performance'[Perf_CO2 Avg Delta PM] = 
+    VAR CurrentVal = [Perf_CO2 Avg MTD]
+    VAR PrevVal = [Perf_CO2 Avg PM]
+    RETURN
+    IF(PrevVal = 0, 0, (CurrentVal - PrevVal) / PrevVal)
+    , Description = "Variation CO2 vs mois précédent"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00%"
+
+------------------------------------
+-- Measure: [Perf_LeadTime Delta PM]
+------------------------------------
+MEASURE '[Report] Performance'[Perf_LeadTime Delta PM] = 
+    VAR CurrentVal = [Perf_LeadTime MTD]
+    VAR PrevVal = [Perf_LeadTime PM]
+    RETURN
+    IF(PrevVal = 0 || ISBLANK(PrevVal), BLANK(), (CurrentVal - PrevVal) / PrevVal)
+    , Description = "Variation Lead time vs mois précédent"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00%"
+
+-------------------------------
+-- Measure: [Perf_LeadTime YTD]
+-------------------------------
+MEASURE '[Report] Performance'[Perf_LeadTime YTD] = 
+    VAR MaxDate = MAX('Calendar'[Date])
+    VAR YearStart = DATE(YEAR(MaxDate), 1, 1)
+    RETURN
+    CALCULATE(
+        [Perf_Avg Lead Time (Days)],
+        'Calendar'[Date] >= YearStart,
+        'Calendar'[Date] <= MaxDate
+    )
+    , Description = "Lead time moyen année à date"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+----------------------------------
+-- Measure: [Perf_ColdChain % MTD]
+----------------------------------
+MEASURE '[Report] Performance'[Perf_ColdChain % MTD] = 
+    VAR CurrentMonth = MONTH(MAX('Calendar'[Date]))
+    VAR CurrentYear = YEAR(MAX('Calendar'[Date]))
+    RETURN
+    CALCULATE(
+        [Perf_Cold Chain Compliance %],
+        'Calendar'[Month Number] = CurrentMonth,
+        'Calendar'[Year] = CurrentYear
+    )
+    , Description = "Conformité chaîne froide pour le mois en cours"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+
+------------------------------
+-- Measure: [Perf_LeadTime PM]
+------------------------------
+MEASURE '[Report] Performance'[Perf_LeadTime PM] = 
+    VAR CurrentDate = MAX('Calendar'[Date])
+    VAR PrevMonthStart = DATE(YEAR(EOMONTH(CurrentDate, -1)), MONTH(EOMONTH(CurrentDate, -1)), 1)
+    VAR PrevMonthEnd = EOMONTH(CurrentDate, -1)
+    RETURN
+    CALCULATE(
+        [Perf_Avg Lead Time (Days)],
+        'Calendar'[Date] >= PrevMonthStart,
+        'Calendar'[Date] <= PrevMonthEnd
+    )
+    , Description = "Lead time moyen du mois précédent"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+----------------------------------
+-- Measure: [Perf_ColdChain % YTD]
+----------------------------------
+MEASURE '[Report] Performance'[Perf_ColdChain % YTD] = 
+    VAR CurrentYear = YEAR(MAX('Calendar'[Date]))
+    RETURN
+    CALCULATE(
+        [Perf_Cold Chain Compliance %],
+        'Calendar'[Year] = CurrentYear,
+        'Calendar'[Date] <= MAX('Calendar'[Date])
+    )
+    , Description = "Conformité chaîne froide année à date"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+
+---------------------------------
+-- Measure: [Perf_ColdChain % PM]
+---------------------------------
+MEASURE '[Report] Performance'[Perf_ColdChain % PM] = 
+    VAR CurrentDate = MAX('Calendar'[Date])
+    VAR PreviousMonthDate = EOMONTH(CurrentDate, -1)
+    RETURN
+    CALCULATE(
+        [Perf_Cold Chain Compliance %],
+        'Calendar'[Date] = PreviousMonthDate
+    )
+    , Description = "Conformité chaîne froide du mois précédent"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+
+---------------------------------
+-- Measure: [Perf_ColdChain % PY]
+---------------------------------
+MEASURE '[Report] Performance'[Perf_ColdChain % PY] = 
+    VAR CurrentDate = MAX('Calendar'[Date])
+    VAR PreviousYearDate = DATE(YEAR(CurrentDate) - 1, MONTH(CurrentDate), DAY(CurrentDate))
+    RETURN
+    CALCULATE(
+        [Perf_Cold Chain Compliance %],
+        'Calendar'[Date] = PreviousYearDate
+    )
+    , Description = "Conformité chaîne froide de l'année précédente"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+
+--------------------------------------
+-- Measure: [Perf_Cost Order Delta PM]
+--------------------------------------
+MEASURE '[Report] Performance'[Perf_Cost Order Delta PM] = 
+    VAR CurrentVal = [Perf_Cost Order MTD]
+    VAR PrevVal = [Perf_Cost Order PM]
+    RETURN
+    IF(PrevVal = 0, 0, (CurrentVal - PrevVal) / PrevVal)
+    , Description = "Variation Coût vs mois précédent"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00%"
+
+--------------------------------
+-- Measure: [Perf_Cost Order PY]
+--------------------------------
+MEASURE '[Report] Performance'[Perf_Cost Order PY] = 
+    VAR CurrentDate = MAX('Calendar'[Date])
+    VAR PreviousYearDate = DATE(YEAR(CurrentDate) - 1, MONTH(CurrentDate), DAY(CurrentDate))
+    RETURN
+    CALCULATE(
+        [Perf_Cost per Order],
+        'Calendar'[Date] = PreviousYearDate
+    )
+    , Description = "Coût par commande de l'année précédente"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "£#,##0.00"
+
+---------------------------------------
+-- Measure: [Perf_ColdChain % Delta PM]
+---------------------------------------
+MEASURE '[Report] Performance'[Perf_ColdChain % Delta PM] = 
+    VAR CurrentVal = [Perf_ColdChain % MTD]
+    VAR PrevVal = [Perf_ColdChain % PM]
+    RETURN
+    IF(PrevVal = 0, 0, (CurrentVal - PrevVal) / PrevVal)
+    , Description = "Variation Conformité chaîne froide vs mois précédent"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00%"
+
+-------------------------------
+-- Measure: [Perf_LeadTime MTD]
+-------------------------------
+MEASURE '[Report] Performance'[Perf_LeadTime MTD] = 
+    VAR MaxDate = MAX('Calendar'[Date])
+    VAR MonthStart = DATE(YEAR(MaxDate), MONTH(MaxDate), 1)
+    VAR MonthEnd = EOMONTH(MaxDate, 0)
+    RETURN
+    CALCULATE(
+        [Perf_Avg Lead Time (Days)],
+        'Calendar'[Date] >= MonthStart,
+        'Calendar'[Date] <= MonthEnd
+    )
+    , Description = "Lead time moyen pour le mois en cours"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+------------------------------
+-- Measure: [Perf_LeadTime PY]
+------------------------------
+MEASURE '[Report] Performance'[Perf_LeadTime PY] = 
+    CALCULATE(
+        [Perf_Avg Lead Time (Days)],
+        ALL('Calendar'[Date]),
+        'Calendar'[Year] = YEAR(MAX('Calendar'[Date])) - 1
+    )
+    , Description = "Lead time moyen de l'année précédente"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+-----------------------------
+-- Measure: [Perf_CO2 Avg PY]
+-----------------------------
+MEASURE '[Report] Performance'[Perf_CO2 Avg PY] = 
+    VAR CurrentDate = MAX('Calendar'[Date])
+    VAR PreviousYearDate = DATE(YEAR(CurrentDate) - 1, MONTH(CurrentDate), DAY(CurrentDate))
+    RETURN
+    CALCULATE(
+        [CO2 Avg per Order],
+        'Calendar'[Date] = PreviousYearDate
+    )
+    , Description = "CO2 moyen de l'année précédente"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+---------------------------------
+-- Measure: [Perf_Cost Order YTD]
+---------------------------------
+MEASURE '[Report] Performance'[Perf_Cost Order YTD] = 
+    VAR CurrentYear = YEAR(MAX('Calendar'[Date]))
+    RETURN
+    CALCULATE(
+        [Perf_Cost per Order],
+        'Calendar'[Year] = CurrentYear,
+        'Calendar'[Date] <= MAX('Calendar'[Date])
+    )
+    , Description = "Coût par commande année à date"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "£#,##0.00"
+
+-------------------------------------
+-- Measure: [Transport_LeadTime Base]
+-------------------------------------
+MEASURE '[Report] Performance'[Transport_LeadTime Base] = AVERAGE('v_LeadTime_Orders'[TransportLeadTimeDays])
+    , Description = "Average transport lead time (days)"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+------------------------------------
+-- Measure: [Transport_LeadTime MTD]
+------------------------------------
+MEASURE '[Report] Performance'[Transport_LeadTime MTD] = 
+    VAR MaxDate = MAX('Calendar'[Date])
+    VAR MonthStart = DATE(YEAR(MaxDate), MONTH(MaxDate), 1)
+    VAR MonthEnd = EOMONTH(MaxDate, 0)
+    RETURN
+    CALCULATE(
+        AVERAGE('v_LeadTime_Orders'[TransportLeadTimeDays]),
+        'Calendar'[Date] >= MonthStart,
+        'Calendar'[Date] <= MonthEnd,
+        USERELATIONSHIP('v_LeadTime_Orders'[DeliveryDate], 'Calendar'[Date]),
+        USERELATIONSHIP('v_LeadTime_Orders'[Carrier], 'Carriers'[Carrier])
+    )
+    , Description = "Average transport lead time MTD"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+------------------------------------
+-- Measure: [Transport_LeadTime YTD]
+------------------------------------
+MEASURE '[Report] Performance'[Transport_LeadTime YTD] = 
+    VAR MaxDate = MAX('Calendar'[Date])
+    VAR YearStart = DATE(YEAR(MaxDate), 1, 1)
+    RETURN
+    CALCULATE(
+        AVERAGE('v_LeadTime_Orders'[TransportLeadTimeDays]),
+        'Calendar'[Date] >= YearStart,
+        'Calendar'[Date] <= MaxDate,
+        USERELATIONSHIP('v_LeadTime_Orders'[DeliveryDate], 'Calendar'[Date])
+    )
+    , Description = "Average transport lead time YTD"
+    , DisplayFolder = "2.0_Matrix Performance Carriers"
+    , FormatString = "0.00"
+
+-------------------------
+-- Measure: [Late Orders]
+-------------------------
+MEASURE '[Report] Performance'[Late Orders] = 
+    CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            REMOVEFILTERS(Transportation),
+            FILTER(
+                Orders,
+                Orders[DeliveryDate] > Orders[RequestedDeliveryDate]
+            ),
+            Orders[Status] = "Delivered"
+        )
+    , DisplayFolder = "Performance KPIs"
+    , FormatString = "0"
+
+--------------------------
+-- Measure: [Early Orders]
+--------------------------
+MEASURE '[Report] Performance'[Early Orders] = 
+    CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            REMOVEFILTERS(Transportation),
+            FILTER(
+                Orders,
+                Orders[DeliveryDate] < Orders[RequestedDeliveryDate]
+            ),
+            Orders[Status] = "Delivered"
+        )
+    , DisplayFolder = "Performance KPIs"
+    , FormatString = "0"
+
+----------------------------
+-- Measure: [On-Time Orders]
+----------------------------
+MEASURE '[Report] Performance'[On-Time Orders] = 
+    CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            REMOVEFILTERS(Transportation),
+            FILTER(
+                Orders,
+                Orders[DeliveryDate] <= Orders[RequestedDeliveryDate]
+            ),
+            Orders[Status] = "Delivered"
+        )
+    , DisplayFolder = "Performance KPIs"
+    , FormatString = "0"
+
+---------------------------------
+-- Measure: [Orders_LateDelivery]
+---------------------------------
+MEASURE '[Report] Performance'[Orders_LateDelivery] = 
+    CALCULATE(
+        COUNTROWS(Orders),
+        Orders[OnTime_Flag] = 0,
+        Orders[Status] IN {"Delivered", "Returned"}
+    )
+    , Description = "Nombre de commandes livrées en retard"
+    , DisplayFolder = "3.0_Waterfall Perfect Order"
+    , FormatString = "0"
+
+----------------------------------
+-- Measure: [Orders_QuantityShort]
+----------------------------------
+MEASURE '[Report] Performance'[Orders_QuantityShort] = 
+    CALCULATE(
+        COUNTROWS(Orders),
+        Orders[InFull_Flag] = 0,
+        Orders[Status] IN {"Delivered", "Returned"}
+    )
+    , Description = "Nombre de commandes avec quantité incomplète"
+    , DisplayFolder = "3.0_Waterfall Perfect Order"
+    , FormatString = "0"
+
+----------------------------
+-- Measure: [Orders_Damaged]
+----------------------------
+MEASURE '[Report] Performance'[Orders_Damaged] = 
+    CALCULATE(
+        DISTINCTCOUNT(Transportation[Order_ID]),
+        Transportation[DamageFlag] = 1
+    )
+    , Description = "Nombre de commandes endommagées"
+    , DisplayFolder = "3.0_Waterfall Perfect Order"
+    , FormatString = "0"
+
+----------------------------------
+-- Measure: [Orders_TempExcursion]
+----------------------------------
+MEASURE '[Report] Performance'[Orders_TempExcursion] = 
+    CALCULATE(
+        DISTINCTCOUNT(TemperatureExcursions[Order_ID]),
+        TemperatureExcursions[ExcursionFlag] = 1
+    )
+    , Description = "Nombre de commandes avec excursion de température"
+    , DisplayFolder = "3.0_Waterfall Perfect Order"
+    , FormatString = "0"
+
+----------------------------------
+-- Measure: [Orders_Perfect_Count]
+----------------------------------
+MEASURE '[Report] Performance'[Orders_Perfect_Count] = 
+    VAR PerfectOrders = 
+        CALCULATE(
+            DISTINCTCOUNT(Orders[Order_ID]),
+            Orders[OTIF_Flag] = 1,
+            Orders[DeliveryAccuracy] = 1,
+            FILTER(
+                Transportation,
+                Transportation[DamageFlag] = 0 && Transportation[LostFlag] = 0
+            ),
+            FILTER(
+                TemperatureExcursions,
+                TemperatureExcursions[ExcursionFlag] = 0
+            )
+        )
+    RETURN PerfectOrders
+    , Description = "Nombre de commandes parfaites (OTIF, sans dommage, sans excursion)"
+    , DisplayFolder = "3.0_Waterfall Perfect Order"
+    , FormatString = "0"
+
+---------------------------
+-- Measure: [Target_OTIF %]
+---------------------------
+MEASURE '[Report] Performance'[Target_OTIF %] = 0.95
+    , Description = "Cible OTIF : 95%"
+    , DisplayFolder = "4.0_Targets"
+    , FormatString = "0.0%;-0.0%;0.0%"
+
+-----------------------------
+-- Measure: [Target_OnTime %]
+-----------------------------
+MEASURE '[Report] Performance'[Target_OnTime %] = 0.98
+    , Description = "Cible On-Time : 98%"
+    , DisplayFolder = "4.0_Targets"
+    , FormatString = "0.0%;-0.0%;0.0%"
+
+-----------------------------
+-- Measure: [Target_LeadTime]
+-----------------------------
+MEASURE '[Report] Performance'[Target_LeadTime] = 7
+    , Description = "Cible Lead Time : 7 jours"
+    , DisplayFolder = "4.0_Targets"
+    , FormatString = "0 ""jours"""
+
+-----------------------------
+-- Measure: [Waterfall_Value]
+-----------------------------
+MEASURE '[Report] Performance'[Waterfall_Value] = 
+    VAR SelectedCategory = SELECTEDVALUE(Waterfall_Categories[Category])
+    VAR LateOrders = [Orders_LateDelivery]
+    VAR ShortOrders = [Orders_QuantityShort]
+    VAR DamagedOrders = [Orders_Damaged]
+    VAR TempExcursion = [Orders_TempExcursion]
+    RETURN
+    SWITCH(
+        SelectedCategory,
+        "Retards Livraison", -LateOrders,
+        "Quantité Incomplète", -ShortOrders,
+        "Dommages Transport", -DamagedOrders,
+        "Excursion Température", -TempExcursion,
+        BLANK()
+    )
+    , Description = "Mesure dynamique pour Waterfall Chart - Perfect Order Decomposition"
+    , DisplayFolder = "3.0_Waterfall Perfect Order"
+    , FormatString = "0"
+
+------------------------------
+-- Measure: [Waterfall_Loss_%]
+------------------------------
+MEASURE '[Report] Performance'[Waterfall_Loss_%] = 
+    VAR SelectedCategory = SELECTEDVALUE(Waterfall_Categories[Category])
+    VAR TotalOrders = [Total Orders (Delivered + Returned)]
+    VAR LateOrders = [Orders_LateDelivery]
+    VAR ShortOrders = [Orders_QuantityShort]
+    VAR DamagedOrders = [Orders_Damaged]
+    VAR TempExcursion = [Orders_TempExcursion]
+    
+    RETURN
+    SWITCH(
+        SelectedCategory,
+        "Retards Livraison", DIVIDE(LateOrders, TotalOrders, 0),
+        "Quantité Incomplète", DIVIDE(ShortOrders, TotalOrders, 0),
+        "Dommages Transport", DIVIDE(DamagedOrders, TotalOrders, 0),
+        "Excursion Température", DIVIDE(TempExcursion, TotalOrders, 0),
+        BLANK()
+    )
+    , Description = "Pourcentage de perte par catégorie dans le Waterfall"
+    , DisplayFolder = "3.0_Waterfall Perfect Order"
+    , FormatString = "0.0%;-0.0%;0.0%"
+
+-----------------------------
+-- Measure: [Waterfall_Color]
+-----------------------------
+MEASURE '[Report] Performance'[Waterfall_Color] = 
+    VAR SelectedType = SELECTEDVALUE(Waterfall_Categories[Type])
+    RETURN
+    SWITCH(
+        SelectedType,
+        "Start", "#4472C4",
+        "Loss", "#C00000",
+        "End", "#70AD47",
+        "#808080"
+    )
+    , Description = "Couleur conditionnelle pour le Waterfall"
+    , DisplayFolder = "3.0_Waterfall Perfect Order"
+
+--------------------------------
+-- Measure: [Gap_OTIF_vs_Target]
+--------------------------------
+MEASURE '[Report] Performance'[Gap_OTIF_vs_Target] = [OTIF %] - [Target_OTIF %]
+    , Description = "Gap entre OTIF % actuel et Target"
+    , DisplayFolder = "4.0_Targets"
+    , FormatString = "+0.0%;-0.0%;0.0%"
+
+----------------------------------
+-- Measure: [Gap_OnTime_vs_Target]
+----------------------------------
+MEASURE '[Report] Performance'[Gap_OnTime_vs_Target] = DIVIDE([OnTime Orders], [Total Orders (Delivered + Returned)], 0) - [Target_OnTime %]
+    , Description = "Gap entre On-Time % actuel et Target"
+    , DisplayFolder = "4.0_Targets"
+    , FormatString = "+0.0%;-0.0%;0.0%"
+
+------------------------------------
+-- Measure: [Gap_LeadTime_vs_Target]
+------------------------------------
+MEASURE '[Report] Performance'[Gap_LeadTime_vs_Target] = [Avg Lead Time (Numeric)] - [Target_LeadTime]
+    , Description = "Gap entre Lead Time actuel et Target"
+    , DisplayFolder = "4.0_Targets"
+    , FormatString = "+0.00 ""jours"";-0.00 ""jours"";0 ""jours"""
+
+-----------------------------
+-- Measure: [Last Order Date]
+-----------------------------
+MEASURE '[KPI] Sustainability'[Last Order Date] = 
+    CALCULATE(
+        MAX(v_LeadTime_Orders[OrderDate]),
+        ALL(v_LeadTime_Orders)
+    )
+    , FormatString = "General Date"
+
+-------------------------------------
+-- Measure: [CO2 Total Current Month]
+-------------------------------------
+MEASURE '[KPI] Sustainability'[CO2 Total Current Month] = CALCULATE([CO2 Total], TREATAS({"Current Month"}, 'Time Period'[Time Period]))
+
+--------------------------------------
+-- Measure: [CO2 Total Previous Month]
+--------------------------------------
+MEASURE '[KPI] Sustainability'[CO2 Total Previous Month] = CALCULATE([CO2 Total], TREATAS({"Previous Month"}, 'Time Period'[Time Period]))
+
+----------------------------------
+-- Measure: [CO2 Progression % PM]
+----------------------------------
+MEASURE '[KPI] Sustainability'[CO2 Progression % PM] = 
+    DIVIDE(
+        [CO2 Total Current Month] - [CO2 Total Previous Month],
+        [CO2 Total Previous Month],
+        0
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+--------------------------
+-- Measure: [CO2 PM Label]
+--------------------------
+MEASURE '[KPI] Sustainability'[CO2 PM Label] = 
+    VAR _delta = [CO2 Progression % PM]
+    RETURN
+        UNICHAR(9650 + IF(_delta < 0, 10, 0)) &
+        UNICHAR(8239) &
+        FORMAT(_delta, "+0.0%;-0.0%")
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+--------------------------
+-- Measure: [CO2 PM Color]
+--------------------------
+MEASURE '[KPI] Sustainability'[CO2 PM Color] = IF ( [CO2 Progression % PM] >= 0, "#DC2626", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+-------------------------------------
+-- Measure: [CO2 Total Previous Year]
+-------------------------------------
+MEASURE '[KPI] Sustainability'[CO2 Total Previous Year] = CALCULATE([CO2 Total], TREATAS({"Previous Year"}, 'Time Period'[Time Period]))
+
+----------------------------------
+-- Measure: [CO2 Progression % PY]
+----------------------------------
+MEASURE '[KPI] Sustainability'[CO2 Progression % PY] = 
+    DIVIDE(
+        [CO2 Total Current Month] - [CO2 Total Previous Year],
+        [CO2 Total Previous Year],
+        0
+    )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+--------------------------
+-- Measure: [CO2 PY Label]
+--------------------------
+MEASURE '[KPI] Sustainability'[CO2 PY Label] = 
+    VAR _delta = [CO2 Progression % PY]
+    RETURN
+        UNICHAR(9650 + IF(_delta < 0, 10, 0)) &
+        UNICHAR(8239) &
+        FORMAT(_delta, "+0.0%;-0.0%")
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
+
+--------------------------
+-- Measure: [CO2 PY Color]
+--------------------------
+MEASURE '[KPI] Sustainability'[CO2 PY Color] = IF ( [CO2 Progression % PY] >= 0, "#DC2626", "#16A34A" )
+    , DisplayFolder = "_00_HELPER_Formatting - Colors & Labels"
+    , Visible = FALSE
